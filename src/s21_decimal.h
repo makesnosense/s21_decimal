@@ -1,0 +1,1 @@
+int very_function();
