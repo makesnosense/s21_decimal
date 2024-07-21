@@ -2,6 +2,7 @@
 
 START_TEST(test_first) {
   int s21_res = very_function();
+
   ck_assert_int_eq(s21_res, 0);
 }
 END_TEST

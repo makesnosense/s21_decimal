@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 int very_function() {
-  printf("hello world!");
+  print_binary(4123123);
+  print_binary(333333);
   return 0;
 }
