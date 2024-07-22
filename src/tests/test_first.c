@@ -1,10 +1,14 @@
+#include "../helper_funcs.h"
 #include "debug_funcs.h"
 #include "run_tests.h"
 
 START_TEST(test_first) {
   s21_decimal input_decimal = {0x123U, 0x123U, 0x123U, 0x0};
-
-  print_decimal_as_binary(input_decimal);
+  print_binary(29);
+  putchar('\n');
+  printf("%d", get_bit(29, 5555));
+  putchar('\n');
+  // print_decimal_as_binary(input_decimal);
 }
 END_TEST
 

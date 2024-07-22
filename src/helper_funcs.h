@@ -1,2 +1,4 @@
+#include <stdint.h>
 #include <stdio.h>
-void print_binary(u_int32_t input_num);
+
+int get_bit(uint32_t input_uint, size_t position);
