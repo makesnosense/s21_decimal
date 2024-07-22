@@ -4,12 +4,19 @@
 
 START_TEST(test_first) {
   s21_decimal input_decimal = {0x123U, 0x123U, 0x123U, 0x0U};
-  print_decimal_as_binary(input_decimal);
+  // print_decimal_as_binary(input_decimal);
   putchar('\n');
-  // print_binary(-29);
-  reset_decimal(&input_decimal);
-  print_decimal_as_binary(input_decimal);
+  // print_binary(-1024);
+  print_binary(-1);
   putchar('\n');
+  putchar('\n');
+  // reset_decimal(&input_decimal);
+  // print_decimal_as_binary(input_decimal);
+  putchar('\n');
+  putchar('\n');
+  s21_from_int_to_decimal(-1, &input_decimal);
+
+  print_decimal_as_binary(input_decimal);
 
   // // printf("%d", get_bit(29, 5555));
   // putchar('\n');
