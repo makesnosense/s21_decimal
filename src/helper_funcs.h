@@ -6,6 +6,8 @@
 
 #include "s21_decimal.h"
 
+#define SIGN_BIT_POSITION 31U
+
 typedef enum Sign_t {
   PLUS = 0,
   MINUS = 1,
@@ -16,8 +18,8 @@ typedef enum Binary_t {
 } Binary;
 
 int get_bit(uint32_t input_uint, size_t position);
-int set_bit(uint32_t input_uint, size_t position);
-int reset_bit(uint32_t input_uint, size_t position);
+void set_bit(uint32_t* input_uint, size_t position);
+void reset_bit(uint32_t* input_uint, size_t position);
 void set_sign(s21_decimal* input_decimal, Sign sign_to_set);
 
 #endif  // SRC_HELPER_FUNCS_H_
