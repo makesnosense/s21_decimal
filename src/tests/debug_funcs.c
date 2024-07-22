@@ -2,15 +2,18 @@
 
 void print_binary(uint32_t input_num) {
   uint32_t mask = 0x80000000;
-  putchar('\n');
   for (size_t i = 0; i < 32; i++) {
     if ((i != 0) && (i % 4 == 0)) {
       putchar(' ');
     }
-
     (input_num & mask) ? putchar('1') : putchar('0');
-
     mask >>= 1;
   }
-  putchar('\n');
+}
+
+void print_decimal_as_binary(s21_decimal input_decimal) {
+  for (int i = 3; i >= 0; i--) {
+    print_binary(input_decimal.bits[i]);
+    putchar('\n');
+  }
 }

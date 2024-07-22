@@ -1,7 +1,11 @@
 #include "debug_funcs.h"
 #include "run_tests.h"
 
-START_TEST(test_first) { print_binary(4123123); }
+START_TEST(test_first) {
+  s21_decimal input_decimal = {0x123U, 0x123U, 0x123U, 0x0};
+
+  print_decimal_as_binary(input_decimal);
+}
 END_TEST
 
 Suite* make_first_suite() {
