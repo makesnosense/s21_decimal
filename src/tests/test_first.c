@@ -7,14 +7,14 @@ START_TEST(test_first) {
   // print_decimal_as_binary(input_decimal);
   putchar('\n');
   // print_binary(-1024);
-  print_binary(-1);
+  print_binary(1111);
   putchar('\n');
   putchar('\n');
   // reset_decimal(&input_decimal);
   // print_decimal_as_binary(input_decimal);
   putchar('\n');
   putchar('\n');
-  s21_from_int_to_decimal(-1, &input_decimal);
+  s21_from_int_to_decimal(1111, &input_decimal);
 
   print_decimal_as_binary(input_decimal);
 
