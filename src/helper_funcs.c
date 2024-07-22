@@ -23,3 +23,9 @@ void assign_bit(uint32_t* input_uint, size_t position, Binary value_to_assign) {
 void set_sign(s21_decimal* input_decimal, Sign sign_to_set) {
   assign_bit(&input_decimal->bits[3], SIGN_BIT_POSITION, (Binary)sign_to_set);
 }
+
+void reset_decimal(s21_decimal* input_decimal) {
+  for (size_t i = 0; i < 4; i++) {
+    input_decimal->bits[i] = 0U;
+  }
+}

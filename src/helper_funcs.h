@@ -21,5 +21,6 @@ int get_bit(uint32_t input_uint, size_t position);
 void set_bit(uint32_t* input_uint, size_t position);
 void reset_bit(uint32_t* input_uint, size_t position);
 void set_sign(s21_decimal* input_decimal, Sign sign_to_set);
+void reset_decimal(s21_decimal* input_decimal);
 
 #endif  // SRC_HELPER_FUNCS_H_
