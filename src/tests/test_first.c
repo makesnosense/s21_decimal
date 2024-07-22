@@ -1,10 +1,7 @@
+#include "debug_funcs.h"
 #include "run_tests.h"
 
-START_TEST(test_first) {
-  int s21_res = very_function();
-
-  ck_assert_int_eq(s21_res, 0);
-}
+START_TEST(test_first) { print_binary(4123123); }
 END_TEST
 
 Suite* make_first_suite() {

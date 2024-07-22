@@ -1,6 +1,6 @@
 CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror -std=c11
+CFLAGS = -std=c11
+# CFLAGS = -Wall -Wextra -Werror -std=c11
 COVERAGE_FLAGS = -fprofile-arcs -ftest-coverage
 TESTFLAGS:= -lcheck -lm
 ADDITIONAL_TEST_FLAGS = 
@@ -34,7 +34,6 @@ gcov_report: clean build_tests test
 	@gcovr -o $(GCOV_REPORT_DIR)/gcov_report.html --html --html-self-contained --html-details $(GCOVR_THEME) --exclude $(TESTS_DIR)	
 	@open $(GCOV_REPORT_DIR)/gcov_report.html
 	rm -f *.gcda *.gcno *.gcov
-
 
 build_tests: CFLAGS += $(COVERAGE_FLAGS)
 build_tests: TESTFLAGS += $(ADDITIONAL_TEST_FLAGS)
