@@ -9,8 +9,8 @@
 #define SIGN_BIT_POSITION 31U
 #define BYTE_SIZE 8
 
-#define BEGIN_POWER 16
-#define END_POWER 23
+#define BEGIN_POWER_POSITION 16
+#define END_POWER_POSITION 23
 
 typedef enum Sign_t {
   PLUS = 0,

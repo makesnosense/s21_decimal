@@ -56,21 +56,22 @@ END_TEST
 // 11 0010 1011 0010 1001 1000 0110 1110
 // 0001 1101 0001 0001 0101 0110 1010 0000
 
-START_TEST(get_power_test) {
+START_TEST(set_power_test) {
   s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
                                0b00000000000000101000000000000000};
+  // print_decimal_as_binary(input_decimal);
+  int power_before = get_power(input_decimal.bits[3]);
+  printf("\n\n%d\n\n", power_before);
+  int power_to_set = 6;
 
-  print_decimal_as_binary(input_decimal);
+  set_power(&input_decimal.bits[3], power_to_set);
 
-  int power = get_power(input_decimal.bits[3]);
-  printf("\n\n%d\n\n", power);
+  int power_after = get_power(input_decimal.bits[3]);
 
-  set_power(&input_decimal.bits[3], 6);
+  printf("\n\n%d\n\n", power_after);
 
-  print_decimal_as_binary(input_decimal);
-
-  power = get_power(input_decimal.bits[3]);
-  printf("\n\n%d\n\n", power);
+  ck_assert_int_ne(power_before, power_after);
+  ck_assert_int_eq(power_after, power_to_set);
 }
 END_TEST
 
@@ -80,8 +81,8 @@ Suite* make_first_suite() {
 
   tc_core = tcase_create("Core");
   // tcase_add_test(tc_core, test_first);
-  tcase_add_test(tc_core, mantissa_addition_test);
-  // tcase_add_test(tc_core, get_power_test);
+  // tcase_add_test(tc_core, mantissa_addition_test);
+  tcase_add_test(tc_core, set_power_test);
 
   suite_add_tcase(len_suite, tc_core);
   return len_suite;

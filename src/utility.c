@@ -78,10 +78,10 @@ int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result) {
 
 // void matissa_multiplication(uint32_t *input, unsigned factor) {}
 
-int get_power(uint32_t options) {
+int get_power(uint32_t service_part) {
   uint32_t result = 0;
   for (int i = 0; i < 9; i++) {
-    if (get_bit(options, END_POWER - i)) {
+    if (get_bit(service_part, END_POWER_POSITION - i)) {
       set_bit(&result, 8 - i);
     } else {
       reset_bit(&result, 8 - i);
@@ -90,12 +90,12 @@ int get_power(uint32_t options) {
   return result;
 }
 
-void set_power(uint32_t* options, int power) {
+void set_power(uint32_t* service_part, int power_to_set) {
   for (int i = 0; i < 9; i++) {
-    if (get_bit(power, 8 - i)) {
-      set_bit(options, END_POWER - i);
+    if (get_bit(power_to_set, 8 - i)) {
+      set_bit(service_part, END_POWER_POSITION - i);
     } else {
-      reset_bit(options, END_POWER - i);
+      reset_bit(service_part, END_POWER_POSITION - i);
     }
   }
 }

@@ -1,2 +1,6 @@
 .vscode
 .clang-format
+*.o
+*.a
+src/object_files
+
