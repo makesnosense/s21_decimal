@@ -9,6 +9,9 @@
 #define SIGN_BIT_POSITION 31U
 #define BYTE_SIZE 8
 
+#define BEGIN_POWER_POSITION 16
+#define END_POWER_POSITION 23
+
 typedef enum Sign_t {
   PLUS = 0,
   MINUS = 1,
@@ -28,5 +31,7 @@ int determine_bit_part_and_position(int mantissa_position, int *part_index);
 int get_mantissa_bit(uint32_t *mantissa, int position);
 void assign_mantissa_bit(uint32_t *mantissa, unsigned position, Binary value);
 int mantissa_addition(uint32_t *term_1, uint32_t *term_2, uint32_t *result);
+int get_power(uint32_t options);
+void set_power(uint32_t *options, int power);
 
 #endif  // SRC_HELPER_FUNCS_H_
