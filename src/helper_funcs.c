@@ -43,7 +43,7 @@ int get_matissa_bit(uint32_t* mantissa, int position) {
   return bit_value;
 }
 
-void assign_matissa_bit(uint32_t* mantissa, unsigned position, Binary value) {
+void assign_mantissa_bit(uint32_t* mantissa, unsigned position, Binary value) {
   int part_index;
   int part_position = calc_mantissa_bit_position(position, &part_index);
   assign_bit(&mantissa[part_index], part_position, value);
@@ -63,7 +63,7 @@ int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result) {
     } else {
       carryover = 0;
     }
-    assign_matissa_bit(result, i, bits_sum);
+    assign_mantissa_bit(result, i, bits_sum);
   }
   if (carryover > 0) {
     overflow_error = 1;
