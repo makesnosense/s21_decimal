@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -std=c11
 # CFLAGS = -Wall -Wextra -Werror -std=c11
 COVERAGE_FLAGS = -fprofile-arcs -ftest-coverage
-TESTFLAGS:= -lcheck -lm -lsubunit
+TESTFLAGS:= -lcheck -lm
 ADDITIONAL_TEST_FLAGS = 
 DISTRO:=
 
@@ -10,6 +10,10 @@ ifeq ($(shell uname),Darwin)
 	GCOVR_THEME = --html-theme github.dark-green
 else
 	DISTRO := $(shell cat /etc/os-release | grep ^ID= | cut -d'=' -f2 | tr -d '"')
+endif
+
+ifeq ($(DISTRO),ubuntu)
+ADDITIONAL_TEST_FLAGS+= -lsubunit 
 endif
 
 
