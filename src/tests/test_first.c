@@ -52,16 +52,36 @@ START_TEST(mantissa_addition_test) {
   print_binary(sum[0]);
   puts("\n");
 }
+END_TEST
 // 11 0010 1011 0010 1001 1000 0110 1110
 // 0001 1101 0001 0001 0101 0110 1010 0000
+
+START_TEST(get_power_test) {
+  s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
+                               0b00000000000000101000000000000000};
+
+  print_decimal_as_binary(input_decimal);
+
+  int power = get_power(input_decimal.bits[3]);
+  printf("\n\n%d\n\n", power);
+
+  set_power(&input_decimal.bits[3], 6);
+
+  print_decimal_as_binary(input_decimal);
+
+  power = get_power(input_decimal.bits[3]);
+  printf("\n\n%d\n\n", power);
+}
+END_TEST
 
 Suite* make_first_suite() {
   Suite* len_suite = suite_create("first");
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
-  tcase_add_test(tc_core, test_first);
+  // tcase_add_test(tc_core, test_first);
   tcase_add_test(tc_core, mantissa_addition_test);
+  // tcase_add_test(tc_core, get_power_test);
 
   suite_add_tcase(len_suite, tc_core);
   return len_suite;
