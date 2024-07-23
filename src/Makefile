@@ -12,6 +12,10 @@ else
 	DISTRO := $(shell cat /etc/os-release | grep ^ID= | cut -d'=' -f2 | tr -d '"')
 endif
 
+ifeq ($(DISTRO),ubuntu)
+ADDITIONAL_TEST_FLAGS+= -lsubunit 
+endif
+
 
 TESTS_DIR = tests
 TESTS_SRC_FILES = $(wildcard $(TESTS_DIR)/*.c)

@@ -1,4 +1,4 @@
-#include "../helper_funcs.h"
+#include "../utility.h"
 #include "debug_funcs.h"
 #include "run_tests.h"
 
@@ -34,12 +34,34 @@ START_TEST(test_first) {
 }
 END_TEST
 
+START_TEST(mantissa_addition_test) {
+  // 4573498578943759
+  uint32_t term_1[3] = {0b10011110001011011011111100001111,
+                        0b100000011111110010010, 0b0};
+  // 3648576347873449873
+  uint32_t term_2[3] = {0b01111110111000111001011110010001,
+                        0b110010101000100101100011011011, 0b0};
+  // 3 653 149 846 452 393 632
+  uint32_t sum[3] = {0b0, 0b0, 0b0};
+  mantissa_addition(term_1, term_2, sum);
+  puts("\naddition\n");
+  print_binary(sum[2]);
+  puts("\n");
+  print_binary(sum[1]);
+  puts("\n");
+  print_binary(sum[0]);
+  puts("\n");
+}
+// 11 0010 1011 0010 1001 1000 0110 1110
+// 0001 1101 0001 0001 0101 0110 1010 0000
+
 Suite* make_first_suite() {
   Suite* len_suite = suite_create("first");
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
   tcase_add_test(tc_core, test_first);
+  tcase_add_test(tc_core, mantissa_addition_test);
 
   suite_add_tcase(len_suite, tc_core);
   return len_suite;
