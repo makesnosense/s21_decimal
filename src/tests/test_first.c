@@ -121,6 +121,25 @@ START_TEST(print_mantissa_as_binary_test) {
 }
 END_TEST
 
+START_TEST(convert_arr_to_decimale) {
+  // 4573498578943759
+  uint32_t term_1[3] = {0b10011110001011011011111100001111,
+                        0b10000001111111001001000001000010,
+                        0b01010010001001001010101010100101};
+
+  s21_decimal input_decimal1 = {0b10011110001011011011111100001111,
+                                0b10000001111111001001000001000010,
+                                0b01010010001001001010101010100101, 0x0U};
+  s21_decimal input_decimal2 = {0x0U, 0x0U, 0x0U, 0x0U};
+
+  convert_array_to_decimal(term_1, &input_decimal2);
+
+  print_decimal_as_binary(input_decimal1);
+  putchar('\n');
+  print_decimal_as_binary(input_decimal2);
+}
+END_TEST
+
 Suite* make_first_suite() {
   Suite* first_suite = suite_create("first");
   TCase* tc_core;
@@ -132,6 +151,7 @@ Suite* make_first_suite() {
   // tcase_add_test(tc_core, multiply_test);
   // tcase_add_test(tc_core, multiply_test_2);
   tcase_add_test(tc_core, print_mantissa_as_binary_test);
+  tcase_add_test(tc_core, convert_arr_to_decimale);
   suite_add_tcase(first_suite, tc_core);
   return first_suite;
 }
