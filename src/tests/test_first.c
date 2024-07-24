@@ -75,15 +75,63 @@ START_TEST(set_power_test) {
 }
 END_TEST
 
+START_TEST(multiply_test) {
+  // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
+  //                              0b00000000000000101000000000000000};
+  uint32_t num_1[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  uint32_t num_2[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  uint32_t res[6] = {0};
+  // print_decimal_as_binary(input_decimal);
+
+  multiply_large_numbers(num_1, num_2, res);
+
+  print_large_number(res, 6);
+
+  // ck_assert_int_ne(power_before, power_after);
+  // ck_assert_int_eq(power_after, power_to_set);
+}
+END_TEST
+
+START_TEST(multiply_test_2) {
+  // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
+  //                              0b00000000000000101000000000000000};
+  uint32_t num_1[3] = {0x2, 0x0, 0x0};
+  uint32_t num_2[3] = {0x3, 0x0, 0x6};
+  uint32_t res[6] = {0};
+  // print_decimal_as_binary(input_decimal);
+
+  multiply_large_numbers(num_1, num_2, res);
+
+  print_large_number(res, 6);
+
+  // ck_assert_int_ne(power_before, power_after);
+  // ck_assert_int_eq(power_after, power_to_set);
+}
+END_TEST
+
+START_TEST(print_mantissa_as_binary_test) {
+  // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
+  //                              0b00000000000000101000000000000000};
+  uint32_t num_1[3] = {0x0, 0x0, 0x1869F};
+  print_mantissa_as_binary(num_1, 3);
+  // print_decimal_as_binary(input_decimal);
+
+  // ck_assert_int_ne(power_before, power_after);
+  // ck_assert_int_eq(power_after, power_to_set);
+}
+END_TEST
+
 Suite* make_first_suite() {
-  Suite* len_suite = suite_create("first");
+  Suite* first_suite = suite_create("first");
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
   // tcase_add_test(tc_core, test_first);
   // tcase_add_test(tc_core, mantissa_addition_test);
-  tcase_add_test(tc_core, set_power_test);
-
-  suite_add_tcase(len_suite, tc_core);
-  return len_suite;
+  // tcase_add_test(tc_core, set_power_test);
+  // tcase_add_test(tc_core, multiply_test);
+  // tcase_add_test(tc_core, multiply_test_2);
+  tcase_add_test(tc_core, print_mantissa_as_binary_test);
+  suite_add_tcase(first_suite, tc_core);
+  return first_suite;
 }

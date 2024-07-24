@@ -30,6 +30,15 @@ void reset_decimal(s21_decimal* input_decimal) {
   }
 }
 
+void* s21_memset(void* str, int c, int n) {
+  unsigned char* pointer = str;
+  while (n > 0) {
+    n--;
+    *pointer++ = (unsigned char)c;
+  }
+  return str;
+}
+
 int determine_bit_part_and_position(int position_in_mantissa,
                                     int* bits_array_index) {
   *bits_array_index = position_in_mantissa / (sizeof(uint32_t) * BYTE_SIZE);
@@ -98,4 +107,26 @@ void set_power(uint32_t* service_part, int power_to_set) {
       reset_bit(service_part, END_POWER_POSITION - i);
     }
   }
+}
+
+void multiply_large_numbers(uint32_t* num1, uint32_t* num2, uint32_t* result) {
+  // Очищаем результат
+  s21_memset(result, 0, sizeof(uint32_t) * 6);
+
+  for (int i = 0; i < 3; i++) {
+    uint64_t carry = 0;
+    for (int j = 0; j < 3; j++) {
+      uint64_t product = (uint64_t)num1[i] * num2[j] + result[i + j] + carry;
+      result[i + j] = (uint32_t)product;
+      carry = product >> 32;
+    }
+    result[i + 3] = carry;
+  }
+}
+
+void print_large_number(uint32_t num[], int size) {
+  for (int i = size - 1; i >= 0; i--) {
+    printf("%08X ", num[i]);
+  }
+  printf("\n");
 }

@@ -34,4 +34,7 @@ int mantissa_addition(uint32_t *term_1, uint32_t *term_2, uint32_t *result);
 int get_power(uint32_t options);
 void set_power(uint32_t *options, int power);
 
+void multiply_large_numbers(uint32_t *num1, uint32_t *num2, uint32_t *result);
+void print_large_number(uint32_t num[], int size);
+
 #endif  // SRC_HELPER_FUNCS_H_

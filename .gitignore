@@ -3,4 +3,6 @@
 *.o
 *.a
 src/object_files
-
+*.gcda
+*.gcno
+run_tests
