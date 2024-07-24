@@ -85,7 +85,7 @@ START_TEST(multiply_test) {
 
   multiply_large_numbers(num_1, num_2, res);
 
-  print_large_number(res, 6);
+  print_mantissa_as_binary(res, 6);
 
   // ck_assert_int_ne(power_before, power_after);
   // ck_assert_int_eq(power_after, power_to_set);
@@ -95,14 +95,14 @@ END_TEST
 START_TEST(multiply_test_2) {
   // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
   //                              0b00000000000000101000000000000000};
-  uint32_t num_1[3] = {0x2, 0x0, 0x0};
-  uint32_t num_2[3] = {0x3, 0x0, 0x6};
+  uint32_t num_1[3] = {0xF485787A, 0x7F29ABCA, 0x1AD};
+  uint32_t num_2[3] = {0xD83C94FB, 0x1, 0x0};
   uint32_t res[6] = {0};
   // print_decimal_as_binary(input_decimal);
 
   multiply_large_numbers(num_1, num_2, res);
 
-  print_large_number(res, 6);
+  print_mantissa_as_binary(res, 6);
 
   // ck_assert_int_ne(power_before, power_after);
   // ck_assert_int_eq(power_after, power_to_set);
@@ -148,10 +148,10 @@ Suite* make_first_suite() {
   // tcase_add_test(tc_core, test_first);
   // tcase_add_test(tc_core, mantissa_addition_test);
   // tcase_add_test(tc_core, set_power_test);
-  // tcase_add_test(tc_core, multiply_test);
-  // tcase_add_test(tc_core, multiply_test_2);
-  tcase_add_test(tc_core, print_mantissa_as_binary_test);
-  tcase_add_test(tc_core, convert_arr_to_decimal);
+  tcase_add_test(tc_core, multiply_test);
+  tcase_add_test(tc_core, multiply_test_2);
+  // tcase_add_test(tc_core, print_mantissa_as_binary_test);
+  // tcase_add_test(tc_core, convert_arr_to_decimal);
   suite_add_tcase(first_suite, tc_core);
   return first_suite;
 }
