@@ -24,6 +24,10 @@ void set_sign(s21_decimal* input_decimal, Sign sign_to_set) {
   assign_bit(&input_decimal->bits[3], SIGN_BIT_POSITION, (Binary)sign_to_set);
 }
 
+int get_sign(s21_decimal input_decimal) {
+  return get_bit(input_decimal.bits[3], SIGN_BIT_POSITION);
+}
+
 void reset_decimal(s21_decimal* input_decimal) {
   for (int i = 0; i < 4; i++) {
     input_decimal->bits[i] = 0U;
@@ -123,7 +127,7 @@ void write_in_mantissa_to_decimal(uint32_t* mantissa,
   destination_decimal->bits[2] = mantissa[2];
 }
 
-uint32_t* get_power_of_ten(int power) {
+uint32_t* get_mantissa_with_power_of_ten(int power) {
   static uint32_t powers_of_10[29][3] = {
       {0x1, 0x0, 0x0},                      // 10^0
       {0xA, 0x0, 0x0},                      // 10^1
