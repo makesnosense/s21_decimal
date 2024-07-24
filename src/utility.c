@@ -132,19 +132,25 @@ void print_large_number(uint32_t num[], int size) {
 }
 
 void write_in_mantissa_to_decimal(uint32_t* mantissa, s21_decimal* result) {
-  int position = 0;
-  int mantissa_part = 0;
-  for (int i = 0; i < 96; i++) {
-    if (position > 31) {
-      position = 0;
-      mantissa_part++;
-    }
-    if (get_bit(mantissa[mantissa_part], position)) {
-      set_bit(&result->bits[mantissa_part], position);
-      position++;
-    } else {
-      reset_bit(&result->bits[mantissa_part], position);
-      position++;
-    }
-  }
+  result->bits[0] = mantissa[0];
+  result->bits[1] = mantissa[1];
+  result->bits[2] = mantissa[2];
 }
+
+// void write_in_mantissa_to_decimal(uint32_t* mantissa, s21_decimal* result) {
+//   int position = 0;
+//   int mantissa_part = 0;
+//   for (int i = 0; i < 96; i++) {
+//     if (position > 31) {
+//       position = 0;
+//       mantissa_part++;
+//     }
+//     if (get_bit(mantissa[mantissa_part], position)) {
+//       set_bit(&result->bits[mantissa_part], position);
+//       position++;
+//     } else {
+//       reset_bit(&result->bits[mantissa_part], position);
+//       position++;
+//     }
+//   }
+// }
