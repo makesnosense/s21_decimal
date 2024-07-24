@@ -85,7 +85,7 @@ START_TEST(multiply_test) {
 
   multiply_large_numbers(num_1, num_2, res);
 
-  print_large_number(res, 6);
+  print_mantissa_as_binary(res, 6);
 
   // ck_assert_int_ne(power_before, power_after);
   // ck_assert_int_eq(power_after, power_to_set);
@@ -95,14 +95,14 @@ END_TEST
 START_TEST(multiply_test_2) {
   // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
   //                              0b00000000000000101000000000000000};
-  uint32_t num_1[3] = {0x2, 0x0, 0x0};
-  uint32_t num_2[3] = {0x3, 0x0, 0x6};
+  uint32_t num_1[3] = {0xF485787A, 0x7F29ABCA, 0x1AD};
+  uint32_t num_2[3] = {0xD83C94FB, 0x1, 0x0};
   uint32_t res[6] = {0};
   // print_decimal_as_binary(input_decimal);
 
   multiply_large_numbers(num_1, num_2, res);
 
-  print_large_number(res, 6);
+  print_mantissa_as_binary(res, 6);
 
   // ck_assert_int_ne(power_before, power_after);
   // ck_assert_int_eq(power_after, power_to_set);
@@ -121,6 +121,25 @@ START_TEST(print_mantissa_as_binary_test) {
 }
 END_TEST
 
+START_TEST(convert_arr_to_decimal) {
+  // 4573498578943759
+  uint32_t term_1[3] = {0b10011110001011011011111100001111,
+                        0b10000001111111001001000001000010,
+                        0b01010010001001001010101010100101};
+
+  s21_decimal input_decimal1 = {0b10011110001011011011111100001111,
+                                0b10000001111111001001000001000010,
+                                0b01010010001001001010101010100101, 0x0U};
+  s21_decimal input_decimal2 = {0x0U, 0x0U, 0x0U, 0x0U};
+
+  write_in_mantissa_to_decimal(term_1, &input_decimal2);
+
+  print_decimal_as_binary(input_decimal1);
+  putchar('\n');
+  print_decimal_as_binary(input_decimal2);
+}
+END_TEST
+
 Suite* make_first_suite() {
   Suite* first_suite = suite_create("first");
   TCase* tc_core;
@@ -129,9 +148,10 @@ Suite* make_first_suite() {
   // tcase_add_test(tc_core, test_first);
   // tcase_add_test(tc_core, mantissa_addition_test);
   // tcase_add_test(tc_core, set_power_test);
-  // tcase_add_test(tc_core, multiply_test);
-  // tcase_add_test(tc_core, multiply_test_2);
-  tcase_add_test(tc_core, print_mantissa_as_binary_test);
+  tcase_add_test(tc_core, multiply_test);
+  tcase_add_test(tc_core, multiply_test_2);
+  // tcase_add_test(tc_core, print_mantissa_as_binary_test);
+  // tcase_add_test(tc_core, convert_arr_to_decimal);
   suite_add_tcase(first_suite, tc_core);
   return first_suite;
 }
