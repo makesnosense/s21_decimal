@@ -35,6 +35,8 @@ int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result);
 int get_power(uint32_t service_part);
 void set_power(uint32_t* service_part, int power);
 void* s21_memset(void* str, int c, int n);
+void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
+                        uint32_t* result);
 
 void write_in_mantissa_to_decimal(uint32_t* mantissa,
                                   s21_decimal* destination_decimal);

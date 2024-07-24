@@ -172,6 +172,22 @@ uint32_t* get_mantissa_with_power_of_ten(int power) {
   return NULL;  // Возвращаем NULL для недопустимых значений power
 }
 
+void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
+                        uint32_t* result) {
+  s21_memset(result, 0, sizeof(uint32_t) * 6);
+
+  for (int i = 0; i < 3; i++) {
+    uint64_t carry = 0;
+    for (int j = 0; j < 3; j++) {
+      uint64_t product =
+          (uint64_t)mantissa_1[i] * mantissa_2[j] + result[i + j] + carry;
+      result[i + j] = (uint32_t)product;
+      carry = product >> 32;
+    }
+    result[i + 3] = carry;
+  }
+}
+
 // void write_in_mantissa_to_decimal(uint32_t* mantissa, s21_decimal* result) {
 //   int position = 0;
 //   int mantissa_part = 0;
