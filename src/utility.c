@@ -127,6 +127,12 @@ void write_in_mantissa_to_decimal(uint32_t* mantissa,
   destination_decimal->bits[2] = mantissa[2];
 }
 
+void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6) {
+  mantissa6[0] = mantissa3[0];
+  mantissa6[1] = mantissa3[1];
+  mantissa6[2] = mantissa3[2];
+}
+
 uint32_t* get_mantissa_with_power_of_ten(int power) {
   static uint32_t powers_of_10[29][3] = {
       {0x1, 0x0, 0x0},                      // 10^0
