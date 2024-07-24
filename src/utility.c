@@ -113,13 +113,6 @@ void set_power(uint32_t* service_part, int power_to_set) {
   }
 }
 
-void print_large_number(uint32_t num[], int size) {
-  for (int i = size - 1; i >= 0; i--) {
-    printf("%08X ", num[i]);
-  }
-  printf("\n");
-}
-
 void write_in_mantissa_to_decimal(uint32_t* mantissa,
                                   s21_decimal* destination_decimal) {
   destination_decimal->bits[0] = mantissa[0];
