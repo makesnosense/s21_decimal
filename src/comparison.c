@@ -26,7 +26,6 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
                          get_mantissa_with_power_of_ten(power_difference),
                          normalized_mantissa_2);
 
-      //// переписать на нормальный перенос мантиссы 3 в мантиссу 6
       mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
 
     } else if (decimal_1_power < decimal_2_power) {
@@ -34,11 +33,10 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
       multiply_mantissas(decimal_1.bits,
                          get_mantissa_with_power_of_ten(power_difference),
                          normalized_mantissa_1);
-      //// переписать на нормальный перенос мантиссы 3 в мантиссу 6
-      mantissa3_to_mantissa6(decimal_2.bits, normalized_mantissa_2);
-    } else {
-      //// переписать на нормальный перенос мантиссы 3 в мантиссу 6
 
+      mantissa3_to_mantissa6(decimal_2.bits, normalized_mantissa_2);
+
+    } else {
       mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
       mantissa3_to_mantissa6(decimal_2.bits, normalized_mantissa_2);
     }
