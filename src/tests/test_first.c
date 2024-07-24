@@ -57,22 +57,22 @@ END_TEST
 // 11 0010 1011 0010 1001 1000 0110 1110
 // 0001 1101 0001 0001 0101 0110 1010 0000
 
-START_TEST(set_power_test) {
+START_TEST(set_scale_test) {
   s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
                                0b00000000000000101000000000000000};
   // debug_print_decimal_as_binary(input_decimal);
-  int power_before = get_power(input_decimal.bits[3]);
-  printf("\n\n%d\n\n", power_before);
-  int power_to_set = 6;
+  int scale_before = get_scale(input_decimal.bits[3]);
+  printf("\n\n%d\n\n", scale_before);
+  int scale_to_set = 6;
 
-  set_power(&input_decimal.bits[3], power_to_set);
+  set_scale(&input_decimal.bits[3], scale_to_set);
 
-  int power_after = get_power(input_decimal.bits[3]);
+  int scale_after = get_scale(input_decimal.bits[3]);
 
-  printf("\n\n%d\n\n", power_after);
+  printf("\n\n%d\n\n", scale_after);
 
-  ck_assert_int_ne(power_before, power_after);
-  ck_assert_int_eq(power_after, power_to_set);
+  ck_assert_int_ne(scale_before, scale_after);
+  ck_assert_int_eq(scale_after, scale_to_set);
 }
 END_TEST
 
@@ -88,8 +88,8 @@ START_TEST(multiply_test) {
 
   debug_print_mantissa_as_binary(res, 6);
 
-  // ck_assert_int_ne(power_before, power_after);
-  // ck_assert_int_eq(power_after, power_to_set);
+  // ck_assert_int_ne(scale_before, scale_after);
+  // ck_assert_int_eq(scale_after, scale_to_set);
 }
 END_TEST
 
@@ -105,8 +105,8 @@ START_TEST(multiply_test_2) {
 
   debug_print_mantissa_as_binary(res, 6);
 
-  // ck_assert_int_ne(power_before, power_after);
-  // ck_assert_int_eq(power_after, power_to_set);
+  // ck_assert_int_ne(scale_before, scale_after);
+  // ck_assert_int_eq(scale_after, scale_to_set);
 }
 END_TEST
 
@@ -117,8 +117,8 @@ START_TEST(print_mantissa_as_binary_test) {
   debug_print_mantissa_as_binary(num_1, 3);
   // debug_print_decimal_as_binary(input_decimal);
 
-  // ck_assert_int_ne(power_before, power_after);
-  // ck_assert_int_eq(power_after, power_to_set);
+  // ck_assert_int_ne(scale_before, scale_after);
+  // ck_assert_int_eq(scale_after, scale_to_set);
 }
 END_TEST
 
@@ -167,20 +167,20 @@ START_TEST(comparison_eq_test) {
 
   ck_assert_int_eq(s21_is_equal(input_decimal_3, input_decimal_4), 0);
 
-  // 999999999999 power 0
+  // 999999999999 scale 0
   s21_decimal input_decimal_5 = {0xD4A50FFF, 0xE8, 0x0,
                                  0b00000000000000000000000000000000};
-  // 999999999999000 power 3
+  // 999999999999000 scale 3
   s21_decimal input_decimal_6 = {0xA4C67C18, 0x38D7E, 0x0,
                                  0b00000000000000011000000000000000};
 
   ck_assert_int_eq(s21_is_equal(input_decimal_5, input_decimal_6), 1);
 
-  // 2*(10**28) power 0
+  // 2*(10**28) scale 0
   s21_decimal input_decimal_7 = {0x20000000, 0x7C4A04C2, 0x409F9CBC,
                                  0b00000000000000000000000000000000};
 
-  // 2 power 28
+  // 2 scale 28
   s21_decimal input_decimal_8 = {0x2, 0x0, 0x0,
                                  0b10000000000011100000000000000000};
 
@@ -203,7 +203,7 @@ Suite* make_first_suite() {
   tc_core = tcase_create("Core");
   // tcase_add_test(tc_core, test_first);
   // tcase_add_test(tc_core, mantissa_addition_test);
-  // tcase_add_test(tc_core, set_power_test);
+  // tcase_add_test(tc_core, set_scale_test);
   // tcase_add_test(tc_core, multiply_test);
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);

@@ -13,25 +13,25 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   if (get_sign(decimal_1) != get_sign(decimal_2)) {
     bool decimals_are_equal = false;
   } else {
-    int decimal_1_power = get_power(decimal_1.bits[3]);
-    int decimal_2_power = get_power(decimal_2.bits[3]);
+    int decimal_1_scale = get_scale(decimal_1.bits[3]);
+    int decimal_2_scale = get_scale(decimal_2.bits[3]);
 
-    debug_printf("\n%d %d хххууу\n", decimal_1_power, decimal_2_power);
+    debug_printf("\n%d %d хххууу\n", decimal_1_scale, decimal_2_scale);
 
-    int power_difference = 0;
+    int scale_difference = 0;
 
-    if (decimal_1_power > decimal_2_power) {
-      power_difference = decimal_1_power - decimal_2_power;
+    if (decimal_1_scale > decimal_2_scale) {
+      scale_difference = decimal_1_scale - decimal_2_scale;
       multiply_mantissas(decimal_2.bits,
-                         get_mantissa_with_power_of_ten(power_difference),
+                         get_mantissa_with_power_of_ten(scale_difference),
                          normalized_mantissa_2);
 
       mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
 
-    } else if (decimal_1_power < decimal_2_power) {
-      power_difference = decimal_2_power - decimal_1_power;
+    } else if (decimal_1_scale < decimal_2_scale) {
+      scale_difference = decimal_2_scale - decimal_1_scale;
       multiply_mantissas(decimal_1.bits,
-                         get_mantissa_with_power_of_ten(power_difference),
+                         get_mantissa_with_power_of_ten(scale_difference),
                          normalized_mantissa_1);
 
       mantissa3_to_mantissa6(decimal_2.bits, normalized_mantissa_2);

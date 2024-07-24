@@ -91,10 +91,10 @@ int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result) {
 
 // void matissa_multiplication(uint32_t *input, unsigned factor) {}
 
-int get_power(uint32_t service_part) {
+int get_scale(uint32_t service_part) {
   uint32_t result = 0;
   for (int i = 0; i < 9; i++) {
-    if (get_bit(service_part, END_POWER_POSITION - i)) {
+    if (get_bit(service_part, END_SCALE_POSITION - i)) {
       set_bit(&result, 8 - i);
     } else {
       reset_bit(&result, 8 - i);
@@ -103,12 +103,12 @@ int get_power(uint32_t service_part) {
   return result;
 }
 
-void set_power(uint32_t* service_part, int power_to_set) {
+void set_scale(uint32_t* service_part, int scale_to_set) {
   for (int i = 0; i < 9; i++) {
-    if (get_bit(power_to_set, 8 - i)) {
-      set_bit(service_part, END_POWER_POSITION - i);
+    if (get_bit(scale_to_set, 8 - i)) {
+      set_bit(service_part, END_SCALE_POSITION - i);
     } else {
-      reset_bit(service_part, END_POWER_POSITION - i);
+      reset_bit(service_part, END_SCALE_POSITION - i);
     }
   }
 }
@@ -159,10 +159,7 @@ uint32_t* get_mantissa_with_power_of_ten(int power) {
       {0x10000000, 0x3E250261, 0x204FCE5E}  // 10^28
   };
 
-  if (power >= 0 && power <= 28) {
-    return powers_of_10[power];
-  }
-  return NULL;  // Возвращаем NULL для недопустимых значений power
+  return (power >= 0 && power <= 28) ? powers_of_10[power] : NULL;
 }
 
 void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
