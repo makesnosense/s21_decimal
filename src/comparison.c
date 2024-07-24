@@ -16,7 +16,7 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
     int decimal_1_power = get_power(decimal_1.bits[3]);
     int decimal_2_power = get_power(decimal_2.bits[3]);
 
-    printf("\n%d %d\n", decimal_1_power, decimal_2_power);
+    debug_printf("\n%d %d хххууу\n", decimal_1_power, decimal_2_power);
 
     int power_difference = 0;
 
@@ -47,8 +47,8 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
                          normalized_mantissa_2);
     }
 
-    print_mantissa_as_binary(normalized_mantissa_1, 6);
-    print_mantissa_as_binary(normalized_mantissa_2, 6);
+    debug_print_mantissa_as_binary(normalized_mantissa_1, 6);
+    debug_print_mantissa_as_binary(normalized_mantissa_2, 6);
 
     for (int i = 0; i < 6 && decimals_are_equal == true; i++) {
       if (normalized_mantissa_1[i] != normalized_mantissa_2[i]) {

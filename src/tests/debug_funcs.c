@@ -21,16 +21,30 @@ void print_binary_without_spaces(uint32_t input_num) {
   }
 }
 
-void print_decimal_as_binary(s21_decimal input_decimal) {
+void debug_printf(const char* format, ...) {
+#ifdef __DEBUG
+  va_list args;
+  va_start(args, format);
+  vprintf(format, args);
+  va_end(args);
+#endif
+}
+
+void debug_print_decimal_as_binary(s21_decimal input_decimal) {
+#ifdef __DEBUG
   for (int i = 3; i >= 0; i--) {
     print_binary(input_decimal.bits[i]);
     putchar('\n');
   }
+#endif
 }
 
-void print_mantissa_as_binary(uint32_t* mantissa_parts, int mantissa_size) {
+void debug_print_mantissa_as_binary(uint32_t* mantissa_parts,
+                                    int mantissa_size) {
+#ifdef __DEBUG
   for (int i = mantissa_size - 1; i >= 0; i--) {
     print_binary_without_spaces(mantissa_parts[i]);
   }
   putchar('\n');
+#endif
 }

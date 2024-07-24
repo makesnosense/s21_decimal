@@ -1,6 +1,7 @@
 #ifndef SRC_S21_DECIMAL_H_
 #define SRC_S21_DECIMAL_H_
 
+#define __DEBUG
 #include <stdint.h>
 
 typedef struct s21_decimal_t {

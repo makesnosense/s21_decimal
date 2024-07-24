@@ -5,19 +5,19 @@
 
 START_TEST(test_first) {
   s21_decimal input_decimal = {0x123U, 0x123U, 0x123U, 0x0U};
-  // print_decimal_as_binary(input_decimal);
+  // debug_print_decimal_as_binary(input_decimal);
   putchar('\n');
   // print_binary(-1024);
   print_binary(1111);
   putchar('\n');
   putchar('\n');
   // reset_decimal(&input_decimal);
-  // print_decimal_as_binary(input_decimal);
+  // debug_print_decimal_as_binary(input_decimal);
   putchar('\n');
   putchar('\n');
   s21_from_int_to_decimal(1111, &input_decimal);
 
-  print_decimal_as_binary(input_decimal);
+  debug_print_decimal_as_binary(input_decimal);
 
   // // printf("%d", get_bit(29, 5555));
   // putchar('\n');
@@ -27,11 +27,11 @@ START_TEST(test_first) {
   // print_binary(reset_bit(set_bit(29, 1), 0));
   // putchar('\n');
 
-  // print_decimal_as_binary(input_decimal);
+  // debug_print_decimal_as_binary(input_decimal);
   // putchar('\n');
   // set_sign(&input_decimal, MINUS);
-  // print_decimal_as_binary(input_decimal);
-  // print_decimal_as_binary(input_decimal);
+  // debug_print_decimal_as_binary(input_decimal);
+  // debug_print_decimal_as_binary(input_decimal);
 }
 END_TEST
 
@@ -60,7 +60,7 @@ END_TEST
 START_TEST(set_power_test) {
   s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
                                0b00000000000000101000000000000000};
-  // print_decimal_as_binary(input_decimal);
+  // debug_print_decimal_as_binary(input_decimal);
   int power_before = get_power(input_decimal.bits[3]);
   printf("\n\n%d\n\n", power_before);
   int power_to_set = 6;
@@ -82,11 +82,11 @@ START_TEST(multiply_test) {
   uint32_t num_1[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
   uint32_t num_2[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
   uint32_t res[6] = {0};
-  // print_decimal_as_binary(input_decimal);
+  // debug_print_decimal_as_binary(input_decimal);
 
   multiply_mantissas(num_1, num_2, res);
 
-  print_mantissa_as_binary(res, 6);
+  debug_print_mantissa_as_binary(res, 6);
 
   // ck_assert_int_ne(power_before, power_after);
   // ck_assert_int_eq(power_after, power_to_set);
@@ -99,11 +99,11 @@ START_TEST(multiply_test_2) {
   uint32_t num_1[3] = {0xF485787A, 0x7F29ABCA, 0x1AD};
   uint32_t num_2[3] = {0xD83C94FB, 0x1, 0x0};
   uint32_t res[6] = {0};
-  // print_decimal_as_binary(input_decimal);
+  // debug_print_decimal_as_binary(input_decimal);
 
   multiply_mantissas(num_1, num_2, res);
 
-  print_mantissa_as_binary(res, 6);
+  debug_print_mantissa_as_binary(res, 6);
 
   // ck_assert_int_ne(power_before, power_after);
   // ck_assert_int_eq(power_after, power_to_set);
@@ -114,8 +114,8 @@ START_TEST(print_mantissa_as_binary_test) {
   // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
   //                              0b00000000000000101000000000000000};
   uint32_t num_1[3] = {0x0, 0x0, 0x1869F};
-  print_mantissa_as_binary(num_1, 3);
-  // print_decimal_as_binary(input_decimal);
+  debug_print_mantissa_as_binary(num_1, 3);
+  // debug_print_decimal_as_binary(input_decimal);
 
   // ck_assert_int_ne(power_before, power_after);
   // ck_assert_int_eq(power_after, power_to_set);
@@ -135,16 +135,16 @@ START_TEST(convert_arr_to_decimal) {
 
   write_in_mantissa_to_decimal(term_1, &input_decimal2);
 
-  print_decimal_as_binary(input_decimal1);
+  debug_print_decimal_as_binary(input_decimal1);
   putchar('\n');
-  print_decimal_as_binary(input_decimal2);
+  debug_print_decimal_as_binary(input_decimal2);
 }
 END_TEST
 
 START_TEST(get_power_test) {
   // print_mantissa_as_binary(get_power_of_ten(25), 3);
   uint32_t* term_1 = get_mantissa_with_power_of_ten(28);
-  print_mantissa_as_binary(term_1, 3);
+  debug_print_mantissa_as_binary(term_1, 3);
 
   putchar('\n');
 }

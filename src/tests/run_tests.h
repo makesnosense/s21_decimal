@@ -6,8 +6,6 @@
 
 #include "../s21_decimal.h"
 
-// #define __DEBUG 1
-
 void run_suite(Suite* current_suite, int* total_number_run,
                int* total_number_failed);
 
