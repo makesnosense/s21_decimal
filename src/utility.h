@@ -37,6 +37,6 @@ void set_power(uint32_t *options, int power);
 void multiply_large_numbers(uint32_t *num1, uint32_t *num2, uint32_t *result);
 void print_large_number(uint32_t num[], int size);
 
-void convert_array_to_decimal(uint32_t *array, s21_decimal *result);
+void write_in_mantissa_to_decimal(uint32_t *array, s21_decimal *result);
 
 #endif  // SRC_HELPER_FUNCS_H_

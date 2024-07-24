@@ -131,20 +131,20 @@ void print_large_number(uint32_t num[], int size) {
   printf("\n");
 }
 
-void convert_array_to_decimal(uint32_t* array, s21_decimal* result) {
-  int index_bits = 0;
-  int index_arr = 0;
+void write_in_mantissa_to_decimal(uint32_t* mantissa, s21_decimal* result) {
+  int position = 0;
+  int mantissa_part = 0;
   for (int i = 0; i < 96; i++) {
-    if (index_bits > 31) {
-      index_bits = 0;
-      index_arr++;
+    if (position > 31) {
+      position = 0;
+      mantissa_part++;
     }
-    if (get_bit(array[index_arr], index_bits)) {
-      set_bit(&result->bits[index_arr], index_bits);
-      index_bits++;
+    if (get_bit(mantissa[mantissa_part], position)) {
+      set_bit(&result->bits[mantissa_part], position);
+      position++;
     } else {
-      reset_bit(&result->bits[index_arr], index_bits);
-      index_bits++;
+      reset_bit(&result->bits[mantissa_part], position);
+      position++;
     }
   }
 }
