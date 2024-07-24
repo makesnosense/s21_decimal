@@ -140,6 +140,15 @@ START_TEST(convert_arr_to_decimal) {
 }
 END_TEST
 
+START_TEST(get_power_test) {
+  // print_mantissa_as_binary(get_power_of_ten(25), 3);
+  uint32_t* term_1 = get_power_of_ten(28);
+  print_mantissa_as_binary(term_1, 3);
+
+  putchar('\n');
+}
+END_TEST
+
 Suite* make_first_suite() {
   Suite* first_suite = suite_create("first");
   TCase* tc_core;
@@ -148,8 +157,9 @@ Suite* make_first_suite() {
   // tcase_add_test(tc_core, test_first);
   // tcase_add_test(tc_core, mantissa_addition_test);
   // tcase_add_test(tc_core, set_power_test);
-  tcase_add_test(tc_core, multiply_test);
-  tcase_add_test(tc_core, multiply_test_2);
+  // tcase_add_test(tc_core, multiply_test);
+  // tcase_add_test(tc_core, multiply_test_2);
+  tcase_add_test(tc_core, get_power_test);
   // tcase_add_test(tc_core, print_mantissa_as_binary_test);
   // tcase_add_test(tc_core, convert_arr_to_decimal);
   suite_add_tcase(first_suite, tc_core);

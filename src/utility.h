@@ -33,11 +33,13 @@ void assign_mantissa_bit(uint32_t* mantissa, unsigned position, Binary value);
 int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result);
 int get_power(uint32_t options);
 void set_power(uint32_t* options, int power);
+void* s21_memset(void* str, int c, int n);
 
 void multiply_large_numbers(uint32_t* num1, uint32_t* num2, uint32_t* result);
 void print_large_number(uint32_t num[], int size);
 
 void write_in_mantissa_to_decimal(uint32_t* mantissa,
                                   s21_decimal* destination_decimal);
+uint32_t* get_power_of_ten(int power);
 
 #endif  // SRC_HELPER_FUNCS_H_
