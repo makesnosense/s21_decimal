@@ -8,6 +8,10 @@ typedef struct s21_decimal_t {
   uint32_t bits[4];
 } s21_decimal;
 
+typedef struct s21_two_decimals_t {
+  s21_decimal decimals[2];
+} s21_two_decimals;
+
 typedef struct s21_big_decimal_t {
   uint32_t bits[7];
 } s21_big_decimal;

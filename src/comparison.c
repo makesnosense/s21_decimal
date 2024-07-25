@@ -1,7 +1,6 @@
 #include "comparison.h"
 
 #include "arithmetic.h"
-#include "s21_decimal.h"
 #include "tests/debug_funcs.h"
 #include "utility.h"
 
@@ -51,4 +50,23 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
     }
   }
   return (ComparisonResult)decimals_are_equal;
+}
+
+s21_two_decimals sort_decimals_ascending_by_scale(s21_decimal decimal_1,
+                                                  s21_decimal decimal_2) {
+  s21_two_decimals result;
+  {
+    int decimal_1_scale = get_scale(decimal_1.bits[3]);
+    int decimal_2_scale = get_scale(decimal_2.bits[3]);
+
+    if (decimal_1_scale <= decimal_2_scale) {
+      result.decimals[0] = decimal_1;
+      result.decimals[1] = decimal_2;
+    } else {
+      result.decimals[0] = decimal_2;
+      result.decimals[1] = decimal_1;
+    }
+  }
+
+  return result;
 }
