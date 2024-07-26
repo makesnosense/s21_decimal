@@ -2,7 +2,7 @@
 
 START_TEST(comparison_eq_test) {
   s21_decimal input_decimal_1 = {0x123U, 0x123U, 0x123U,
-                                 0b00000000000000101000000000000000};
+                                 0b00000000000001010000000000000000};
 
   s21_decimal input_decimal_2 = {0x123U, 0x123U, 0x123U,
                                  0b00000000000011100000000000000000};

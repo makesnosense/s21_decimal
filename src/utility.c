@@ -93,7 +93,7 @@ int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result) {
 
 int get_scale(uint32_t service_part) {
   uint32_t result = 0;
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < 8; i++) {
     if (get_bit(service_part, END_SCALE_POSITION - i)) {
       set_bit(&result, 7 - i);
     } else {
@@ -104,7 +104,7 @@ int get_scale(uint32_t service_part) {
 }
 
 void set_scale(uint32_t* service_part, int scale_to_set) {
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < 8; i++) {
     if (get_bit(scale_to_set, 7 - i)) {
       set_bit(service_part, END_SCALE_POSITION - i);
     } else {
@@ -176,6 +176,16 @@ void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
     }
     result[i + 3] = carry;
   }
+}
+
+bool is_zero_decimal(s21_decimal input_decimal) {
+  bool is_zero = true;
+  for (int i = 0; i < 3 && is_zero == true; i++) {
+    if (input_decimal.bits[i] != 0) {
+      is_zero = false;
+    }
+  }
+  return is_zero;
 }
 
 // void write_in_mantissa_to_decimal(uint32_t* mantissa, s21_decimal* result) {

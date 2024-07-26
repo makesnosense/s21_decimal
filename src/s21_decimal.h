@@ -2,6 +2,7 @@
 #define SRC_S21_DECIMAL_H_
 
 // #define __DEBUG
+#include <stdbool.h>
 #include <stdint.h>
 
 typedef struct s21_decimal_t {
@@ -41,7 +42,5 @@ int s21_floor(s21_decimal value, s21_decimal* result);
 int s21_round(s21_decimal value, s21_decimal* result);
 int s21_truncate(s21_decimal value, s21_decimal* result);
 int s21_negate(s21_decimal value, s21_decimal* result);
-
-int very_function();
 
 #endif  // SRC_S21_DECIMAL_H_

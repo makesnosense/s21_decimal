@@ -42,5 +42,6 @@ void write_in_mantissa_to_decimal(uint32_t* mantissa,
                                   s21_decimal* destination_decimal);
 void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6);
 uint32_t* get_mantissa_with_power_of_ten(int power);
+bool is_zero_decimal(s21_decimal input_decimal);
 
 #endif  // SRC_HELPER_FUNCS_H_

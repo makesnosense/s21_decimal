@@ -6,3 +6,4 @@ src/object_files
 *.gcda
 *.gcno
 run_tests
+.DS_Store

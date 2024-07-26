@@ -45,7 +45,7 @@ START_TEST(get_scale_test) {
 
   // printf("\n%d\n", get_scale(scales[1]));
   for (int i = 0; i < 29; i++) {
-    printf("\n%d %d\n", i, get_scale(scales[i]));
+    // printf("\n%d %d\n", i, get_scale(scales[i]));
     ck_assert_int_eq(get_scale(scales[i]), i);
   }
 

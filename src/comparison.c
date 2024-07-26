@@ -8,7 +8,9 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   bool decimals_are_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
-  if (get_sign(decimal_1) != get_sign(decimal_2)) {
+  if (is_zero_decimal(decimal_1) && is_zero_decimal(decimal_2)) {
+    decimals_are_equal = true;
+  } else if (get_sign(decimal_1) != get_sign(decimal_2)) {
     decimals_are_equal = false;
   } else {
     int scale_difference =
@@ -33,12 +35,12 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
 
       mantissa3_to_mantissa6(bigger_scale_decimal.bits, normalized_mantissa_2);
 
-      debug_printf("\n%d %d \n", get_scale(smaller_scale_decimal.bits[3]),
-                   get_scale(bigger_scale_decimal.bits[3]));
+      // debug_printf("\n%d %d \n", get_scale(smaller_scale_decimal.bits[3]),
+      //              get_scale(bigger_scale_decimal.bits[3]));
     }
 
-    debug_print_mantissa_as_binary(normalized_mantissa_1, 6);
-    debug_print_mantissa_as_binary(normalized_mantissa_2, 6);
+    // debug_print_mantissa_as_binary(normalized_mantissa_1, 6);
+    // debug_print_mantissa_as_binary(normalized_mantissa_2, 6);
 
     for (int i = 0; i < 6 && decimals_are_equal == true; i++) {
       if (normalized_mantissa_1[i] != normalized_mantissa_2[i]) {
