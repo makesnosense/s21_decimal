@@ -22,17 +22,17 @@ START_TEST(comparison_eq_test) {
                                  0b00000000000000000000000000000000};
   // 999999999999000 scale 3
   s21_decimal input_decimal_6 = {0xA4C67C18, 0x38D7E, 0x0,
-                                 0b00000000000000011000000000000000};
+                                 0b00000000000000110000000000000000};
 
   ck_assert_int_eq(s21_is_equal(input_decimal_5, input_decimal_6), 1);
 
-  // 2*(10**28) scale 0
+  // 2*(10**28) scale 28
   s21_decimal input_decimal_7 = {0x20000000, 0x7C4A04C2, 0x409F9CBC,
-                                 0b00000000000000000000000000000000};
+                                 0b00000000000111000000000000000000};
 
-  // 2 scale 28
+  // 2 scale 0
   s21_decimal input_decimal_8 = {0x2, 0x0, 0x0,
-                                 0b10000000000011100000000000000000};
+                                 0b00000000000000000000000000000000};
 
   ck_assert_int_eq(s21_is_equal(input_decimal_7, input_decimal_8), 1);
 
