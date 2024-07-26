@@ -8,9 +8,8 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   bool decimals_are_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
-
   if (get_sign(decimal_1) != get_sign(decimal_2)) {
-    bool decimals_are_equal = false;
+    decimals_are_equal = false;
   } else {
     int scale_difference =
         get_scale_difference_from_decimals(decimal_1, decimal_2);
