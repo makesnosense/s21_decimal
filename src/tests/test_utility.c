@@ -1,39 +1,7 @@
 #include "../arithmetic.h"
+#include "../debug_funcs.h"
 #include "../utility.h"
-#include "debug_funcs.h"
 #include "run_tests.h"
-
-START_TEST(test_first) {
-  s21_decimal input_decimal = {0x123U, 0x123U, 0x123U, 0x0U};
-  // debug_print_decimal_as_binary(input_decimal);
-  putchar('\n');
-  // print_binary(-1024);
-  print_binary(1111);
-  putchar('\n');
-  putchar('\n');
-  // reset_decimal(&input_decimal);
-  // debug_print_decimal_as_binary(input_decimal);
-  putchar('\n');
-  putchar('\n');
-  s21_from_int_to_decimal(1111, &input_decimal);
-
-  debug_print_decimal_as_binary(input_decimal);
-
-  // // printf("%d", get_bit(29, 5555));
-  // putchar('\n');
-  // print_binary(set_bit(29, 1));
-  // putchar('\n');
-  // putchar('\n');
-  // print_binary(reset_bit(set_bit(29, 1), 0));
-  // putchar('\n');
-
-  // debug_print_decimal_as_binary(input_decimal);
-  // putchar('\n');
-  // set_sign(&input_decimal, MINUS);
-  // debug_print_decimal_as_binary(input_decimal);
-  // debug_print_decimal_as_binary(input_decimal);
-}
-END_TEST
 
 START_TEST(mantissa_addition_test) {
   // 4573498578943759
@@ -60,17 +28,11 @@ END_TEST
 START_TEST(set_scale_test) {
   s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
                                0b00000000000000101000000000000000};
-  // debug_print_decimal_as_binary(input_decimal);
   int scale_before = get_scale(input_decimal.bits[3]);
-  printf("\n\n%d\n\n", scale_before);
   int scale_to_set = 6;
 
   set_scale(&input_decimal.bits[3], scale_to_set);
-
   int scale_after = get_scale(input_decimal.bits[3]);
-
-  printf("\n\n%d\n\n", scale_after);
-
   ck_assert_int_ne(scale_before, scale_after);
   ck_assert_int_eq(scale_after, scale_to_set);
 }
@@ -150,66 +112,20 @@ START_TEST(get_power_test) {
 }
 END_TEST
 
-START_TEST(comparison_eq_test) {
-  s21_decimal input_decimal_1 = {0x123U, 0x123U, 0x123U,
-                                 0b00000000000000101000000000000000};
-
-  s21_decimal input_decimal_2 = {0x123U, 0x123U, 0x123U,
-                                 0b00000000000011100000000000000000};
-
-  ck_assert_int_eq(s21_is_equal(input_decimal_1, input_decimal_2), 0);
-
-  s21_decimal input_decimal_3 = {0x124U, 0x123U, 0x123U,
-                                 0b00000000000000101000000000000000};
-
-  s21_decimal input_decimal_4 = {0x123U, 0x123U, 0x123U,
-                                 0b00000000000011100000000000000000};
-
-  ck_assert_int_eq(s21_is_equal(input_decimal_3, input_decimal_4), 0);
-
-  // 999999999999 scale 0
-  s21_decimal input_decimal_5 = {0xD4A50FFF, 0xE8, 0x0,
-                                 0b00000000000000000000000000000000};
-  // 999999999999000 scale 3
-  s21_decimal input_decimal_6 = {0xA4C67C18, 0x38D7E, 0x0,
-                                 0b00000000000000011000000000000000};
-
-  ck_assert_int_eq(s21_is_equal(input_decimal_5, input_decimal_6), 1);
-
-  // 2*(10**28) scale 0
-  s21_decimal input_decimal_7 = {0x20000000, 0x7C4A04C2, 0x409F9CBC,
-                                 0b00000000000000000000000000000000};
-
-  // 2 scale 28
-  s21_decimal input_decimal_8 = {0x2, 0x0, 0x0,
-                                 0b10000000000011100000000000000000};
-
-  ck_assert_int_eq(s21_is_equal(input_decimal_7, input_decimal_8), 1);
-
-  s21_decimal input_decimal_9 = {0x124U, 0x123U, 0x123U,
-                                 0b00000000000000101000000000000000};
-
-  s21_decimal input_decimal_10 = {0x124U, 0x123U, 0x123U,
-                                  0b00000000000000101000000000000000};
-
-  ck_assert_int_eq(s21_is_equal(input_decimal_9, input_decimal_10), 1);
-}
-END_TEST
-
-Suite* make_first_suite() {
-  Suite* first_suite = suite_create("first");
+Suite* make_utility_suite() {
+  Suite* utility_suite = suite_create("utility");
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
   // tcase_add_test(tc_core, test_first);
   // tcase_add_test(tc_core, mantissa_addition_test);
-  // tcase_add_test(tc_core, set_scale_test);
-  // tcase_add_test(tc_core, multiply_test);
+  tcase_add_test(tc_core, set_scale_test);
+  tcase_add_test(tc_core, multiply_test);
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);
   // tcase_add_test(tc_core, print_mantissa_as_binary_test);
   // tcase_add_test(tc_core, convert_arr_to_decimal);
-  tcase_add_test(tc_core, comparison_eq_test);
-  suite_add_tcase(first_suite, tc_core);
-  return first_suite;
+  // tcase_add_test(tc_core, comparison_eq_test);
+  suite_add_tcase(utility_suite, tc_core);
+  return utility_suite;
 }

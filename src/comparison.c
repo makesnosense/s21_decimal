@@ -1,7 +1,7 @@
 #include "comparison.h"
 
 #include "arithmetic.h"
-#include "tests/debug_funcs.h"
+#include "debug_funcs.h"
 #include "utility.h"
 
 int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {

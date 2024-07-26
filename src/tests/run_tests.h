@@ -9,6 +9,7 @@
 void run_suite(Suite* current_suite, int* total_number_run,
                int* total_number_failed);
 
-Suite* make_first_suite();
+Suite* make_utility_suite();
+Suite* make_is_equal_suite();
 
 #endif  // SRC_TESTS_RUN_TESTS_H_
