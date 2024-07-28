@@ -68,28 +68,60 @@ void assign_mantissa_bit(uint32_t* mantissa_parts,
 }
 
 int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result) {
-  int overflow_error = 0;
-  int carryover = 0;
-  int bits_sum;
-  for (int i = 0; i < (sizeof(uint32_t) * BYTE_SIZE * 3); i++) {
-    bits_sum = carryover;
-    bits_sum += get_mantissa_bit(term_1, i);
-    bits_sum += get_mantissa_bit(term_2, i);
-    if (bits_sum > 1) {
-      bits_sum -= 2;
-      carryover = 1;
-    } else {
-      carryover = 0;
-    }
-    assign_mantissa_bit(result, i, bits_sum);
+  int overflow = 0;
+  uint32_t carry = 0;
+  uint64_t part_sum;
+  for (int i = 0; i < 3; i++) {
+    part_sum = (uint64_t)term_1[i] + term_2[i] + carry;
+    result[i] = (uint32_t)part_sum;
+    carry = part_sum >> 32;
   }
-  if (carryover > 0) {
-    overflow_error = 1;
+  if (carry > 0) {
+    overflow = 1;
   }
-  return overflow_error;
+  return overflow;
 }
 
-// void matissa_multiplication(uint32_t *input, unsigned factor) {}
+void mantissa_bitflip(uint32_t* number, uint32_t* result) {
+  for (int i = 0; i < 3; i++) {
+    result[i] = ~number[i];
+  }
+}
+
+bool zero_check_mantissa(uint32_t* mantissa) {
+  bool is_zero = true;
+  for (int i = 0; i < 3 && is_zero == true; i++) {
+    if (mantissa[i] != 0) {
+      is_zero = false;
+    }
+  }
+  return is_zero;
+}
+
+void copy_mantissa(uint32_t* dest, uint32_t* src) {
+  for (int i = 0; i < 3; i++) {
+    dest[i] = src[i];
+  }
+}
+
+int mantissa_subtraction(uint32_t* minuend, uint32_t* subtrahend,
+                         uint32_t* result) {
+  int is_negative = 0;
+  if (zero_check_mantissa(subtrahend)) {
+    copy_mantissa(result, minuend);
+  } else {
+    uint32_t compliment[3];
+    uint32_t one[3] = {1, 0, 0};
+    mantissa_bitflip(subtrahend, compliment);
+    mantissa_addition(compliment, one, compliment);
+    is_negative = !mantissa_addition(minuend, compliment, result);
+    if (is_negative) {
+      mantissa_bitflip(result, result);
+      mantissa_addition(result, one, result);
+    }
+  }
+  return is_negative;
+}
 
 int get_scale(uint32_t service_part) {
   uint32_t result = 0;
