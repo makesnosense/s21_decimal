@@ -10,7 +10,7 @@ START_TEST(test_is_greater) {
   s21_decimal input_decimal2 = {0x2, 0x0, 0x0,
                                 0b00000000000000000000000000000000};
 
-  int result = s21_is_less_or_equal(input_decimal1, input_decimal2);
+  int result = s21_is_greater(input_decimal1, input_decimal2);
 
   ck_assert_int_eq(result, TRUE);
 }
