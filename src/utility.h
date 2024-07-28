@@ -32,6 +32,11 @@ int determine_bit_part_and_position(int mantissa_position, int* part_index);
 int get_mantissa_bit(uint32_t* mantissa, int position);
 void assign_mantissa_bit(uint32_t* mantissa, unsigned position, Binary value);
 int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result);
+void mantissa_bitflip(uint32_t* number, uint32_t* result);
+bool zero_check_mantissa(uint32_t* mantissa);
+void copy_mantissa(uint32_t* dest, uint32_t* src);
+int mantissa_subtraction(uint32_t* minuend, uint32_t* subtrahend,
+                         uint32_t* result);
 int get_scale(uint32_t service_part);
 void set_scale(uint32_t* service_part, int scale);
 void* s21_memset(void* str, int c, int n);
