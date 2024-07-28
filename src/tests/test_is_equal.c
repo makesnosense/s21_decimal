@@ -43,6 +43,15 @@ START_TEST(comparison_eq_test) {
                                   0b00000000000000101000000000000000};
 
   ck_assert_int_eq(s21_is_equal(input_decimal_9, input_decimal_10), 1);
+
+  // 0
+  s21_decimal input_decimal_11 = {0x0U, 0x0U, 0x0U,
+                                  0b00000000000000101000000000000000};
+  // -0
+  s21_decimal input_decimal_12 = {0x0U, 0x0U, 0x0U,
+                                  0b10000000000110110000000000000000};
+
+  ck_assert_int_eq(s21_is_equal(input_decimal_11, input_decimal_12), 1);
 }
 END_TEST
 

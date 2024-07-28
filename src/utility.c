@@ -152,6 +152,13 @@ void write_in_mantissa_to_decimal(uint32_t* mantissa,
   destination_decimal->bits[2] = mantissa[2];
 }
 
+void get_mantissa_from_decimal(uint32_t* mantissa,
+                               s21_decimal* destination_decimal) {
+  mantissa[0] = destination_decimal->bits[0];
+  mantissa[1] = destination_decimal->bits[1];
+  mantissa[2] = destination_decimal->bits[2];
+}
+
 void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6) {
   mantissa6[0] = mantissa3[0];
   mantissa6[1] = mantissa3[1];
