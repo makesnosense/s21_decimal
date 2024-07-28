@@ -148,6 +148,27 @@ START_TEST(get_power_test) {
 }
 END_TEST
 
+START_TEST(mantissa_subtraction_test) {
+  uint32_t term_1[3] = {0xFFFFFFFFU, 0xFFFFFFFFU, 0xFFFFFFFFU};
+  uint32_t term_2[3] = {0xFFFFFFFEU, 0xFFFFFFFFU, 0x7FFFFFFFU};
+  uint32_t result[3] = {0x1U, 0x0U, 0x80000000U};
+}
+END_TEST
+
+START_TEST(mantissa_subtraction2_test) {
+  uint32_t term_1[3] = {0xFFFFFFFFU, 0x0U, 0x0U};
+  uint32_t term_2[3] = {0x55555554U, 0x0U, 0x0U};
+  uint32_t result[3] = {0xAAAAAAABU, 0x0U, 0x0U};
+}
+END_TEST
+
+START_TEST(mantissa_subtraction3_test) {
+  uint32_t term_1[3] = {0xFFFFFFFFU, 0x3FFFFU, 0x0U};
+  uint32_t term_2[3] = {0x3U, 0x0U, 0x0U};
+  uint32_t result[3] = {0xFFFFFFFCU, 0x3FFFFU, 0x0U};
+}
+END_TEST
+
 Suite* make_utility_suite() {
   Suite* utility_suite = suite_create("utility");
   TCase* tc_core;
