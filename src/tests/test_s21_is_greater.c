@@ -16,7 +16,7 @@ START_TEST(test_is_greater) {
 }
 END_TEST
 
-Suite* make_is_greater() {
+Suite* make_is_greater_suite() {
   Suite* is_greater_suite = suite_create("is_greater");
   TCase* tc_core;
 
