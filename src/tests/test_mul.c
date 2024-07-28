@@ -3,7 +3,7 @@
 #include "../utility.h"
 #include "run_tests.h"
 
-START_TEST(test_arithmetic_simple) {
+START_TEST(test_mul_simple) {
   s21_decimal input_decimal1 = {0x0, 0x1, 0x0,
                                 0b00000000000000000000000000000000};
 
@@ -23,7 +23,7 @@ Suite* make_mul_suite() {
 
   tc_core = tcase_create("Core");
 
-  tcase_add_test(tc_core, test_arithmetic_simple);
+  tcase_add_test(tc_core, test_mul_simple);
 
   suite_add_tcase(mul_suite, tc_core);
 

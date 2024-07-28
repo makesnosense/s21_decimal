@@ -21,8 +21,8 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   uint32_t mantissa_value_2[3] = {0};
   uint32_t mantissa_result[6] = {0};
 
-  write_in_decimal_to_mantissa(mantissa_value_1, &value_1);
-  write_in_decimal_to_mantissa(mantissa_value_2, &value_2);
+  get_mantissa_from_decimal(mantissa_value_1, &value_1);
+  get_mantissa_from_decimal(mantissa_value_2, &value_2);
 
   if (mantissa_value_1[0] == 1 && mantissa_value_1[1] == 0 &&
       mantissa_value_1[2] == 0) {

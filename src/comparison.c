@@ -55,8 +55,8 @@ int s21_is_less(s21_decimal decimal_1, s21_decimal decimal_2) {
       }
     }
 
-    debug_print_mantissa_as_binary(normalized_mantissa_1, 6);
-    debug_print_mantissa_as_binary(normalized_mantissa_2, 6);
+    // debug_print_mantissa_as_binary(normalized_mantissa_1, 6);
+    // debug_print_mantissa_as_binary(normalized_mantissa_2, 6);
 
     if (is_negative == 2 && decimals_are_less == true) {
       decimals_are_less = false;
