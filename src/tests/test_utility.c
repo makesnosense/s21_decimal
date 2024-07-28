@@ -78,25 +78,64 @@ START_TEST(mantissa_zero_subtraction_test) {
                          0b110010101100101001100001101110, 0b0};
   uint32_t subtrahend[3] = {0, 0, 0};
   uint32_t result[3] = {0, 0, 0};
-  mantissa_subtraction(minuend, subtrahend, result);
+  int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
   ck_assert_mem_eq(result, minuend, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(is_negaive, 0);
 }
 END_TEST
 
-START_TEST(mantissa_subtraction_test) {
+START_TEST(mantissa_subtraction_test_1) {
   uint32_t minuend[3] = {3, 0, 0};
   uint32_t subtrahend[3] = {10, 0, 0};
   uint32_t result[3] = {0, 0, 0};
   uint32_t expected[3] = {7, 0, 0};
-  mantissa_subtraction(minuend, subtrahend, result);
-  puts("\nsubtraction\n");
-  print_binary(result[2]);
-  puts("\n");
-  print_binary(result[1]);
-  puts("\n");
-  print_binary(result[0]);
-  puts("\n");
+  int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
   ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(is_negaive, 1);
+}
+END_TEST
+
+START_TEST(mantissa_subtraction_test_2) {
+  uint32_t minuend[3] = {0xFFFFFFFFU, 0xFFFFFFFFU, 0xFFFFFFFFU};
+  uint32_t subtrahend[3] = {0xFFFFFFFEU, 0xFFFFFFFFU, 0x7FFFFFFFU};
+  uint32_t result[3] = {0, 0, 0};
+  uint32_t expected[3] = {0x1U, 0x0U, 0x80000000U};
+  int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
+  ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(is_negaive, 0);
+}
+END_TEST
+
+START_TEST(mantissa_subtraction_test_3) {
+  uint32_t minuend[3] = {0xFFFFFFFFU, 0x0U, 0x0U};
+  uint32_t subtrahend[3] = {0x55555554U, 0x0U, 0x0U};
+  uint32_t result[3] = {0, 0, 0};
+  uint32_t expected[3] = {0xAAAAAAABU, 0x0U, 0x0U};
+  int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
+  ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(is_negaive, 0);
+}
+END_TEST
+
+START_TEST(mantissa_subtraction_test_4) {
+  uint32_t minuend[3] = {0xFFFFFFFFU, 0x3FFFFU, 0x0U};
+  uint32_t subtrahend[3] = {0x3U, 0x0U, 0x0U};
+  uint32_t result[3] = {0, 0, 0};
+  uint32_t expected[3] = {0xFFFFFFFCU, 0x3FFFFU, 0x0U};
+  int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
+  ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(is_negaive, 0);
+}
+END_TEST
+
+START_TEST(mantissa_subtraction_test_5) {
+  uint32_t minuend[3] = {0x55555554U, 0x0U, 0x0U};
+  uint32_t subtrahend[3] = {0xFFFFFFFFU, 0x0U, 0x0U};
+  uint32_t result[3] = {0, 0, 0};
+  uint32_t expected[3] = {0xAAAAAAABU, 0x0U, 0x0U};
+  int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
+  ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(is_negaive, 1);
 }
 END_TEST
 
@@ -223,27 +262,6 @@ START_TEST(get_power_test) {
 }
 END_TEST
 
-START_TEST(mantissa_subtraction_test) {
-  uint32_t term_1[3] = {0xFFFFFFFFU, 0xFFFFFFFFU, 0xFFFFFFFFU};
-  uint32_t term_2[3] = {0xFFFFFFFEU, 0xFFFFFFFFU, 0x7FFFFFFFU};
-  uint32_t result[3] = {0x1U, 0x0U, 0x80000000U};
-}
-END_TEST
-
-START_TEST(mantissa_subtraction2_test) {
-  uint32_t term_1[3] = {0xFFFFFFFFU, 0x0U, 0x0U};
-  uint32_t term_2[3] = {0x55555554U, 0x0U, 0x0U};
-  uint32_t result[3] = {0xAAAAAAABU, 0x0U, 0x0U};
-}
-END_TEST
-
-START_TEST(mantissa_subtraction3_test) {
-  uint32_t term_1[3] = {0xFFFFFFFFU, 0x3FFFFU, 0x0U};
-  uint32_t term_2[3] = {0x3U, 0x0U, 0x0U};
-  uint32_t result[3] = {0xFFFFFFFCU, 0x3FFFFU, 0x0U};
-}
-END_TEST
-
 Suite* make_utility_suite() {
   Suite* utility_suite = suite_create("utility");
   TCase* tc_core;
@@ -255,7 +273,11 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, mantissa_bitflip_test);
   tcase_add_test(tc_core, mantissa_copy_test);
   tcase_add_test(tc_core, mantissa_zero_subtraction_test);
-  tcase_add_test(tc_core, mantissa_subtraction_test);
+  tcase_add_test(tc_core, mantissa_subtraction_test_1);
+  tcase_add_test(tc_core, mantissa_subtraction_test_2);
+  tcase_add_test(tc_core, mantissa_subtraction_test_3);
+  tcase_add_test(tc_core, mantissa_subtraction_test_4);
+  tcase_add_test(tc_core, mantissa_subtraction_test_5);
   tcase_add_test(tc_core, set_scale_test);
   tcase_add_test(tc_core, multiply_test);
   // tcase_add_test(tc_core, multiply_test_2);
