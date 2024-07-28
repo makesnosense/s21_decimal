@@ -6,7 +6,7 @@ int main() {
   int total_number_run = 0;
   int total_number_failed = 0;
   Suite* suites[] = {make_utility_suite(), make_is_equal_suite(),
-                     make_mul_suite(), NULL};
+                     make_is_less_suite(), make_mul_suite(), NULL};
 
   for (Suite** current_suite = suites; *current_suite != NULL;
        current_suite++) {
