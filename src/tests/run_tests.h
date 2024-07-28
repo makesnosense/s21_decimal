@@ -11,6 +11,7 @@ void run_suite(Suite* current_suite, int* total_number_run,
 
 Suite* make_utility_suite();
 Suite* make_is_equal_suite();
+Suite* make_is_less_suite();
 Suite* make_mul_suite();
 
 #endif  // SRC_TESTS_RUN_TESTS_H_
