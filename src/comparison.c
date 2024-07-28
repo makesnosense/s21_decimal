@@ -4,6 +4,74 @@
 #include "debug_funcs.h"
 #include "utility.h"
 
+int s21_is_less(s21_decimal decimal_1, s21_decimal decimal_2) {
+  bool decimals_are_less = true;
+  uint32_t normalized_mantissa_1[6] = {0};
+  uint32_t normalized_mantissa_2[6] = {0};
+
+  int sine_decimal_1 = get_sign(decimal_1);
+  int sine_decimal_2 = get_sign(decimal_2);
+  int is_negative = sine_decimal_1 + sine_decimal_2;
+
+  // int scale_difference = get
+
+  if (s21_is_equal(decimal_1, decimal_2)) {
+    decimals_are_less = false;
+  } else if (sine_decimal_1 == 0 && sine_decimal_2 == 1) {
+    decimals_are_less = false;
+  } else if (sine_decimal_1 == 1 && sine_decimal_2 == 0) {
+    decimals_are_less = true;
+  } else {
+    int scale_difference =
+        get_scale_difference_from_decimals(decimal_1, decimal_2);
+
+    if (scale_difference == 0) {
+      mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
+      mantissa3_to_mantissa6(decimal_2.bits, normalized_mantissa_2);
+    } else if (get_scale(decimal_1.bits[3]) > get_scale(decimal_2.bits[3])) {
+      multiply_mantissas(decimal_2.bits,
+                         get_mantissa_with_power_of_ten(scale_difference),
+                         normalized_mantissa_2);
+
+      mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
+
+    } else if (get_scale(decimal_1.bits[3]) < get_scale(decimal_2.bits[3])) {
+      multiply_mantissas(decimal_1.bits,
+                         get_mantissa_with_power_of_ten(scale_difference),
+                         normalized_mantissa_1);
+
+      mantissa3_to_mantissa6(decimal_2.bits, normalized_mantissa_2);
+    }
+
+    bool check = true;
+
+    for (int i = 5; i >= 0 && check == true; i--) {
+      if (normalized_mantissa_1[i] < normalized_mantissa_2[i]) {
+        decimals_are_less = true;
+        check = false;
+      } else if (normalized_mantissa_1[i] > normalized_mantissa_2[i]) {
+        decimals_are_less = false;
+        check = false;
+      }
+    }
+
+    debug_print_mantissa_as_binary(normalized_mantissa_1, 6);
+    debug_print_mantissa_as_binary(normalized_mantissa_2, 6);
+
+    if (is_negative == 2 && decimals_are_less == true) {
+      decimals_are_less = false;
+    } else if (is_negative == 2 && decimals_are_less == false) {
+      decimals_are_less = true;
+    }
+  }
+
+  return (ComparisonResult)decimals_are_less;
+}
+
+// int s21_is_greater(s21_decimal decimal_1, s21_decimal decimal_2) {
+//   return code;
+// }
+
 int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   bool decimals_are_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
