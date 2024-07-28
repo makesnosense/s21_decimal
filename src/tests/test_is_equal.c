@@ -1,3 +1,4 @@
+#include "../comparison.h"
 #include "run_tests.h"
 
 START_TEST(comparison_eq_test) {
@@ -7,7 +8,10 @@ START_TEST(comparison_eq_test) {
   s21_decimal input_decimal_2 = {0x123U, 0x123U, 0x123U,
                                  0b00000000000011100000000000000000};
 
-  ck_assert_int_eq(s21_is_equal(input_decimal_1, input_decimal_2), 0);
+  ComparisonResult result_1 = s21_is_equal(input_decimal_1, input_decimal_2);
+  ck_assert_int_eq(result_1, FALSE);
+
+  // ck_assert_int_eq(s21_is_equal(input_decimal_1, input_decimal_2), 0);
 
   s21_decimal input_decimal_3 = {0x124U, 0x123U, 0x123U,
                                  0b00000000000000101000000000000000};
@@ -42,7 +46,7 @@ START_TEST(comparison_eq_test) {
   s21_decimal input_decimal_10 = {0x124U, 0x123U, 0x123U,
                                   0b00000000000000101000000000000000};
 
-  ck_assert_int_eq(s21_is_equal(input_decimal_9, input_decimal_10), 1);
+  ck_assert_int_eq(s21_is_equal(input_decimal_9, input_decimal_10), TRUE);
 
   // 0
   s21_decimal input_decimal_11 = {0x0U, 0x0U, 0x0U,
