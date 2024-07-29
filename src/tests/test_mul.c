@@ -13,7 +13,7 @@ START_TEST(test_mul_simple) {
 
   s21_mul(input_decimal1, input_decimal2, &result_decimal);
 
-  debug_print_decimal_as_binary(result_decimal);
+  // debug_print_decimal_as_binary(result_decimal);
 }
 END_TEST
 

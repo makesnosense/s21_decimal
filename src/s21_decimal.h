@@ -1,7 +1,6 @@
 #ifndef SRC_S21_DECIMAL_H_
 #define SRC_S21_DECIMAL_H_
 
-// #define __DEBUG
 #include <stdbool.h>
 #include <stdint.h>
 
