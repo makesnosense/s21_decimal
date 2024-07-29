@@ -46,15 +46,19 @@ int s21_is_less_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
 
-  int sine_decimal_1 = get_sign(decimal_1);
-  int sine_decimal_2 = get_sign(decimal_2);
-  int is_negative = sine_decimal_1 + sine_decimal_2;
+  // int sine_decimal_1 = get_sign(decimal_1);
+  // int sine_decimal_2 = get_sign(decimal_2);
+  // int is_negative = sine_decimal_1 + sine_decimal_2;
+  bool decimal_1_is_negative = (bool)get_sign(decimal_1);
+  bool decimal_2_is_negative = (bool)get_sign(decimal_2);
+  bool both_decimals_are_negative =
+      decimal_1_is_negative && decimal_2_is_negative;
 
   if (s21_is_equal(decimal_1, decimal_2)) {
     decimal_is_less_or_equal = true;
-  } else if (sine_decimal_1 == 0 && sine_decimal_2 == 1) {
+  } else if (decimal_1_is_negative == false && decimal_2_is_negative == true) {
     decimal_is_less_or_equal = false;
-  } else if (sine_decimal_1 == 1 && sine_decimal_2 == 0) {
+  } else if (decimal_1_is_negative == true && decimal_2_is_negative == false) {
     decimal_is_less_or_equal = true;
   } else {
     casting_decimals_to_normalized_mantissa(decimal_1, normalized_mantissa_1,
@@ -70,7 +74,8 @@ int s21_is_less_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
         check = false;
       }
     }
-    invert_result_due_to_sign(is_negative, &decimal_is_less_or_equal);
+    invert_result_due_decimal_signs(both_decimals_are_negative,
+                                    &decimal_is_less_or_equal);
   }
 
   return (ComparisonResult)decimal_is_less_or_equal;
