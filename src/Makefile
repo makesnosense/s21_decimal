@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -std=c11
-# CFLAGS = -Wall -Wextra -Werror -std=c11
+# CFLAGS = -std=c11
+CFLAGS = -Wall -Wextra -Werror -std=c11
 COVERAGE_FLAGS = -fprofile-arcs -ftest-coverage
 TESTFLAGS:= -lcheck -lm
 ADDITIONAL_TEST_FLAGS = 
