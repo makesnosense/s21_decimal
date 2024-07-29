@@ -62,6 +62,11 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   return result_funk;
 }
 
-// int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-//   return 0;
-// }
+int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
+  if (1 == 0) {
+    printf("%d", value_1.bits[0]);
+    printf("%d", value_2.bits[0]);
+    printf("%d", result->bits[0]);
+  }
+  return 0;
+}
