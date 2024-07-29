@@ -108,7 +108,8 @@ int mantissa_subtraction(uint32_t* minuend, uint32_t* subtrahend,
                          uint32_t* result) {
   int is_negative = 0;
   if (zero_check_mantissa(subtrahend)) {
-    copy_mantissa(result, minuend);
+    // memmove instead of memcpy to handle same minuend and result case
+    memmove(result, minuend, MANTISSA_SIZE / BYTE_SIZE);
   } else {
     uint32_t compliment[3];
     uint32_t one[3] = {1, 0, 0};
@@ -121,6 +122,88 @@ int mantissa_subtraction(uint32_t* minuend, uint32_t* subtrahend,
     }
   }
   return is_negative;
+}
+
+void shift_mantissa_left(uint32_t* mantissa, unsigned shift) {
+  uint64_t shifted_part;
+  uint32_t carry = 0;
+  for (int i = 0; i < 3; i++) {
+    shifted_part = (uint64_t)mantissa[i] << shift;
+    mantissa[i] = (uint32_t)shifted_part + carry;
+    carry = shifted_part >> 32;
+  }
+}
+
+void shift_mantissa_right(uint32_t* mantissa, unsigned shift) {
+  uint64_t shifted_part;
+  uint32_t carry = 0;
+  for (int i = 2; i >= 0; i--) {
+    shifted_part = (uint64_t)mantissa[i] << (32 - shift);
+    mantissa[i] = (uint32_t)(shifted_part >> 32) + carry;
+    carry = (uint32_t)shifted_part;
+  }
+}
+
+int find_highest_mantissa_bit(uint32_t* mantissa) {
+  int current_bit = 0;
+  int part_index = 3 - 1;
+  int part_position;
+  while (part_index >= 0) {
+    part_position = PART_SIZE - 1;
+    while (part_position >= 0) {
+      current_bit = get_bit(mantissa[part_index], part_position);
+      if (current_bit == 1) {
+        break;
+      }
+      part_position--;
+    }
+    if (current_bit == 1) {
+      break;
+    }
+    part_index--;
+  }
+  int highest_bit;
+  if (part_index < 0) {
+    highest_bit = -1;
+  } else {
+    highest_bit = part_index * PART_SIZE + part_position;
+  }
+  return highest_bit;
+}
+
+int compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2) {
+  int diff = 0;
+  int i = 2;
+  while (diff == 0 && i >= 0) {
+    diff = mantissa_1[i] - mantissa_2[i];
+    i--;
+  }
+  return diff;
+}
+
+int mantissa_division(uint32_t* divident, uint32_t* divisor, uint32_t* result,
+                      uint32_t* remainder) {
+  int division_by_zero = 0;
+  if (zero_check_mantissa(divisor)) {
+    division_by_zero = 1;
+  } else {
+    int divident_bits = find_highest_mantissa_bit(divident);
+    int divisor_bits = find_highest_mantissa_bit(divisor);
+    memcpy(remainder, divident, MANTISSA_SIZE / BYTE_SIZE);
+    memset(result, 0, MANTISSA_SIZE / BYTE_SIZE);
+    int shift = divident_bits - divisor_bits;
+    uint32_t shifted_divisor[3];
+    while (shift >= 0) {
+      memcpy(shifted_divisor, divisor, MANTISSA_SIZE / BYTE_SIZE);
+      shift_mantissa_left(shifted_divisor, shift);
+      if (compare_mantissas(remainder, shifted_divisor) >= 0) {
+        assign_mantissa_bit(result, shift, ONE);
+        mantissa_subtraction(remainder, shifted_divisor, remainder);
+      }
+      shift--;
+    }
+  }
+  return division_by_zero;
 }
 
 int get_scale(uint32_t service_part) {
@@ -227,7 +310,8 @@ bool is_zero_decimal(s21_decimal input_decimal) {
   return is_zero;
 }
 
-// void write_in_mantissa_to_decimal(uint32_t* mantissa, s21_decimal* result) {
+// void write_in_mantissa_to_decimal(uint32_t* mantissa, s21_decimal* result)
+// {
 //   int position = 0;
 //   int mantissa_part = 0;
 //   for (int i = 0; i < 96; i++) {
