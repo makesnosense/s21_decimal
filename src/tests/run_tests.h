@@ -10,10 +10,21 @@ void run_suite(Suite* current_suite, int* total_number_run,
                int* total_number_failed);
 
 Suite* make_utility_suite();
-Suite* make_is_equal_suite();
+
 Suite* make_is_less_suite();
+Suite* make_is_less_or_equal_suite();
 Suite* make_is_greater_suite();
+Suite* make_is_greater_or_equal_suite();
+Suite* make_is_equal_suite();
+Suite* make_is_not_equal_suite();
 
 Suite* make_mul_suite();
 
 #endif  // SRC_TESTS_RUN_TESTS_H_
+
+// int s21_is_less(s21_decimal decimal_1, s21_decimal decimal_2);
+// int s21_is_less_or_equal(s21_decimal decimal_1, s21_decimal decimal_2);
+// int s21_is_greater(s21_decimal decimal_1, s21_decimal decimal_2);
+// int s21_is_greater_or_equal(s21_decimal decimal_1, s21_decimal decimal_2);
+// int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2);
+// int s21_is_not_equal(s21_decimal decimal_1, s21_decimal decimal_2);

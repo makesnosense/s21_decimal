@@ -5,9 +5,15 @@
 int main() {
   int total_number_run = 0;
   int total_number_failed = 0;
-  Suite* suites[] = {make_utility_suite(), make_is_equal_suite(),
-                     make_is_less_suite(), make_is_greater_suite(),
-                     make_mul_suite(),     NULL};
+  Suite* suites[] = {make_utility_suite(),
+                     make_is_less_suite(),
+                     make_is_less_or_equal_suite(),
+                     make_is_greater_suite(),
+                     make_is_greater_or_equal_suite(),
+                     make_is_equal_suite(),
+                     make_is_not_equal_suite(),
+                     make_mul_suite(),
+                     NULL};
 
   for (Suite** current_suite = suites; *current_suite != NULL;
        current_suite++) {
@@ -25,7 +31,7 @@ void run_suite(Suite* current_suite, int* total_number_run,
 
   suite_runner = srunner_create(current_suite);
   srunner_set_fork_status(suite_runner, CK_NOFORK);
-  srunner_run_all(suite_runner, CK_VERBOSE);
+  srunner_run_all(suite_runner, CK_NORMAL);
   *total_number_run += srunner_ntests_run(suite_runner);
   *total_number_failed += srunner_ntests_failed(suite_runner);
 
