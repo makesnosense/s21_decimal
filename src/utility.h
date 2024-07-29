@@ -3,11 +3,14 @@
 
 #include <stdint.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "s21_decimal.h"
 
 #define SIGN_BIT_POSITION 31U
 #define BYTE_SIZE 8
+#define PART_SIZE 32
+#define MANTISSA_SIZE PART_SIZE * 3
 
 #define BEGIN_SCALE_POSITION 16
 #define END_SCALE_POSITION 23
@@ -37,6 +40,12 @@ bool zero_check_mantissa(uint32_t* mantissa);
 void copy_mantissa(uint32_t* dest, uint32_t* src);
 int mantissa_subtraction(uint32_t* minuend, uint32_t* subtrahend,
                          uint32_t* result);
+void shift_mantissa_left(uint32_t* mantissa, unsigned shift);
+void shift_mantissa_right(uint32_t* mantissa, unsigned shift);
+int find_highest_mantissa_bit(uint32_t* mantissa);
+int compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2);
+int mantissa_division(uint32_t* divident, uint32_t* divisor, uint32_t* result,
+                      uint32_t* remainder);
 int get_scale(uint32_t service_part);
 void set_scale(uint32_t* service_part, int scale);
 void* s21_memset(void* str, int c, int n);

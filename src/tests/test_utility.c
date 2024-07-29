@@ -36,15 +36,6 @@ START_TEST(mantissa_addition_to_self_test) {
                         0b100000011111110010010, 0b0};
   uint32_t one[3] = {1, 0, 0};
   mantissa_addition(term_1, one, term_1);
-  /*   puts("\naddition\n");
-    print_binary(term_1[2]);
-    puts("\n");
-    print_binary(term_1[1]);
-    puts("\n");
-    print_binary(term_1[0]);
-    puts("\n"); */
-  /*   ck_assert_mem_eq(sum, expected, sizeof(uint32_t) * 3);
-    ck_assert_int_eq(overflow, 0); */
 }
 END_TEST
 
@@ -136,6 +127,134 @@ START_TEST(mantissa_subtraction_test_5) {
   int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
   ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
   ck_assert_int_eq(is_negaive, 1);
+}
+END_TEST
+
+START_TEST(mantissa_shift_left_test) {
+  uint32_t mantissa[3] = {0b00000000000000000000000000000111,
+                          0b11100000000000000000000000000111,
+                          0b00000000000000000000000000000000};
+  uint32_t expected[3] = {0b00000000000000000000000000111000,
+                          0b00000000000000000000000000111000,
+                          0b00000000000000000000000000000111};
+  shift_mantissa_left(mantissa, 3);
+  ck_assert_mem_eq(mantissa, expected, sizeof(uint32_t) * 3);
+}
+END_TEST
+
+START_TEST(mantissa_shift_right_test) {
+  uint32_t mantissa[3] = {0b00000000000000000000000000000111,
+                          0b00000000000000000000000000000111,
+                          0b11100000000000000000000000000111};
+  uint32_t expected[3] = {0b11100000000000000000000000000000,
+                          0b11100000000000000000000000000000,
+                          0b00011100000000000000000000000000};
+
+  shift_mantissa_right(mantissa, 3);
+  ck_assert_mem_eq(mantissa, expected, sizeof(uint32_t) * 3);
+}
+END_TEST
+
+START_TEST(find_highest_mantissa_bit_test_1) {
+  uint32_t mantissa[3] = {0b00000000000000000000000000000111,
+                          0b11100000000000000000000000000111,
+                          0b00000000000000000000000000000111};
+  int result = find_highest_mantissa_bit(mantissa);
+  ck_assert_int_eq(result, 66);
+}
+END_TEST
+
+START_TEST(find_highest_mantissa_bit_test_2) {
+  uint32_t mantissa[3] = {0b00000000000000000000000000000111,
+                          0b00000000000000000000000000000000,
+                          0b00000000000000000000000000000000};
+  int result = find_highest_mantissa_bit(mantissa);
+  ck_assert_int_eq(result, 2);
+}
+END_TEST
+
+START_TEST(find_highest_mantissa_bit_test_3) {
+  uint32_t mantissa[3] = {0b00000000000000000000000000000111,
+                          0b00000000000000000000000000000010,
+                          0b00000000000000000000000000000000};
+  int result = find_highest_mantissa_bit(mantissa);
+  ck_assert_int_eq(result, 33);
+}
+END_TEST
+
+START_TEST(find_highest_mantissa_bit_test_4) {
+  uint32_t mantissa[3] = {0b00000000000000000000000000000000,
+                          0b00000000000000000000000000000000,
+                          0b00000000000000000000000000000000};
+  int result = find_highest_mantissa_bit(mantissa);
+  ck_assert_int_eq(result, -1);
+}
+END_TEST
+
+START_TEST(mantissa_division_test_1) {
+  uint32_t divident[3] = {0b00000000000000000000000000000100,
+                          0b00000000000000000000000000000000,
+                          0b00000000000000000000000000000000};
+  uint32_t divisor[3] = {0b00000000000000000000000000000000,
+                         0b00000000000000000000000000000000,
+                         0b00000000000000000000000000000000};
+  int result = mantissa_division(divident, divisor, NULL, NULL);
+  ck_assert_int_eq(result, 1);
+}
+END_TEST
+
+START_TEST(mantissa_division_test_2) {
+  uint32_t divident[3] = {0b00000000000000000000000000001011,
+                          0b00000000000000000000000000000000,
+                          0b00000000000000000000000000000000};
+  uint32_t divisor[3] = {0b00000000000000000000000000000100,
+                         0b00000000000000000000000000000000,
+                         0b00000000000000000000000000000000};
+  uint32_t result[3];
+  uint32_t remainder[3];
+  uint32_t expected_result[3] = {2, 0, 0};
+  uint32_t expected_remainder[3] = {3, 0, 0};
+  int division_error = mantissa_division(divident, divisor, result, remainder);
+
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 3);
+  ck_assert_mem_eq(remainder, expected_remainder, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(division_error, 0);
+}
+END_TEST
+
+START_TEST(mantissa_division_test_3) {
+  uint32_t divident[3] = {0b00000000000000000000000000000000,
+                          0b00000000000000000000000000000001,
+                          0b00000000000000000000000000000000};
+  uint32_t divisor[3] = {0b00000000000000000000000000000101,
+                         0b00000000000000000000000000000000,
+                         0b00000000000000000000000000000000};
+  uint32_t result[3];
+  uint32_t remainder[3];
+  uint32_t expected_result[3] = {0x33333333, 0, 0};
+  uint32_t expected_remainder[3] = {1, 0, 0};
+  int division_error = mantissa_division(divident, divisor, result, remainder);
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 3);
+  ck_assert_mem_eq(remainder, expected_remainder, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(division_error, 0);
+}
+END_TEST
+
+START_TEST(mantissa_division_test_4) {
+  // 4398046511103
+  uint32_t divident[3] = {0xFFFFFFFF, 0x3FF, 0x0};
+  // 5452542852
+  uint32_t divisor[3] = {0x44FF3384, 0x1, 0x0};
+  uint32_t result[3];
+  uint32_t remainder[3];
+  // 806
+  uint32_t expected_result[3] = {0x326, 0, 0};
+  // 3296972391
+  uint32_t expected_remainder[3] = {0xC483CE67, 0x0, 0x0};
+  int division_error = mantissa_division(divident, divisor, result, remainder);
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 3);
+  ck_assert_mem_eq(remainder, expected_remainder, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(division_error, 0);
 }
 END_TEST
 
@@ -278,6 +397,16 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, mantissa_subtraction_test_3);
   tcase_add_test(tc_core, mantissa_subtraction_test_4);
   tcase_add_test(tc_core, mantissa_subtraction_test_5);
+  tcase_add_test(tc_core, mantissa_shift_left_test);
+  tcase_add_test(tc_core, mantissa_shift_right_test);
+  tcase_add_test(tc_core, mantissa_division_test_1);
+  tcase_add_test(tc_core, mantissa_division_test_2);
+  tcase_add_test(tc_core, mantissa_division_test_3);
+  tcase_add_test(tc_core, mantissa_division_test_4);
+  tcase_add_test(tc_core, find_highest_mantissa_bit_test_1);
+  tcase_add_test(tc_core, find_highest_mantissa_bit_test_2);
+  tcase_add_test(tc_core, find_highest_mantissa_bit_test_3);
+  tcase_add_test(tc_core, find_highest_mantissa_bit_test_4);
   tcase_add_test(tc_core, set_scale_test);
   tcase_add_test(tc_core, multiply_test);
   // tcase_add_test(tc_core, multiply_test_2);
