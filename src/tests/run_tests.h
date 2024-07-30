@@ -18,6 +18,7 @@ Suite* make_is_greater_or_equal_suite();
 Suite* make_is_equal_suite();
 Suite* make_is_not_equal_suite();
 
+Suite* make_add_suite();
 Suite* make_sub_suite();
 Suite* make_mul_suite();
 Suite* make_div_suite();

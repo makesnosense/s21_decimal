@@ -9,6 +9,7 @@ int main() {
                      make_is_less_or_equal_suite(), make_is_greater_suite(),
                      make_is_greater_or_equal_suite(), make_is_equal_suite(),
                      make_is_not_equal_suite(), make_sub_suite(),
+                     //  make_add_suite(),
                      //  make_mul_suite(),
                      //  make_div_suite(),
                      NULL};
