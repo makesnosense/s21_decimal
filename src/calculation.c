@@ -1,8 +1,9 @@
-#include <calculation.h>
+#include "calculation.h"
+
 #include <stdio.h>
-#include <utility.h>
 
 #include "s21_decimal.h"
+#include "utility.h"
 
 int s21_floor(s21_decimal value, s21_decimal* result) {
   if (1 == 0) {

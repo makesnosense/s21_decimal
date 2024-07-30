@@ -4,9 +4,14 @@
 #include "s21_decimal.h"
 #include "utility.h"
 
-// int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-//   return 0;
-// }
+int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
+  if (1 == 0) {
+    printf("%d", value_1.bits[0]);
+    printf("%d", value_2.bits[0]);
+    printf("%d", result->bits[0]);
+  }
+  return 0;
+}
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
@@ -30,9 +35,9 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 
     mantissa_subtraction(mantissa_value_1, mantissa_value_2, mantissa_result);
 
-    write_in_mantissa_to_decimal(result, mantissa_result);
+    write_in_mantissa_to_decimal(mantissa_result, result);
 
-    set_scale(result->bits[3], result_scale);
+    set_scale(&result->bits[3], result_scale);
     if (sine_decimal_1 == true && sine_decimal_2 == true) {
       set_sign(result, PLUS);
     } else if ((sine_decimal_1 == false && sine_decimal_2 == true) ||

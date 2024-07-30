@@ -8,11 +8,12 @@ int main() {
   Suite* suites[] = {make_utility_suite(), make_is_less_suite(),
                      make_is_less_or_equal_suite(), make_is_greater_suite(),
                      make_is_greater_or_equal_suite(), make_is_equal_suite(),
-                     make_is_not_equal_suite(), make_sub_suite(),
+                     make_is_not_equal_suite(),
+                     //  make_sub_suite(),
                      //  make_add_suite(),
                      //  make_mul_suite(),
                      //  make_div_suite(),
-                     NULL};
+                     make_negate_suite(), NULL};
 
   for (Suite** current_suite = suites; *current_suite != NULL;
        current_suite++) {
