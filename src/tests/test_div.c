@@ -138,6 +138,22 @@ START_TEST(test_div_gen_6) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_7) {
+  // 1.2345
+  s21_decimal input_decimal_1 = {
+      {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
   // 333
   s21_decimal input_decimal_2 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -154,7 +170,7 @@ START_TEST(test_div_gen_6) {
 }
 END_TEST
 
-START_TEST(test_div_gen_7) {
+START_TEST(test_div_gen_8) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -174,7 +190,7 @@ START_TEST(test_div_gen_7) {
 }
 END_TEST
 
-START_TEST(test_div_gen_8) {
+START_TEST(test_div_gen_9) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -194,7 +210,7 @@ START_TEST(test_div_gen_8) {
 }
 END_TEST
 
-START_TEST(test_div_gen_9) {
+START_TEST(test_div_gen_10) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -214,7 +230,7 @@ START_TEST(test_div_gen_9) {
 }
 END_TEST
 
-START_TEST(test_div_gen_10) {
+START_TEST(test_div_gen_11) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -234,7 +250,7 @@ START_TEST(test_div_gen_10) {
 }
 END_TEST
 
-START_TEST(test_div_gen_11) {
+START_TEST(test_div_gen_12) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -254,7 +270,7 @@ START_TEST(test_div_gen_11) {
 }
 END_TEST
 
-START_TEST(test_div_gen_12) {
+START_TEST(test_div_gen_13) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -274,7 +290,7 @@ START_TEST(test_div_gen_12) {
 }
 END_TEST
 
-START_TEST(test_div_gen_13) {
+START_TEST(test_div_gen_14) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -294,7 +310,7 @@ START_TEST(test_div_gen_13) {
 }
 END_TEST
 
-START_TEST(test_div_gen_14) {
+START_TEST(test_div_gen_15) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -314,7 +330,7 @@ START_TEST(test_div_gen_14) {
 }
 END_TEST
 
-START_TEST(test_div_gen_15) {
+START_TEST(test_div_gen_16) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -330,7 +346,23 @@ START_TEST(test_div_gen_15) {
 }
 END_TEST
 
-START_TEST(test_div_gen_16) {
+START_TEST(test_div_gen_17) {
+  // 5.5
+  s21_decimal input_decimal_1 = {
+      {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_18) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -350,7 +382,7 @@ START_TEST(test_div_gen_16) {
 }
 END_TEST
 
-START_TEST(test_div_gen_17) {
+START_TEST(test_div_gen_19) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -370,7 +402,7 @@ START_TEST(test_div_gen_17) {
 }
 END_TEST
 
-START_TEST(test_div_gen_18) {
+START_TEST(test_div_gen_20) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -390,7 +422,7 @@ START_TEST(test_div_gen_18) {
 }
 END_TEST
 
-START_TEST(test_div_gen_19) {
+START_TEST(test_div_gen_21) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -410,7 +442,7 @@ START_TEST(test_div_gen_19) {
 }
 END_TEST
 
-START_TEST(test_div_gen_20) {
+START_TEST(test_div_gen_22) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -430,7 +462,7 @@ START_TEST(test_div_gen_20) {
 }
 END_TEST
 
-START_TEST(test_div_gen_21) {
+START_TEST(test_div_gen_23) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -450,7 +482,7 @@ START_TEST(test_div_gen_21) {
 }
 END_TEST
 
-START_TEST(test_div_gen_22) {
+START_TEST(test_div_gen_24) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -470,7 +502,7 @@ START_TEST(test_div_gen_22) {
 }
 END_TEST
 
-START_TEST(test_div_gen_23) {
+START_TEST(test_div_gen_25) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -490,7 +522,7 @@ START_TEST(test_div_gen_23) {
 }
 END_TEST
 
-START_TEST(test_div_gen_24) {
+START_TEST(test_div_gen_26) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -510,7 +542,7 @@ START_TEST(test_div_gen_24) {
 }
 END_TEST
 
-START_TEST(test_div_gen_25) {
+START_TEST(test_div_gen_27) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -526,7 +558,23 @@ START_TEST(test_div_gen_25) {
 }
 END_TEST
 
-START_TEST(test_div_gen_26) {
+START_TEST(test_div_gen_28) {
+  // 0.95033
+  s21_decimal input_decimal_1 = {
+      {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_29) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -546,7 +594,7 @@ START_TEST(test_div_gen_26) {
 }
 END_TEST
 
-START_TEST(test_div_gen_27) {
+START_TEST(test_div_gen_30) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -566,7 +614,7 @@ START_TEST(test_div_gen_27) {
 }
 END_TEST
 
-START_TEST(test_div_gen_28) {
+START_TEST(test_div_gen_31) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -586,7 +634,7 @@ START_TEST(test_div_gen_28) {
 }
 END_TEST
 
-START_TEST(test_div_gen_29) {
+START_TEST(test_div_gen_32) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -606,7 +654,7 @@ START_TEST(test_div_gen_29) {
 }
 END_TEST
 
-START_TEST(test_div_gen_30) {
+START_TEST(test_div_gen_33) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -626,7 +674,7 @@ START_TEST(test_div_gen_30) {
 }
 END_TEST
 
-START_TEST(test_div_gen_31) {
+START_TEST(test_div_gen_34) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -646,7 +694,7 @@ START_TEST(test_div_gen_31) {
 }
 END_TEST
 
-START_TEST(test_div_gen_32) {
+START_TEST(test_div_gen_35) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -662,7 +710,7 @@ START_TEST(test_div_gen_32) {
 }
 END_TEST
 
-START_TEST(test_div_gen_33) {
+START_TEST(test_div_gen_36) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -682,7 +730,7 @@ START_TEST(test_div_gen_33) {
 }
 END_TEST
 
-START_TEST(test_div_gen_34) {
+START_TEST(test_div_gen_37) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -702,7 +750,7 @@ START_TEST(test_div_gen_34) {
 }
 END_TEST
 
-START_TEST(test_div_gen_35) {
+START_TEST(test_div_gen_38) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -718,7 +766,23 @@ START_TEST(test_div_gen_35) {
 }
 END_TEST
 
-START_TEST(test_div_gen_36) {
+START_TEST(test_div_gen_39) {
+  // 79228162514264337593543950335
+  s21_decimal input_decimal_1 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_40) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -738,7 +802,7 @@ START_TEST(test_div_gen_36) {
 }
 END_TEST
 
-START_TEST(test_div_gen_37) {
+START_TEST(test_div_gen_41) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -758,7 +822,7 @@ START_TEST(test_div_gen_37) {
 }
 END_TEST
 
-START_TEST(test_div_gen_38) {
+START_TEST(test_div_gen_42) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -774,7 +838,7 @@ START_TEST(test_div_gen_38) {
 }
 END_TEST
 
-START_TEST(test_div_gen_39) {
+START_TEST(test_div_gen_43) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -794,7 +858,7 @@ START_TEST(test_div_gen_39) {
 }
 END_TEST
 
-START_TEST(test_div_gen_40) {
+START_TEST(test_div_gen_44) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -814,7 +878,7 @@ START_TEST(test_div_gen_40) {
 }
 END_TEST
 
-START_TEST(test_div_gen_41) {
+START_TEST(test_div_gen_45) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -834,7 +898,7 @@ START_TEST(test_div_gen_41) {
 }
 END_TEST
 
-START_TEST(test_div_gen_42) {
+START_TEST(test_div_gen_46) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -854,7 +918,7 @@ START_TEST(test_div_gen_42) {
 }
 END_TEST
 
-START_TEST(test_div_gen_43) {
+START_TEST(test_div_gen_47) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -874,7 +938,7 @@ START_TEST(test_div_gen_43) {
 }
 END_TEST
 
-START_TEST(test_div_gen_44) {
+START_TEST(test_div_gen_48) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -894,7 +958,7 @@ START_TEST(test_div_gen_44) {
 }
 END_TEST
 
-START_TEST(test_div_gen_45) {
+START_TEST(test_div_gen_49) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -910,7 +974,23 @@ START_TEST(test_div_gen_45) {
 }
 END_TEST
 
-START_TEST(test_div_gen_46) {
+START_TEST(test_div_gen_50) {
+  // 7922816251426433.7593543950335
+  s21_decimal input_decimal_1 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_51) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -930,7 +1010,7 @@ START_TEST(test_div_gen_46) {
 }
 END_TEST
 
-START_TEST(test_div_gen_47) {
+START_TEST(test_div_gen_52) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -950,7 +1030,7 @@ START_TEST(test_div_gen_47) {
 }
 END_TEST
 
-START_TEST(test_div_gen_48) {
+START_TEST(test_div_gen_53) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -970,7 +1050,7 @@ START_TEST(test_div_gen_48) {
 }
 END_TEST
 
-START_TEST(test_div_gen_49) {
+START_TEST(test_div_gen_54) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -990,7 +1070,7 @@ START_TEST(test_div_gen_49) {
 }
 END_TEST
 
-START_TEST(test_div_gen_50) {
+START_TEST(test_div_gen_55) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1010,7 +1090,7 @@ START_TEST(test_div_gen_50) {
 }
 END_TEST
 
-START_TEST(test_div_gen_51) {
+START_TEST(test_div_gen_56) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1030,7 +1110,7 @@ START_TEST(test_div_gen_51) {
 }
 END_TEST
 
-START_TEST(test_div_gen_52) {
+START_TEST(test_div_gen_57) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1050,7 +1130,7 @@ START_TEST(test_div_gen_52) {
 }
 END_TEST
 
-START_TEST(test_div_gen_53) {
+START_TEST(test_div_gen_58) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1070,7 +1150,7 @@ START_TEST(test_div_gen_53) {
 }
 END_TEST
 
-START_TEST(test_div_gen_54) {
+START_TEST(test_div_gen_59) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1090,7 +1170,7 @@ START_TEST(test_div_gen_54) {
 }
 END_TEST
 
-START_TEST(test_div_gen_55) {
+START_TEST(test_div_gen_60) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1106,7 +1186,23 @@ START_TEST(test_div_gen_55) {
 }
 END_TEST
 
-START_TEST(test_div_gen_56) {
+START_TEST(test_div_gen_61) {
+  // 4
+  s21_decimal input_decimal_1 = {
+      {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_62) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1126,7 +1222,7 @@ START_TEST(test_div_gen_56) {
 }
 END_TEST
 
-START_TEST(test_div_gen_57) {
+START_TEST(test_div_gen_63) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1146,7 +1242,7 @@ START_TEST(test_div_gen_57) {
 }
 END_TEST
 
-START_TEST(test_div_gen_58) {
+START_TEST(test_div_gen_64) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1166,7 +1262,7 @@ START_TEST(test_div_gen_58) {
 }
 END_TEST
 
-START_TEST(test_div_gen_59) {
+START_TEST(test_div_gen_65) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1186,7 +1282,7 @@ START_TEST(test_div_gen_59) {
 }
 END_TEST
 
-START_TEST(test_div_gen_60) {
+START_TEST(test_div_gen_66) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1206,7 +1302,7 @@ START_TEST(test_div_gen_60) {
 }
 END_TEST
 
-START_TEST(test_div_gen_61) {
+START_TEST(test_div_gen_67) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1226,7 +1322,7 @@ START_TEST(test_div_gen_61) {
 }
 END_TEST
 
-START_TEST(test_div_gen_62) {
+START_TEST(test_div_gen_68) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1246,7 +1342,7 @@ START_TEST(test_div_gen_62) {
 }
 END_TEST
 
-START_TEST(test_div_gen_63) {
+START_TEST(test_div_gen_69) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1266,7 +1362,7 @@ START_TEST(test_div_gen_63) {
 }
 END_TEST
 
-START_TEST(test_div_gen_64) {
+START_TEST(test_div_gen_70) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1286,7 +1382,7 @@ START_TEST(test_div_gen_64) {
 }
 END_TEST
 
-START_TEST(test_div_gen_65) {
+START_TEST(test_div_gen_71) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1306,7 +1402,23 @@ START_TEST(test_div_gen_65) {
 }
 END_TEST
 
-START_TEST(test_div_gen_66) {
+START_TEST(test_div_gen_72) {
+  // 0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_73) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1326,7 +1438,7 @@ START_TEST(test_div_gen_66) {
 }
 END_TEST
 
-START_TEST(test_div_gen_67) {
+START_TEST(test_div_gen_74) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1346,7 +1458,7 @@ START_TEST(test_div_gen_67) {
 }
 END_TEST
 
-START_TEST(test_div_gen_68) {
+START_TEST(test_div_gen_75) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1366,7 +1478,7 @@ START_TEST(test_div_gen_68) {
 }
 END_TEST
 
-START_TEST(test_div_gen_69) {
+START_TEST(test_div_gen_76) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1386,7 +1498,223 @@ START_TEST(test_div_gen_69) {
 }
 END_TEST
 
-START_TEST(test_div_gen_70) {
+START_TEST(test_div_gen_77) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // 1.2345
+  s21_decimal input_decimal_2 = {
+      {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
+  // -0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_div_gen_78) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // 5.5
+  s21_decimal input_decimal_2 = {
+      {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
+  // -0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_div_gen_79) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // 0.95033
+  s21_decimal input_decimal_2 = {
+      {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
+  // -0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_div_gen_80) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // 79228162514264337593543950335
+  s21_decimal input_decimal_2 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
+  // -0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_div_gen_81) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // 7922816251426433.7593543950335
+  s21_decimal input_decimal_2 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
+  // -0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_div_gen_82) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // 4
+  s21_decimal input_decimal_2 = {
+      {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+  // -0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_div_gen_83) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // 0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_84) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // 333
+  s21_decimal input_decimal_2 = {
+      {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+  // -0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_div_gen_85) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // 12345
+  s21_decimal input_decimal_2 = {
+      {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+  // -0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_div_gen_86) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // -0.1
+  s21_decimal input_decimal_2 = {
+      {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
+  // 0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_div_gen_87) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // -300000000
+  s21_decimal input_decimal_2 = {
+      {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // 0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_div_gen_88) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1406,7 +1734,7 @@ START_TEST(test_div_gen_70) {
 }
 END_TEST
 
-START_TEST(test_div_gen_71) {
+START_TEST(test_div_gen_89) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1426,7 +1754,7 @@ START_TEST(test_div_gen_71) {
 }
 END_TEST
 
-START_TEST(test_div_gen_72) {
+START_TEST(test_div_gen_90) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1446,7 +1774,7 @@ START_TEST(test_div_gen_72) {
 }
 END_TEST
 
-START_TEST(test_div_gen_73) {
+START_TEST(test_div_gen_91) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1466,7 +1794,7 @@ START_TEST(test_div_gen_73) {
 }
 END_TEST
 
-START_TEST(test_div_gen_74) {
+START_TEST(test_div_gen_92) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1486,7 +1814,7 @@ START_TEST(test_div_gen_74) {
 }
 END_TEST
 
-START_TEST(test_div_gen_75) {
+START_TEST(test_div_gen_93) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1506,7 +1834,7 @@ START_TEST(test_div_gen_75) {
 }
 END_TEST
 
-START_TEST(test_div_gen_76) {
+START_TEST(test_div_gen_94) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1522,7 +1850,23 @@ START_TEST(test_div_gen_76) {
 }
 END_TEST
 
-START_TEST(test_div_gen_77) {
+START_TEST(test_div_gen_95) {
+  // 333
+  s21_decimal input_decimal_1 = {
+      {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_96) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1542,7 +1886,7 @@ START_TEST(test_div_gen_77) {
 }
 END_TEST
 
-START_TEST(test_div_gen_78) {
+START_TEST(test_div_gen_97) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1562,7 +1906,7 @@ START_TEST(test_div_gen_78) {
 }
 END_TEST
 
-START_TEST(test_div_gen_79) {
+START_TEST(test_div_gen_98) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1582,7 +1926,7 @@ START_TEST(test_div_gen_79) {
 }
 END_TEST
 
-START_TEST(test_div_gen_80) {
+START_TEST(test_div_gen_99) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1602,7 +1946,7 @@ START_TEST(test_div_gen_80) {
 }
 END_TEST
 
-START_TEST(test_div_gen_81) {
+START_TEST(test_div_gen_100) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1622,7 +1966,7 @@ START_TEST(test_div_gen_81) {
 }
 END_TEST
 
-START_TEST(test_div_gen_82) {
+START_TEST(test_div_gen_101) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1642,7 +1986,7 @@ START_TEST(test_div_gen_82) {
 }
 END_TEST
 
-START_TEST(test_div_gen_83) {
+START_TEST(test_div_gen_102) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1662,7 +2006,7 @@ START_TEST(test_div_gen_83) {
 }
 END_TEST
 
-START_TEST(test_div_gen_84) {
+START_TEST(test_div_gen_103) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1682,7 +2026,7 @@ START_TEST(test_div_gen_84) {
 }
 END_TEST
 
-START_TEST(test_div_gen_85) {
+START_TEST(test_div_gen_104) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1702,7 +2046,7 @@ START_TEST(test_div_gen_85) {
 }
 END_TEST
 
-START_TEST(test_div_gen_86) {
+START_TEST(test_div_gen_105) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1718,7 +2062,23 @@ START_TEST(test_div_gen_86) {
 }
 END_TEST
 
-START_TEST(test_div_gen_87) {
+START_TEST(test_div_gen_106) {
+  // 12345
+  s21_decimal input_decimal_1 = {
+      {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_107) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1738,7 +2098,7 @@ START_TEST(test_div_gen_87) {
 }
 END_TEST
 
-START_TEST(test_div_gen_88) {
+START_TEST(test_div_gen_108) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1758,7 +2118,7 @@ START_TEST(test_div_gen_88) {
 }
 END_TEST
 
-START_TEST(test_div_gen_89) {
+START_TEST(test_div_gen_109) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -1778,7 +2138,7 @@ START_TEST(test_div_gen_89) {
 }
 END_TEST
 
-START_TEST(test_div_gen_90) {
+START_TEST(test_div_gen_110) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -1798,7 +2158,7 @@ START_TEST(test_div_gen_90) {
 }
 END_TEST
 
-START_TEST(test_div_gen_91) {
+START_TEST(test_div_gen_111) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -1818,7 +2178,7 @@ START_TEST(test_div_gen_91) {
 }
 END_TEST
 
-START_TEST(test_div_gen_92) {
+START_TEST(test_div_gen_112) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -1838,7 +2198,7 @@ START_TEST(test_div_gen_92) {
 }
 END_TEST
 
-START_TEST(test_div_gen_93) {
+START_TEST(test_div_gen_113) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -1858,7 +2218,7 @@ START_TEST(test_div_gen_93) {
 }
 END_TEST
 
-START_TEST(test_div_gen_94) {
+START_TEST(test_div_gen_114) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -1878,7 +2238,7 @@ START_TEST(test_div_gen_94) {
 }
 END_TEST
 
-START_TEST(test_div_gen_95) {
+START_TEST(test_div_gen_115) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -1898,7 +2258,7 @@ START_TEST(test_div_gen_95) {
 }
 END_TEST
 
-START_TEST(test_div_gen_96) {
+START_TEST(test_div_gen_116) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -1914,7 +2274,23 @@ START_TEST(test_div_gen_96) {
 }
 END_TEST
 
-START_TEST(test_div_gen_97) {
+START_TEST(test_div_gen_117) {
+  // -0.1
+  s21_decimal input_decimal_1 = {
+      {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_118) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -1934,7 +2310,7 @@ START_TEST(test_div_gen_97) {
 }
 END_TEST
 
-START_TEST(test_div_gen_98) {
+START_TEST(test_div_gen_119) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -1954,7 +2330,7 @@ START_TEST(test_div_gen_98) {
 }
 END_TEST
 
-START_TEST(test_div_gen_99) {
+START_TEST(test_div_gen_120) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -1974,7 +2350,7 @@ START_TEST(test_div_gen_99) {
 }
 END_TEST
 
-START_TEST(test_div_gen_100) {
+START_TEST(test_div_gen_121) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -1994,7 +2370,7 @@ START_TEST(test_div_gen_100) {
 }
 END_TEST
 
-START_TEST(test_div_gen_101) {
+START_TEST(test_div_gen_122) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -2014,7 +2390,7 @@ START_TEST(test_div_gen_101) {
 }
 END_TEST
 
-START_TEST(test_div_gen_102) {
+START_TEST(test_div_gen_123) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -2034,7 +2410,7 @@ START_TEST(test_div_gen_102) {
 }
 END_TEST
 
-START_TEST(test_div_gen_103) {
+START_TEST(test_div_gen_124) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -2054,7 +2430,7 @@ START_TEST(test_div_gen_103) {
 }
 END_TEST
 
-START_TEST(test_div_gen_104) {
+START_TEST(test_div_gen_125) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -2074,7 +2450,7 @@ START_TEST(test_div_gen_104) {
 }
 END_TEST
 
-START_TEST(test_div_gen_105) {
+START_TEST(test_div_gen_126) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -2094,7 +2470,7 @@ START_TEST(test_div_gen_105) {
 }
 END_TEST
 
-START_TEST(test_div_gen_106) {
+START_TEST(test_div_gen_127) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -2110,7 +2486,23 @@ START_TEST(test_div_gen_106) {
 }
 END_TEST
 
-START_TEST(test_div_gen_107) {
+START_TEST(test_div_gen_128) {
+  // -300000000
+  s21_decimal input_decimal_1 = {
+      {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+  // -0
+  s21_decimal input_decimal_2 = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
+}
+END_TEST
+
+START_TEST(test_div_gen_129) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -2130,7 +2522,7 @@ START_TEST(test_div_gen_107) {
 }
 END_TEST
 
-START_TEST(test_div_gen_108) {
+START_TEST(test_div_gen_130) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -2150,7 +2542,7 @@ START_TEST(test_div_gen_108) {
 }
 END_TEST
 
-START_TEST(test_div_gen_109) {
+START_TEST(test_div_gen_131) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -2177,6 +2569,7 @@ Suite* make_div_suite() {
   tc_core = tcase_create("Core");
 
   // tcase_add_test(tc_core, test_div_simple);
+
   tcase_add_test(tc_core, test_div_gen_0);
   tcase_add_test(tc_core, test_div_gen_1);
   tcase_add_test(tc_core, test_div_gen_2);
@@ -2287,6 +2680,28 @@ Suite* make_div_suite() {
   tcase_add_test(tc_core, test_div_gen_107);
   tcase_add_test(tc_core, test_div_gen_108);
   tcase_add_test(tc_core, test_div_gen_109);
+  tcase_add_test(tc_core, test_div_gen_110);
+  tcase_add_test(tc_core, test_div_gen_111);
+  tcase_add_test(tc_core, test_div_gen_112);
+  tcase_add_test(tc_core, test_div_gen_113);
+  tcase_add_test(tc_core, test_div_gen_114);
+  tcase_add_test(tc_core, test_div_gen_115);
+  tcase_add_test(tc_core, test_div_gen_116);
+  tcase_add_test(tc_core, test_div_gen_117);
+  tcase_add_test(tc_core, test_div_gen_118);
+  tcase_add_test(tc_core, test_div_gen_119);
+  tcase_add_test(tc_core, test_div_gen_120);
+  tcase_add_test(tc_core, test_div_gen_121);
+  tcase_add_test(tc_core, test_div_gen_122);
+  tcase_add_test(tc_core, test_div_gen_123);
+  tcase_add_test(tc_core, test_div_gen_124);
+  tcase_add_test(tc_core, test_div_gen_125);
+  tcase_add_test(tc_core, test_div_gen_126);
+  tcase_add_test(tc_core, test_div_gen_127);
+  tcase_add_test(tc_core, test_div_gen_128);
+  tcase_add_test(tc_core, test_div_gen_129);
+  tcase_add_test(tc_core, test_div_gen_130);
+  tcase_add_test(tc_core, test_div_gen_131);
   suite_add_tcase(div_suite, tc_core);
 
   return div_suite;
