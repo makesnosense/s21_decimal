@@ -13,6 +13,14 @@ int s21_floor(s21_decimal value, s21_decimal* result) {
   return 0;
 }
 
+int s21_round(s21_decimal value, s21_decimal* result) {
+  if (1 == 0) {
+    printf("%d", value.bits[0]);
+    printf("%d", result->bits[0]);
+  }
+  return 0;
+}
+
 int s21_negate(s21_decimal value, s21_decimal* result) {
   CalculationResult return_code;
 
