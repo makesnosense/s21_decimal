@@ -27,7 +27,7 @@ int s21_negate(s21_decimal value, s21_decimal* result) {
   return return_code;
 }
 
-void divide_by_10(s21_decimal* input_decimal) {
+void divide_by_10_dropping_remainder(s21_decimal* input_decimal) {
   uint64_t remainder = 0;
   for (int i = 2; i >= 0; i--) {
     uint64_t temp = ((uint64_t)remainder << 32) | input_decimal->bits[i];
@@ -48,10 +48,10 @@ int s21_truncate(s21_decimal input_decimal, s21_decimal* result) {
     int sign = get_sign(input_decimal);
 
     for (int i = 0; i < scale; i++) {
-      divide_by_10(result);
+      divide_by_10_dropping_remainder(result);
     }
 
-    result->bits[3] = 0;
+    set_scale(&result->bits[3], 0);
     set_sign(result, sign);
     return_code = OK;
   }
