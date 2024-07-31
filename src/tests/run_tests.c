@@ -13,6 +13,7 @@ int main() {
                      //  make_add_suite(),
                      //  make_mul_suite(),
                      //  make_div_suite(),
+                      make_truncate_suite(),
                      make_negate_suite(), NULL};
 
   for (Suite** current_suite = suites; *current_suite != NULL;
