@@ -282,8 +282,8 @@ START_TEST(get_scale_test) {
     ck_assert_int_eq(get_scale(scales[i]), i);
   }
 
-  //   s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
-  //                              0b00000000000000101000000000000000};
+  //   s21_decimal input_decimal = {{0x123U, 0x123U, 0x123U,
+  //                              0b00000000000000101000000000000000}};
   // int scale_before = get_scale(input_decimal.bits[3]);
   // int scale_to_set = 6;
 
@@ -295,8 +295,8 @@ START_TEST(get_scale_test) {
 END_TEST
 
 START_TEST(set_scale_test) {
-  s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
-                               0b00000000000000101000000000000000};
+  s21_decimal input_decimal = {{0x123U, 0x123U, 0x123U,
+                               0b00000000000000101000000000000000}};
   int scale_before = get_scale(input_decimal.bits[3]);
   int scale_to_set = 6;
 

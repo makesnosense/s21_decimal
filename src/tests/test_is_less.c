@@ -4,11 +4,11 @@
 #include "run_tests.h"
 
 START_TEST(test_is_less_simple) {
-  s21_decimal input_decimal1 = {0x0, 0x1, 0x0,
-                                0b00000000000000000000000000000000};
+  s21_decimal input_decimal1 = {{0x0, 0x1, 0x0,
+                                0b00000000000000000000000000000000}};
 
-  s21_decimal input_decimal2 = {0x2, 0x0, 0x0,
-                                0b00000000000000000000000000000000};
+  s21_decimal input_decimal2 = {{0x2, 0x0, 0x0,
+                                0b00000000000000000000000000000000}};
 
   int s21_result = s21_is_less(input_decimal1, input_decimal2);
 

@@ -4,11 +4,11 @@
 #include "run_tests.h"
 
 START_TEST(test_greater_or_equal) {
-  s21_decimal input_decimal1 = {0x0, 0x1, 0x0,
-                                0b00000000000000000000000000000000};
+  s21_decimal input_decimal1 = {{0x0, 0x1, 0x0,
+                                0b00000000000000000000000000000000}};
 
-  s21_decimal input_decimal2 = {0x2, 0x0, 0x0,
-                                0b00000000000000000000000000000000};
+  s21_decimal input_decimal2 = {{0x2, 0x0, 0x0,
+                                0b00000000000000000000000000000000}};
 
   int result = s21_is_greater_or_equal(input_decimal1, input_decimal2);
 
