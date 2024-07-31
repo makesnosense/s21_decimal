@@ -25,5 +25,6 @@ Suite* make_div_suite();
 
 Suite* make_truncate_suite();
 Suite* make_negate_suite();
+Suite* make_floor_suite();
 
 #endif  // SRC_TESTS_RUN_TESTS_H_
