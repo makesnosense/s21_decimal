@@ -15,14 +15,7 @@ START_TEST(mantissa_addition_test) {
   uint32_t expected[3] = {0b00011101000100010101011010100000,
                           0b110010101100101001100001101110, 0b0};
   int overflow = mantissa_addition(term_1, term_2, sum);
-  /*   puts("\naddition\n");
-    print_binary(sum[2]);
-    puts("\n");
-    print_binary(sum[1]);
-    puts("\n");
-    print_binary(sum[0]);
-    puts("\n");
-    printf("res: %d\n", res); */
+
   ck_assert_mem_eq(sum, expected, sizeof(uint32_t) * 3);
   ck_assert_int_eq(overflow, 0);
 }
@@ -130,7 +123,33 @@ START_TEST(mantissa_subtraction_test_5) {
 }
 END_TEST
 
-START_TEST(mantissa_shift_left_test) {
+START_TEST(mantissa_subtraction_test_6) {
+  // 10^28
+  uint32_t minuend[3] = {0x10000000, 0x3E250261, 0x204FCE5E};
+  uint32_t subtrahend[3] = {0x1, 0x0, 0x0};
+  uint32_t result[3] = {0, 0, 0};
+  uint32_t expected[3] = {0x0FFFFFFF, 0x3E250261, 0x204FCE5E};
+  int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
+  ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(is_negaive, 0);
+}
+END_TEST
+
+START_TEST(mantissa_subtraction_test_7) {
+  // 10^28
+  uint32_t minuend[3] = {0x10000000, 0x3E250261, 0x204FCE5E};
+  // 2166546186782710593811906561
+  uint32_t subtrahend[3] = {0x1, 0x20000040, 0x7002000};
+  uint32_t result[3] = {0, 0, 0};
+  // 7833453813217289406188093439
+  uint32_t expected[3] = {0x0FFFFFFF, 0x1E250221, 0x194FAE5E};
+  int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
+  ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(is_negaive, 0);
+}
+END_TEST
+
+START_TEST(mantissa_shift_left_test_1) {
   uint32_t mantissa[3] = {0b00000000000000000000000000000111,
                           0b11100000000000000000000000000111,
                           0b00000000000000000000000000000000};
@@ -142,15 +161,10 @@ START_TEST(mantissa_shift_left_test) {
 }
 END_TEST
 
-START_TEST(mantissa_shift_right_test) {
-  uint32_t mantissa[3] = {0b00000000000000000000000000000111,
-                          0b00000000000000000000000000000111,
-                          0b11100000000000000000000000000111};
-  uint32_t expected[3] = {0b11100000000000000000000000000000,
-                          0b11100000000000000000000000000000,
-                          0b00011100000000000000000000000000};
-
-  shift_mantissa_right(mantissa, 3);
+START_TEST(mantissa_shift_left_test_2) {
+  uint32_t mantissa[3] = {0x107A4000, 0x5AF3, 0x0};
+  uint32_t expected[3] = {0x0, 0x80000000, 0xB5E620F4};
+  shift_mantissa_left(mantissa, 49);
   ck_assert_mem_eq(mantissa, expected, sizeof(uint32_t) * 3);
 }
 END_TEST
@@ -258,6 +272,25 @@ START_TEST(mantissa_division_test_4) {
 }
 END_TEST
 
+START_TEST(mantissa_division_test_5) {
+  // 79228162514264337593543950335
+  uint32_t divident[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  // 10^14 = 100000000000000
+  uint32_t divisor[3] = {0x107A4000, 0x5AF3, 0x0};
+
+  uint32_t result[3];
+  uint32_t remainder[3];
+
+  // 792281625142643
+  uint32_t expected_result[3] = {0x70D42573, 0x2D093, 0x0};
+  // 37593543950335
+  uint32_t expected_remainder[3] = {0xEDD53FFF, 0x2230, 0x0};
+  mantissa_division(divident, divisor, result, remainder);
+
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 3);
+  ck_assert_mem_eq(remainder, expected_remainder, sizeof(uint32_t) * 3);
+}
+
 START_TEST(get_scale_test) {
   uint32_t scales[] = {
       0b00000000000000000000000000000000, 0b00000000000000010000000000000000,
@@ -295,8 +328,8 @@ START_TEST(get_scale_test) {
 END_TEST
 
 START_TEST(set_scale_test) {
-  s21_decimal input_decimal = {{0x123U, 0x123U, 0x123U,
-                               0b00000000000000101000000000000000}};
+  s21_decimal input_decimal = {
+      {0x123U, 0x123U, 0x123U, 0b00000000000000101000000000000000}};
   int scale_before = get_scale(input_decimal.bits[3]);
   int scale_to_set = 6;
 
@@ -397,12 +430,17 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, mantissa_subtraction_test_3);
   tcase_add_test(tc_core, mantissa_subtraction_test_4);
   tcase_add_test(tc_core, mantissa_subtraction_test_5);
+  tcase_add_test(tc_core, mantissa_subtraction_test_6);
+  tcase_add_test(tc_core, mantissa_subtraction_test_7);
+  tcase_add_test(tc_core, mantissa_shift_left_test_1);
+  tcase_add_test(tc_core, mantissa_shift_left_test_2);
   tcase_add_test(tc_core, mantissa_shift_left_test);
   tcase_add_test(tc_core, mantissa_shift_right_test);
   tcase_add_test(tc_core, mantissa_division_test_1);
   tcase_add_test(tc_core, mantissa_division_test_2);
   tcase_add_test(tc_core, mantissa_division_test_3);
   tcase_add_test(tc_core, mantissa_division_test_4);
+  tcase_add_test(tc_core, mantissa_division_test_5);
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_1);
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_2);
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_3);
