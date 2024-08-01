@@ -51,10 +51,10 @@ void* s21_memset(void* str, int c, int n);
 void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
                         uint32_t* result);
 
+void shift_decimal_right(s21_decimal* d);
 void write_in_mantissa_to_decimal(uint32_t* mantissa,
                                   s21_decimal* destination_decimal);
-void get_mantissa_from_decimal(uint32_t* mantissa,
-                               s21_decimal* destination_decimal);
+void get_mantissa_from_decimal(uint32_t* mantissa, s21_decimal* source_decimal);
 void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6);
 uint32_t* get_mantissa_with_power_of_ten(int power);
 bool is_zero_decimal(s21_decimal input_decimal);
