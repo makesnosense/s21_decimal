@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 
+#include "utility.h"
+
 int s21_floor(s21_decimal value, s21_decimal* result) {
   CalculationResult return_code;
   if (result == NULL) {
