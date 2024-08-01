@@ -17,7 +17,7 @@ int s21_floor(s21_decimal value, s21_decimal* result) {
       mantissa_division(value.bits, scale_divisor, result->bits, remainder);
       if (is_negative && !zero_check_mantissa(remainder)) {
         uint32_t* one = get_mantissa_with_power_of_ten(0);
-        mantissa_addition(result, one, result);
+        mantissa_addition(result->bits, one, result->bits);
       }
     }
     result->bits[3] = value.bits[3];
