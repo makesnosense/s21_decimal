@@ -2,15 +2,29 @@
 
 #include <stdio.h>
 
-#include "s21_decimal.h"
-#include "utility.h"
-
 int s21_floor(s21_decimal value, s21_decimal* result) {
-  if (1 == 0) {
-    printf("%d", value.bits[0]);
-    printf("%d", result->bits[0]);
+  CalculationResult return_code;
+  if (result == NULL) {
+    return_code = CALCULATION_ERROR;
+  } else {
+    if (zero_check_mantissa(value.bits)) {
+      copy_mantissa(result->bits, value.bits);
+    } else {
+      int scale = get_scale(value.bits[3]);
+      int is_negative = get_sign(value);
+      uint32_t* scale_divisor = get_mantissa_with_power_of_ten(scale);
+      uint32_t remainder[3];
+      mantissa_division(value.bits, scale_divisor, result->bits, remainder);
+      if (is_negative && !zero_check_mantissa(remainder)) {
+        uint32_t* one = get_mantissa_with_power_of_ten(0);
+        mantissa_addition(result->bits, one, result->bits);
+      }
+    }
+    result->bits[3] = value.bits[3];
+    set_scale(&result->bits[3], 0);
+    return_code = OK;
   }
-  return 0;
+  return return_code;
 }
 
 int s21_negate(s21_decimal value, s21_decimal* result) {

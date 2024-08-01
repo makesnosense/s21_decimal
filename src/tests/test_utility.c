@@ -291,6 +291,25 @@ START_TEST(mantissa_division_test_5) {
   ck_assert_mem_eq(remainder, expected_remainder, sizeof(uint32_t) * 3);
 }
 
+START_TEST(mantissa_division_test_6) {
+  // 79228162514264337593543950320
+  uint32_t divident[3] = {0xFFFFFFF0, 0xFFFFFFFF, 0xFFFFFFFF};
+  // 79228162514264337593543950335
+  uint32_t divisor[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+
+  uint32_t result[3];
+  uint32_t remainder[3];
+
+  // 0
+  uint32_t expected_result[3] = {0x0, 0x0, 0x0};
+  // 79228162514264337593543950335
+  uint32_t expected_remainder[3] = {0xFFFFFFF0, 0xFFFFFFFF, 0xFFFFFFFF};
+  mantissa_division(divident, divisor, result, remainder);
+
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 3);
+  ck_assert_mem_eq(remainder, expected_remainder, sizeof(uint32_t) * 3);
+}
+
 START_TEST(get_scale_test) {
   uint32_t scales[] = {
       0b00000000000000000000000000000000, 0b00000000000000010000000000000000,
@@ -460,6 +479,7 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, mantissa_division_test_3);
   tcase_add_test(tc_core, mantissa_division_test_4);
   tcase_add_test(tc_core, mantissa_division_test_5);
+  tcase_add_test(tc_core, mantissa_division_test_6);
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_1);
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_2);
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_3);

@@ -5,6 +5,7 @@
 int main() {
   int total_number_run = 0;
   int total_number_failed = 0;
+
   Suite* suites[] = {make_utility_suite(), make_truncate_suite(),
                      make_round_suite(),
 

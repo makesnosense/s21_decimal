@@ -178,6 +178,7 @@ int64_t compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2) {
   return diff;
 }
 
+// TODO: allow passing NULL pointer as remainder
 int mantissa_division(uint32_t* divident, uint32_t* divisor, uint32_t* result,
                       uint32_t* remainder) {
   int division_by_zero = 0;
