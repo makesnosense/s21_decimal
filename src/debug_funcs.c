@@ -35,6 +35,14 @@ void debug_print_decimal_as_binary(s21_decimal input_decimal) {
   }
 }
 
+void debug_print_decimal_as_binary_in_one_line(s21_decimal input_decimal) {
+  for (int i = 3; i >= 0; i--) {
+    print_binary_without_spaces(input_decimal.bits[i]);
+    putchar(' ');
+  }
+  putchar('\n');
+}
+
 void debug_print_mantissa_as_binary(uint32_t* mantissa_parts,
                                     int mantissa_size) {
   for (int i = mantissa_size - 1; i >= 0; i--) {
