@@ -42,7 +42,7 @@ int mantissa_subtraction(uint32_t* minuend, uint32_t* subtrahend,
                          uint32_t* result);
 void shift_mantissa_left(uint32_t* mantissa, unsigned shift);
 int find_highest_mantissa_bit(uint32_t* mantissa);
-int compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2);
+int64_t compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2);
 int mantissa_division(uint32_t* divident, uint32_t* divisor, uint32_t* result,
                       uint32_t* remainder);
 int get_scale(uint32_t service_part);

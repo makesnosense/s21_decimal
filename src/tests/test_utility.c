@@ -15,14 +15,7 @@ START_TEST(mantissa_addition_test) {
   uint32_t expected[3] = {0b00011101000100010101011010100000,
                           0b110010101100101001100001101110, 0b0};
   int overflow = mantissa_addition(term_1, term_2, sum);
-  /*   puts("\naddition\n");
-    print_binary(sum[2]);
-    puts("\n");
-    print_binary(sum[1]);
-    puts("\n");
-    print_binary(sum[0]);
-    puts("\n");
-    printf("res: %d\n", res); */
+
   ck_assert_mem_eq(sum, expected, sizeof(uint32_t) * 3);
   ck_assert_int_eq(overflow, 0);
 }
@@ -130,7 +123,33 @@ START_TEST(mantissa_subtraction_test_5) {
 }
 END_TEST
 
-START_TEST(mantissa_shift_left_test) {
+START_TEST(mantissa_subtraction_test_6) {
+  // 10^28
+  uint32_t minuend[3] = {0x10000000, 0x3E250261, 0x204FCE5E};
+  uint32_t subtrahend[3] = {0x1, 0x0, 0x0};
+  uint32_t result[3] = {0, 0, 0};
+  uint32_t expected[3] = {0x0FFFFFFF, 0x3E250261, 0x204FCE5E};
+  int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
+  ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(is_negaive, 0);
+}
+END_TEST
+
+START_TEST(mantissa_subtraction_test_7) {
+  // 10^28
+  uint32_t minuend[3] = {0x10000000, 0x3E250261, 0x204FCE5E};
+  // 2166546186782710593811906561
+  uint32_t subtrahend[3] = {0x1, 0x20000040, 0x7002000};
+  uint32_t result[3] = {0, 0, 0};
+  // 7833453813217289406188093439
+  uint32_t expected[3] = {0x0FFFFFFF, 0x1E250221, 0x194FAE5E};
+  int is_negaive = mantissa_subtraction(minuend, subtrahend, result);
+  ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(is_negaive, 0);
+}
+END_TEST
+
+START_TEST(mantissa_shift_left_test_1) {
   uint32_t mantissa[3] = {0b00000000000000000000000000000111,
                           0b11100000000000000000000000000111,
                           0b00000000000000000000000000000000};
@@ -268,18 +287,6 @@ START_TEST(mantissa_division_test_5) {
   uint32_t expected_remainder[3] = {0xEDD53FFF, 0x2230, 0x0};
   mantissa_division(divident, divisor, result, remainder);
 
-  /* print_binary(result[2]);
-  putchar('\n');
-  print_binary(result[1]);
-  putchar('\n');
-  print_binary(result[0]);
-  puts("\n\n");
-  print_binary(expected_result[2]);
-  putchar('\n');
-  print_binary(expected_result[1]);
-  putchar('\n');
-  print_binary(expected_result[0]);
-  putchar('\n'); */
   ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 3);
   ck_assert_mem_eq(remainder, expected_remainder, sizeof(uint32_t) * 3);
 }

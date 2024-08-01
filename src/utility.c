@@ -167,11 +167,12 @@ int find_highest_mantissa_bit(uint32_t* mantissa) {
   return highest_bit;
 }
 
-int compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2) {
-  int diff = 0;
+int64_t compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2) {
+  int64_t diff = 0;
   int i = 2;
   while (diff == 0 && i >= 0) {
-    diff = mantissa_1[i] - mantissa_2[i];
+    // type conversion avoids overflow errors with large negative difference
+    diff = (int64_t)mantissa_1[i] - mantissa_2[i];
     i--;
   }
   return diff;
