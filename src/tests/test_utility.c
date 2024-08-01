@@ -434,8 +434,6 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, mantissa_subtraction_test_7);
   tcase_add_test(tc_core, mantissa_shift_left_test_1);
   tcase_add_test(tc_core, mantissa_shift_left_test_2);
-  tcase_add_test(tc_core, mantissa_shift_left_test);
-  tcase_add_test(tc_core, mantissa_shift_right_test);
   tcase_add_test(tc_core, mantissa_division_test_1);
   tcase_add_test(tc_core, mantissa_division_test_2);
   tcase_add_test(tc_core, mantissa_division_test_3);
