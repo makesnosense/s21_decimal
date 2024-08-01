@@ -59,12 +59,10 @@ int get_mantissa_bit(uint32_t* mantissa_parts, int position_in_mantissa) {
   return bit_value;
 }
 
-void assign_mantissa_bit(uint32_t* mantissa_parts,
-                         unsigned position_in_mantissa, Binary value) {
+void assign_mantissa_bit(uint32_t* mantissa, unsigned position, Binary value) {
   int part_index;
-  int position_in_part =
-      determine_bit_part_and_position(position_in_mantissa, &part_index);
-  assign_bit(&mantissa_parts[part_index], position_in_part, value);
+  int part_position = determine_bit_part_and_position(position, &part_index);
+  assign_bit(&mantissa[part_index], part_position, value);
 }
 
 int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result) {
@@ -125,22 +123,20 @@ int mantissa_subtraction(uint32_t* minuend, uint32_t* subtrahend,
 }
 
 void shift_mantissa_left(uint32_t* mantissa, unsigned shift) {
-  uint64_t shifted_part;
-  uint32_t carry = 0;
-  for (int i = 0; i < 3; i++) {
-    shifted_part = (uint64_t)mantissa[i] << shift;
-    mantissa[i] = (uint32_t)shifted_part + carry;
-    carry = shifted_part >> 32;
+  int bit_value;
+  int original_position = MANTISSA_SIZE - (shift + 1);
+  int shifted_position = MANTISSA_SIZE - 1;
+  while (original_position >= 0) {
+    if (shifted_position < MANTISSA_SIZE) {
+      bit_value = get_mantissa_bit(mantissa, original_position);
+      assign_mantissa_bit(mantissa, shifted_position, bit_value);
+      original_position--;
+      shifted_position--;
+    }
   }
-}
-
-void shift_mantissa_right(uint32_t* mantissa, unsigned shift) {
-  uint64_t shifted_part;
-  uint32_t carry = 0;
-  for (int i = 2; i >= 0; i--) {
-    shifted_part = (uint64_t)mantissa[i] << (32 - shift);
-    mantissa[i] = (uint32_t)(shifted_part >> 32) + carry;
-    carry = (uint32_t)shifted_part;
+  while (shifted_position >= 0) {
+    assign_mantissa_bit(mantissa, shifted_position, ZERO);
+    shifted_position--;
   }
 }
 
