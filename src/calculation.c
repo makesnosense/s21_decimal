@@ -35,13 +35,14 @@ int s21_negate(s21_decimal value, s21_decimal* result) {
   return return_code;
 }
 
-void divide_by_10_dropping_remainder(s21_decimal* input_decimal) {
+uint64_t divide_decimal_by_10(s21_decimal* input_decimal) {
   uint64_t remainder = 0;
   for (int i = 2; i >= 0; i--) {
     uint64_t temp = ((uint64_t)remainder << 32) | input_decimal->bits[i];
     input_decimal->bits[i] = (uint32_t)(temp / 10);
     remainder = temp % 10;
   }
+  return remainder;
 }
 
 int s21_truncate(s21_decimal input_decimal, s21_decimal* result) {
@@ -56,7 +57,7 @@ int s21_truncate(s21_decimal input_decimal, s21_decimal* result) {
     int sign = get_sign(input_decimal);
 
     for (int i = 0; i < scale; i++) {
-      divide_by_10_dropping_remainder(result);
+      divide_decimal_by_10(result);
     }
 
     set_scale(&result->bits[3], 0);
