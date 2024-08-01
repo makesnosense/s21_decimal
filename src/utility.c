@@ -234,16 +234,51 @@ void write_in_mantissa_to_decimal(uint32_t* mantissa,
 }
 
 void get_mantissa_from_decimal(uint32_t* mantissa,
-                               s21_decimal* destination_decimal) {
-  mantissa[0] = destination_decimal->bits[0];
-  mantissa[1] = destination_decimal->bits[1];
-  mantissa[2] = destination_decimal->bits[2];
+                               s21_decimal* source_decimal) {
+  mantissa[0] = source_decimal->bits[0];
+  mantissa[1] = source_decimal->bits[1];
+  mantissa[2] = source_decimal->bits[2];
 }
 
 void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6) {
   mantissa6[0] = mantissa3[0];
   mantissa6[1] = mantissa3[1];
   mantissa6[2] = mantissa3[2];
+}
+
+void shift_decimal_right(s21_decimal* d) {
+  uint64_t carry = 0;
+  for (int i = 2; i >= 0; i--) {
+    uint64_t temp = ((uint64_t)d->bits[i] >> 1) | (carry << 31);
+    carry = d->bits[i] & 1;
+    d->bits[i] = (int)temp;
+  }
+}
+
+void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
+                        uint32_t* result) {
+  s21_memset(result, 0, sizeof(uint32_t) * 6);
+
+  for (int i = 0; i < 3; i++) {
+    uint64_t carry = 0;
+    for (int j = 0; j < 3; j++) {
+      uint64_t product =
+          (uint64_t)mantissa_1[i] * mantissa_2[j] + result[i + j] + carry;
+      result[i + j] = (uint32_t)product;
+      carry = product >> 32;
+    }
+    result[i + 3] = carry;
+  }
+}
+
+bool is_zero_decimal(s21_decimal input_decimal) {
+  bool is_zero = true;
+  for (int i = 0; i < 3 && is_zero == true; i++) {
+    if (input_decimal.bits[i] != 0) {
+      is_zero = false;
+    }
+  }
+  return is_zero;
 }
 
 uint32_t* get_mantissa_with_power_of_ten(int power) {
@@ -280,32 +315,6 @@ uint32_t* get_mantissa_with_power_of_ten(int power) {
   };
 
   return (power >= 0 && power <= 28) ? powers_of_10[power] : NULL;
-}
-
-void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
-                        uint32_t* result) {
-  s21_memset(result, 0, sizeof(uint32_t) * 6);
-
-  for (int i = 0; i < 3; i++) {
-    uint64_t carry = 0;
-    for (int j = 0; j < 3; j++) {
-      uint64_t product =
-          (uint64_t)mantissa_1[i] * mantissa_2[j] + result[i + j] + carry;
-      result[i + j] = (uint32_t)product;
-      carry = product >> 32;
-    }
-    result[i + 3] = carry;
-  }
-}
-
-bool is_zero_decimal(s21_decimal input_decimal) {
-  bool is_zero = true;
-  for (int i = 0; i < 3 && is_zero == true; i++) {
-    if (input_decimal.bits[i] != 0) {
-      is_zero = false;
-    }
-  }
-  return is_zero;
 }
 
 // void write_in_mantissa_to_decimal(uint32_t* mantissa, s21_decimal* result)
