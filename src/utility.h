@@ -34,7 +34,8 @@ void reset_decimal(s21_decimal* input_decimal);
 int determine_bit_part_and_position(int mantissa_position, int* part_index);
 int get_mantissa_bit(uint32_t* mantissa, int position);
 void assign_mantissa_bit(uint32_t* mantissa, unsigned position, Binary value);
-int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result);
+int add_mantissas(uint32_t* term_1, uint32_t* term_2, uint32_t* result,
+                  int size);
 void mantissa_bitflip(uint32_t* number, uint32_t* result);
 bool zero_check_mantissa(uint32_t* mantissa);
 void copy_mantissa(uint32_t* dest, uint32_t* src);

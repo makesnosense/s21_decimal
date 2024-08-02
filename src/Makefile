@@ -39,7 +39,7 @@ gcov_report: clean build_tests test
 	@open $(GCOV_REPORT_DIR)/gcov_report.html
 	rm -f *.gcda *.gcno *.gcov
 
-build_tests: clean  $(TESTS_SRC_FILES) $(DECIMAL_LIB)
+build_tests: clean $(TESTS_SRC_FILES) $(DECIMAL_LIB)
 	$(CC) $(CFLAGS) $(TESTS_SRC_FILES) $(DECIMAL_LIB) -o run_tests $(TESTFLAGS)
 
 $(DECIMAL_LIB): $(DECIMAL_OBJ_FILES)

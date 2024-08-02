@@ -14,7 +14,7 @@ START_TEST(mantissa_addition_test) {
   // 3 653 149 846 452 393 632
   uint32_t expected[3] = {0b00011101000100010101011010100000,
                           0b110010101100101001100001101110, 0b0};
-  int overflow = mantissa_addition(term_1, term_2, sum);
+  int overflow = add_mantissas(term_1, term_2, sum, 3);
 
   ck_assert_mem_eq(sum, expected, sizeof(uint32_t) * 3);
   ck_assert_int_eq(overflow, 0);
@@ -28,7 +28,7 @@ START_TEST(mantissa_addition_to_self_test) {
   uint32_t term_1[3] = {0b10011110001011011011111100001111,
                         0b100000011111110010010, 0b0};
   uint32_t one[3] = {1, 0, 0};
-  mantissa_addition(term_1, one, term_1);
+  add_mantissas(term_1, one, term_1, 3);
 }
 END_TEST
 
@@ -45,6 +45,28 @@ START_TEST(mantissa_bitflip_test) {
   mantissa_bitflip(number_2, result_2);
   ck_assert_mem_eq(result_1, number_2, sizeof(uint32_t) * 3);
   ck_assert_mem_eq(result_2, number_1, sizeof(uint32_t) * 3);
+}
+END_TEST
+
+START_TEST(mantissa6_addition_test) {
+  // 7922816251426433759354395035792281625142643375935439503
+  uint32_t term_1[6] = {0xA0F5C28F, 0x08B342E4, 0x071569B1,
+                        0xE4000000, 0xDCC80CD2, 0x52B7D2};
+  // 7922816251426433759354395035792281625142643375935439503
+
+  uint32_t term_2[6] = {0xA0F5C28F, 0x08B342E4, 0x071569B1,
+                        0xE4000000, 0xDCC80CD2, 0x52B7D2};
+  uint32_t sum[6] = {0b0, 0b0, 0b0, 0b0, 0b0, 0b0};
+  // 15845632502852867518708790071584563250285286751870879006
+  uint32_t expected[6] = {0x41EB851E, 0x116685C9, 0x0E2AD362,
+                          0xC8000000, 0xB99019A5, 0xA56FA5};
+
+  int overflow = add_mantissas(term_1, term_2, sum, 6);
+  debug_print_mantissa_as_binary(expected, 6);
+  putchar('\n');
+  debug_print_mantissa_as_binary(sum, 6);
+  ck_assert_mem_eq(sum, expected, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(overflow, 0);
 }
 END_TEST
 
@@ -487,6 +509,7 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, set_scale_test);
   tcase_add_test(tc_core, multiply_test);
   tcase_add_test(tc_core, shift_decimal_test);
+  tcase_add_test(tc_core, mantissa6_addition_test);
 
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);

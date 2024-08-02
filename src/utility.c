@@ -65,11 +65,12 @@ void assign_mantissa_bit(uint32_t* mantissa, unsigned position, Binary value) {
   assign_bit(&mantissa[part_index], part_position, value);
 }
 
-int mantissa_addition(uint32_t* term_1, uint32_t* term_2, uint32_t* result) {
+int add_mantissas(uint32_t* term_1, uint32_t* term_2, uint32_t* result,
+                  int size) {
   int overflow = 0;
   uint32_t carry = 0;
   uint64_t part_sum;
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < size; i++) {
     part_sum = (uint64_t)term_1[i] + term_2[i] + carry;
     result[i] = (uint32_t)part_sum;
     carry = part_sum >> 32;
@@ -112,11 +113,11 @@ int mantissa_subtraction(uint32_t* minuend, uint32_t* subtrahend,
     uint32_t compliment[3];
     uint32_t one[3] = {1, 0, 0};
     mantissa_bitflip(subtrahend, compliment);
-    mantissa_addition(compliment, one, compliment);
-    is_negative = !mantissa_addition(minuend, compliment, result);
+    add_mantissas(compliment, one, compliment, 3);
+    is_negative = !add_mantissas(minuend, compliment, result, 3);
     if (is_negative) {
       mantissa_bitflip(result, result);
-      mantissa_addition(result, one, result);
+      add_mantissas(result, one, result, 3);
     }
   }
   return is_negative;
