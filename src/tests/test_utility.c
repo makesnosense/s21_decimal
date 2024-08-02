@@ -437,11 +437,11 @@ START_TEST(shift_decimal_test) {
   s21_decimal input_decimal = {
       {0x0C8BBE0C, 0x4DD5DBB5, 0x00005751, 0b00000000000101110000000000000000}};
 
-  debug_print_decimal_as_binary_in_one_line(input_decimal);
+  // debug_print_decimal_as_binary_in_one_line(input_decimal);
 
   shift_decimal_right(&input_decimal);
 
-  debug_print_decimal_as_binary_in_one_line(input_decimal);
+  // debug_print_decimal_as_binary_in_one_line(input_decimal);
   // uint32_t num_1[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
   // uint32_t num_2[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
   // uint32_t res[6] = {0};

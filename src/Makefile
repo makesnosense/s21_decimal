@@ -10,10 +10,9 @@ ifeq ($(shell uname),Darwin)
 	GCOVR_THEME = --html-theme github.dark-green
 else
 	DISTRO := $(shell cat /etc/os-release | grep ^ID= | cut -d'=' -f2 | tr -d '"')
-endif
-
-ifneq ($(DISTRO),arch)
-TESTFLAGS+= -lsubunit 
+	ifneq ($(DISTRO),arch)
+		TESTFLAGS+= -lsubunit 
+	endif
 endif
 
 
