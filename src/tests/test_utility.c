@@ -42,8 +42,8 @@ START_TEST(long_mantissa_addition_test) {
                         0xE4000000, 0xDCC80CD2, 0x52B7D2};
   uint32_t sum[6] = {0b0, 0b0, 0b0, 0b0, 0b0, 0b0};
   // 15845632502852867518708790071584563250285286751870879006
-  uint32_t expected[6] = {0x41EB851E, 0x116685C9, 0x0E2AD362,
-                          0xC8000000, 0xB99019A5, 0xA56FA5};
+  uint32_t expected_sum[6] = {0x41EB851E, 0x116685C9, 0x0E2AD362,
+                              0xC8000000, 0xB99019A5, 0xA56FA5};
 
   int overflow = add_long_mantissas(term_1, term_2, sum);
   ck_assert_mem_eq(sum, expected, sizeof(uint32_t) * 6);
@@ -526,6 +526,7 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, set_scale_test);
   tcase_add_test(tc_core, multiply_test);
   tcase_add_test(tc_core, shift_decimal_test);
+
 
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);
