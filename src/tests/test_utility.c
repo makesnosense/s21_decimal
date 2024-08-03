@@ -71,6 +71,26 @@ START_TEST(test_long_mantissas_addition_1) {
 }
 END_TEST
 
+START_TEST(test_long_mantissas_addition_2) {
+  // 945734349573434345343495873493453475983459384593457
+  uint32_t term_1[6] = {0x86A88C31, 0x6E8B1578, 0xD3EFA905,
+                        0x6804060D, 0x1902EF57, 0x00000287};
+  // 945734349573434345343495873493453475983459384593457
+  uint32_t term_2[6] = {0x86A88C31, 0x6E8B1578, 0xD3EFA905,
+                        0x6804060D, 0x1902EF57, 0x00000287};
+  // 1891468699146868690686991746986906951966918769186914
+  uint32_t expected_sum[6] = {0x0D511862, 0xDD162AF1, 0xA7DF520A,
+                              0xD0080C1B, 0x3205DEAE, 0x0000050E};
+
+  uint32_t sum[6] = {0b0, 0b0, 0b0, 0b0, 0b0, 0b0};
+
+  int overflow = add_long_mantissas(term_1, term_2, sum);
+
+  ck_assert_mem_eq(sum, expected_sum, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(overflow, 0);
+}
+END_TEST
+
 START_TEST(test_long_mantissas_substraction_1) {
   // 333328162514264337593543950334
   uint32_t minuend[6] = {0x13FFFFFE, 0x6DA74941, 0x350A97F9,
@@ -88,6 +108,26 @@ START_TEST(test_long_mantissas_substraction_1) {
 
   ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 6);
   ck_assert_int_eq(is_negative, 1);
+}
+END_TEST
+
+START_TEST(test_long_mantissas_substraction_2) {
+  // 1231243453434598789456645745683034558034321234564564354
+  uint32_t minuend[6] = {0x82B14582, 0x5456BA68, 0xFECEDC81,
+                         0xB4D51AA3, 0xF510409D, 0x000CDAD2};
+  // 85437594753753753975345645675675767000097534985495689
+  uint32_t subtrahend[6] = {0xF1A5E489, 0xC25EEA0B, 0x27E14430,
+                            0x9D6B1AD4, 0xC64A5E8B, 0x0000E45A};
+  // 1145805858680845035481300100007358791034223699579068665
+  uint32_t expected_result[6] = {0x910B60F9, 0x91F7D05C, 0xD6ED9850,
+                                 0x1769FFCF, 0x2EC5E212, 0x000BF678};
+
+  uint32_t result[6] = {0b0, 0b0, 0b0, 0b0, 0b0, 0b0};
+
+  int is_negative = subtract_long_mantissas(minuend, subtrahend, result);
+
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(is_negative, 0);
 }
 END_TEST
 
@@ -567,7 +607,10 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, multiply_test);
   tcase_add_test(tc_core, shift_decimal_test);
   tcase_add_test(tc_core, test_long_mantissas_addition_1);
+  tcase_add_test(tc_core, test_long_mantissas_addition_2);
+
   tcase_add_test(tc_core, test_long_mantissas_substraction_1);
+  tcase_add_test(tc_core, test_long_mantissas_substraction_2);
 
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);
