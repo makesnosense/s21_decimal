@@ -33,7 +33,7 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
     get_mantissa_from_decimal(mantissa_value_1, &value_1);
     get_mantissa_from_decimal(mantissa_value_2, &value_2);
 
-    mantissa_subtraction(mantissa_value_1, mantissa_value_2, mantissa_result);
+    subtract_mantissas(mantissa_value_1, mantissa_value_2, mantissa_result);
 
     write_in_mantissa_to_decimal(mantissa_result, result);
 
