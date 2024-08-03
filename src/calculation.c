@@ -16,10 +16,10 @@ int s21_floor(s21_decimal value, s21_decimal* result) {
       int is_negative = get_sign(value);
       uint32_t* scale_divisor = get_mantissa_with_power_of_ten(scale);
       uint32_t remainder[3];
-      mantissa_division(value.bits, scale_divisor, result->bits, remainder);
+      divide_mantissas(value.bits, scale_divisor, result->bits, remainder);
       if (is_negative && !zero_check_mantissa(remainder)) {
         uint32_t* one = get_mantissa_with_power_of_ten(0);
-        add_mantissas(result->bits, one, result->bits, 3);
+        add_mantissas(result->bits, one, result->bits);
       }
     }
     result->bits[3] = value.bits[3];
@@ -97,7 +97,7 @@ int s21_round(s21_decimal value, s21_decimal* result) {
       get_mantissa_from_decimal(result_mantissa, result);
 
       add_mantissas(result_mantissa, mantissa_containing_one,
-                    result_mantissa_added_one, 3);
+                    result_mantissa_added_one);
       write_in_mantissa_to_decimal(result_mantissa_added_one, result);
     }
 

@@ -45,9 +45,9 @@ void* s21_memset(void* str, int c, int n) {
 
 int determine_bit_part_and_position(int position_in_mantissa,
                                     int* bits_array_index) {
-  *bits_array_index = position_in_mantissa / (sizeof(uint32_t) * BYTE_SIZE);
+  *bits_array_index = position_in_mantissa / PART_SIZE;
 
-  int position_in_part = position_in_mantissa % (sizeof(uint32_t) * BYTE_SIZE);
+  int position_in_part = position_in_mantissa % PART_SIZE;
   return position_in_part;
 }
 
@@ -65,8 +65,8 @@ void assign_mantissa_bit(uint32_t* mantissa, unsigned position, Binary value) {
   assign_bit(&mantissa[part_index], part_position, value);
 }
 
-int add_mantissas(uint32_t* term_1, uint32_t* term_2, uint32_t* result,
-                  int size) {
+int _add_mantissas(uint32_t* term_1, uint32_t* term_2, uint32_t* result,
+                   int size) {
   int overflow = 0;
   uint32_t carry = 0;
   uint64_t part_sum;
@@ -81,15 +81,15 @@ int add_mantissas(uint32_t* term_1, uint32_t* term_2, uint32_t* result,
   return overflow;
 }
 
-void mantissa_bitflip(uint32_t* number, uint32_t* result) {
-  for (int i = 0; i < 3; i++) {
-    result[i] = ~number[i];
+void _bitflip_mantissa(uint32_t* mantissa, uint32_t* result, int size) {
+  for (int i = 0; i < size; i++) {
+    result[i] = ~mantissa[i];
   }
 }
 
-bool zero_check_mantissa(uint32_t* mantissa) {
+bool _zero_check_mantissa(uint32_t* mantissa, int size) {
   bool is_zero = true;
-  for (int i = 0; i < 3 && is_zero == true; i++) {
+  for (int i = 0; i < size && is_zero == true; i++) {
     if (mantissa[i] != 0) {
       is_zero = false;
     }
@@ -97,38 +97,39 @@ bool zero_check_mantissa(uint32_t* mantissa) {
   return is_zero;
 }
 
-void copy_mantissa(uint32_t* dest, uint32_t* src) {
-  for (int i = 0; i < 3; i++) {
+void _copy_mantissa(uint32_t* dest, uint32_t* src, int size) {
+  for (int i = 0; i < size; i++) {
     dest[i] = src[i];
   }
 }
 
-int mantissa_subtraction(uint32_t* minuend, uint32_t* subtrahend,
-                         uint32_t* result) {
+int _subtract_mantissas(uint32_t* minuend, uint32_t* subtrahend,
+                        uint32_t* result, int size) {
   int is_negative = 0;
-  if (zero_check_mantissa(subtrahend)) {
+  if (_zero_check_mantissa(subtrahend, size)) {
     // memmove instead of memcpy to handle same minuend and result case
-    memmove(result, minuend, MANTISSA_SIZE / BYTE_SIZE);
+    memmove(result, minuend, PART_SIZE * size);
   } else {
-    uint32_t compliment[3];
-    uint32_t one[3] = {1, 0, 0};
-    mantissa_bitflip(subtrahend, compliment);
-    add_mantissas(compliment, one, compliment, 3);
-    is_negative = !add_mantissas(minuend, compliment, result, 3);
+    uint32_t compliment[6] = {0, 0, 0, 0, 0, 0};
+    uint32_t one[6] = {1, 0, 0, 0, 0, 0};
+    _bitflip_mantissa(subtrahend, compliment, size);
+    _add_mantissas(compliment, one, compliment, size);
+    is_negative = !_add_mantissas(minuend, compliment, result, size);
     if (is_negative) {
-      mantissa_bitflip(result, result);
-      add_mantissas(result, one, result, 3);
+      _bitflip_mantissa(result, result, size);
+      _add_mantissas(result, one, result, size);
     }
   }
   return is_negative;
 }
 
-void shift_mantissa_left(uint32_t* mantissa, unsigned shift) {
+void _shift_mantissa_left(uint32_t* mantissa, unsigned shift, int size) {
   int bit_value;
-  int original_position = MANTISSA_SIZE - (shift + 1);
-  int shifted_position = MANTISSA_SIZE - 1;
+  int mantissa_bits = PART_SIZE * size;
+  int original_position = mantissa_bits - (shift + 1);
+  int shifted_position = mantissa_bits - 1;
   while (original_position >= 0) {
-    if (shifted_position < MANTISSA_SIZE) {
+    if (shifted_position < mantissa_bits) {
       bit_value = get_mantissa_bit(mantissa, original_position);
       assign_mantissa_bit(mantissa, shifted_position, bit_value);
       original_position--;
@@ -141,9 +142,9 @@ void shift_mantissa_left(uint32_t* mantissa, unsigned shift) {
   }
 }
 
-int find_highest_mantissa_bit(uint32_t* mantissa) {
+int _find_highest_mantissa_bit(uint32_t* mantissa, int size) {
   int current_bit = 0;
-  int part_index = 3 - 1;
+  int part_index = size - 1;
   int part_position;
   while (part_index >= 0) {
     part_position = PART_SIZE - 1;
@@ -168,9 +169,10 @@ int find_highest_mantissa_bit(uint32_t* mantissa) {
   return highest_bit;
 }
 
-int64_t compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2) {
+int64_t _compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
+                           int size) {
   int64_t diff = 0;
-  int i = 2;
+  int i = size - 1;
   while (diff == 0 && i >= 0) {
     // type conversion avoids overflow errors with large negative difference
     diff = (int64_t)mantissa_1[i] - mantissa_2[i];
@@ -180,24 +182,25 @@ int64_t compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2) {
 }
 
 // TODO: allow passing NULL pointer as remainder
-int mantissa_division(uint32_t* divident, uint32_t* divisor, uint32_t* result,
-                      uint32_t* remainder) {
+// TODO: refactor without copying (PART_SIZE * size) / BYTE_SIZE)
+int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
+                      uint32_t* remainder, int size) {
   int division_by_zero = 0;
-  if (zero_check_mantissa(divisor)) {
+  if (_zero_check_mantissa(divisor, size)) {
     division_by_zero = 1;
   } else {
-    int divident_bits = find_highest_mantissa_bit(divident);
-    int divisor_bits = find_highest_mantissa_bit(divisor);
-    memcpy(remainder, divident, MANTISSA_SIZE / BYTE_SIZE);
-    memset(result, 0, MANTISSA_SIZE / BYTE_SIZE);
+    int divident_bits = _find_highest_mantissa_bit(divident, size);
+    int divisor_bits = _find_highest_mantissa_bit(divisor, size);
+    memcpy(remainder, divident, (PART_SIZE * size) / BYTE_SIZE);
+    memset(result, 0, (PART_SIZE * size) / BYTE_SIZE);
     int shift = divident_bits - divisor_bits;
-    uint32_t shifted_divisor[3];
+    uint32_t shifted_divisor[6] = {0, 0, 0, 0, 0, 0};
     while (shift >= 0) {
-      memcpy(shifted_divisor, divisor, MANTISSA_SIZE / BYTE_SIZE);
-      shift_mantissa_left(shifted_divisor, shift);
-      if (compare_mantissas(remainder, shifted_divisor) >= 0) {
+      memcpy(shifted_divisor, divisor, (PART_SIZE * size) / BYTE_SIZE);
+      _shift_mantissa_left(shifted_divisor, shift, size);
+      if (_compare_mantissas(remainder, shifted_divisor, size) >= 0) {
         assign_mantissa_bit(result, shift, ONE);
-        mantissa_subtraction(remainder, shifted_divisor, remainder);
+        _subtract_mantissas(remainder, shifted_divisor, remainder, size);
       }
       shift--;
     }
