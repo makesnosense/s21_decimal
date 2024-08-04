@@ -261,7 +261,7 @@ void shift_decimal_right(s21_decimal* d) {
 
 void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
                         uint32_t* result) {
-  s21_memset(result, 0, sizeof(uint32_t) * 6);
+  s21_memset(result, 0, sizeof(uint32_t) * 3);
 
   for (int i = 0; i < 3; i++) {
     uint64_t carry = 0;
