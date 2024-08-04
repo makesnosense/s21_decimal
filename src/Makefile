@@ -31,7 +31,7 @@ DECIMAL_LIB = s21_decimal.a
 all: $(DECIMAL_LIB)
 
 test: build_tests
-	./run_tests
+	@./run_tests
 
 gcov_report: CFLAGS += $(COVERAGE_FLAGS)
 gcov_report: clean build_tests test
@@ -41,14 +41,14 @@ gcov_report: clean build_tests test
 	rm -f *.gcda *.gcno *.gcov
 
 build_tests: $(TESTS_OBJ_FILES) $(DECIMAL_LIB)
-	$(CC) $(CFLAGS) $(TESTS_OBJ_FILES) $(DECIMAL_LIB) -o run_tests $(TESTFLAGS)
+	@$(CC) $(CFLAGS) $(TESTS_OBJ_FILES) $(DECIMAL_LIB) -o run_tests $(TESTFLAGS)
 
 $(TESTS_OBJ_DIR)/%.o: $(TESTS_DIR)/%.c
 	@mkdir -p $(TESTS_OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(DECIMAL_LIB): $(DECIMAL_OBJ_FILES)
-	ar rcs $@ $^ 
+	@ar rcs $@ $^ 
 
 $(DECIMAL_OBJ_DIR)/%.o: %.c
 	@mkdir -p $(DECIMAL_OBJ_DIR)
