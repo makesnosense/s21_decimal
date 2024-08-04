@@ -131,6 +131,46 @@ START_TEST(test_long_mantissas_substraction_2) {
 }
 END_TEST
 
+START_TEST(test_long_mantissas_substraction_3) {
+  // 1231243453434598789456645745683034558034321234564564354
+  uint32_t minuend[6] = {0x82B14582, 0x5456BA68, 0xFECEDC81,
+                         0xB4D51AA3, 0xF510409D, 0x000CDAD2};
+  // 0
+  uint32_t subtrahend[6] = {0x00000000, 0x00000000, 0x00000000,
+                            0x00000000, 0x00000000, 0x00000000};
+  // 1231243453434598789456645745683034558034321234564564354
+  uint32_t expected_result[6] = {0x82B14582, 0x5456BA68, 0xFECEDC81,
+                                 0xB4D51AA3, 0xF510409D, 0x000CDAD2};
+
+  uint32_t result[6] = {0b0, 0b0, 0b0, 0b0, 0b0, 0b0};
+
+  int is_negative = subtract_long_mantissas(minuend, subtrahend, result);
+
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(is_negative, 0);
+}
+END_TEST
+
+START_TEST(test_long_mantissas_substraction_4) {
+  // 0
+  uint32_t minuend[6] = {0x00000000, 0x00000000, 0x00000000,
+                         0x00000000, 0x00000000, 0x00000000};
+  // 1231243453434598789456645745683034558034321234564564354
+  uint32_t subtrahend[6] = {0x82B14582, 0x5456BA68, 0xFECEDC81,
+                            0xB4D51AA3, 0xF510409D, 0x000CDAD2};
+  // -1231243453434598789456645745683034558034321234564564354
+  uint32_t expected_result[6] = {0x82B14582, 0x5456BA68, 0xFECEDC81,
+                                 0xB4D51AA3, 0xF510409D, 0x000CDAD2};
+
+  uint32_t result[6] = {0b0, 0b0, 0b0, 0b0, 0b0, 0b0};
+
+  int is_negative = subtract_long_mantissas(minuend, subtrahend, result);
+
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(is_negative, 1);
+}
+END_TEST
+
 START_TEST(mantissa_bitflip_test) {
   uint32_t number_1[3] = {0b00000000000000000000000000000000,
                           0b11111111111111111111111111111111,
@@ -621,6 +661,8 @@ Suite* make_utility_suite() {
 
   tcase_add_test(tc_core, test_long_mantissas_substraction_1);
   tcase_add_test(tc_core, test_long_mantissas_substraction_2);
+  tcase_add_test(tc_core, test_long_mantissas_substraction_3);
+  tcase_add_test(tc_core, test_long_mantissas_substraction_4);
 
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);
