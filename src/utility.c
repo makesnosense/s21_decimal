@@ -1,5 +1,7 @@
 #include "utility.h"
 
+#include "debug_funcs.h"
+
 int get_bit(uint32_t input_uint, int position) {
   return (input_uint >> position) & 1;
 }
@@ -108,7 +110,8 @@ int _subtract_mantissas(uint32_t* minuend, uint32_t* subtrahend,
   int is_negative = 0;
   if (_zero_check_mantissa(subtrahend, size)) {
     // memmove instead of memcpy to handle same minuend and result case
-    memmove(result, minuend, PART_SIZE * size);
+    _copy_mantissa(result, minuend, size);
+    // memmove(result, minuend, (PART_SIZE * size) / BYTE_SIZE);
   } else {
     uint32_t compliment[6] = {0, 0, 0, 0, 0, 0};
     uint32_t one[6] = {1, 0, 0, 0, 0, 0};

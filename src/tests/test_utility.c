@@ -177,11 +177,21 @@ END_TEST
 START_TEST(mantissa_zero_subtraction_test) {
   uint32_t minuend[3] = {0b00011101000100010101011010100000,
                          0b110010101100101001100001101110, 0b0};
+
   uint32_t subtrahend[3] = {0, 0, 0};
   uint32_t result[3] = {0, 0, 0};
-  int is_negaive = subtract_mantissas(minuend, subtrahend, result);
+  // debug_print_mantissa_as_binary(minuend, 3);
+  // debug_print_mantissa_as_binary(subtrahend, 3);
+  // debug_print_mantissa_as_binary(result, 3);
+
+  int is_negative = subtract_mantissas(minuend, subtrahend, result);
+  putchar('\n');
+  // debug_print_mantissa_as_binary(minuend, 3);
+  // debug_print_mantissa_as_binary(subtrahend, 3);
+  // debug_print_mantissa_as_binary(result, 3);
+
   ck_assert_mem_eq(result, minuend, sizeof(uint32_t) * 3);
-  ck_assert_int_eq(is_negaive, 0);
+  ck_assert_int_eq(is_negative, 0);
 }
 END_TEST
 
@@ -190,9 +200,9 @@ START_TEST(mantissa_subtraction_test_1) {
   uint32_t subtrahend[3] = {10, 0, 0};
   uint32_t result[3] = {0, 0, 0};
   uint32_t expected[3] = {7, 0, 0};
-  int is_negaive = subtract_mantissas(minuend, subtrahend, result);
+  int is_negative = subtract_mantissas(minuend, subtrahend, result);
   ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
-  ck_assert_int_eq(is_negaive, 1);
+  ck_assert_int_eq(is_negative, 1);
 }
 END_TEST
 
@@ -223,9 +233,9 @@ START_TEST(mantissa_subtraction_test_4) {
   uint32_t subtrahend[3] = {0x3U, 0x0U, 0x0U};
   uint32_t result[3] = {0, 0, 0};
   uint32_t expected[3] = {0xFFFFFFFCU, 0x3FFFFU, 0x0U};
-  int is_negaive = subtract_mantissas(minuend, subtrahend, result);
+  int is_negative = subtract_mantissas(minuend, subtrahend, result);
   ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
-  ck_assert_int_eq(is_negaive, 0);
+  ck_assert_int_eq(is_negative, 0);
 }
 END_TEST
 
@@ -260,9 +270,9 @@ START_TEST(mantissa_subtraction_test_7) {
   uint32_t result[3] = {0, 0, 0};
   // 7833453813217289406188093439
   uint32_t expected[3] = {0x0FFFFFFF, 0x1E250221, 0x194FAE5E};
-  int is_negaive = subtract_mantissas(minuend, subtrahend, result);
+  int is_negative = subtract_mantissas(minuend, subtrahend, result);
   ck_assert_mem_eq(result, expected, sizeof(uint32_t) * 3);
-  ck_assert_int_eq(is_negaive, 0);
+  ck_assert_int_eq(is_negative, 0);
 }
 END_TEST
 
