@@ -225,7 +225,6 @@ START_TEST(mantissa_zero_subtraction_test) {
   // debug_print_mantissa_as_binary(result, 3);
 
   int is_negative = subtract_mantissas(minuend, subtrahend, result);
-  putchar('\n');
   // debug_print_mantissa_as_binary(minuend, 3);
   // debug_print_mantissa_as_binary(subtrahend, 3);
   // debug_print_mantissa_as_binary(result, 3);
@@ -532,7 +531,6 @@ START_TEST(multiply_test) {
   uint32_t num_1[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
   uint32_t num_2[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
   uint32_t res[6] = {0};
-  // debug_print_decimal_as_binary(input_decimal);
 
   multiply_mantissas(num_1, num_2, res);
 

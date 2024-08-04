@@ -9,3 +9,4 @@ run_tests
 .DS_Store
 .ipynb_checkpoints
 *.txt
+src/tests/tests_object_files
