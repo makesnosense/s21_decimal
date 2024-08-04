@@ -14,10 +14,10 @@ s21_two_decimals sort_decimals_ascending_by_scale(s21_decimal decimal_1,
 int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2);
 int get_scale_difference_from_decimals(s21_decimal decimal_1,
                                        s21_decimal decimal_2);
-void casting_decimals_to_normalized_mantissa(s21_decimal decimal_1,
-                                             uint32_t* normalized_mantissa_1,
-                                             s21_decimal decimal_2,
-                                             uint32_t* normalized_mantissa_2);
+void cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
+                                           uint32_t* normalized_mantissa_1,
+                                           s21_decimal decimal_2,
+                                           uint32_t* normalized_mantissa_2);
 // void invert_result_due_to_sign(int is_negative, bool* result);
 void invert_result_due_to_decimal_signs(bool both_are_negative, bool* result);
 // 00000000000000010000000000000000

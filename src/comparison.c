@@ -21,8 +21,8 @@ int s21_is_less(s21_decimal decimal_1, s21_decimal decimal_2) {
   } else if (decimal_1_is_negative == true && decimal_2_is_negative == false) {
     decimal_is_less = true;
   } else {
-    casting_decimals_to_normalized_mantissa(decimal_1, normalized_mantissa_1,
-                                            decimal_2, normalized_mantissa_2);
+    cast_decimals_to_normalized_mantissas(decimal_1, normalized_mantissa_1,
+                                          decimal_2, normalized_mantissa_2);
 
     bool check = true;
     for (int i = 5; i >= 0 && check == true; i--) {
@@ -58,8 +58,8 @@ int s21_is_less_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   } else if (decimal_1_is_negative == true && decimal_2_is_negative == false) {
     decimal_is_less_or_equal = true;
   } else {
-    casting_decimals_to_normalized_mantissa(decimal_1, normalized_mantissa_1,
-                                            decimal_2, normalized_mantissa_2);
+    cast_decimals_to_normalized_mantissas(decimal_1, normalized_mantissa_1,
+                                          decimal_2, normalized_mantissa_2);
 
     bool check = true;
     for (int i = 5; i >= 0 && check == true; i--) {
@@ -95,8 +95,8 @@ int s21_is_greater(s21_decimal decimal_1, s21_decimal decimal_2) {
   } else if (decimal_1_is_negative == true && decimal_2_is_negative == false) {
     decimal_is_greater = false;
   } else {
-    casting_decimals_to_normalized_mantissa(decimal_1, normalized_mantissa_1,
-                                            decimal_2, normalized_mantissa_2);
+    cast_decimals_to_normalized_mantissas(decimal_1, normalized_mantissa_1,
+                                          decimal_2, normalized_mantissa_2);
 
     bool check = true;
     for (int i = 5; i >= 0 && check == true; i--) {
@@ -132,8 +132,8 @@ int s21_is_greater_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   } else if (decimal_1_is_negative == true && decimal_2_is_negative == false) {
     decimal_is_greater_or_equal = false;
   } else {
-    casting_decimals_to_normalized_mantissa(decimal_1, normalized_mantissa_1,
-                                            decimal_2, normalized_mantissa_2);
+    cast_decimals_to_normalized_mantissas(decimal_1, normalized_mantissa_1,
+                                          decimal_2, normalized_mantissa_2);
 
     bool check = true;
     for (int i = 5; i >= 0 && check == true; i--) {
@@ -161,8 +161,8 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   } else if (get_sign(decimal_1) != get_sign(decimal_2)) {
     decimals_are_equal = false;
   } else {
-    casting_decimals_to_normalized_mantissa(decimal_1, normalized_mantissa_1,
-                                            decimal_2, normalized_mantissa_2);
+    cast_decimals_to_normalized_mantissas(decimal_1, normalized_mantissa_1,
+                                          decimal_2, normalized_mantissa_2);
     for (int i = 0; i < 6 && decimals_are_equal == true; i++) {
       if (normalized_mantissa_1[i] != normalized_mantissa_2[i]) {
         decimals_are_equal = false;
@@ -181,8 +181,8 @@ int s21_is_not_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   } else if (get_sign(decimal_1) != get_sign(decimal_2)) {
     decimals_are_equal = false;
   } else {
-    casting_decimals_to_normalized_mantissa(decimal_1, normalized_mantissa_1,
-                                            decimal_2, normalized_mantissa_2);
+    cast_decimals_to_normalized_mantissas(decimal_1, normalized_mantissa_1,
+                                          decimal_2, normalized_mantissa_2);
 
     for (int i = 5; i >= 0 && decimals_are_equal == true; i--) {
       if (normalized_mantissa_1[i] != normalized_mantissa_2[i]) {
@@ -193,10 +193,10 @@ int s21_is_not_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   return (ComparisonResult)!decimals_are_equal;
 }
 
-void casting_decimals_to_normalized_mantissa(s21_decimal decimal_1,
-                                             uint32_t* normalized_mantissa_1,
-                                             s21_decimal decimal_2,
-                                             uint32_t* normalized_mantissa_2) {
+void cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
+                                           uint32_t* normalized_mantissa_1,
+                                           s21_decimal decimal_2,
+                                           uint32_t* normalized_mantissa_2) {
   int scale_difference =
       get_scale_difference_from_decimals(decimal_1, decimal_2);
 
