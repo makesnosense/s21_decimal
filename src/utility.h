@@ -35,19 +35,7 @@ void reset_decimal(s21_decimal* input_decimal);
 int determine_bit_part_and_position(int mantissa_position, int* part_index);
 int get_mantissa_bit(uint32_t* mantissa, int position);
 void assign_mantissa_bit(uint32_t* mantissa, unsigned position, Binary value);
-int _add_mantissas(uint32_t* term_1, uint32_t* term_2, uint32_t* result,
-                   int size);
-void _bitflip_mantissa(uint32_t* number, uint32_t* result, int size);
-bool _zero_check_mantissa(uint32_t* mantissa, int size);
-void _copy_mantissa(uint32_t* dest, uint32_t* src, int size);
-int _subtract_mantissas(uint32_t* minuend, uint32_t* subtrahend,
-                        uint32_t* result, int size);
-void _shift_mantissa_left(uint32_t* mantissa, unsigned shift, int size);
-int _find_highest_mantissa_bit(uint32_t* mantissa, int size);
-int64_t _compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
-                           int size);
-int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
-                      uint32_t* remainder, int size);
+
 int get_scale(uint32_t service_part);
 void set_scale(uint32_t* service_part, int scale);
 void* s21_memset(void* str, int c, int n);
@@ -61,6 +49,26 @@ void get_mantissa_from_decimal(uint32_t* mantissa, s21_decimal* source_decimal);
 void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6);
 uint32_t* get_mantissa_with_power_of_ten(int power);
 bool is_zero_decimal(s21_decimal input_decimal);
+void cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
+                                           uint32_t* normalized_mantissa_1,
+                                           s21_decimal decimal_2,
+                                           uint32_t* normalized_mantissa_2);
+int get_scale_difference_from_decimals(s21_decimal decimal_1,
+                                       s21_decimal decimal_2);
+
+int _add_mantissas(uint32_t* term_1, uint32_t* term_2, uint32_t* result,
+                   int size);
+void _bitflip_mantissa(uint32_t* number, uint32_t* result, int size);
+bool _zero_check_mantissa(uint32_t* mantissa, int size);
+void _copy_mantissa(uint32_t* dest, uint32_t* src, int size);
+int _subtract_mantissas(uint32_t* minuend, uint32_t* subtrahend,
+                        uint32_t* result, int size);
+void _shift_mantissa_left(uint32_t* mantissa, unsigned shift, int size);
+int _find_highest_mantissa_bit(uint32_t* mantissa, int size);
+int64_t _compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
+                           int size);
+int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
+                      uint32_t* remainder, int size);
 
 #define add_mantissas(term_1, term_2, result) \
   _add_mantissas(term_1, term_2, result, MANTISSA_PARTS)

@@ -17,36 +17,43 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
 
   ArithmeticResult result_sub = OK;
-  uint32_t mantissa_value_1[3] = {0};
-  uint32_t mantissa_value_2[3] = {0};
-  uint32_t mantissa_result[6] = {0};
-  int result_scale =
-      get_scale(value_1.bits[3]) +
-      get_scale(value_2.bits[3]);  // тут результат может быть больше 28
+  // uint32_t mantissa_value_1[3] = {0};
+  // uint32_t mantissa_value_2[3] = {0};
+  // uint32_t mantissa_result[6] = {0};
+  // int result_scale =
+  //     get_scale(value_1.bits[3]) +
+  //     get_scale(value_2.bits[3]);  // тут результат может быть больше 28
 
-  if (is_zero_decimal(value_2) == true) {
-    result_sub = DIVISION_BY_ZERO;
-  } else {
-    bool sine_decimal_1 = get_sign(value_1);
-    bool sine_decimal_2 = get_sign(value_2);
+  // bool sine_decimal_1 = get_sign(value_1);
+  // bool sine_decimal_2 = get_sign(value_2);
 
-    get_mantissa_from_decimal(mantissa_value_1, &value_1);
-    get_mantissa_from_decimal(mantissa_value_2, &value_2);
+  uint32_t minuend_normalized_long_mantissa[6] = {0};
+  uint32_t subtrahend_normalized_long_mantissa[6] = {0};
+  uint32_t result_long_mantissa[6] = {0};
 
-    subtract_mantissas(mantissa_value_1, mantissa_value_2, mantissa_result);
+  cast_decimals_to_normalized_mantissas(
+      value_1, minuend_normalized_long_mantissa, value_2,
+      subtrahend_normalized_long_mantissa);
 
-    write_in_mantissa_to_decimal(mantissa_result, result);
+  // get_mantissa_from_decimal(mantissa_value_1, &value_1);
+  // get_mantissa_from_decimal(mantissa_value_2, &value_2);
 
-    set_scale(&result->bits[3], result_scale);
-    if (sine_decimal_1 == true && sine_decimal_2 == true) {
-      set_sign(result, PLUS);
-    } else if ((sine_decimal_1 == false && sine_decimal_2 == true) ||
-               (sine_decimal_1 == true && sine_decimal_2 == false)) {
-      set_sign(result, MINUS);
-    } else {
-      set_sign(result, PLUS);
-    }
-  }
+  subtract_mantissas(minuend_normalized_long_mantissa,
+                     subtrahend_normalized_long_mantissa, result_long_mantissa);
+
+  write_in_mantissa_to_decimal(result_long_mantissa, result);
+
+  set_scale(&result->bits[3], 0);
+
+  // set_scale(&result->bits[3], result_scale);
+  // if (sine_decimal_1 == true && sine_decimal_2 == true) {
+  //   set_sign(result, PLUS);
+  // } else if ((sine_decimal_1 == false && sine_decimal_2 == true) ||
+  //            (sine_decimal_1 == true && sine_decimal_2 == false)) {
+  //   set_sign(result, MINUS);
+  // } else {
+  //   set_sign(result, PLUS);
+  // }
   return result_sub;
 }
 

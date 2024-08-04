@@ -278,6 +278,45 @@ void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
   }
 }
 
+int get_scale_difference_from_decimals(s21_decimal decimal_1,
+                                       s21_decimal decimal_2) {
+  int decimal_1_scale = get_scale(decimal_1.bits[3]);
+  int decimal_2_scale = get_scale(decimal_2.bits[3]);
+  int result = 0;
+  if (decimal_1_scale > decimal_2_scale) {
+    result = decimal_1_scale - decimal_2_scale;
+  } else if (decimal_1_scale < decimal_2_scale) {
+    result = decimal_2_scale - decimal_1_scale;
+  }
+  return result;
+}
+
+void cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
+                                           uint32_t* normalized_mantissa_1,
+                                           s21_decimal decimal_2,
+                                           uint32_t* normalized_mantissa_2) {
+  int scale_difference =
+      get_scale_difference_from_decimals(decimal_1, decimal_2);
+
+  if (scale_difference == 0) {
+    mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
+    mantissa3_to_mantissa6(decimal_2.bits, normalized_mantissa_2);
+  } else if (get_scale(decimal_1.bits[3]) > get_scale(decimal_2.bits[3])) {
+    multiply_mantissas(decimal_2.bits,
+                       get_mantissa_with_power_of_ten(scale_difference),
+                       normalized_mantissa_2);
+
+    mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
+
+  } else if (get_scale(decimal_1.bits[3]) < get_scale(decimal_2.bits[3])) {
+    multiply_mantissas(decimal_1.bits,
+                       get_mantissa_with_power_of_ten(scale_difference),
+                       normalized_mantissa_1);
+
+    mantissa3_to_mantissa6(decimal_2.bits, normalized_mantissa_2);
+  }
+}
+
 bool is_zero_decimal(s21_decimal input_decimal) {
   bool is_zero = true;
   for (int i = 0; i < 3 && is_zero == true; i++) {
