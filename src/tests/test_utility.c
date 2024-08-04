@@ -477,7 +477,7 @@ START_TEST(mantissa_division_test_6) {
 }
 
 START_TEST(get_scale_test) {
-  uint32_t scales[] = {
+  uint32_t service_parts[] = {
       0b00000000000000000000000000000000, 0b00000000000000010000000000000000,
       0b00000000000000100000000000000000, 0b00000000000000110000000000000000,
       0b00000000000001000000000000000000, 0b00000000000001010000000000000000,
@@ -496,8 +496,7 @@ START_TEST(get_scale_test) {
 
   // printf("\n%d\n", get_scale(scales[1]));
   for (int i = 0; i < 29; i++) {
-    // printf("\n%d %d\n", i, get_scale(scales[i]));
-    ck_assert_int_eq(get_scale(scales[i]), i);
+    ck_assert_int_eq(get_scale(service_parts[i]), i);
   }
 
   //   s21_decimal input_decimal = {{0x123U, 0x123U, 0x123U,
@@ -511,6 +510,15 @@ START_TEST(get_scale_test) {
   // ck_assert_int_eq(scale_after, scale_to_set);
 }
 END_TEST
+
+START_TEST(test_set_scale) {
+  s21_decimal input_decimal = {
+      {0x123U, 0x123U, 0x123U, 0b00000000000000000000000000000000}};
+  for (int i = 0; i < 29; i++) {
+    set_scale(&input_decimal.bits[3], i);
+    ck_assert_int_eq(get_scale(input_decimal.bits[3]), i);
+  }
+}
 
 START_TEST(set_scale_test) {
   s21_decimal input_decimal = {
@@ -652,6 +660,8 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_3);
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_4);
   tcase_add_test(tc_core, set_scale_test);
+  tcase_add_test(tc_core, test_set_scale);
+
   tcase_add_test(tc_core, multiply_test);
   tcase_add_test(tc_core, shift_decimal_test);
   tcase_add_test(tc_core, test_long_mantissas_addition_1);
