@@ -31,19 +31,35 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   uint32_t subtrahend_normalized_long_mantissa[6] = {0};
   uint32_t result_long_mantissa[6] = {0};
 
-  cast_decimals_to_normalized_mantissas(
+  int bigger_scale = cast_decimals_to_normalized_mantissas(
       value_1, minuend_normalized_long_mantissa, value_2,
       subtrahend_normalized_long_mantissa);
-
+  int result_sign = PLUS;
   // get_mantissa_from_decimal(mantissa_value_1, &value_1);
   // get_mantissa_from_decimal(mantissa_value_2, &value_2);
 
-  subtract_mantissas(minuend_normalized_long_mantissa,
-                     subtrahend_normalized_long_mantissa, result_long_mantissa);
+  if (get_sign(value_2) == PLUS) {
+    result_sign = subtract_long_mantissas(minuend_normalized_long_mantissa,
+                                          subtrahend_normalized_long_mantissa,
+                                          result_long_mantissa);
 
+  } else {
+    add_long_mantissas(minuend_normalized_long_mantissa,
+                       subtrahend_normalized_long_mantissa,
+                       result_long_mantissa);
+    if (get_sign(value_1) == PLUS) {
+      result_sign = PLUS;
+    } else if (s21_is_less_or_equal(value_1, value_2)) {
+      result_sign = PLUS;
+    } else {
+      result_sign = MINUS;
+    }
+  }
   write_in_mantissa_to_decimal(result_long_mantissa, result);
 
-  set_scale(&result->bits[3], 0);
+  set_scale(&result->bits[3], bigger_scale);
+
+  set_sign(result, (Sign)result_sign);
 
   // set_scale(&result->bits[3], result_scale);
   // if (sine_decimal_1 == true && sine_decimal_2 == true) {

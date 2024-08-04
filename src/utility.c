@@ -291,30 +291,34 @@ int get_scale_difference_from_decimals(s21_decimal decimal_1,
   return result;
 }
 
-void cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
-                                           uint32_t* normalized_mantissa_1,
-                                           s21_decimal decimal_2,
-                                           uint32_t* normalized_mantissa_2) {
+int cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
+                                          uint32_t* normalized_mantissa_1,
+                                          s21_decimal decimal_2,
+                                          uint32_t* normalized_mantissa_2) {
+  int bigger_scale = 0;
   int scale_difference =
       get_scale_difference_from_decimals(decimal_1, decimal_2);
 
   if (scale_difference == 0) {
     mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
     mantissa3_to_mantissa6(decimal_2.bits, normalized_mantissa_2);
+    bigger_scale = get_scale(decimal_1.bits[3]);
   } else if (get_scale(decimal_1.bits[3]) > get_scale(decimal_2.bits[3])) {
     multiply_mantissas(decimal_2.bits,
                        get_mantissa_with_power_of_ten(scale_difference),
                        normalized_mantissa_2);
-
+    bigger_scale = get_scale(decimal_1.bits[3]);
     mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
 
   } else if (get_scale(decimal_1.bits[3]) < get_scale(decimal_2.bits[3])) {
     multiply_mantissas(decimal_1.bits,
                        get_mantissa_with_power_of_ten(scale_difference),
                        normalized_mantissa_1);
-
     mantissa3_to_mantissa6(decimal_2.bits, normalized_mantissa_2);
+    bigger_scale = get_scale(decimal_2.bits[3]);
   }
+
+  return bigger_scale;
 }
 
 bool is_zero_decimal(s21_decimal input_decimal) {

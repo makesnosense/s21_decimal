@@ -38,7 +38,9 @@ void debug_print_decimal_as_binary(s21_decimal input_decimal) {
 void debug_print_decimal_as_binary_in_one_line(s21_decimal input_decimal) {
   for (int i = 3; i >= 0; i--) {
     print_binary_without_spaces(input_decimal.bits[i]);
-    putchar(' ');
+    if (i == 3) {
+      putchar(' ');
+    }
   }
   putchar('\n');
 }

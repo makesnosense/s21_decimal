@@ -14,7 +14,8 @@ int main() {
                      make_is_equal_suite(), make_is_not_equal_suite(),
 
                      make_negate_suite(),
-                     //  make_sub_suite(), make_add_suite(),
+                     // make_sub_suite(),
+                     // make_add_suite(),
                      //  make_mul_suite(), make_div_suite(),
                      //  make_floor_suite(),
                      NULL};
