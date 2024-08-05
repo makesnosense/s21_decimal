@@ -17,15 +17,6 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
 
   ArithmeticResult result_sub = OK;
-  // uint32_t mantissa_value_1[3] = {0};
-  // uint32_t mantissa_value_2[3] = {0};
-  // uint32_t mantissa_result[6] = {0};
-  // int result_scale =
-  //     get_scale(value_1.bits[3]) +
-  //     get_scale(value_2.bits[3]);  // тут результат может быть больше 28
-
-  // bool sine_decimal_1 = get_sign(value_1);
-  // bool sine_decimal_2 = get_sign(value_2);
 
   uint32_t minuend_normalized_long_mantissa[6] = {0};
   uint32_t subtrahend_normalized_long_mantissa[6] = {0};
@@ -35,41 +26,42 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
       value_1, minuend_normalized_long_mantissa, value_2,
       subtrahend_normalized_long_mantissa);
   int result_sign = PLUS;
-  // get_mantissa_from_decimal(mantissa_value_1, &value_1);
-  // get_mantissa_from_decimal(mantissa_value_2, &value_2);
 
-  if (get_sign(value_2) == PLUS) {
+  // (a) - (b) = a - b
+
+  // (-a) - (b) =  - (a+b)
+
+  // (a) - (- b) = a + b
+
+  // (-a) - (-b) = b - a
+
+  if (get_sign(value_1) == PLUS && get_sign(value_2) == PLUS) {
     result_sign = subtract_long_mantissas(minuend_normalized_long_mantissa,
                                           subtrahend_normalized_long_mantissa,
                                           result_long_mantissa);
 
-  } else {
+  } else if (get_sign(value_1) == MINUS && get_sign(value_2) == PLUS) {
     add_long_mantissas(minuend_normalized_long_mantissa,
                        subtrahend_normalized_long_mantissa,
                        result_long_mantissa);
-    if (get_sign(value_1) == PLUS) {
-      result_sign = PLUS;
-    } else if (s21_is_less_or_equal(value_1, value_2)) {
-      result_sign = PLUS;
-    } else {
-      result_sign = MINUS;
-    }
+    result_sign = PLUS;
+  } else if (get_sign(value_1) == PLUS && get_sign(value_2) == MINUS) {
+    add_long_mantissas(minuend_normalized_long_mantissa,
+                       subtrahend_normalized_long_mantissa,
+                       result_long_mantissa);
+    result_sign = PLUS;
+  } else if (get_sign(value_1) == MINUS && get_sign(value_2) == MINUS) {
+    result_sign = subtract_long_mantissas(minuend_normalized_long_mantissa,
+                                          subtrahend_normalized_long_mantissa,
+                                          result_long_mantissa);
   }
+
   write_in_mantissa_to_decimal(result_long_mantissa, result);
 
   set_scale(&result->bits[3], bigger_scale);
 
   set_sign(result, (Sign)result_sign);
 
-  // set_scale(&result->bits[3], result_scale);
-  // if (sine_decimal_1 == true && sine_decimal_2 == true) {
-  //   set_sign(result, PLUS);
-  // } else if ((sine_decimal_1 == false && sine_decimal_2 == true) ||
-  //            (sine_decimal_1 == true && sine_decimal_2 == false)) {
-  //   set_sign(result, MINUS);
-  // } else {
-  //   set_sign(result, PLUS);
-  // }
   return result_sub;
 }
 
