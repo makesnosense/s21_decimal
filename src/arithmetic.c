@@ -28,29 +28,24 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   int result_sign = PLUS;
 
   // (a) - (b) = a - b
-
-  // (-a) - (b) =  - (a+b)
-
-  // (a) - (- b) = a + b
-
-  // (-a) - (-b) = b - a
-
   if (get_sign(value_1) == PLUS && get_sign(value_2) == PLUS) {
     result_sign = subtract_long_mantissas(minuend_normalized_long_mantissa,
                                           subtrahend_normalized_long_mantissa,
                                           result_long_mantissa);
-
+    // (-a) - (b) =  - (a+b)
   } else if (get_sign(value_1) == MINUS && get_sign(value_2) == PLUS) {
     add_long_mantissas(minuend_normalized_long_mantissa,
                        subtrahend_normalized_long_mantissa,
                        result_long_mantissa);
-    result_sign = PLUS;
+    result_sign = MINUS;
+    // (a) - (- b) = a + b
   } else if (get_sign(value_1) == PLUS && get_sign(value_2) == MINUS) {
     add_long_mantissas(minuend_normalized_long_mantissa,
                        subtrahend_normalized_long_mantissa,
                        result_long_mantissa);
     result_sign = PLUS;
-  } else if (get_sign(value_1) == MINUS && get_sign(value_2) == MINUS) {
+    // (-a) - (-b) = b - a
+  } else {
     result_sign = subtract_long_mantissas(minuend_normalized_long_mantissa,
                                           subtrahend_normalized_long_mantissa,
                                           result_long_mantissa);
