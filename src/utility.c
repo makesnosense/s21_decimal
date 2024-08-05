@@ -340,6 +340,54 @@ int count_long_mantissa_digits(uint32_t* input_mantissa) {
   return digits_count;
 }
 
+void downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
+                       uint32_t* mantissa) {
+  uint32_t fractional_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+  uint32_t long_mantissa_after_division[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+  int digits_to_remove = count_long_mantissa_digits(long_mantissa) - 29;
+  if (digits_to_remove > 0) {
+    divide_long_mantissas(long_mantissa,
+                          get_mantissa_with_power_of_ten(digits_to_remove),
+                          long_mantissa_after_division, fractional_digits);
+
+    round_to_even(long_mantissa_after_division, fractional_digits,
+                  digits_to_remove);
+
+    // debug_print_mantissa_as_binary(long_mantissa_after_division, 6);
+
+    // mantissa[0] = long_mantissa_after_division[0];
+    // mantissa[1] = long_mantissa_after_division[1];
+    // mantissa[2] = long_mantissa_after_division[2];
+    copy_mantissa(mantissa, long_mantissa_after_division);
+    // printf("\n remainder: %ld\n", fractional_digits[0]);
+    *bigger_scale -= digits_to_remove;
+  } else {
+    copy_mantissa(mantissa, long_mantissa);
+  }
+}
+
+void round_to_even(uint32_t* long_mantissa, uint32_t* fractional_digits,
+                   int fractional_digits_count) {
+  uint32_t first_fractional_digit[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+  uint32_t rest_fractional_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+  uint32_t* one = get_mantissa_with_power_of_ten(0);
+  divide_long_mantissas(
+      fractional_digits,
+      get_mantissa_with_power_of_ten(fractional_digits_count - 1),
+      first_fractional_digit, rest_fractional_digits);
+
+  if (first_fractional_digit[0] == 5) {
+    if (zero_check_long_mantissa(rest_fractional_digits) == false) {
+      add_long_mantissas(long_mantissa, one, long_mantissa);
+    } else {
+      if (long_mantissa[0] & 1) {
+        add_long_mantissas(long_mantissa, one, long_mantissa);
+      }
+    }
+  } else if (first_fractional_digit[0] > 5) {
+    add_long_mantissas(long_mantissa, one, long_mantissa);
+  }
+}
 static uint32_t powers_of_10[58][6] = {
     {0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
     {0x0000000A, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
