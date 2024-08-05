@@ -69,7 +69,8 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 
   uint32_t result_mantissa[3] = {0x0, 0x0, 0x0};
 
-  downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa);
+  bool is_overflow =
+      downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa);
 
   // if (compare_long_mantissas(result_long_mantissa,
   //                            get_mantissa_with_power_of_ten(28)) > 0) {
@@ -90,6 +91,13 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 
   set_sign(result, (Sign)result_sign);
 
+  if (is_overflow) {
+    if (result_sign == PLUS) {
+      result_sub = TOO_BIG;
+    } else {
+      result_sub = TOO_SMALL;
+    }
+  }
   return result_sub;
 }
 

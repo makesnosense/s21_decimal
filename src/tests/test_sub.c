@@ -6033,7 +6033,6 @@ Suite* make_sub_suite() {
   tcase_add_test(tc_core, test_sub_gen_1);
   tcase_add_test(tc_core, test_sub_gen_2);
   tcase_add_test(tc_core, test_sub_gen_3);
-
   tcase_add_test(tc_core, test_sub_gen_4);
   tcase_add_test(tc_core, test_sub_gen_5);
   tcase_add_test(tc_core, test_sub_gen_6);

@@ -57,7 +57,7 @@ int get_scale_difference_from_decimals(s21_decimal decimal_1,
                                        s21_decimal decimal_2);
 
 int count_long_mantissa_digits(uint32_t* input_mantissa);
-void downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
+bool downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
                        uint32_t* mantissa);
 void round_to_even(uint32_t* long_mantissa, uint32_t* fractional_digits,
                    int fractional_digits_count);
