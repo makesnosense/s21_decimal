@@ -354,28 +354,27 @@ bool downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
   //        *bigger_scale);
 
   if (digits_to_remove > 0) {
-    divide_long_mantissas(long_mantissa,
-                          get_mantissa_with_power_of_ten(digits_to_remove),
-                          long_mantissa_after_division, fractional_digits);
+    if (*bigger_scale >= digits_to_remove) {
+      divide_long_mantissas(long_mantissa,
+                            get_mantissa_with_power_of_ten(digits_to_remove),
+                            long_mantissa_after_division, fractional_digits);
 
-    round_to_even(long_mantissa_after_division, fractional_digits,
-                  digits_to_remove);
+      round_to_even(long_mantissa_after_division, fractional_digits,
+                    digits_to_remove);
 
-    // debug_print_mantissa_as_binary(long_mantissa_after_division, 6);
+      copy_mantissa(mantissa, long_mantissa_after_division);
 
-    // mantissa[0] = long_mantissa_after_division[0];
-    // mantissa[1] = long_mantissa_after_division[1];
-    // mantissa[2] = long_mantissa_after_division[2];
-    copy_mantissa(mantissa, long_mantissa_after_division);
+      if (compare_long_mantissas(long_mantissa_after_division, max_mantissa) >
+          0) {
+        is_overflow = true;
+      }
 
-    if (compare_long_mantissas(long_mantissa_after_division, max_mantissa) >
-        0) {
+      // debug_print_mantissa_as_binary(long_mantissa_after_division, 6);
+      // printf("\n remainder: %ld\n", fractional_digits[0]);
+      *bigger_scale -= digits_to_remove;
+    } else {
       is_overflow = true;
     }
-
-    // debug_print_mantissa_as_binary(long_mantissa_after_division, 6);
-    // printf("\n remainder: %ld\n", fractional_digits[0]);
-    *bigger_scale -= digits_to_remove;
   } else {
     // printf("%lld", compare_long_mantissas(long_mantissa, max_mantissa));
     copy_mantissa(mantissa, long_mantissa);
