@@ -46,9 +46,11 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
     result_sign = PLUS;
     // (-a) - (-b) = b - a
   } else {
-    result_sign = subtract_long_mantissas(minuend_normalized_long_mantissa,
-                                          subtrahend_normalized_long_mantissa,
+    result_sign = subtract_long_mantissas(subtrahend_normalized_long_mantissa,
+                                          minuend_normalized_long_mantissa,
                                           result_long_mantissa);
+
+    // printf("\n\n%d\n\n", result_sign);
   }
 
   // debug_print_mantissa_as_binary(result_long_mantissa, 6);
