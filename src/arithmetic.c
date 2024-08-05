@@ -51,6 +51,32 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
                                           result_long_mantissa);
   }
 
+  debug_print_mantissa_as_binary(result_long_mantissa, 6);
+
+  uint32_t nn[6] = {0x00000000, 0x00000000, 0x00000000,
+                    0x00000000, 0x00000000, 0x00000000};
+  // printf("\n\n%ld\n\n",
+  //        compare_long_mantissas(result_long_mantissa,
+  //                               get_mantissa_with_power_of_ten(30)));
+
+  int digits_count = 1;
+  while (compare_long_mantissas(
+             nn, get_mantissa_with_power_of_ten(digits_count)) >= 0) {
+    digits_count++;
+    // printf("\n\n%d %ld", digits_count,
+    //        compare_long_mantissas(
+    //            nn, get_mantissa_with_power_of_ten(digits_count)));
+  }
+
+  printf("digits count %d", digits_count);
+
+  // if (compare_long_mantissas(result_long_mantissa,
+  //                            get_mantissa_with_power_of_ten(28)) > 0) {
+  //   printf("imhere");
+  // }
+
+  printf("\nscale: %d\n", bigger_scale);
+
   write_in_mantissa_to_decimal(result_long_mantissa, result);
 
   set_scale(&result->bits[3], bigger_scale);

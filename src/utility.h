@@ -56,6 +56,8 @@ int cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
 int get_scale_difference_from_decimals(s21_decimal decimal_1,
                                        s21_decimal decimal_2);
 
+int count_long_mantissa_digits(uint32_t* input_mantissa);
+
 int _add_mantissas(uint32_t* term_1, uint32_t* term_2, uint32_t* result,
                    int size);
 void _bitflip_mantissa(uint32_t* number, uint32_t* result, int size);

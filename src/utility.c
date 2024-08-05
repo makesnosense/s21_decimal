@@ -331,6 +331,15 @@ bool is_zero_decimal(s21_decimal input_decimal) {
   return is_zero;
 }
 
+int count_long_mantissa_digits(uint32_t* input_mantissa) {
+  int digits_count = 1;
+  while (compare_long_mantissas(input_mantissa, get_mantissa_with_power_of_ten(
+                                                    digits_count)) >= 0) {
+    digits_count++;
+  }
+  return digits_count;
+}
+
 static uint32_t powers_of_10[58][6] = {
     {0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
     {0x0000000A, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
