@@ -476,6 +476,41 @@ START_TEST(mantissa_division_test_6) {
   ck_assert_mem_eq(remainder, expected_remainder, sizeof(uint32_t) * 3);
 }
 
+START_TEST(mantissa_division_inplace_test_1) {
+  // 4398046511103
+  uint32_t divident[3] = {0xFFFFFFFF, 0x3FF, 0x0};
+  // 5452542852
+  uint32_t divisor[3] = {0x44FF3384, 0x1, 0x0};
+  uint32_t remainder[3];
+  // 806
+  uint32_t expected_result[3] = {0x326, 0, 0};
+  // 3296972391
+  uint32_t expected_remainder[3] = {0xC483CE67, 0x0, 0x0};
+  int division_error = divide_mantissas(divident, divisor, divident, remainder);
+  ck_assert_mem_eq(divident, expected_result, sizeof(uint32_t) * 3);
+  ck_assert_mem_eq(remainder, expected_remainder, sizeof(uint32_t) * 3);
+  ck_assert_int_eq(division_error, 0);
+}
+END_TEST
+
+START_TEST(mantissa_division_inplace_test_2) {
+  // 79228162514264337593543950335
+  uint32_t divident[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  // 10^14 = 100000000000000
+  uint32_t divisor[3] = {0x107A4000, 0x5AF3, 0x0};
+
+  uint32_t remainder[3];
+
+  // 792281625142643
+  uint32_t expected_result[3] = {0x70D42573, 0x2D093, 0x0};
+  // 37593543950335
+  uint32_t expected_remainder[3] = {0xEDD53FFF, 0x2230, 0x0};
+  divide_mantissas(divident, divisor, divident, remainder);
+
+  ck_assert_mem_eq(divident, expected_result, sizeof(uint32_t) * 3);
+  ck_assert_mem_eq(remainder, expected_remainder, sizeof(uint32_t) * 3);
+}
+
 START_TEST(get_scale_test) {
   uint32_t service_parts[] = {
       0b00000000000000000000000000000000, 0b00000000000000010000000000000000,
@@ -655,6 +690,8 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, mantissa_division_test_4);
   tcase_add_test(tc_core, mantissa_division_test_5);
   tcase_add_test(tc_core, mantissa_division_test_6);
+  tcase_add_test(tc_core, mantissa_division_inplace_test_1);
+  tcase_add_test(tc_core, mantissa_division_inplace_test_2);
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_1);
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_2);
   tcase_add_test(tc_core, find_highest_mantissa_bit_test_3);
