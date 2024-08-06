@@ -49,44 +49,15 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
     result_sign = subtract_long_mantissas(subtrahend_normalized_long_mantissa,
                                           minuend_normalized_long_mantissa,
                                           result_long_mantissa);
-
-    // printf("\n\n%d\n\n", result_sign);
   }
-
-  // debug_print_mantissa_as_binary(result_long_mantissa, 6);
-
-  // uint32_t nn[6] = {0x00000000, 0x00000000, 0x00000000,
-  //                   0x00000000, 0x00000000, 0x00000000};
-  // printf("\n\n%ld\n\n",
-  //        compare_long_mantissas(result_long_mantissa,
-  //                               get_mantissa_with_power_of_ten(30)));
-
-  // printf("\n\n%d %ld", digits_count,
-  //        compare_long_mantissas(
-
-  // printf("digits count %d",
-  // count_long_mantissa_digits(result_long_mantissa));
 
   uint32_t result_mantissa[3] = {0x0, 0x0, 0x0};
 
   bool is_overflow =
       downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa);
 
-  // if (compare_long_mantissas(result_long_mantissa,
-  //                            get_mantissa_with_power_of_ten(28)) > 0) {
-  //   printf("imhere");
-  // }
-
-  // printf("\n digits to remove: %d\n", digits_to_remove);
-
   write_in_mantissa_to_decimal(result_mantissa, result);
-  //   debug_print_mantissa_as_binary(result_long_mantissa_after_division,
-  //   6);
-  // } else {
-  //   write_in_mantissa_to_decimal(result_long_mantissa, result);
-  // }
 
-  // debug_print_decimal_as_binary_in_one_line(*result);
   set_scale(&result->bits[3], bigger_scale);
 
   set_sign(result, (Sign)result_sign);

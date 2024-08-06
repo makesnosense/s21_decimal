@@ -350,9 +350,6 @@ bool downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
 
   int digits_to_remove = count_long_mantissa_digits(long_mantissa) - 29;
 
-  // printf("\n\n digits to remove: %d bigger scale %d\n\n", digits_to_remove,
-  //        *bigger_scale);
-
   if (digits_to_remove > 0) {
     if (*bigger_scale >= digits_to_remove) {
       divide_long_mantissas(long_mantissa,
@@ -368,7 +365,6 @@ bool downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
           0) {
         is_overflow = true;
       }
-
       // debug_print_mantissa_as_binary(long_mantissa_after_division, 6);
       // printf("\n remainder: %ld\n", fractional_digits[0]);
       *bigger_scale -= digits_to_remove;
@@ -378,7 +374,9 @@ bool downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
   } else {
     // printf("%lld", compare_long_mantissas(long_mantissa, max_mantissa));
     copy_mantissa(mantissa, long_mantissa);
-    if (compare_long_mantissas(long_mantissa, max_mantissa) > 0) {
+    if (compare_long_mantissas(long_mantissa, max_mantissa) > 0 &&
+        *bigger_scale == 0) {
+      // printf("imhere");
       is_overflow = true;
     }
   }
