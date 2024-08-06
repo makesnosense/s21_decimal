@@ -342,13 +342,18 @@ int count_long_mantissa_digits(uint32_t* input_mantissa) {
   return digits_count;
 }
 
+uint32_t* get_max_mantissa() {
+  static uint32_t max_mantissa[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                                     0x0,        0x0,        0x0};
+  return max_mantissa;
+}
+
 bool downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
                        uint32_t* mantissa) {
   bool is_overflow = false;
   uint32_t fractional_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
   uint32_t long_mantissa_after_division[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
-  uint32_t max_mantissa[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-                              0x0,        0x0,        0x0};
+  uint32_t* max_mantissa = get_max_mantissa();
 
   int digits_to_remove = count_long_mantissa_digits(long_mantissa) - 29;
 

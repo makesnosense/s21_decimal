@@ -39,6 +39,9 @@ void assign_mantissa_bit(uint32_t* mantissa, unsigned position, Binary value);
 int get_scale(uint32_t service_part);
 void set_scale(uint32_t* service_part, int scale);
 void* s21_memset(void* str, int c, int n);
+
+uint32_t* get_max_mantissa();
+
 void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
                         uint32_t* result);
 
