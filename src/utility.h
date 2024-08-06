@@ -50,7 +50,7 @@ void write_in_mantissa_to_decimal(uint32_t* mantissa,
                                   s21_decimal* destination_decimal);
 void get_mantissa_from_decimal(uint32_t* mantissa, s21_decimal* source_decimal);
 void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6);
-uint32_t* get_mantissa_with_power_of_ten(int power);
+
 bool is_zero_decimal(s21_decimal input_decimal);
 int cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
                                           uint32_t* normalized_mantissa_1,
@@ -64,6 +64,10 @@ bool downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
                        uint32_t* mantissa);
 void round_to_even(uint32_t* long_mantissa, uint32_t* fractional_digits,
                    int fractional_digits_count);
+
+uint32_t* get_mantissa_with_power_of_ten(int power);
+uint32_t* _get_mantissa_with_power_of_ten_powers_0_to_28(int power);
+uint32_t* _get_mantissa_with_power_of_ten_powers_29_to_57(int power);
 
 int _add_mantissas(uint32_t* term_1, uint32_t* term_2, uint32_t* result,
                    int size);
