@@ -194,6 +194,8 @@ int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
   } else {
     int divident_bits = _find_highest_mantissa_bit(divident, size);
     int divisor_bits = _find_highest_mantissa_bit(divisor, size);
+    // needs to be before memset to work correctly in case when divident and
+    // result pointers are the same
     memcpy(remainder, divident, (PART_SIZE * size) / BYTE_SIZE);
     memset(result, 0, (PART_SIZE * size) / BYTE_SIZE);
     int shift = divident_bits - divisor_bits;
