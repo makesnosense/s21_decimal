@@ -351,7 +351,6 @@ uint32_t* get_max_mantissa() {
 bool downsize_mantissa(uint32_t* long_mantissa, int* scale,
                        uint32_t* mantissa) {
   bool is_overflow = false;
-  uint32_t removed_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
   uint32_t* max_mantissa = get_max_mantissa();
 
   int digits_to_remove = count_long_mantissa_digits(long_mantissa) - 29;
@@ -362,17 +361,12 @@ bool downsize_mantissa(uint32_t* long_mantissa, int* scale,
       is_overflow = true;
     } else {
       if (digits_to_remove > 0) {
-        divide_long_mantissas(long_mantissa,
-                              get_mantissa_with_power_of_ten(digits_to_remove),
-                              long_mantissa, removed_digits);
-        round_to_even(long_mantissa, removed_digits, digits_to_remove);
+        round_to_even(long_mantissa, digits_to_remove);
       }
       // if 29 decimal digit number in mantissa does't fit in 96
       // bits remove one more decimal digit
       if (compare_long_mantissas(long_mantissa, max_mantissa) > 0) {
-        divide_long_mantissas(long_mantissa, get_mantissa_with_power_of_ten(1),
-                              long_mantissa, removed_digits);
-        round_to_even(long_mantissa, removed_digits, 1);
+        round_to_even(long_mantissa, 1);
         downsized_scale -= 1;
       }
       if (downsized_scale < 0) {
@@ -387,15 +381,19 @@ bool downsize_mantissa(uint32_t* long_mantissa, int* scale,
   return is_overflow;
 }
 
-void round_to_even(uint32_t* long_mantissa, uint32_t* removed_digits,
-                   int removed_digits_count) {
+void round_to_even(uint32_t* long_mantissa, int digits_to_remove) {
+  uint32_t removed_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+  divide_long_mantissas(long_mantissa,
+                        get_mantissa_with_power_of_ten(digits_to_remove),
+                        long_mantissa, removed_digits);
+
   uint32_t first_removed_digit[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
   uint32_t rest_removed_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
-  uint32_t* one = get_mantissa_with_power_of_ten(0);
-  divide_long_mantissas(
-      removed_digits, get_mantissa_with_power_of_ten(removed_digits_count - 1),
-      first_removed_digit, rest_removed_digits);
+  divide_long_mantissas(removed_digits,
+                        get_mantissa_with_power_of_ten(digits_to_remove - 1),
+                        first_removed_digit, rest_removed_digits);
 
+  uint32_t* one = get_mantissa_with_power_of_ten(0);
   if (first_removed_digit[0] == 5) {
     if (zero_check_long_mantissa(rest_removed_digits) == false) {
       add_long_mantissas(long_mantissa, one, long_mantissa);
