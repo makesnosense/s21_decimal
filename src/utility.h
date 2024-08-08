@@ -60,10 +60,9 @@ int get_scale_difference_from_decimals(s21_decimal decimal_1,
                                        s21_decimal decimal_2);
 
 int count_long_mantissa_digits(uint32_t* input_mantissa);
-bool downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
-                       uint32_t* mantissa);
-void round_to_even(uint32_t* long_mantissa, uint32_t* fractional_digits,
-                   int fractional_digits_count);
+bool downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa);
+void round_to_even(uint32_t* long_mantissa, uint32_t* removed_digits,
+                   int removed_digits_count);
 
 uint32_t* get_mantissa_with_power_of_ten(int power);
 uint32_t* _get_mantissa_with_power_of_ten_powers_0_to_28(int power);

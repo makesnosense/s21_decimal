@@ -348,67 +348,63 @@ uint32_t* get_max_mantissa() {
   return max_mantissa;
 }
 
-bool downsize_mantissa(uint32_t* long_mantissa, int* bigger_scale,
+bool downsize_mantissa(uint32_t* long_mantissa, int* scale,
                        uint32_t* mantissa) {
   bool is_overflow = false;
-  uint32_t fractional_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
-  uint32_t long_mantissa_after_division[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+  uint32_t removed_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
   uint32_t* max_mantissa = get_max_mantissa();
 
   int digits_to_remove = count_long_mantissa_digits(long_mantissa) - 29;
-
-  if (digits_to_remove > 0) {
-    if (*bigger_scale >= digits_to_remove) {
-      divide_long_mantissas(long_mantissa,
-                            get_mantissa_with_power_of_ten(digits_to_remove),
-                            long_mantissa_after_division, fractional_digits);
-
-      round_to_even(long_mantissa_after_division, fractional_digits,
-                    digits_to_remove);
-
-      copy_mantissa(mantissa, long_mantissa_after_division);
-
-      if (compare_long_mantissas(long_mantissa_after_division, max_mantissa) >
-          0) {
+  int downsized_scale = *scale;
+  if (digits_to_remove >= 0) {
+    downsized_scale -= digits_to_remove;
+    if (downsized_scale < 0) {
+      is_overflow = true;
+    } else {
+      if (digits_to_remove > 0) {
+        divide_long_mantissas(long_mantissa,
+                              get_mantissa_with_power_of_ten(digits_to_remove),
+                              long_mantissa, removed_digits);
+        round_to_even(long_mantissa, removed_digits, digits_to_remove);
+      }
+      // if 29 decimal digit number in mantissa does't fit in 96
+      // bits remove one more decimal digit
+      if (compare_long_mantissas(long_mantissa, max_mantissa) > 0) {
+        divide_long_mantissas(long_mantissa, get_mantissa_with_power_of_ten(1),
+                              long_mantissa, removed_digits);
+        round_to_even(long_mantissa, removed_digits, 1);
+        downsized_scale -= 1;
+      }
+      if (downsized_scale < 0) {
         is_overflow = true;
       }
-      // debug_print_mantissa_as_binary(long_mantissa_after_division, 6);
-      // printf("\n remainder: %ld\n", fractional_digits[0]);
-      *bigger_scale -= digits_to_remove;
-    } else {
-      is_overflow = true;
     }
-  } else {
-    // printf("%lld", compare_long_mantissas(long_mantissa, max_mantissa));
+  }
+  if (!is_overflow) {
     copy_mantissa(mantissa, long_mantissa);
-    if (compare_long_mantissas(long_mantissa, max_mantissa) > 0 &&
-        *bigger_scale == 0) {
-      // printf("imhere");
-      is_overflow = true;
-    }
+    *scale = downsized_scale;
   }
   return is_overflow;
 }
 
-void round_to_even(uint32_t* long_mantissa, uint32_t* fractional_digits,
-                   int fractional_digits_count) {
-  uint32_t first_fractional_digit[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
-  uint32_t rest_fractional_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+void round_to_even(uint32_t* long_mantissa, uint32_t* removed_digits,
+                   int removed_digits_count) {
+  uint32_t first_removed_digit[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+  uint32_t rest_removed_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
   uint32_t* one = get_mantissa_with_power_of_ten(0);
   divide_long_mantissas(
-      fractional_digits,
-      get_mantissa_with_power_of_ten(fractional_digits_count - 1),
-      first_fractional_digit, rest_fractional_digits);
+      removed_digits, get_mantissa_with_power_of_ten(removed_digits_count - 1),
+      first_removed_digit, rest_removed_digits);
 
-  if (first_fractional_digit[0] == 5) {
-    if (zero_check_long_mantissa(rest_fractional_digits) == false) {
+  if (first_removed_digit[0] == 5) {
+    if (zero_check_long_mantissa(rest_removed_digits) == false) {
       add_long_mantissas(long_mantissa, one, long_mantissa);
     } else {
       if (long_mantissa[0] & 1) {
         add_long_mantissas(long_mantissa, one, long_mantissa);
       }
     }
-  } else if (first_fractional_digit[0] > 5) {
+  } else if (first_removed_digit[0] > 5) {
     add_long_mantissas(long_mantissa, one, long_mantissa);
   }
 }
