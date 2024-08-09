@@ -23,6 +23,8 @@ Suite* make_sub_suite();
 Suite* make_mul_suite();
 Suite* make_div_suite();
 
+Suite* make_from_int_to_decimal_suite();
+
 Suite* make_truncate_suite();
 Suite* make_negate_suite();
 Suite* make_floor_suite();
