@@ -5,12 +5,59 @@
 #include "utility.h"
 
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-  if (1 == 0) {
-    printf("%d", value_1.bits[0]);
-    printf("%d", value_2.bits[0]);
-    printf("%d", result->bits[0]);
+  s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
+  ArithmeticResult result_add = OK;
+
+  uint32_t term_1_long_mantissa[6] = {0};
+  uint32_t term_2_long_mantissa[6] = {0};
+  uint32_t result_long_mantissa[6] = {0};
+
+  int bigger_scale = cast_decimals_to_normalized_mantissas(
+      value_1, term_1_long_mantissa, value_2, term_2_long_mantissa);
+
+  int result_sign = PLUS;
+
+  // (a) + (b) = a + b
+  if (get_sign(value_1) == PLUS && get_sign(value_2) == PLUS) {
+    add_long_mantissas(term_1_long_mantissa, term_2_long_mantissa,
+                       result_long_mantissa);
   }
-  return 0;
+  // (-a) + (b) =  b - a
+  else if (get_sign(value_1) == MINUS && get_sign(value_2) == PLUS) {
+    result_sign = subtract_long_mantissas(
+        term_2_long_mantissa, term_1_long_mantissa, result_long_mantissa);
+  }
+  // (a) + (- b) = a - b
+  else if (get_sign(value_1) == PLUS && get_sign(value_2) == MINUS) {
+    result_sign = subtract_long_mantissas(
+        term_1_long_mantissa, term_2_long_mantissa, result_long_mantissa);
+  }
+  // (-a) + (-b) = - (a + b)
+  else {
+    add_long_mantissas(term_1_long_mantissa, term_2_long_mantissa,
+                       result_long_mantissa);
+    result_sign = MINUS;
+  }
+
+  uint32_t result_mantissa[3] = {0x0, 0x0, 0x0};
+
+  bool is_overflow =
+      downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa);
+
+  write_in_mantissa_to_decimal(result_mantissa, result);
+
+  set_scale(&result->bits[3], bigger_scale);
+
+  set_sign(result, (Sign)result_sign);
+
+  if (is_overflow) {
+    if (result_sign == PLUS) {
+      result_add = TOO_BIG;
+    } else {
+      result_add = TOO_SMALL;
+    }
+  }
+  return result_add;
 }
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
