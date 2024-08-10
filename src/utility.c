@@ -360,13 +360,18 @@ bool downsize_mantissa(uint32_t* long_mantissa, int* scale,
     if (downsized_scale < 0) {
       is_overflow = true;
     } else {
+      uint32_t initial_long_mantissa[6];
+      copy_long_mantissa(initial_long_mantissa, long_mantissa);
+
       if (digits_to_remove > 0) {
         remove_digits_rounding_to_even(long_mantissa, digits_to_remove);
       }
       // if 29 decimal digit number in mantissa doesn't fit in 96
       // bits remove one more decimal digit
       if (compare_long_mantissas(long_mantissa, max_mantissa) > 0) {
-        remove_digits_rounding_to_even(long_mantissa, 1);
+        remove_digits_rounding_to_even(initial_long_mantissa,
+                                       digits_to_remove + 1);
+        copy_long_mantissa(long_mantissa, initial_long_mantissa);
         downsized_scale -= 1;
       }
       if (downsized_scale < 0) {
