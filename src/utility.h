@@ -52,6 +52,8 @@ void get_mantissa_from_decimal(uint32_t* mantissa, s21_decimal* source_decimal);
 void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6);
 
 bool is_zero_decimal(s21_decimal input_decimal);
+bool is_one_decimal(s21_decimal input_decimal);
+
 int cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
                                           uint32_t* normalized_mantissa_1,
                                           s21_decimal decimal_2,

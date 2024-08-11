@@ -333,6 +333,13 @@ bool is_zero_decimal(s21_decimal input_decimal) {
   return is_zero;
 }
 
+bool is_one_decimal(s21_decimal input_decimal) {
+  s21_decimal one_decimal = {
+      {0x1, 0x0, 0x0, 0b00000000000000000000000000000000}};
+
+  return s21_is_equal(input_decimal, one_decimal);
+}
+
 int count_long_mantissa_digits(uint32_t* input_mantissa) {
   int digits_count = 1;
   while (compare_long_mantissas(input_mantissa, get_mantissa_with_power_of_ten(
