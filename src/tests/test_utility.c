@@ -657,6 +657,24 @@ START_TEST(test_is_one_decimal_1) {
 }
 END_TEST
 
+START_TEST(test_is_one_decimal_2) {
+  s21_decimal input_decimal = {
+      {0xDEA00000, 0x35C9ADC5, 0x00000036, 0b00000000000101010000000000000000}};
+
+  ComparisonResult s21_result = is_one_decimal(input_decimal);
+  ck_assert_int_eq(s21_result, TRUE);
+}
+END_TEST
+
+START_TEST(test_is_zero_decimal_0) {
+  s21_decimal input_decimal = {
+      {0x0, 0x0, 0x0, 0b00000000000000000000000000000000}};
+
+  ComparisonResult s21_result = is_zero_decimal(input_decimal);
+  ck_assert_int_eq(s21_result, TRUE);
+}
+END_TEST
+
 // START_TEST(multiply_test_2) {
 //   // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
 //   //                              0b00000000000000101000000000000000};
@@ -787,7 +805,8 @@ Suite* make_utility_suite() {
 
   tcase_add_test(tc_core, test_is_one_decimal_0);
   tcase_add_test(tc_core, test_is_one_decimal_1);
-
+  tcase_add_test(tc_core, test_is_one_decimal_2);
+  tcase_add_test(tc_core, test_is_zero_decimal_0);
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);
   // tcase_add_test(tc_core, print_mantissa_as_binary_test);
