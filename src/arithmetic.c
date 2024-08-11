@@ -139,6 +139,13 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
       is_overflow = downsize_mantissa(long_mantissa_result, &scale_result,
                                       mantissa_result);
 
+      if (scale_result > 28) {
+        int digits_to_remove = scale_result - 28;
+        scale_result = 28;
+        remove_digits_rounding_to_even(long_mantissa_result, digits_to_remove);
+        copy_mantissa(mantissa_result, long_mantissa_result);
+      }
+
       set_scale(&result->bits[3], scale_result);
       write_in_mantissa_to_decimal(mantissa_result, result);
       result_mul = catch_overflow(is_overflow, result_sign);

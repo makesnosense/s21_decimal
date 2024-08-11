@@ -9772,6 +9772,28 @@ START_TEST(test_mul_gen_505) {
 }
 END_TEST
 
+START_TEST(scale_above_28_test_1) {
+  // 0.0000000000000000000000000011
+  s21_decimal input_decimal_1 = {
+      {0xB, 0x0, 0x00000000, 0b00000000000111000000000000000000}};
+  // 0.1
+  s21_decimal input_decimal_2 = {
+      {0x1, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
+  // 0.0000000000000000000000000001
+  s21_decimal expected_result = {
+      {0x1, 0x0, 0x0, 0b00000000000111000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_mul(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+END_TEST
+
 Suite* make_mul_suite() {
   Suite* mul_suite = suite_create("mul");
   TCase* tc_core;
@@ -10284,6 +10306,7 @@ Suite* make_mul_suite() {
   tcase_add_test(tc_core, test_mul_gen_503);
   tcase_add_test(tc_core, test_mul_gen_504);
   tcase_add_test(tc_core, test_mul_gen_505);
+  tcase_add_test(tc_core, scale_above_28_test_1);
 
   suite_add_tcase(mul_suite, tc_core);
 
