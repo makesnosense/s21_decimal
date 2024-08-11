@@ -171,6 +171,60 @@ START_TEST(test_long_mantissas_substraction_4) {
 }
 END_TEST
 
+START_TEST(test_mantissas_multiplication_0) {
+  // 79228162514264337593543950335
+  uint32_t term_1[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                        0x00000000, 0x00000000, 0x00000000};
+  // 79228162514264337593543950335
+  uint32_t term_2[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                        0x00000000, 0x00000000, 0x00000000};
+  // 6277101735386680763835789423049210091073826769276946612225
+  uint32_t expected_result[6] = {0x00000001, 0x00000000, 0x00000000,
+                                 0xFFFFFFFE, 0xFFFFFFFF, 0xFFFFFFFF};
+
+  uint32_t result[6] = {0b0, 0b0, 0b0, 0b0, 0b0, 0b0};
+  multiply_mantissas(term_1, term_2, result);
+
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 6);
+}
+END_TEST
+
+START_TEST(test_mantissas_multiplication_1) {
+  // 1
+  uint32_t term_1[6] = {0x00000001, 0x00000000, 0x00000000,
+                        0x00000000, 0x00000000, 0x00000000};
+  // 79228162514264337593543950335
+  uint32_t term_2[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                        0x00000000, 0x00000000, 0x00000000};
+  // 79228162514264337593543950335
+  uint32_t expected_result[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                                 0x00000000, 0x00000000, 0x00000000};
+
+  uint32_t result[6] = {0b0, 0b0, 0b0, 0b0, 0b0, 0b0};
+  multiply_mantissas(term_1, term_2, result);
+
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 6);
+}
+END_TEST
+
+START_TEST(test_mantissas_multiplication_2) {
+  // 0
+  uint32_t term_1[6] = {0x00000000, 0x00000000, 0x00000000,
+                        0x00000000, 0x00000000, 0x00000000};
+  // 79228162514264337593543950335
+  uint32_t term_2[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                        0x00000000, 0x00000000, 0x00000000};
+  // 0
+  uint32_t expected_result[6] = {0x00000000, 0x00000000, 0x00000000,
+                                 0x00000000, 0x00000000, 0x00000000};
+
+  uint32_t result[6] = {0b0, 0b0, 0b0, 0b0, 0b0, 0b0};
+  multiply_mantissas(term_1, term_2, result);
+
+  ck_assert_mem_eq(result, expected_result, sizeof(uint32_t) * 6);
+}
+END_TEST
+
 START_TEST(mantissa_bitflip_test) {
   uint32_t number_1[3] = {0b00000000000000000000000000000000,
                           0b11111111111111111111111111111111,
@@ -708,6 +762,9 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, test_long_mantissas_substraction_2);
   tcase_add_test(tc_core, test_long_mantissas_substraction_3);
   tcase_add_test(tc_core, test_long_mantissas_substraction_4);
+  tcase_add_test(tc_core, test_mantissas_multiplication_0);
+  tcase_add_test(tc_core, test_mantissas_multiplication_1);
+  tcase_add_test(tc_core, test_mantissas_multiplication_2);
 
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);
