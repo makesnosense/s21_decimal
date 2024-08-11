@@ -9792,6 +9792,49 @@ START_TEST(scale_above_28_test_1) {
 }
 END_TEST
 
+START_TEST(scale_above_28_test_2) {
+  // 0.79228162514264337593543950335
+  s21_decimal input_decimal_1 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000111000000000000000000}};
+  // 0.79228162514264337593543950335
+  s21_decimal input_decimal_2 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000111000000000000000000}};
+  // 0.62771017353866800508395658152
+  s21_decimal expected_result = {
+      {0xF6911BA8, 0x359A34C1, 0xCAD2F7F5, 0b00000000000111000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_mul(input_decimal_1, input_decimal_2, &s21_result_decimal);
+  debug_print_decimal_as_binary_in_one_line(s21_result_decimal);
+  debug_print_decimal_as_binary_in_one_line(expected_result);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(max_mantissa_multiplication_test) {
+  // 79228162514264337593543950335
+  s21_decimal input_decimal_1 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
+  // 0.79228162514264337593543950335
+  s21_decimal input_decimal_2 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000111000000000000000000}};
+  // 0.62771017353866800508395658152
+  s21_decimal expected_result = {
+      {0xFFFFFFFF, 0x359A37FF, 0xCAD2F7F5, 0b00000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_mul(input_decimal_1, input_decimal_2, &s21_result_decimal);
+  debug_print_decimal_as_binary_in_one_line(s21_result_decimal);
+  debug_print_decimal_as_binary_in_one_line(expected_result);
+  printf("\ncode: %d\n", s21_return_code);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
 END_TEST
 
 Suite* make_mul_suite() {
@@ -10307,6 +10350,8 @@ Suite* make_mul_suite() {
   tcase_add_test(tc_core, test_mul_gen_504);
   tcase_add_test(tc_core, test_mul_gen_505);
   tcase_add_test(tc_core, scale_above_28_test_1);
+  tcase_add_test(tc_core, scale_above_28_test_2);
+  tcase_add_test(tc_core, max_mantissa_multiplication_test);
 
   suite_add_tcase(mul_suite, tc_core);
 
