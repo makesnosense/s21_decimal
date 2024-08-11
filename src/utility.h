@@ -51,6 +51,9 @@ void write_in_mantissa_to_decimal(uint32_t* mantissa,
 void get_mantissa_from_decimal(uint32_t* mantissa, s21_decimal* source_decimal);
 void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6);
 
+void copy_decimal(s21_decimal* source_decimal,
+                  s21_decimal* destination_decimal);
+
 bool is_zero_decimal(s21_decimal input_decimal);
 bool is_one_decimal(s21_decimal input_decimal);
 

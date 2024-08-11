@@ -36,6 +36,13 @@ void reset_decimal(s21_decimal* input_decimal) {
   }
 }
 
+void copy_decimal(s21_decimal* source_decimal,
+                  s21_decimal* destination_decimal) {
+  for (int i = 0; i < 4; i++) {
+    destination_decimal->bits[i] = source_decimal->bits[i];
+  }
+}
+
 void* s21_memset(void* str, int c, int n) {
   unsigned char* pointer = str;
   while (n > 0) {
@@ -342,8 +349,10 @@ bool is_one_decimal(s21_decimal input_decimal) {
 
 int count_long_mantissa_digits(uint32_t* input_mantissa) {
   int digits_count = 1;
-  while (compare_long_mantissas(input_mantissa, get_mantissa_with_power_of_ten(
-                                                    digits_count)) >= 0) {
+
+  while ((compare_long_mantissas(input_mantissa, get_mantissa_with_power_of_ten(
+                                                     digits_count)) >= 0) &&
+         (digits_count < 57)) {
     digits_count++;
   }
   return digits_count;
@@ -358,9 +367,12 @@ uint32_t* get_max_mantissa() {
 bool downsize_mantissa(uint32_t* long_mantissa, int* scale,
                        uint32_t* mantissa) {
   bool is_overflow = false;
+
   uint32_t* max_mantissa = get_max_mantissa();
+  // debug_print_mantissa_as_binary(long_mantissa, 6);
 
   int digits_to_remove = count_long_mantissa_digits(long_mantissa) - 29;
+
   int downsized_scale = *scale;
   if (digits_to_remove >= 0) {
     downsized_scale -= digits_to_remove;
