@@ -41,8 +41,10 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 
   uint32_t result_mantissa[3] = {0x0, 0x0, 0x0};
 
-  bool is_overflow =
-      downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa);
+  bool is_overflow;
+
+  downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa,
+                    &is_overflow);
 
   write_in_mantissa_to_decimal(result_mantissa, result);
 
@@ -93,8 +95,9 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 
   uint32_t result_mantissa[3] = {0x0, 0x0, 0x0};
 
-  bool is_overflow =
-      downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa);
+  bool is_overflow;
+  downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa,
+                    &is_overflow);
 
   write_in_mantissa_to_decimal(result_mantissa, result);
 
@@ -133,17 +136,19 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
       get_mantissa_from_decimal(mantissa_value_2, &value_2);
       multiply_mantissas(mantissa_value_1, mantissa_value_2,
                          long_mantissa_result);
+      uint32_t initital_long_result[6] = {0};
+      copy_long_mantissa(initital_long_result, long_mantissa_result);
 
       int scale_result =
           get_scale(value_1.bits[3]) + get_scale(value_2.bits[3]);
-      is_overflow = downsize_mantissa(long_mantissa_result, &scale_result,
-                                      mantissa_result);
+      int removed_digits = downsize_mantissa(
+          long_mantissa_result, &scale_result, mantissa_result, &is_overflow);
 
       if (scale_result > 28) {
-        int digits_to_remove = scale_result - 28;
+        int digits_to_remove = (scale_result - 28) + removed_digits;
         scale_result = 28;
-        remove_digits_rounding_to_even(long_mantissa_result, digits_to_remove);
-        copy_mantissa(mantissa_result, long_mantissa_result);
+        remove_digits_rounding_to_even(initital_long_result, digits_to_remove);
+        copy_mantissa(mantissa_result, initital_long_result);
       }
 
       set_scale(&result->bits[3], scale_result);

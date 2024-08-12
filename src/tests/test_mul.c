@@ -9866,8 +9866,6 @@ START_TEST(rounding_test_2) {
   s21_decimal s21_result_decimal;
   ArithmeticResult s21_return_code =
       s21_mul(input_decimal_1, input_decimal_2, &s21_result_decimal);
-  debug_print_decimal_as_binary_in_one_line(expected_result);
-  debug_print_decimal_as_binary_in_one_line(s21_result_decimal);
 
   ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
   ck_assert_int_eq(s21_return_code, OK);

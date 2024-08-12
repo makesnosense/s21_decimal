@@ -65,7 +65,8 @@ int get_scale_difference_from_decimals(s21_decimal decimal_1,
                                        s21_decimal decimal_2);
 
 int count_long_mantissa_digits(uint32_t* input_mantissa);
-bool downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa);
+int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,
+                      bool* overflow);
 void remove_digits_rounding_to_even(uint32_t* long_mantissa,
                                     int digits_to_remove);
 
