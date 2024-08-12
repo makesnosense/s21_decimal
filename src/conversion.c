@@ -1,6 +1,6 @@
 #include "conversion.h"
 
-int s21_from_int_to_decimal(int src, s21_decimal *dst) {
+int s21_from_int_to_decimal(int src, s21_decimal* dst) {
   ConversionResult result = OK;
   if (dst == NULL) {
     result = CONVERSION_ERROR;
