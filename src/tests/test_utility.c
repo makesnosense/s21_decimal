@@ -623,7 +623,7 @@ START_TEST(set_scale_test) {
 }
 END_TEST
 
-START_TEST(multiply_test) {
+START_TEST(multiply_test_1) {
   // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
   //                              0b00000000000000101000000000000000};
   uint32_t num_1[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
@@ -636,6 +636,22 @@ START_TEST(multiply_test) {
 
   // ck_assert_int_ne(scale_before, scale_after);
   // ck_assert_int_eq(scale_after, scale_to_set);
+}
+END_TEST
+
+START_TEST(multiply_test_2) {
+  // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
+  //                              0b00000000000000101000000000000000};
+  uint32_t num_1[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  uint32_t num_2[3] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  uint32_t result[6] = {0, 0, 0, 0, 0, 0};
+  uint32_t expected[6] = {0x00000001, 0, 0, 0xFFFFFFFE, 0xFFFFFFFF, 0xFFFFFFFF};
+
+  multiply_mantissas(num_1, num_2, result);
+
+  // ck_assert_int_ne(scale_before, scale_after);
+  // ck_assert_int_eq(scale_after, scale_to_set);
+  ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
 }
 END_TEST
 
@@ -790,7 +806,8 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, set_scale_test);
   tcase_add_test(tc_core, test_set_scale);
 
-  tcase_add_test(tc_core, multiply_test);
+  tcase_add_test(tc_core, multiply_test_1);
+  tcase_add_test(tc_core, multiply_test_2);
   tcase_add_test(tc_core, shift_decimal_test);
   tcase_add_test(tc_core, test_long_mantissas_addition_1);
   tcase_add_test(tc_core, test_long_mantissas_addition_2);

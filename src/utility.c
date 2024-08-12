@@ -364,9 +364,9 @@ uint32_t* get_max_mantissa() {
   return max_mantissa;
 }
 
-bool downsize_mantissa(uint32_t* long_mantissa, int* scale,
-                       uint32_t* mantissa) {
-  bool is_overflow = false;
+int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,
+                      bool* overflow) {
+  *overflow = false;
 
   uint32_t* max_mantissa = get_max_mantissa();
   // debug_print_mantissa_as_binary(long_mantissa, 6);
@@ -377,7 +377,7 @@ bool downsize_mantissa(uint32_t* long_mantissa, int* scale,
   if (digits_to_remove >= 0) {
     downsized_scale -= digits_to_remove;
     if (downsized_scale < 0) {
-      is_overflow = true;
+      *overflow = true;
     } else {
       uint32_t initial_long_mantissa[6];
       copy_long_mantissa(initial_long_mantissa, long_mantissa);
@@ -388,21 +388,22 @@ bool downsize_mantissa(uint32_t* long_mantissa, int* scale,
       // if 29 decimal digit number in mantissa doesn't fit in 96
       // bits remove one more decimal digit
       if (compare_long_mantissas(long_mantissa, max_mantissa) > 0) {
-        remove_digits_rounding_to_even(initial_long_mantissa,
-                                       digits_to_remove + 1);
+        digits_to_remove += 1;
+        remove_digits_rounding_to_even(initial_long_mantissa, digits_to_remove);
         copy_long_mantissa(long_mantissa, initial_long_mantissa);
         downsized_scale -= 1;
       }
       if (downsized_scale < 0) {
-        is_overflow = true;
+        *overflow = true;
       }
     }
   }
-  if (!is_overflow) {
+  if (!*overflow) {
     copy_mantissa(mantissa, long_mantissa);
     *scale = downsized_scale;
   }
-  return is_overflow;
+  int removed_digits = (digits_to_remove > 0) ? digits_to_remove : 0;
+  return removed_digits;
 }
 
 void remove_digits_rounding_to_even(uint32_t* long_mantissa,
