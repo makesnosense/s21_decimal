@@ -9772,7 +9772,7 @@ START_TEST(test_mul_gen_505) {
 }
 END_TEST
 
-START_TEST(scale_above_28_test_1) {
+START_TEST(epsilon_test_1) {
   // 0.0000000000000000000000000011
   s21_decimal input_decimal_1 = {
       {0xB, 0x0, 0x00000000, 0b00000000000111000000000000000000}};
@@ -9792,7 +9792,7 @@ START_TEST(scale_above_28_test_1) {
 }
 END_TEST
 
-START_TEST(scale_above_28_test_2) {
+START_TEST(epsilon_test_2) {
   // 7.9228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000111000000000000000000}};
@@ -9802,6 +9802,46 @@ START_TEST(scale_above_28_test_2) {
   // 62.771017353866807638357894230
   s21_decimal expected_result = {
       {0x96EE456, 0x359A3B3E, 0xCAD2F7F5, 0b00000000000110110000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_mul(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(epsilon_test_3) {
+  // 7.9228162514264337593543950335
+  s21_decimal input_decimal_1 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000111000000000000000000}};
+  // 0.0000000000000000000000000001
+  s21_decimal input_decimal_2 = {
+      {0x1, 0x0, 0x0, 0b00000000000111000000000000000000}};
+  // 0.0000000000000000000000000008
+  s21_decimal expected_result = {
+      {0x8, 0x0, 0x0, 0b00000000000111000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_mul(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(epsilon_test_4) {
+  // 7.4000000000000000000000000000
+  s21_decimal input_decimal_1 = {
+      {0x10000000, 0x3245119B, 0xEF1B5D86, 0b00000000000111000000000000000000}};
+  // 0.0000000000000000000000000001
+  s21_decimal input_decimal_2 = {
+      {0x1, 0x0, 0x0, 0b00000000000111000000000000000000}};
+  // 0.0000000000000000000000000007
+  s21_decimal expected_result = {
+      {0x7, 0x0, 0x0, 0b00000000000111000000000000000000}};
 
   s21_decimal s21_result_decimal;
   ArithmeticResult s21_return_code =
@@ -9832,7 +9872,7 @@ START_TEST(max_mantissa_multiplication_test) {
 }
 END_TEST
 
-START_TEST(rounding_test_1) {
+START_TEST(epsilon_rounding_test_1) {
   // 3.0000000000000000000000000151
   s21_decimal input_decimal_1 = {
       {0x30000097, 0xBA6F0723, 0x60EF6B1A, 0b00000000000111000000000000000000}};
@@ -9852,7 +9892,7 @@ START_TEST(rounding_test_1) {
 }
 END_TEST
 
-START_TEST(rounding_test_2) {
+START_TEST(epsilon_rounding_test_2) {
   // 5.0000000000000000000000000116
   s21_decimal input_decimal_1 = {
       {0x50000074, 0x36B90BE5, 0xA18F07D7, 0b00000000000111000000000000000000}};
@@ -10384,11 +10424,13 @@ Suite* make_mul_suite() {
   tcase_add_test(tc_core, test_mul_gen_503);
   tcase_add_test(tc_core, test_mul_gen_504);
   tcase_add_test(tc_core, test_mul_gen_505);
-  tcase_add_test(tc_core, scale_above_28_test_1);
-  tcase_add_test(tc_core, scale_above_28_test_2);
+  tcase_add_test(tc_core, epsilon_test_1);
+  tcase_add_test(tc_core, epsilon_test_2);
+  tcase_add_test(tc_core, epsilon_test_3);
+  tcase_add_test(tc_core, epsilon_test_4);
   tcase_add_test(tc_core, max_mantissa_multiplication_test);
-  tcase_add_test(tc_core, rounding_test_1);
-  tcase_add_test(tc_core, rounding_test_2);
+  tcase_add_test(tc_core, epsilon_rounding_test_1);
+  tcase_add_test(tc_core, epsilon_rounding_test_2);
 
   suite_add_tcase(mul_suite, tc_core);
 
