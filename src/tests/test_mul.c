@@ -9793,21 +9793,19 @@ START_TEST(scale_above_28_test_1) {
 END_TEST
 
 START_TEST(scale_above_28_test_2) {
-  // 0.79228162514264337593543950335
+  // 7.9228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000111000000000000000000}};
-  // 0.79228162514264337593543950335
+  // 7.9228162514264337593543950335
   s21_decimal input_decimal_2 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000111000000000000000000}};
-  // 0.62771017353866800508395658152
+  // 62.771017353866807638357894230
   s21_decimal expected_result = {
-      {0xF6911BA8, 0x359A34C1, 0xCAD2F7F5, 0b00000000000111000000000000000000}};
+      {0x96EE456, 0x359A3B3E, 0xCAD2F7F5, 0b00000000000110110000000000000000}};
 
   s21_decimal s21_result_decimal;
   ArithmeticResult s21_return_code =
       s21_mul(input_decimal_1, input_decimal_2, &s21_result_decimal);
-  debug_print_decimal_as_binary_in_one_line(s21_result_decimal);
-  debug_print_decimal_as_binary_in_one_line(expected_result);
 
   ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
   ck_assert_int_eq(s21_return_code, OK);
@@ -9818,19 +9816,58 @@ START_TEST(max_mantissa_multiplication_test) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
-  // 0.79228162514264337593543950335
+  // 0.7922816251426433759354395034
   s21_decimal input_decimal_2 = {
-      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000111000000000000000000}};
-  // 0.62771017353866800508395658152
+      {0x9999999A, 0x99999999, 0x19999999, 0b00000000000111000000000000000000}};
+  // 62771017353866807638357894234
   s21_decimal expected_result = {
-      {0xFFFFFFFF, 0x359A37FF, 0xCAD2F7F5, 0b00000000000000000000000000000000}};
+      {0x96EE45A, 0x359A3B3E, 0xCAD2F7F5, 0b00000000000000000000000000000000}};
 
   s21_decimal s21_result_decimal;
   ArithmeticResult s21_return_code =
       s21_mul(input_decimal_1, input_decimal_2, &s21_result_decimal);
-  debug_print_decimal_as_binary_in_one_line(s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(rounding_test_1) {
+  // 3.0000000000000000000000000151
+  s21_decimal input_decimal_1 = {
+      {0x30000097, 0xBA6F0723, 0x60EF6B1A, 0b00000000000111000000000000000000}};
+  // 0.03
+  s21_decimal input_decimal_2 = {
+      {0x3, 0, 0, 0b00000000000000100000000000000000}};
+  // 0.0900000000000000000000000005
+  s21_decimal expected_result = {
+      {0x4000005, 0xC308736A, 0x2E87669, 0b00000000000111000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_mul(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(rounding_test_2) {
+  // 5.0000000000000000000000000116
+  s21_decimal input_decimal_1 = {
+      {0x50000074, 0x36B90BE5, 0xA18F07D7, 0b00000000000111000000000000000000}};
+  // 0.03
+  s21_decimal input_decimal_2 = {
+      {0x3, 0, 0, 0b00000000000000100000000000000000}};
+  // 0.1500000000000000000000000003
+  s21_decimal expected_result = {
+      {0x5C000003, 0xEFB8C05B, 0x4D8C55A, 0b00000000000111000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_mul(input_decimal_1, input_decimal_2, &s21_result_decimal);
   debug_print_decimal_as_binary_in_one_line(expected_result);
-  printf("\ncode: %d\n", s21_return_code);
+  debug_print_decimal_as_binary_in_one_line(s21_result_decimal);
 
   ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
   ck_assert_int_eq(s21_return_code, OK);
@@ -10352,6 +10389,8 @@ Suite* make_mul_suite() {
   tcase_add_test(tc_core, scale_above_28_test_1);
   tcase_add_test(tc_core, scale_above_28_test_2);
   tcase_add_test(tc_core, max_mantissa_multiplication_test);
+  tcase_add_test(tc_core, rounding_test_1);
+  tcase_add_test(tc_core, rounding_test_2);
 
   suite_add_tcase(mul_suite, tc_core);
 
