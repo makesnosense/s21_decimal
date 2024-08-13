@@ -655,6 +655,90 @@ START_TEST(multiply_test_2) {
 }
 END_TEST
 
+START_TEST(long_mantissas_multiplication_test_1) {
+  // 79228162514264337593543950335
+  uint32_t num_1[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0, 0, 0};
+  // 79228162514264337593543950335
+  uint32_t num_2[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0, 0, 0};
+  // 6277101735386680763835789423049210091073826769276946612225
+  uint32_t expected[6] = {0x00000001, 0, 0, 0xFFFFFFFE, 0xFFFFFFFF, 0xFFFFFFFF};
+  uint32_t result[6] = {0};
+
+  int overflow = multiply_long_mantissas(num_1, num_2, result);
+  ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(overflow, 0);
+}
+END_TEST
+
+START_TEST(long_mantissas_multiplication_test_2) {
+  // 62771017353866807638357894232
+  uint32_t num_1[6] = {0x96EE458, 0x359A3B3E, 0xCAD2F7F5, 0x0, 0x0, 0x0};
+  // 100000000000000000000000000000
+  uint32_t num_2[6] = {0xA0000000, 0x6D7217CA, 0x431E0FAE, 0x1, 0x0, 0x0};
+  // 6277101735386680763835789423200000000000000000000000000000
+  uint32_t expected[6] = {0x0,        0x55196427, 0xE73A7D3E,
+                          0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  uint32_t result[6] = {0};
+
+  int overflow = multiply_long_mantissas(num_1, num_2, result);
+
+  ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(overflow, 0);
+}
+END_TEST
+
+START_TEST(long_mantissas_multiplication_overflow_test_1) {
+  // 62771017353866807638357894233
+  uint32_t num_1[6] = {0x96EE459, 0x359A3B3E, 0xCAD2F7F5, 0x0, 0x0, 0x0};
+  // 100000000000000000000000000000
+  uint32_t num_2[6] = {0xA0000000, 0x6D7217CA, 0x431E0FAE, 0x1, 0x0, 0x0};
+  // 92333583897644555535965487104
+  uint32_t expected[6] = {0xA0000000, 0xC28B7BF1, 0x2A588CEC, 0x1, 0x0, 0x0};
+  uint32_t result[6] = {0};
+
+  int overflow = multiply_long_mantissas(num_1, num_2, result);
+
+  ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(overflow, 1);
+}
+END_TEST
+
+START_TEST(long_mantissas_multiplication_overflow_test_2) {
+  // 6277101735386680763835789423207666416102355444464034512895
+  uint32_t num_1[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                       0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  // 378598437598
+  uint32_t num_2[6] = {0x2639B2DE, 0x58, 0x0, 0x0, 0x0, 0x0};
+  // 6277101735386680763835789423207666416102355444085436075298
+  uint32_t expected[6] = {0xD9C64D22, 0xFFFFFFA7, 0xFFFFFFFF,
+                          0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  uint32_t result[6] = {0};
+
+  int overflow = multiply_long_mantissas(num_1, num_2, result);
+
+  ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(overflow, 1);
+}
+END_TEST
+
+START_TEST(long_mantissas_multiplication_overflow_test_3) {
+  // 10
+  uint32_t num_1[6] = {0xA, 0x0, 0x0, 0x0, 0x0, 0x0};
+  // 6277101735386680763835789423207666416102355444464034512895
+  uint32_t num_2[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                       0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  // 6277101735386680763835789423207666416102355444464034512886
+  uint32_t expected[6] = {0xFFFFFFF6, 0xFFFFFFFF, 0xFFFFFFFF,
+                          0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  uint32_t result[6] = {0};
+
+  int overflow = multiply_long_mantissas(num_1, num_2, result);
+
+  ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(overflow, 1);
+}
+END_TEST
+
 START_TEST(test_is_one_decimal_0) {
   s21_decimal input_decimal = {
       {0x1, 0x0, 0x0, 0b00000000000000000000000000000000}};
@@ -808,6 +892,12 @@ Suite* make_utility_suite() {
 
   tcase_add_test(tc_core, multiply_test_1);
   tcase_add_test(tc_core, multiply_test_2);
+  tcase_add_test(tc_core, long_mantissas_multiplication_test_1);
+  tcase_add_test(tc_core, long_mantissas_multiplication_test_2);
+  tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_1);
+  tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_2);
+  tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_3);
+
   tcase_add_test(tc_core, shift_decimal_test);
   tcase_add_test(tc_core, test_long_mantissas_addition_1);
   tcase_add_test(tc_core, test_long_mantissas_addition_2);
