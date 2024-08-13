@@ -287,6 +287,38 @@ void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
   }
 }
 
+int multiply_long_mantissas(uint32_t* factor_1, uint32_t* factor_2,
+                            uint32_t* result) {
+  int size = 6;
+  int overflow = 0;
+  uint64_t product;
+  uint32_t carry;
+  memset(result, 0, (PART_SIZE * size) / BYTE_SIZE);
+
+  for (int i = 0; i < size; i++) {
+    carry = 0;
+    for (int j = 0; j < size; j++) {
+      product = (uint64_t)factor_1[i] * factor_2[j] + carry;
+      if ((i + j) >= size) {
+        // overflow += product > 0;
+        if (product > 0) {
+          overflow = 1;
+        }
+      } else {
+        product += result[i + j];
+        result[i + j] = (uint32_t)product;
+      }
+      carry = product >> 32;
+    }
+    // overflow += carry > 0;
+    if (i == 0 && carry > 0) {
+      overflow = 1;
+    }
+  }
+  // return overflow > 0;
+  return overflow;
+}
+
 int get_scale_difference_from_decimals(s21_decimal decimal_1,
                                        s21_decimal decimal_2) {
   int decimal_1_scale = get_scale(decimal_1.bits[3]);
