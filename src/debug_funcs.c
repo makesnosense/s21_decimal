@@ -52,3 +52,10 @@ void debug_print_mantissa_as_binary(uint32_t* mantissa_parts,
   }
   putchar('\n');
 }
+
+void debug_print_mantissa_as_hex(uint32_t* mantissa_parts, int mantissa_size) {
+  for (int i = mantissa_size - 1; i >= 0; i--) {
+    printf("%08X", mantissa_parts[i]);
+  }
+  putchar('\n');
+}

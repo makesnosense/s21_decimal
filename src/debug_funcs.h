@@ -11,3 +11,4 @@ void debug_print_decimal_as_binary(s21_decimal input_decimal);
 void debug_print_decimal_as_binary_in_one_line(s21_decimal input_decimal);
 void debug_print_mantissa_as_binary(uint32_t* mantissa_parts,
                                     int mantissa_size);
+void debug_print_mantissa_as_hex(uint32_t* mantissa_parts, int mantissa_size);
