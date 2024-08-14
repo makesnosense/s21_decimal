@@ -824,6 +824,7 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, test_is_one_decimal_1);
   tcase_add_test(tc_core, test_is_one_decimal_2);
   tcase_add_test(tc_core, test_is_zero_decimal_0);
+
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);
   // tcase_add_test(tc_core, print_mantissa_as_binary_test);
