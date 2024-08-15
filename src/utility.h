@@ -16,6 +16,8 @@
 #define BEGIN_SCALE_POSITION 16
 #define END_SCALE_POSITION 23
 
+#define MAX_SCALE 28
+
 #define DECIMAL_ZERO ((s21_decimal){0})
 
 typedef enum Sign_t {

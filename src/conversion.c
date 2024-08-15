@@ -49,12 +49,14 @@ int s21_from_float_to_decimal(float src, s21_decimal* dst) {
     *dst = DECIMAL_ZERO;
     s21_decimal result;
     result = DECIMAL_ZERO;
-    char strinf_float[64];
-    sprintf(strinf_float, "%.6E", fabsf(src));
+    char strinf_float[64] = {0};
+    sprintf(strinf_float, "%.*E", E_NOTATION_PRECISION, fabsf(src));
     int exponent = get_float_exponent_from_string(strinf_float);
 
-    if (exponent <= -23) {
-      int float_precision = exponent + 28;
+    int max_exponent_to_fit_in_decimal = MAX_SCALE - E_NOTATION_PRECISION + 1;
+
+    if (exponent <= -max_exponent_to_fit_in_decimal) {
+      int float_precision = exponent + MAX_SCALE;
       sprintf(strinf_float, "%.*E", float_precision, fabsf(src));
     }
 
@@ -95,7 +97,7 @@ int get_float_exponent_from_string(char* str) {
 }
 
 s21_decimal float_string_to_decimal(char* str) {
-  int digits_counter = 6;
+  int digits_counter = FLOAT_SIGNIFICANT_DIGITS - 1;
   int count_digit_to_float = 0;
   s21_decimal result = {{0x0, 0x0, 0x0, 0x0}};
   uint32_t result_mantissa[3] = {0};
@@ -127,23 +129,23 @@ s21_decimal float_string_to_decimal(char* str) {
     }
   }
 
-  exp = exp - 6;
+  exp = exp - E_NOTATION_PRECISION;
 
   if (exp > 0) {
     multiply_mantissas(result_mantissa, get_mantissa_with_power_of_ten(exp),
                        result.bits);
     copy_mantissa(result_mantissa, result.bits);
   } else if (exp < 0) {
-    if (exp < -28) {
-      exp += 28;
+    if (exp < -MAX_SCALE) {
+      exp += MAX_SCALE;
       divide_mantissas(result_mantissa, get_mantissa_with_power_of_ten(-exp),
                        result.bits, remainder);
       copy_mantissa(result_mantissa, result.bits);
-      exp = -28;
+      exp = -MAX_SCALE;
     }
   }
 
-  if (exp > 0 && exp + 6 >= count_digit_to_float) {
+  if (exp > 0 && exp + E_NOTATION_PRECISION >= count_digit_to_float) {
     exp = 0;
   }
 
