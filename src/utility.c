@@ -399,8 +399,9 @@ int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,
                       bool* overflow) {
   *overflow = false;
 
+  uint32_t rounded_long_mantissa[6];
+  copy_long_mantissa(rounded_long_mantissa, long_mantissa);
   uint32_t* max_mantissa = get_max_mantissa();
-  // debug_print_mantissa_as_binary(long_mantissa, 6);
 
   int digits_to_remove = count_long_mantissa_digits(long_mantissa) - 29;
 
@@ -410,18 +411,17 @@ int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,
     if (downsized_scale < 0) {
       *overflow = true;
     } else {
-      uint32_t initial_long_mantissa[6];
-      copy_long_mantissa(initial_long_mantissa, long_mantissa);
-
       if (digits_to_remove > 0) {
-        remove_digits_rounding_to_even(long_mantissa, digits_to_remove);
+        remove_digits_rounding_to_even(long_mantissa, digits_to_remove,
+                                       rounded_long_mantissa);
       }
       // if 29 decimal digit number in mantissa doesn't fit in 96
       // bits remove one more decimal digit
-      if (compare_long_mantissas(long_mantissa, max_mantissa) > 0) {
+      if (compare_long_mantissas(rounded_long_mantissa, max_mantissa) > 0) {
         digits_to_remove += 1;
-        remove_digits_rounding_to_even(initial_long_mantissa, digits_to_remove);
-        copy_long_mantissa(long_mantissa, initial_long_mantissa);
+
+        remove_digits_rounding_to_even(long_mantissa, digits_to_remove,
+                                       rounded_long_mantissa);
         downsized_scale -= 1;
       }
       if (downsized_scale < 0) {
@@ -429,23 +429,25 @@ int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,
       }
     }
   }
+
   if (!*overflow) {
-    copy_mantissa(mantissa, long_mantissa);
+    copy_mantissa(mantissa, rounded_long_mantissa);
     *scale = downsized_scale;
   }
+
   int removed_digits = (digits_to_remove > 0) ? digits_to_remove : 0;
   return removed_digits;
 }
 
 void remove_digits_rounding_to_even(uint32_t* long_mantissa,
-                                    int digits_to_remove) {
-  uint32_t removed_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+                                    int digits_to_remove, uint32_t* result) {
+  uint32_t removed_digits[6] = {0};
   divide_long_mantissas(long_mantissa,
                         get_mantissa_with_power_of_ten(digits_to_remove),
-                        long_mantissa, removed_digits);
+                        result, removed_digits);
 
-  uint32_t first_removed_digit[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
-  uint32_t rest_removed_digits[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+  uint32_t first_removed_digit[6] = {0};
+  uint32_t rest_removed_digits[6] = {0};
   divide_long_mantissas(removed_digits,
                         get_mantissa_with_power_of_ten(digits_to_remove - 1),
                         first_removed_digit, rest_removed_digits);
@@ -453,14 +455,14 @@ void remove_digits_rounding_to_even(uint32_t* long_mantissa,
   uint32_t* one = get_mantissa_with_power_of_ten(0);
   if (first_removed_digit[0] == 5) {
     if (!long_mantissa_is_zero(rest_removed_digits)) {
-      add_long_mantissas(long_mantissa, one, long_mantissa);
+      add_long_mantissas(result, one, result);
     } else {
-      if (long_mantissa[0] & 1) {
-        add_long_mantissas(long_mantissa, one, long_mantissa);
+      if (result[0] & 1) {
+        add_long_mantissas(result, one, result);
       }
     }
   } else if (first_removed_digit[0] > 5) {
-    add_long_mantissas(long_mantissa, one, long_mantissa);
+    add_long_mantissas(result, one, result);
   }
 }
 

@@ -136,8 +136,6 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
       get_mantissa_from_decimal(mantissa_value_2, value_2);
       multiply_mantissas(mantissa_value_1, mantissa_value_2,
                          long_mantissa_result);
-      uint32_t initital_long_result[6] = {0};
-      copy_long_mantissa(initital_long_result, long_mantissa_result);
 
       int scale_result =
           get_scale(value_1.bits[3]) + get_scale(value_2.bits[3]);
@@ -147,8 +145,8 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
       if (scale_result > 28) {
         int digits_to_remove = (scale_result - 28) + removed_digits;
         scale_result = 28;
-        remove_digits_rounding_to_even(initital_long_result, digits_to_remove);
-        copy_mantissa(mantissa_result, initital_long_result);
+        remove_digits_rounding_to_even(long_mantissa_result, digits_to_remove,
+                                       mantissa_result);
       }
 
       set_scale(&result->bits[3], scale_result);
@@ -169,6 +167,50 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   }
   return 0;
 }
+
+/* int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
+  ArithmeticResult result_code = 0;
+  // 62771017353866807638357894232
+  // integer part of division of long mantissa max value by 10^29
+  uint32_t SMV = {0x96EE458, 0x359A3B3E, 0xCAD2F7F5, 0x0, 0x0, 0x0};
+
+  memset(result, 0, sizeof(s21_decimal));
+
+  uint32_t* multiplier;
+
+  int result_scale = get_scale(value_1.bits[3]) - get_scale(value_2.bits[3]);
+  int temp_scale;
+
+  if (result_scale <= 0) {
+    temp_scale = result_scale + 28;
+    multiplier = get_mantissa_with_power_of_ten(28);
+  } else {
+    temp_scale = 28;
+    multiplier = get_mantissa_with_power_of_ten(28 - result_scale);
+  }
+
+  uint32_t divident[6] = {0};
+  uint32_t divider[6] = {0};
+  uint32_t result_mantissa[6] = {0};
+  uint32_t remainder[6] = {0};
+  int overflow;
+
+  multiply_mantissas(value_1.bits, multiplier, divident);
+  copy_mantissa(divider, value_2.bits);
+
+  divide_long_mantissas(divident, divider, result_mantissa, remainder);
+  uint32_t initial_result_mantissa[6] = {0};
+  copy_long_mantissa(initial_result_mantissa, result_mantissa);
+  downsize_mantissa(result_mantissa, &temp_scale, result_mantissa, &overflow);
+
+  if (get_sign(value_1) == get_sign(value_2)) {
+    set_sign(result, PLUS);
+  } else {
+    set_sign(result, MINUS);
+  }
+
+  return result_code;
+} */
 
 ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign) {
   ArithmeticResult arithmetic_result = OK;
