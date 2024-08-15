@@ -16,6 +16,8 @@
 #define BEGIN_SCALE_POSITION 16
 #define END_SCALE_POSITION 23
 
+#define DECIMAL_ZERO ((s21_decimal){0})
+
 typedef enum Sign_t {
   PLUS = 0,
   MINUS = 1,
@@ -87,6 +89,8 @@ int64_t _compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
                            int size);
 int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
                       uint32_t* remainder, int size);
+
+s21_decimal decimal_get_inf();
 
 #define add_mantissas(term_1, term_2, result) \
   _add_mantissas(term_1, term_2, result, MANTISSA_PARTS)

@@ -14,7 +14,8 @@ int main() {
                      make_from_int_to_decimal_suite(),
                      make_from_decimal_to_int_suite(), make_floor_suite(),
                      make_round_suite(), make_truncate_suite(),
-                     make_negate_suite(), make_utility_suite(), NULL};
+                     make_negate_suite(), make_utility_suite(),
+                     make_from_float_to_decimal_suite(), NULL};
 
   for (Suite** current_suite = suites; *current_suite != NULL;
        current_suite++) {
