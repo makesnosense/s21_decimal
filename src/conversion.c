@@ -1,12 +1,7 @@
 #include "conversion.h"
 
-int s21_from_float_to_decimal(float src, s21_decimal* dst) {
-  if (1 == 0) {
-    printf("%d", dst->bits[0]);
-    printf("%f", src);
-  }
-  return 0;
-}
+#include <ctype.h>
+#include <math.h>
 
 int s21_from_int_to_decimal(int src, s21_decimal* dst) {
   ConversionResult result = OK;
@@ -25,10 +20,176 @@ int s21_from_int_to_decimal(int src, s21_decimal* dst) {
   return result;
 }
 
+int s21_from_float_to_decimal(float src, s21_decimal* dst) {
+  ConversionResult code = OK;
+  if (!dst) {
+    code = CONVERSION_ERROR;
+  } else if (src == 0.0) {
+    code = OK;
+    *dst = DECIMAL_ZERO;
+    if (signbit(src) != 0) {
+      set_sign(dst, MINUS);
+    }
+  } else if (isinf(src) || isnan(src)) {
+    code = CONVERSION_ERROR;
+    *dst = decimal_get_inf();
+    if (signbit(src) != 0) {
+      set_sign(dst, MINUS);
+    }
+  } else if (fabsf(src) > MAX_FLOAT_TO_CONVERT) {
+    code = CONVERSION_ERROR;
+    *dst = decimal_get_inf();
+    if (signbit(src) != 0) {
+      set_sign(dst, MINUS);
+    }
+  } else if (fabsf(src) < MIN_FLOAT_TO_CONVERT) {
+    code = CONVERSION_ERROR;
+    *dst = DECIMAL_ZERO;
+  } else {
+    *dst = DECIMAL_ZERO;
+    s21_decimal result;
+    result = DECIMAL_ZERO;
+    char strinf_float[64];
+    sprintf(strinf_float, "%.6E", fabsf(src));
+    int exponent = get_float_exponent_from_string(strinf_float);
+
+    if (exponent <= -23) {
+      int float_precision = exponent + 28;
+      sprintf(strinf_float, "%.*E", float_precision, fabsf(src));
+    }
+
+    result = s21_float_string_to_decimal(strinf_float);
+
+    if (signbit(src) != 0) {
+      set_sign(&result, MINUS);
+    }
+
+    *dst = result;
+  }
+
+  return code;
+}
+
 int s21_from_decimal_to_int(s21_decimal src, int* dst) {
   if (1 == 0) {
     printf("%d", src.bits[0]);
     printf("%d", *dst);
   }
   return 0;
+}
+
+int get_float_exponent_from_string(char* str) {
+  int result = 0;
+  int sign = 1;
+  while (*str != 'E') str++;
+  str++;
+  if (*str == '-' || *str == '+') {
+    sign = (*str == '-') ? -1 : 1;
+    str++;
+  }
+  while (isdigit(*str)) {
+    result = result * 10 + (*str - '0');
+    str++;
+  }
+  return result * sign;
+}
+
+s21_decimal s21_float_string_to_decimal(char* str) {
+  int digits_counter = 6;
+  int count_digit_to_float = 0;
+  s21_decimal result = DECIMAL_ZERO;
+  uint32_t result_mantissa[3] = {0};
+  uint32_t remainder[3] = {0};
+  char* ptr = str;
+
+  int exp = get_float_exponent_from_string(str);
+
+  while (*ptr) {
+    if (*ptr == '.') {
+      ++ptr;
+      continue;
+    } else if (*ptr >= '0' && *ptr <= '9') {
+      s21_decimal tmp = DECIMAL_ZERO;
+      multiply_mantissas(
+          s21_decimal_get_from_char(*ptr),
+          _get_mantissa_with_power_of_ten_powers_0_to_28(digits_counter),
+          tmp.bits);
+      _add_mantissas(result_mantissa, tmp.bits, result.bits, 3);
+      _copy_mantissa(result_mantissa, result.bits, 3);
+      digits_counter--;
+      ptr++;
+      count_digit_to_float++;
+    } else {
+      break;
+    }
+  }
+
+  exp = exp - 6;
+
+  if (exp > 0) {
+    multiply_mantissas(result_mantissa,
+                       _get_mantissa_with_power_of_ten_powers_0_to_28(exp),
+                       result.bits);
+    _copy_mantissa(result_mantissa, result.bits, 3);
+  } else if (exp < 0) {
+    if (exp < -28) {
+      exp += 28;
+      _divide_mantissas(result_mantissa,
+                        _get_mantissa_with_power_of_ten_powers_0_to_28(-exp),
+                        result.bits, remainder, 3);
+      _copy_mantissa(result_mantissa, result.bits, 3);
+      exp = -28;
+    }
+  }
+
+  if (exp > 0 && exp + 6 >= count_digit_to_float) {
+    exp = 0;
+  }
+
+  if (exp < 0) {
+    exp *= -1;
+  }
+
+  set_scale(&result.bits[3], exp);
+
+  return result;
+}
+
+uint32_t* s21_decimal_get_from_char(char c) {
+  static uint32_t result[3] = {0, 0, 0};
+
+  switch (c) {
+    case '0':
+      result[0] = 0;
+      break;
+    case '1':
+      result[0] = 1;
+      break;
+    case '2':
+      result[0] = 2;
+      break;
+    case '3':
+      result[0] = 3;
+      break;
+    case '4':
+      result[0] = 4;
+      break;
+    case '5':
+      result[0] = 5;
+      break;
+    case '6':
+      result[0] = 6;
+      break;
+    case '7':
+      result[0] = 7;
+      break;
+    case '8':
+      result[0] = 8;
+      break;
+    case '9':
+      result[0] = 9;
+      break;
+  }
+
+  return result;
 }
