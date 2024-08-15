@@ -272,18 +272,18 @@ void shift_decimal_right(s21_decimal* d) {
 }
 
 void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
-                        uint32_t* result) {
-  s21_memset(result, 0, sizeof(uint32_t) * 6);
+                        uint32_t* long_mantissa_result) {
+  s21_memset(long_mantissa_result, 0, sizeof(uint32_t) * 6);
 
   for (int i = 0; i < 3; i++) {
     uint64_t carry = 0;
     for (int j = 0; j < 3; j++) {
-      uint64_t product =
-          (uint64_t)mantissa_1[i] * mantissa_2[j] + result[i + j] + carry;
-      result[i + j] = (uint32_t)product;
+      uint64_t product = (uint64_t)mantissa_1[i] * mantissa_2[j] +
+                         long_mantissa_result[i + j] + carry;
+      long_mantissa_result[i + j] = (uint32_t)product;
       carry = product >> 32;
     }
-    result[i + 3] = carry;
+    long_mantissa_result[i + 3] = carry;
   }
 }
 

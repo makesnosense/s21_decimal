@@ -15,10 +15,6 @@ START_TEST(test_from_float_to_decimal_ok) {
   int s21_return_code =
       s21_from_float_to_decimal(input_float, &s21_result_decimal);
 
-  // debug_print_decimal_as_binary(expected_result);
-  // putchar('\n');
-  // debug_print_decimal_as_binary(s21_result_decimal);
-
   ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
 
   ck_assert_int_eq(s21_return_code, OK);
@@ -46,6 +42,7 @@ START_TEST(test_from_float_to_decimal_gen_1) {
   s21_decimal s21_result_decimal;
   ConversionResult s21_return_code =
       s21_from_float_to_decimal(input_float, &s21_result_decimal);
+
   ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
   ck_assert_int_eq(s21_return_code, OK);
 }

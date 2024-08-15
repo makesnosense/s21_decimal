@@ -97,7 +97,7 @@ int get_float_exponent_from_string(char* str) {
 s21_decimal s21_float_string_to_decimal(char* str) {
   int digits_counter = 6;
   int count_digit_to_float = 0;
-  s21_decimal result = DECIMAL_ZERO;
+  s21_decimal result = {{0x0, 0x0, 0x0, 0x0}};
   uint32_t result_mantissa[3] = {0};
   uint32_t remainder[3] = {0};
   char* ptr = str;
@@ -109,16 +109,19 @@ s21_decimal s21_float_string_to_decimal(char* str) {
       ++ptr;
       continue;
     } else if (*ptr >= '0' && *ptr <= '9') {
-      s21_decimal tmp = DECIMAL_ZERO;
-      multiply_mantissas(
-          s21_decimal_get_from_char(*ptr),
-          _get_mantissa_with_power_of_ten_powers_0_to_28(digits_counter),
-          tmp.bits);
-      _add_mantissas(result_mantissa, tmp.bits, result.bits, 3);
-      _copy_mantissa(result_mantissa, result.bits, 3);
+      s21_decimal tmp = {{0x0, 0x0, 0x0, 0x0}};
+      uint32_t tmp_mantissa[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+      multiply_mantissas(s21_decimal_get_from_char(*ptr),
+                         get_mantissa_with_power_of_ten(digits_counter),
+                         tmp_mantissa);
+
+      add_mantissas(result_mantissa, tmp_mantissa, result_mantissa);
+      write_in_mantissa_to_decimal(result_mantissa, &tmp);
+      copy_mantissa(result.bits, result_mantissa);
       digits_counter--;
       ptr++;
       count_digit_to_float++;
+
     } else {
       break;
     }
@@ -127,15 +130,13 @@ s21_decimal s21_float_string_to_decimal(char* str) {
   exp = exp - 6;
 
   if (exp > 0) {
-    multiply_mantissas(result_mantissa,
-                       _get_mantissa_with_power_of_ten_powers_0_to_28(exp),
+    multiply_mantissas(result_mantissa, get_mantissa_with_power_of_ten(exp),
                        result.bits);
     _copy_mantissa(result_mantissa, result.bits, 3);
   } else if (exp < 0) {
     if (exp < -28) {
       exp += 28;
-      _divide_mantissas(result_mantissa,
-                        _get_mantissa_with_power_of_ten_powers_0_to_28(-exp),
+      _divide_mantissas(result_mantissa, get_mantissa_with_power_of_ten(-exp),
                         result.bits, remainder, 3);
       _copy_mantissa(result_mantissa, result.bits, 3);
       exp = -28;
