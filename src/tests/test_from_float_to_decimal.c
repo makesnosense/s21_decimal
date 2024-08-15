@@ -42,7 +42,6 @@ START_TEST(test_from_float_to_decimal_gen_1) {
   s21_decimal s21_result_decimal;
   ConversionResult s21_return_code =
       s21_from_float_to_decimal(input_float, &s21_result_decimal);
-
   ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
   ck_assert_int_eq(s21_return_code, OK);
 }
@@ -203,11 +202,14 @@ END_TEST
 
 START_TEST(test_from_float_to_decimal_gen_14) {
   float input_float = -0.0f;
-
+  // seven significant digits: -0.0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
   s21_decimal s21_result_decimal;
   ConversionResult s21_return_code =
       s21_from_float_to_decimal(input_float, &s21_result_decimal);
-  ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
 }
 END_TEST
 
@@ -467,11 +469,14 @@ END_TEST
 
 START_TEST(test_from_float_to_decimal_gen_35) {
   float input_float = 0.0f;
-
+  // seven significant digits: 0.0
+  s21_decimal expected_result = {
+      {0x00000000, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
   s21_decimal s21_result_decimal;
   ConversionResult s21_return_code =
       s21_from_float_to_decimal(input_float, &s21_result_decimal);
-  ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
 }
 END_TEST
 
