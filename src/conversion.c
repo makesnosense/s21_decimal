@@ -58,7 +58,7 @@ int s21_from_float_to_decimal(float src, s21_decimal* dst) {
       sprintf(strinf_float, "%.*E", float_precision, fabsf(src));
     }
 
-    result = s21_float_string_to_decimal(strinf_float);
+    result = float_string_to_decimal(strinf_float);
 
     if (signbit(src) != 0) {
       set_sign(&result, MINUS);
@@ -94,7 +94,7 @@ int get_float_exponent_from_string(char* str) {
   return result * sign;
 }
 
-s21_decimal s21_float_string_to_decimal(char* str) {
+s21_decimal float_string_to_decimal(char* str) {
   int digits_counter = 6;
   int count_digit_to_float = 0;
   s21_decimal result = {{0x0, 0x0, 0x0, 0x0}};
@@ -132,13 +132,13 @@ s21_decimal s21_float_string_to_decimal(char* str) {
   if (exp > 0) {
     multiply_mantissas(result_mantissa, get_mantissa_with_power_of_ten(exp),
                        result.bits);
-    _copy_mantissa(result_mantissa, result.bits, 3);
+    copy_mantissa(result_mantissa, result.bits);
   } else if (exp < 0) {
     if (exp < -28) {
       exp += 28;
-      _divide_mantissas(result_mantissa, get_mantissa_with_power_of_ten(-exp),
-                        result.bits, remainder, 3);
-      _copy_mantissa(result_mantissa, result.bits, 3);
+      divide_mantissas(result_mantissa, get_mantissa_with_power_of_ten(-exp),
+                       result.bits, remainder);
+      copy_mantissa(result_mantissa, result.bits);
       exp = -28;
     }
   }

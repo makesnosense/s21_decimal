@@ -12,6 +12,6 @@ typedef enum ConversionResult {
 
 int get_float_exponent_from_string(char* input);
 
-s21_decimal s21_float_string_to_decimal(char* str);
+s21_decimal float_string_to_decimal(char* str);
 
 uint32_t* s21_decimal_get_from_char(char c);
