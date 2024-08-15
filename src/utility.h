@@ -49,7 +49,7 @@ int multiply_long_mantissas(uint32_t* factor_1, uint32_t* factor_2,
 void shift_decimal_right(s21_decimal* d);
 void write_in_mantissa_to_decimal(uint32_t* mantissa,
                                   s21_decimal* destination_decimal);
-void get_mantissa_from_decimal(uint32_t* mantissa, s21_decimal* source_decimal);
+void get_mantissa_from_decimal(uint32_t* mantissa, s21_decimal source_decimal);
 void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6);
 
 void copy_decimal(s21_decimal* source_decimal,
@@ -78,7 +78,7 @@ uint32_t* _get_mantissa_with_power_of_ten_powers_29_to_57(int power);
 int _add_mantissas(uint32_t* term_1, uint32_t* term_2, uint32_t* result,
                    int size);
 void _bitflip_mantissa(uint32_t* number, uint32_t* result, int size);
-bool _zero_check_mantissa(uint32_t* mantissa, int size);
+bool _mantissa_is_zero(uint32_t* mantissa, int size);
 void _copy_mantissa(uint32_t* dest, uint32_t* src, int size);
 int _subtract_mantissas(uint32_t* minuend, uint32_t* subtrahend,
                         uint32_t* result, int size);
@@ -99,10 +99,9 @@ int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
 #define bitflip_long_mantissa(mantissa, result) \
   _bitflip_mantissa(mantissa, result, LONG_MANTISSA_PARTS)
 
-#define zero_check_mantissa(mantissa) \
-  _zero_check_mantissa(mantissa, MANTISSA_PARTS)
-#define zero_check_long_mantissa(mantissa) \
-  _zero_check_mantissa(mantissa, LONG_MANTISSA_PARTS)
+#define mantissa_is_zero(mantissa) _mantissa_is_zero(mantissa, MANTISSA_PARTS)
+#define long_mantissa_is_zero(mantissa) \
+  _mantissa_is_zero(mantissa, LONG_MANTISSA_PARTS)
 
 #define copy_mantissa(dest, src) _copy_mantissa(dest, src, MANTISSA_PARTS)
 #define copy_long_mantissa(dest, src) \

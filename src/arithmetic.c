@@ -132,8 +132,8 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
       uint32_t mantissa_value_2[3] = {0};
       uint32_t long_mantissa_result[6] = {0};
       uint32_t mantissa_result[3] = {0};
-      get_mantissa_from_decimal(mantissa_value_1, &value_1);
-      get_mantissa_from_decimal(mantissa_value_2, &value_2);
+      get_mantissa_from_decimal(mantissa_value_1, value_1);
+      get_mantissa_from_decimal(mantissa_value_2, value_2);
       multiply_mantissas(mantissa_value_1, mantissa_value_2,
                          long_mantissa_result);
       uint32_t initital_long_result[6] = {0};

@@ -96,7 +96,7 @@ void _bitflip_mantissa(uint32_t* mantissa, uint32_t* result, int size) {
   }
 }
 
-bool _zero_check_mantissa(uint32_t* mantissa, int size) {
+bool _mantissa_is_zero(uint32_t* mantissa, int size) {
   bool is_zero = true;
   for (int i = 0; i < size && is_zero == true; i++) {
     if (mantissa[i] != 0) {
@@ -115,7 +115,7 @@ void _copy_mantissa(uint32_t* dest, uint32_t* src, int size) {
 int _subtract_mantissas(uint32_t* minuend, uint32_t* subtrahend,
                         uint32_t* result, int size) {
   int is_negative = 0;
-  if (_zero_check_mantissa(subtrahend, size)) {
+  if (_mantissa_is_zero(subtrahend, size)) {
     // memmove instead of memcpy to handle same minuend and result case
     _copy_mantissa(result, minuend, size);
     // memmove(result, minuend, (PART_SIZE * size) / BYTE_SIZE);
@@ -196,7 +196,7 @@ int64_t _compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
 int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
                       uint32_t* remainder, int size) {
   int division_by_zero = 0;
-  if (_zero_check_mantissa(divisor, size)) {
+  if (_mantissa_is_zero(divisor, size)) {
     division_by_zero = 1;
   } else {
     int divident_bits = _find_highest_mantissa_bit(divident, size);
@@ -249,11 +249,10 @@ void write_in_mantissa_to_decimal(uint32_t* mantissa,
   destination_decimal->bits[2] = mantissa[2];
 }
 
-void get_mantissa_from_decimal(uint32_t* mantissa,
-                               s21_decimal* source_decimal) {
-  mantissa[0] = source_decimal->bits[0];
-  mantissa[1] = source_decimal->bits[1];
-  mantissa[2] = source_decimal->bits[2];
+void get_mantissa_from_decimal(uint32_t* mantissa, s21_decimal source_decimal) {
+  mantissa[0] = source_decimal.bits[0];
+  mantissa[1] = source_decimal.bits[1];
+  mantissa[2] = source_decimal.bits[2];
 }
 
 void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6) {
@@ -453,7 +452,7 @@ void remove_digits_rounding_to_even(uint32_t* long_mantissa,
 
   uint32_t* one = get_mantissa_with_power_of_ten(0);
   if (first_removed_digit[0] == 5) {
-    if (zero_check_long_mantissa(rest_removed_digits) == false) {
+    if (!long_mantissa_is_zero(rest_removed_digits)) {
       add_long_mantissas(long_mantissa, one, long_mantissa);
     } else {
       if (long_mantissa[0] & 1) {

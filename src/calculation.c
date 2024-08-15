@@ -9,7 +9,7 @@ int s21_floor(s21_decimal value, s21_decimal* result) {
   if (result == NULL) {
     return_code = CALCULATION_ERROR;
   } else {
-    if (zero_check_mantissa(value.bits)) {
+    if (mantissa_is_zero(value.bits)) {
       copy_mantissa(result->bits, value.bits);
     } else {
       int scale = get_scale(value.bits[3]);
@@ -17,7 +17,7 @@ int s21_floor(s21_decimal value, s21_decimal* result) {
       uint32_t* scale_divisor = get_mantissa_with_power_of_ten(scale);
       uint32_t remainder[3];
       divide_mantissas(value.bits, scale_divisor, result->bits, remainder);
-      if (is_negative && !zero_check_mantissa(remainder)) {
+      if (is_negative && !mantissa_is_zero(remainder)) {
         uint32_t* one = get_mantissa_with_power_of_ten(0);
         add_mantissas(result->bits, one, result->bits);
       }
@@ -94,7 +94,7 @@ int s21_round(s21_decimal value, s21_decimal* result) {
       uint32_t result_mantissa[3] = {0};
       uint32_t mantissa_containing_one[3] = {0x1, 0x0, 0x0};
       uint32_t result_mantissa_added_one[3] = {0};
-      get_mantissa_from_decimal(result_mantissa, result);
+      get_mantissa_from_decimal(result_mantissa, *result);
 
       add_mantissas(result_mantissa, mantissa_containing_one,
                     result_mantissa_added_one);
