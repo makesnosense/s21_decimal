@@ -26,6 +26,7 @@ Suite* make_div_suite();
 Suite* make_from_int_to_decimal_suite();
 Suite* make_from_float_to_decimal_suite();
 Suite* make_from_decimal_to_int_suite();
+Suite* make_from_decimal_to_float_suite();
 
 Suite* make_truncate_suite();
 Suite* make_negate_suite();

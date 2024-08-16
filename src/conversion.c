@@ -36,13 +36,13 @@ int s21_from_float_to_decimal(float src, s21_decimal* dst) {
     if (signbit(src) != 0) {
       set_sign(dst, MINUS);
     }
-  } else if (fabsf(src) > MAX_FLOAT_TO_CONVERT) {
+  } else if (fabsf(src) > MAX_FLOAT_FITTING_INTO_DECIMAL) {
     code = CONVERSION_ERROR;
     *dst = decimal_get_inf();
     if (signbit(src) != 0) {
       set_sign(dst, MINUS);
     }
-  } else if (fabsf(src) < MIN_FLOAT_TO_CONVERT) {
+  } else if (fabsf(src) < MIN_FLOAT_FITTING_INTO_DECIMAL) {
     code = CONVERSION_ERROR;
     *dst = DECIMAL_ZERO;
   } else {
@@ -76,6 +76,14 @@ int s21_from_decimal_to_int(s21_decimal src, int* dst) {
   if (1 == 0) {
     printf("%d", src.bits[0]);
     printf("%d", *dst);
+  }
+  return 0;
+}
+
+int s21_from_decimal_to_float(s21_decimal src, float* dst) {
+  if (1 == 0) {
+    printf("%d", src.bits[0]);
+    printf("%f", *dst);
   }
   return 0;
 }
