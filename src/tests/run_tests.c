@@ -6,17 +6,17 @@ int main() {
   int total_number_run = 0;
   int total_number_failed = 0;
 
-  Suite* suites[] = {make_add_suite(), make_sub_suite(), make_mul_suite(),
-                     //  make_div_suite(),
-                     make_is_less_suite(), make_is_less_or_equal_suite(),
-                     make_is_greater_suite(), make_is_greater_or_equal_suite(),
-                     make_is_equal_suite(), make_is_not_equal_suite(),
-                     make_from_int_to_decimal_suite(),
-                     make_from_float_to_decimal_suite(),
-                     //  make_from_decimal_to_int_suite(),
-                     make_from_decimal_to_float_suite(), make_floor_suite(),
-                     make_round_suite(), make_truncate_suite(),
-                     make_negate_suite(), make_utility_suite(), NULL};
+  Suite* suites[] = {
+      make_add_suite(), make_sub_suite(), make_mul_suite(),
+      //  make_div_suite(),
+      make_is_less_suite(), make_is_less_or_equal_suite(),
+      make_is_greater_suite(), make_is_greater_or_equal_suite(),
+      make_is_equal_suite(), make_is_not_equal_suite(),
+      make_from_int_to_decimal_suite(), make_from_float_to_decimal_suite(),
+      make_from_decimal_to_int_suite(),
+      // make_from_decimal_to_float_suite(),
+      make_floor_suite(), make_round_suite(), make_truncate_suite(),
+      make_negate_suite(), make_utility_suite(), NULL};
 
   for (Suite** current_suite = suites; *current_suite != NULL;
        current_suite++) {

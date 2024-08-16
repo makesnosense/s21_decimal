@@ -1,3 +1,6 @@
+#ifndef SRC_CONVERSION_H_
+#define SRC_CONVERSION_H_
+
 #include "s21_decimal.h"
 #include "utility.h"
 
@@ -18,3 +21,5 @@ int get_float_exponent_from_string(char* input);
 s21_decimal float_string_to_decimal(char* str);
 
 uint32_t* s21_decimal_get_from_char(char c);
+
+#endif  // SRC_CONVERSION_H_
