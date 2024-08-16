@@ -521,3 +521,27 @@ s21_decimal decimal_get_inf() {
   s21_decimal result = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x7FFFFFFF}};
   return result;
 }
+
+bool chack_on_correct_sevice_part_in_decimal(uint32_t service_part) {
+  bool correct_service_part = true;
+  for (int i = 0; i < PART_SIZE && correct_service_part == true; i++) {
+    int bit = get_bit(service_part, i);
+    if ((i >= 0 && i <= 15) || (i >= 24 && i <= 30)) {
+      if (bit != 0) {
+        correct_service_part = false;
+      }
+    }
+  }
+  return correct_service_part;
+}
+
+bool check_on_correct_decimal(s21_decimal input_decimal) {
+  bool correct_decimal = true;
+  if (get_scale(input_decimal.bits[3]) > 28) {
+    correct_decimal = false;
+  } else if (chack_on_correct_sevice_part_in_decimal(input_decimal.bits[3]) ==
+             false) {
+    correct_decimal = false;
+  }
+  return correct_decimal;
+}

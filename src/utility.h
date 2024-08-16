@@ -93,6 +93,8 @@ int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
                       uint32_t* remainder, int size);
 
 s21_decimal decimal_get_inf();
+bool chack_on_correct_sevice_part_in_decimal(uint32_t service_part);
+bool check_on_correct_decimal(s21_decimal input_decimal);
 
 #define add_mantissas(term_1, term_2, result) \
   _add_mantissas(term_1, term_2, result, MANTISSA_PARTS)

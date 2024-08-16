@@ -101,6 +101,9 @@ int s21_from_decimal_to_float(s21_decimal src, float* dst) {
   ConversionResult conversion_result = OK;
   if (dst == NULL) {
     conversion_result = CONVERSION_ERROR;
+  } else if (check_on_correct_decimal(src) == false) {
+    conversion_result = CONVERSION_ERROR;
+    *dst = 0.0f;
   } else if (s21_is_equal(src, DECIMAL_ZERO)) {
     int sign = get_sign(src);
     if (sign == 0) {
