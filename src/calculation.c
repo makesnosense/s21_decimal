@@ -6,7 +6,7 @@
 
 int s21_floor(s21_decimal value, s21_decimal* result) {
   CalculationResult return_code;
-  if (result == NULL) {
+  if (result == NULL || decimal_service_part_is_correct(value) == false) {
     return_code = CALCULATION_ERROR;
   } else {
     if (zero_check_mantissa(value.bits)) {
@@ -32,7 +32,7 @@ int s21_floor(s21_decimal value, s21_decimal* result) {
 int s21_negate(s21_decimal value, s21_decimal* result) {
   CalculationResult return_code;
 
-  if (result == NULL) {
+  if (result == NULL || decimal_service_part_is_correct(value) == false) {
     return_code = CALCULATION_ERROR;
   } else {
     *result = value;
@@ -56,7 +56,7 @@ uint64_t divide_decimal_by_10(s21_decimal* input_decimal) {
 int s21_truncate(s21_decimal value, s21_decimal* result) {
   CalculationResult return_code;
 
-  if (result == NULL) {
+  if (result == NULL || decimal_service_part_is_correct(value) == false) {
     return_code = CALCULATION_ERROR;
   } else {
     *result = value;
@@ -78,7 +78,7 @@ int s21_truncate(s21_decimal value, s21_decimal* result) {
 int s21_round(s21_decimal value, s21_decimal* result) {
   CalculationResult return_code;
 
-  if (result == NULL) {
+  if (result == NULL || decimal_service_part_is_correct(value) == false) {
     return_code = CALCULATION_ERROR;
   } else {
     *result = value;
