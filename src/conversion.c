@@ -98,11 +98,41 @@ int s21_from_decimal_to_int(s21_decimal src, int* dst) {
 }
 
 int s21_from_decimal_to_float(s21_decimal src, float* dst) {
-  if (1 == 0) {
-    printf("%d", src.bits[0]);
-    printf("%f", *dst);
+  ConversionResult conversion_result = OK;
+  if (dst == NULL) {
+    conversion_result = CONVERSION_ERROR;
+  } else if (decimal_service_part_is_correct(src) == false) {
+    conversion_result = CONVERSION_ERROR;
+    *dst = 0.0f;
+  } else if (s21_is_equal(src, DECIMAL_ZERO)) {
+    int sign = get_sign(src);
+    if (sign == 0) {
+      *dst = 0.0f;
+    } else {
+      *dst = -0.0f;
+    }
+    conversion_result = OK;
+  } else {
+    *dst = 0.0f;
+    double temp = 0.0;
+    int sign = get_sign(src) ? -1 : 1;
+    int scale = get_scale(src.bits[3]);
+    int array_part = 0;
+    int bit_part = 0;
+    for (int i = 0; i < PART_SIZE * MANTISSA_PARTS; i++) {
+      if (bit_part == 32) {
+        array_part++;
+        bit_part = 0;
+      }
+      if (get_bit(src.bits[array_part], bit_part) != 0) {
+        temp += pow(2.0, i);
+      }
+      bit_part++;
+    }
+    temp = temp / pow(10.0F, scale) * sign;
+    *dst = (float)temp;
   }
-  return 0;
+  return conversion_result;
 }
 
 int get_float_exponent_from_string(char* str) {
