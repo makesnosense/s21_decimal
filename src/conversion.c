@@ -75,36 +75,35 @@ int s21_from_float_to_decimal(float src, s21_decimal* dst) {
 }
 
 int s21_from_decimal_to_int(s21_decimal src, int* dst) {
+  if (dst == NULL || decimal_service_part_is_correct(src) == false) {
+    return CONVERSION_ERROR;
+  }
+
   ConversionResult return_code = OK;
-  if (dst == NULL) {
+  s21_decimal temp_decimal;
+  reset_decimal(&temp_decimal);
+  s21_truncate(src, &temp_decimal);
+  s21_decimal max_int = {{0x7FFFFFFF, 0x0, 0x0, 0b0}};
+  s21_decimal min_int = {
+      {0x80000000, 0x0, 0x0, 0b10000000000000000000000000000000}};
+  if (s21_is_greater(temp_decimal, max_int) ||
+      s21_is_less(temp_decimal, min_int)) {
     return_code = CONVERSION_ERROR;
   } else {
-    s21_decimal temp_decimal;
-    reset_decimal(&temp_decimal);
-    s21_truncate(src, &temp_decimal);
-    s21_decimal max_int = {{0x7FFFFFFF, 0x0, 0x0, 0b0}};
-    s21_decimal min_int = {
-        {0x80000000, 0x0, 0x0, 0b10000000000000000000000000000000}};
-    if (s21_is_greater(temp_decimal, max_int) ||
-        s21_is_less(temp_decimal, min_int)) {
-      return_code = CONVERSION_ERROR;
-    } else {
-      // ꙳ ✯ LE EPIC CONVERT ✯ ⋆
-      *dst = temp_decimal.bits[0];
-      *dst = (get_sign(src) == MINUS) ? -*dst : *dst;
-    }
+    // ꙳ ✯ LE EPIC CONVERT ✯ ⋆
+    *dst = temp_decimal.bits[0];
+    *dst = (get_sign(src) == MINUS) ? -*dst : *dst;
   }
+
   return return_code;
 }
 
 int s21_from_decimal_to_float(s21_decimal src, float* dst) {
   ConversionResult conversion_result = OK;
-  if (dst == NULL) {
-    conversion_result = CONVERSION_ERROR;
-  } else if (decimal_service_part_is_correct(src) == false) {
-    conversion_result = CONVERSION_ERROR;
-    *dst = 0.0f;
-  } else if (s21_is_equal(src, DECIMAL_ZERO)) {
+  if (dst == NULL || decimal_service_part_is_correct(src) == false) {
+    return CONVERSION_ERROR;
+  }
+  if (s21_is_equal(src, DECIMAL_ZERO)) {
     int sign = get_sign(src);
     if (sign == 0) {
       *dst = 0.0f;
