@@ -15,7 +15,6 @@ START_TEST(test_from_decimal_to_float_0) {
   ConversionResult s21_return_code =
       s21_from_decimal_to_float(input_decimal, &s21_result_float);
 
-  // printf("\n\n\n\n\n%f\n\n\n\n\n", s21_result_float);
   debug_print_decimal_as_binary(input_decimal);
 
   ck_assert_mem_eq(&s21_result_float, &expected_result, sizeof(float));
