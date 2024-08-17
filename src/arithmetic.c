@@ -5,6 +5,10 @@
 #include "utility.h"
 
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
+  if (result == NULL || decimal_service_part_is_correct(value_1) == false ||
+      decimal_service_part_is_correct(value_2) == false) {
+    return INPUT_ERROR;
+  }
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
   ArithmeticResult result_add = OK;
 
@@ -40,16 +44,11 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   }
 
   uint32_t result_mantissa[3] = {0x0, 0x0, 0x0};
-
   bool is_overflow;
-
   downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa,
                     &is_overflow);
-
   write_in_mantissa_to_decimal(result_mantissa, result);
-
   set_scale(&result->bits[3], bigger_scale);
-
   set_sign(result, (Sign)result_sign);
   result_add = catch_overflow(is_overflow, result_sign);
 
@@ -57,8 +56,11 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 }
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
+  if (result == NULL || decimal_service_part_is_correct(value_1) == false ||
+      decimal_service_part_is_correct(value_2) == false) {
+    return INPUT_ERROR;
+  }
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
-
   ArithmeticResult result_sub = OK;
   uint32_t minuend_normalized_long_mantissa[6] = {0};
   uint32_t subtrahend_normalized_long_mantissa[6] = {0};
@@ -94,32 +96,30 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   }
 
   uint32_t result_mantissa[3] = {0x0, 0x0, 0x0};
-
   bool is_overflow;
   downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa,
                     &is_overflow);
-
   write_in_mantissa_to_decimal(result_mantissa, result);
-
   set_scale(&result->bits[3], bigger_scale);
   set_sign(result, (Sign)result_sign);
-
   result_sub = catch_overflow(is_overflow, result_sign);
 
   return result_sub;
 }
 
 int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
+  if (result == NULL || decimal_service_part_is_correct(value_1) == false ||
+      decimal_service_part_is_correct(value_2) == false) {
+    return INPUT_ERROR;
+  }
   ArithmeticResult result_mul = OK;
   Sign result_sign = PLUS;
   bool is_overflow = false;
-
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
 
   if (get_sign(value_1) != get_sign(value_2)) {
     result_sign = MINUS;
   }
-
   if (is_zero_decimal(value_1) == false && is_zero_decimal(value_2) == false) {
     if (is_one_decimal(value_1) || is_one_decimal(value_2)) {
       if (is_one_decimal(value_1)) {
@@ -138,7 +138,6 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
                          long_mantissa_result);
       uint32_t initital_long_result[6] = {0};
       copy_long_mantissa(initital_long_result, long_mantissa_result);
-
       int scale_result =
           get_scale(value_1.bits[3]) + get_scale(value_2.bits[3]);
       int removed_digits = downsize_mantissa(
@@ -150,14 +149,12 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
         remove_digits_rounding_to_even(initital_long_result, digits_to_remove);
         copy_mantissa(mantissa_result, initital_long_result);
       }
-
       set_scale(&result->bits[3], scale_result);
       write_in_mantissa_to_decimal(mantissa_result, result);
       result_mul = catch_overflow(is_overflow, result_sign);
     }
   }
   set_sign(result, result_sign);
-
   return result_mul;
 }
 

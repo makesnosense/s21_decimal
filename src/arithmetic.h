@@ -11,6 +11,7 @@ typedef enum ArithmeticResult {
   TOO_BIG = 1,
   TOO_SMALL = 2,
   DIVISION_BY_ZERO = 3,
+  INPUT_ERROR = 4,
 } ArithmeticResult;
 
 ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign);
