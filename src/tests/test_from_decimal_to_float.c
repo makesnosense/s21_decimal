@@ -4,6 +4,49 @@
 #include "../utility.h"
 #include "run_tests.h"
 
+START_TEST(test_from_decimal_to_float_fail_uncorrect_decimal) {
+  // 1234567800000000
+  s21_decimal input_decimal = {
+      {0x372B8E00, 0x000462D5, 0x00000000, 0b10000000100000000000000001000001}};
+  // 1234567813922816
+  uint32_t expected_result = 0;
+
+  float s21_result_float;
+  ConversionResult s21_return_code =
+      s21_from_decimal_to_float(input_decimal, &s21_result_float);
+
+  ck_assert_mem_eq(&s21_result_float, &expected_result, sizeof(float));
+  ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
+}
+END_TEST
+
+START_TEST(test_from_decimal_to_float_fail_input_value_equal_NULL) {
+  // 1234567800000000
+  s21_decimal input_decimal = {
+      {0x372B8E00, 0x000462D5, 0x00000000, 0b00000000000000000000000000000000}};
+  ConversionResult s21_return_code =
+      s21_from_decimal_to_float(input_decimal, NULL);
+
+  ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
+}
+END_TEST
+
+START_TEST(test_from_decimal_to_float_fail_input_decimal_equal_negative_zero) {
+  // -0.0
+  s21_decimal input_decimal = {
+      {0x0, 0x0, 0x0, 0b10000000000000000000000000000000}};
+  // -0
+  uint32_t expected_result = 0b10000000000000000000000000000000;
+
+  float s21_result_float;
+  ConversionResult s21_return_code =
+      s21_from_decimal_to_float(input_decimal, &s21_result_float);
+
+  ck_assert_mem_eq(&s21_result_float, &expected_result, sizeof(float));
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
 START_TEST(test_from_decimal_to_float_gen_0) {
   // 1234567800000000
   s21_decimal input_decimal = {
@@ -857,6 +900,13 @@ Suite* make_from_decimal_to_float_suite() {
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
+
+  tcase_add_test(tc_core, test_from_decimal_to_float_fail_uncorrect_decimal);
+  tcase_add_test(tc_core,
+                 test_from_decimal_to_float_fail_input_value_equal_NULL);
+  tcase_add_test(
+      tc_core,
+      test_from_decimal_to_float_fail_input_decimal_equal_negative_zero);
 
   tcase_add_test(tc_core, test_from_decimal_to_float_gen_0);
   tcase_add_test(tc_core, test_from_decimal_to_float_gen_1);
