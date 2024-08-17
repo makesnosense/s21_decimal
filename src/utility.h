@@ -74,6 +74,12 @@ int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,
 void remove_digits_rounding_to_even(uint32_t* long_mantissa,
                                     int digits_to_remove);
 
+s21_decimal decimal_get_inf();
+
+bool decimal_service_part_structure_is_correct(s21_decimal input_decimal);
+bool decimal_scale_is_within_bounds(s21_decimal input_decimal);
+bool decimal_service_part_is_correct(s21_decimal input_decimal);
+
 uint32_t* get_mantissa_with_power_of_ten(int power);
 uint32_t* _get_mantissa_with_power_of_ten_powers_0_to_28(int power);
 uint32_t* _get_mantissa_with_power_of_ten_powers_29_to_57(int power);
@@ -91,10 +97,6 @@ int64_t _compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
                            int size);
 int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
                       uint32_t* remainder, int size);
-
-s21_decimal decimal_get_inf();
-bool chack_on_correct_sevice_part_in_decimal(uint32_t service_part);
-bool check_on_correct_decimal(s21_decimal input_decimal);
 
 #define add_mantissas(term_1, term_2, result) \
   _add_mantissas(term_1, term_2, result, MANTISSA_PARTS)

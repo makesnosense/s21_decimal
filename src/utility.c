@@ -522,26 +522,31 @@ s21_decimal decimal_get_inf() {
   return result;
 }
 
-bool chack_on_correct_sevice_part_in_decimal(uint32_t service_part) {
-  bool correct_service_part = true;
-  for (int i = 0; i < PART_SIZE && correct_service_part == true; i++) {
+bool decimal_service_part_structure_is_correct(s21_decimal input_decimal) {
+  uint32_t service_part = input_decimal.bits[3];
+
+  bool structure_is_correct = true;
+  for (int i = 0; i < PART_SIZE && structure_is_correct == true; i++) {
     int bit = get_bit(service_part, i);
     if ((i >= 0 && i <= 15) || (i >= 24 && i <= 30)) {
       if (bit != 0) {
-        correct_service_part = false;
+        structure_is_correct = false;
       }
     }
   }
-  return correct_service_part;
+  return structure_is_correct;
 }
 
-bool check_on_correct_decimal(s21_decimal input_decimal) {
-  bool correct_decimal = true;
-  if (get_scale(input_decimal.bits[3]) > 28) {
-    correct_decimal = false;
-  } else if (chack_on_correct_sevice_part_in_decimal(input_decimal.bits[3]) ==
-             false) {
-    correct_decimal = false;
+bool decimal_scale_is_within_bounds(s21_decimal input_decimal) {
+  bool scale_is_within_bounds = true;
+  uint32_t service_part = input_decimal.bits[3];
+  if (get_scale(service_part) > 28) {
+    scale_is_within_bounds = false;
   }
-  return correct_decimal;
+  return scale_is_within_bounds;
+}
+
+bool decimal_service_part_is_correct(s21_decimal input_decimal) {
+  return decimal_scale_is_within_bounds(input_decimal) &&
+         decimal_service_part_structure_is_correct(input_decimal);
 }
