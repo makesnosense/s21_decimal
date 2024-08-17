@@ -32,15 +32,21 @@ int s21_from_float_to_decimal(float src, s21_decimal* dst) {
     if (signbit(src) != 0) {
       set_sign(dst, MINUS);
     }
-  } else if (isinf(src) || isnan(src)) {
+  } else if (isinf(src)) {
     code = CONVERSION_ERROR;
-    *dst = decimal_get_inf();
+    *dst = DECIMAL_POSITIVE_INFINITY;
+    if (signbit(src) != 0) {
+      set_sign(dst, MINUS);
+    }
+  } else if (isnan(src)) {
+    code = CONVERSION_ERROR;
+    *dst = DECIMAL_POSITIVE_NAN;
     if (signbit(src) != 0) {
       set_sign(dst, MINUS);
     }
   } else if (fabsf(src) > MAX_FLOAT_FITTING_INTO_DECIMAL) {
     code = CONVERSION_ERROR;
-    *dst = decimal_get_inf();
+    *dst = DECIMAL_POSITIVE_INFINITY;
     if (signbit(src) != 0) {
       set_sign(dst, MINUS);
     }

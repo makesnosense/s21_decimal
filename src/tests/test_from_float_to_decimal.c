@@ -5,10 +5,8 @@
 #include "run_tests.h"
 
 START_TEST(test_from_float_to_decimal_NULL) {
-  s21_decimal s21_result_decimal = {{0x0, 0x0, 0x0, 0x0}};
   // -30.7339287
   float input_float = -30.7339287;
-  // -30.73393
 
   int s21_return_code = s21_from_float_to_decimal(input_float, NULL);
 
@@ -21,13 +19,12 @@ START_TEST(test_from_float_to_decimal_INFINITY) {
   // INFINITY
   float input_float = INFINITY;
   // INFINITY
-  s21_decimal expected_result = {
-      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x7FFFFFFF}};
+  s21_decimal expected_result = DECIMAL_POSITIVE_INFINITY;
 
   int s21_return_code =
       s21_from_float_to_decimal(input_float, &s21_result_decimal);
-
-  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
+  // ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
   ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
 }
 END_TEST
@@ -37,45 +34,42 @@ START_TEST(test_from_float_to_decimal_negative_INFINITY) {
   // -INFINITY
   float input_float = -INFINITY;
   // -INFINITY
-  s21_decimal expected_result = {
-      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF}};
+  s21_decimal expected_result = DECIMAL_NEGATIVE_INFINITY;
 
   int s21_return_code =
       s21_from_float_to_decimal(input_float, &s21_result_decimal);
 
-  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
   ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
 }
 END_TEST
 
 START_TEST(test_from_float_to_decimal_NAN) {
   s21_decimal s21_result_decimal = {{0x0, 0x0, 0x0, 0x0}};
-  // -INFINITY
+  // NAN
   float input_float = NAN;
-  // -INFINITY
-  s21_decimal expected_result = {
-      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x7FFFFFFF}};
+  // NAN
+  s21_decimal expected_result = DECIMAL_POSITIVE_NAN;
 
   int s21_return_code =
       s21_from_float_to_decimal(input_float, &s21_result_decimal);
 
-  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
   ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
 }
 END_TEST
 
 START_TEST(test_from_float_to_decimal_negative_NAN) {
   s21_decimal s21_result_decimal = {{0x0, 0x0, 0x0, 0x0}};
-  // -INFINITY
+  // -NAN
   float input_float = -NAN;
-  // -INFINITY
-  s21_decimal expected_result = {
-      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF}};
+  // -NAN
+  s21_decimal expected_result = DECIMAL_NEGATIVE_NAN;
 
   int s21_return_code =
       s21_from_float_to_decimal(input_float, &s21_result_decimal);
 
-  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
   ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
 }
 END_TEST
@@ -85,7 +79,6 @@ START_TEST(test_from_float_to_decimal_ok) {
   // -30.7339287
   float input_float = -30.7339287;
   // -30.73393
-
   s21_decimal expected_result = {{0x2EE571, 0x0, 0x0, 0x80050000}};
 
   int s21_return_code =
