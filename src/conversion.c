@@ -139,8 +139,11 @@ int get_float_exponent_from_string(char* str) {
   int sign = 1;
   while (*str != 'E') str++;
   str++;
-  if (*str == '-' || *str == '+') {
-    sign = (*str == '-') ? -1 : 1;
+  if (*str == '-') {
+    sign = -1;
+    str++;
+  } else {
+    sign = 1;
     str++;
   }
   while (isdigit(*str)) {
@@ -152,7 +155,7 @@ int get_float_exponent_from_string(char* str) {
 
 s21_decimal float_string_to_decimal(char* str) {
   int digits_counter = FLOAT_SIGNIFICANT_DIGITS - 1;
-  int count_digit_to_float = 0;
+  int digits_writen_to_decimal = 0;
   s21_decimal result = {{0x0, 0x0, 0x0, 0x0}};
   uint32_t result_mantissa[3] = {0};
   uint32_t remainder[3] = {0};
@@ -160,11 +163,11 @@ s21_decimal float_string_to_decimal(char* str) {
 
   int exp = get_float_exponent_from_string(str);
 
-  while (*ptr) {
+  while (*ptr != 'E') {
     if (*ptr == '.') {
       ++ptr;
       continue;
-    } else if (*ptr >= '0' && *ptr <= '9') {
+    } else {
       s21_decimal tmp = {{0x0, 0x0, 0x0, 0x0}};
       uint32_t tmp_mantissa[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
       multiply_mantissas(s21_decimal_get_from_char(*ptr),
@@ -176,30 +179,30 @@ s21_decimal float_string_to_decimal(char* str) {
       copy_mantissa(result.bits, result_mantissa);
       digits_counter--;
       ptr++;
-      count_digit_to_float++;
-
-    } else {
-      break;
+      digits_writen_to_decimal++;
     }
   }
 
   exp = exp - E_NOTATION_PRECISION;
 
-  if (exp > 0) {
-    multiply_mantissas(result_mantissa, get_mantissa_with_power_of_ten(exp),
-                       result.bits);
-    copy_mantissa(result_mantissa, result.bits);
-  } else if (exp < 0) {
-    if (exp < -MAX_SCALE) {
-      exp += MAX_SCALE;
-      divide_mantissas(result_mantissa, get_mantissa_with_power_of_ten(-exp),
-                       result.bits, remainder);
+  if (exp != 0) {
+    if (exp > 0) {
+      multiply_mantissas(result_mantissa, get_mantissa_with_power_of_ten(exp),
+                         result.bits);
       copy_mantissa(result_mantissa, result.bits);
-      exp = -MAX_SCALE;
+    } else {
+      if (exp < -MAX_SCALE) {
+        exp += MAX_SCALE;
+        divide_mantissas(result_mantissa, get_mantissa_with_power_of_ten(-exp),
+                         result.bits, remainder);
+        copy_mantissa(result_mantissa, result.bits);
+        exp = -MAX_SCALE;
+      }
     }
   }
-
-  if (exp > 0 && exp + E_NOTATION_PRECISION >= count_digit_to_float) {
+  // -6
+  // exp > 0
+  if (exp > 0 && exp + E_NOTATION_PRECISION >= digits_writen_to_decimal) {
     exp = 0;
   }
 
