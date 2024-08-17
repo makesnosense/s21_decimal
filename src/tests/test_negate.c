@@ -4,6 +4,30 @@
 #include "../utility.h"
 #include "run_tests.h"
 
+START_TEST(test_negate_null) {
+  // 1.2345
+  s21_decimal input_decimal_1 = {
+      {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
+
+  CalculationResult s21_return_code = s21_negate(input_decimal_1, NULL);
+
+  ck_assert_int_eq(s21_return_code, CALCULATION_ERROR);
+}
+END_TEST
+
+START_TEST(test_negate_fail_incorrect_decimal) {
+  // 1.2345
+  s21_decimal input_decimal_1 = {
+      {0x00003039, 0x00000000, 0x00000000, 0b00100000000001000000000001001000}};
+
+  s21_decimal s21_result_decimal;
+  CalculationResult s21_return_code =
+      s21_negate(input_decimal_1, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, CALCULATION_ERROR);
+}
+END_TEST
+
 START_TEST(test_negate_gen_0) {
   // 1.2345
   s21_decimal input_decimal_1 = {
@@ -315,6 +339,10 @@ Suite* make_negate_suite() {
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
+
+  tcase_add_test(tc_core, test_negate_null);
+  tcase_add_test(tc_core, test_negate_fail_incorrect_decimal);
+
   tcase_add_test(tc_core, test_negate_gen_0);
   tcase_add_test(tc_core, test_negate_gen_1);
   tcase_add_test(tc_core, test_negate_gen_2);
