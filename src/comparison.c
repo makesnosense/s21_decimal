@@ -5,6 +5,11 @@
 #include "utility.h"
 
 int s21_is_less(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
+  }
+
   bool decimal_is_less = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
@@ -42,6 +47,10 @@ int s21_is_less(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 int s21_is_less_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
+  }
   bool decimal_is_less_or_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
@@ -79,6 +88,10 @@ int s21_is_less_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 int s21_is_greater(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
+  }
   bool decimal_is_greater = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
@@ -116,6 +129,10 @@ int s21_is_greater(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 int s21_is_greater_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return INPUT_ERROR;
+  }
   bool decimal_is_greater_or_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
@@ -153,6 +170,10 @@ int s21_is_greater_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
+  }
   bool decimals_are_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
@@ -173,6 +194,10 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 int s21_is_not_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
+  }
   bool decimals_are_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};

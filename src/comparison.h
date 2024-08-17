@@ -6,6 +6,7 @@
 typedef enum ComparisonResult {
   FALSE = 0,
   TRUE = 1,
+  COMPARISON_INPUT_ERROR = 2,
 } ComparisonResult;
 
 int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2);
