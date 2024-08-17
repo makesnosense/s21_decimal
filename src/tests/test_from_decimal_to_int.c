@@ -4,7 +4,7 @@
 #include "../utility.h"
 #include "run_tests.h"
 
-START_TEST(test_from_decimal_to_int_gen_fail_incorrect_decimal) {
+START_TEST(test_from_decimal_to_int_fail_incorrect_decimal) {
   // -2147483640
   s21_decimal input_decimal = {
       {0x7FFFFFF8, 0x00000000, 0x00000000, 0b11000000010000000000000000001000}};
@@ -17,7 +17,7 @@ START_TEST(test_from_decimal_to_int_gen_fail_incorrect_decimal) {
 }
 END_TEST
 
-START_TEST(test_from_decimal_to_int_gen_fail_NULL) {
+START_TEST(test_from_decimal_to_int_fail_NULL) {
   // -2147483640
   s21_decimal input_decimal = {
       {0x7FFFFFF8, 0x00000000, 0x00000000, 0b11000000010000000000000000001000}};
@@ -320,8 +320,8 @@ Suite* make_from_decimal_to_int_suite() {
 
   tc_core = tcase_create("Core");
 
-  tcase_add_test(tc_core, test_from_decimal_to_int_gen_fail_incorrect_decimal);
-  tcase_add_test(tc_core, test_from_decimal_to_int_gen_fail_NULL);
+  tcase_add_test(tc_core, test_from_decimal_to_int_fail_incorrect_decimal);
+  tcase_add_test(tc_core, test_from_decimal_to_int_fail_NULL);
 
   tcase_add_test(tc_core, test_from_decimal_to_int_gen_0);
   tcase_add_test(tc_core, test_from_decimal_to_int_gen_1);
