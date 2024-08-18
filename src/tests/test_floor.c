@@ -9,7 +9,6 @@ START_TEST(test_floor_null) {
   s21_decimal input_decimal_1 = {
       {0xCCA47C63, 0xC1EEF784, 0x27E41B32, 0b00000000000111000000000000000000}};
 
-  s21_decimal s21_result_decimal;
   CalculationResult s21_return_code = s21_floor(input_decimal_1, NULL);
 
   ck_assert_int_eq(s21_return_code, CALCULATION_ERROR);

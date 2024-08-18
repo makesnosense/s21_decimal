@@ -161,7 +161,6 @@ int get_float_exponent_from_string(char* str) {
 
 s21_decimal float_string_to_decimal(char* str) {
   int digits_counter = FLOAT_SIGNIFICANT_DIGITS - 1;
-  int digits_writen_to_decimal = 0;
   s21_decimal result = {{0x0, 0x0, 0x0, 0x0}};
   uint32_t result_mantissa[3] = {0};
   uint32_t remainder[3] = {0};
@@ -185,10 +184,8 @@ s21_decimal float_string_to_decimal(char* str) {
       copy_mantissa(result.bits, result_mantissa);
       digits_counter--;
       ptr++;
-      digits_writen_to_decimal++;
     }
   }
-
   exp = exp - E_NOTATION_PRECISION;
 
   if (exp != 0) {
@@ -206,9 +203,8 @@ s21_decimal float_string_to_decimal(char* str) {
       }
     }
   }
-  // -6
-  // exp > 0
-  if (exp > 0 && exp + E_NOTATION_PRECISION >= digits_writen_to_decimal) {
+
+  if (exp > 0) {
     exp = 0;
   }
 

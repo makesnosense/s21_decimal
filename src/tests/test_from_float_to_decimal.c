@@ -754,7 +754,7 @@ Suite* make_from_float_to_decimal_suite() {
   tcase_add_test(tc_core, test_from_float_to_decimal_negative_NAN);
   tcase_add_test(tc_core, test_from_float_to_decimal_ok);
 
-  // tcase_add_test(tc_core, test_from_float_to_decimal_manual_1);
+  tcase_add_test(tc_core, test_from_float_to_decimal_manual_1);
   tcase_add_test(tc_core, test_from_float_to_decimal_manual_2);
 
   tcase_add_test(tc_core, test_from_float_to_decimal_gen_0);
