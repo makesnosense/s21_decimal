@@ -20,6 +20,17 @@
 
 #define DECIMAL_ZERO ((s21_decimal){0})
 
+// as per
+// https://en.wikipedia.org/wiki/Decimal128_floating-point_format#Binary_integer_significand_field
+#define DECIMAL_POSITIVE_INFINITY \
+  ((s21_decimal){{0x0, 0x0, 0x0, 0b01111000000000000000000000000000}})
+#define DECIMAL_NEGATIVE_INFINITY \
+  ((s21_decimal){{0x0, 0x0, 0x0, 0b11111000000000000000000000000000}})
+#define DECIMAL_POSITIVE_NAN \
+  ((s21_decimal){{0x0, 0x0, 0x0, 0b01111100000000000000000000000000}})
+#define DECIMAL_NEGATIVE_NAN \
+  ((s21_decimal){{0x0, 0x0, 0x0, 0b11111100000000000000000000000000}})
+
 typedef enum Sign_t {
   PLUS = 0,
   MINUS = 1,
@@ -73,8 +84,6 @@ int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,
                       bool* overflow);
 void remove_digits_rounding_to_even(uint32_t* long_mantissa,
                                     int digits_to_remove);
-
-s21_decimal decimal_get_inf();
 
 bool decimal_service_part_structure_is_correct(s21_decimal input_decimal);
 bool decimal_scale_is_within_bounds(s21_decimal input_decimal);

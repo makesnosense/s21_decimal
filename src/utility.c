@@ -517,11 +517,6 @@ uint32_t* _get_mantissa_with_power_of_ten_powers_29_to_57(int power) {
   return powers_of_10_second_part[power];
 }
 
-s21_decimal decimal_get_inf() {
-  s21_decimal result = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x7FFFFFFF}};
-  return result;
-}
-
 bool decimal_service_part_structure_is_correct(s21_decimal input_decimal) {
   uint32_t service_part = input_decimal.bits[3];
 
