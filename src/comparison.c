@@ -198,23 +198,7 @@ int s21_is_not_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
       decimal_service_part_is_correct(decimal_2) == false) {
     return COMPARISON_INPUT_ERROR;
   }
-  bool decimals_are_equal = true;
-  uint32_t normalized_mantissa_1[6] = {0};
-  uint32_t normalized_mantissa_2[6] = {0};
-  if (is_zero_decimal(decimal_1) && is_zero_decimal(decimal_2)) {
-    decimals_are_equal = true;
-  } else if (get_sign(decimal_1) != get_sign(decimal_2)) {
-    decimals_are_equal = false;
-  } else {
-    cast_decimals_to_normalized_mantissas(decimal_1, normalized_mantissa_1,
-                                          decimal_2, normalized_mantissa_2);
-
-    for (int i = 5; i >= 0 && decimals_are_equal == true; i--) {
-      if (normalized_mantissa_1[i] != normalized_mantissa_2[i]) {
-        decimals_are_equal = false;
-      }
-    }
-  }
+  bool decimals_are_equal = s21_is_equal(decimal_1, decimal_2);
   return (ComparisonResult)!decimals_are_equal;
 }
 
