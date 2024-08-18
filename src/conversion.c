@@ -136,17 +136,8 @@ int s21_from_decimal_to_float(s21_decimal src, float* dst) {
     double temp = 0.0;
     int sign = get_sign(src) ? -1 : 1;
     int scale = get_scale(src.bits[3]);
-    int array_part = 0;
-    int bit_part = 0;
-    for (int i = 0; i < PART_SIZE * MANTISSA_PARTS; i++) {
-      if (bit_part == 32) {
-        array_part++;
-        bit_part = 0;
-      }
-      if (get_bit(src.bits[array_part], bit_part) != 0) {
-        temp += pow(2.0, i);
-      }
-      bit_part++;
+    for (int i = 0; i < MANTISSA_PARTS; i++) {
+      temp += src.bits[i] * pow(2.0, (PART_SIZE * i));
     }
     temp = temp / pow(10.0F, scale) * sign;
     *dst = (float)temp;
