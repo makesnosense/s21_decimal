@@ -4,6 +4,31 @@
 #include "../utility.h"
 #include "run_tests.h"
 
+START_TEST(test_from_decimal_to_int_fail_incorrect_decimal) {
+  // -2147483640
+  s21_decimal input_decimal = {
+      {0x7FFFFFF8, 0x00000000, 0x00000000, 0b11000000010000000000000000001000}};
+
+  int s21_result_int;
+  ConversionResult s21_return_code =
+      s21_from_decimal_to_int(input_decimal, &s21_result_int);
+
+  ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
+}
+END_TEST
+
+START_TEST(test_from_decimal_to_int_fail_NULL) {
+  // -2147483640
+  s21_decimal input_decimal = {
+      {0x7FFFFFF8, 0x00000000, 0x00000000, 0b11000000010000000000000000001000}};
+
+  ConversionResult s21_return_code =
+      s21_from_decimal_to_int(input_decimal, NULL);
+
+  ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
+}
+END_TEST
+
 START_TEST(test_from_decimal_to_int_gen_0) {
   // -2147483640
   s21_decimal input_decimal = {
@@ -294,6 +319,9 @@ Suite* make_from_decimal_to_int_suite() {
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
+
+  tcase_add_test(tc_core, test_from_decimal_to_int_fail_incorrect_decimal);
+  tcase_add_test(tc_core, test_from_decimal_to_int_fail_NULL);
 
   tcase_add_test(tc_core, test_from_decimal_to_int_gen_0);
   tcase_add_test(tc_core, test_from_decimal_to_int_gen_1);

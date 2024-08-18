@@ -103,6 +103,31 @@ START_TEST(test_from_float_to_decimal_gen_0) {
 }
 END_TEST
 
+START_TEST(test_from_float_to_decimal_manual_1) {
+  float input_float = 1234567.0f;
+  s21_decimal expected_result = {
+      {1234567, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
+  s21_decimal s21_result_decimal;
+  ConversionResult s21_return_code =
+      s21_from_float_to_decimal(input_float, &s21_result_decimal);
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(test_from_float_to_decimal_manual_2) {
+  float input_float = 0.00000123456f;
+  s21_decimal expected_result = {
+      {0x0012D680, 0x00000000, 0x00000000, 0b00000000000011000000000000000000}};
+  s21_decimal s21_result_decimal;
+  ConversionResult s21_return_code =
+      s21_from_float_to_decimal(input_float, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_is_equal(s21_result_decimal, expected_result), TRUE);
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
 START_TEST(test_from_float_to_decimal_gen_1) {
   float input_float = 4.0f;
   // seven significant digits: 4.0
@@ -728,6 +753,9 @@ Suite* make_from_float_to_decimal_suite() {
   tcase_add_test(tc_core, test_from_float_to_decimal_NAN);
   tcase_add_test(tc_core, test_from_float_to_decimal_negative_NAN);
   tcase_add_test(tc_core, test_from_float_to_decimal_ok);
+
+  tcase_add_test(tc_core, test_from_float_to_decimal_manual_1);
+  tcase_add_test(tc_core, test_from_float_to_decimal_manual_2);
 
   tcase_add_test(tc_core, test_from_float_to_decimal_gen_0);
   tcase_add_test(tc_core, test_from_float_to_decimal_gen_1);
