@@ -139,12 +139,10 @@ void _shift_mantissa_left(uint32_t* mantissa, unsigned shift, int size) {
   int original_position = mantissa_bits - (shift + 1);
   int shifted_position = mantissa_bits - 1;
   while (original_position >= 0) {
-    if (shifted_position < mantissa_bits) {
-      bit_value = get_mantissa_bit(mantissa, original_position);
-      assign_mantissa_bit(mantissa, shifted_position, bit_value);
-      original_position--;
-      shifted_position--;
-    }
+    bit_value = get_mantissa_bit(mantissa, original_position);
+    assign_mantissa_bit(mantissa, shifted_position, bit_value);
+    original_position--;
+    shifted_position--;
   }
   while (shifted_position >= 0) {
     assign_mantissa_bit(mantissa, shifted_position, ZERO);
@@ -350,7 +348,9 @@ int cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
     bigger_scale = get_scale(decimal_1.bits[3]);
     mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
 
-  } else if (get_scale(decimal_1.bits[3]) < get_scale(decimal_2.bits[3])) {
+  }
+  // get_scale(decimal_1.bits[3]) < get_scale(decimal_2.bits[3])
+  else {
     multiply_mantissas(decimal_1.bits,
                        get_mantissa_with_power_of_ten(scale_difference),
                        normalized_mantissa_1);

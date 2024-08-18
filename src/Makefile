@@ -36,7 +36,7 @@ test: build_tests
 gcov_report: CFLAGS += $(COVERAGE_FLAGS)
 gcov_report: clean build_tests test
 	@mkdir -p $(GCOV_REPORT_DIR)
-	@gcovr -o $(GCOV_REPORT_DIR)/gcov_report.html --html --html-self-contained --html-details $(GCOVR_THEME) --exclude $(TESTS_DIR)	
+	@gcovr -o $(GCOV_REPORT_DIR)/gcov_report.html --html --html-self-contained --html-details $(GCOVR_THEME) --exclude $(TESTS_DIR)	--exclude debug_funcs.c
 	@open $(GCOV_REPORT_DIR)/gcov_report.html
 	rm -f *.gcda *.gcno *.gcov
 
