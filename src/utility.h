@@ -70,6 +70,8 @@ int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,
                       bool* overflow);
 void remove_digits_rounding_to_even(uint32_t* long_mantissa,
                                     int digits_to_remove, uint32_t* result);
+void remove_digits_rounding_half_up(uint32_t* long_mantissa,
+                                    int digits_to_remove, uint32_t* result);
 
 uint32_t* get_mantissa_with_power_of_ten(int power);
 uint32_t* _get_mantissa_with_power_of_ten_powers_0_to_28(int power);
