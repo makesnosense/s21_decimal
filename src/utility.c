@@ -480,7 +480,7 @@ void remove_digits_rounding_half_up(uint32_t* long_mantissa,
                         first_removed_digit, rest_removed_digits);
 
   uint32_t* one = get_mantissa_with_power_of_ten(0);
-  if (first_removed_digit[0] > 5) {
+  if (first_removed_digit[0] >= 5) {
     add_long_mantissas(result, one, result);
   }
 }
