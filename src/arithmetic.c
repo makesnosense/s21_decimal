@@ -21,28 +21,30 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 
   int result_sign = PLUS;
 
-  // (a) + (b) = a + b
-  if (get_sign(value_1) == PLUS && get_sign(value_2) == PLUS) {
-    add_long_mantissas(term_1_long_mantissa, term_2_long_mantissa,
-                       result_long_mantissa);
+  if (get_sign(value_1) == PLUS) {
+    // (a) + (b) = a + b
+    if (get_sign(value_2) == PLUS) {
+      add_long_mantissas(term_1_long_mantissa, term_2_long_mantissa,
+                         result_long_mantissa);
+    }
+    // (a) + (- b) = a - b
+    else {
+      result_sign = subtract_long_mantissas(
+          term_1_long_mantissa, term_2_long_mantissa, result_long_mantissa);
+    }
+  } else {
+    // (-a) + (b) =  b - a
+    if (get_sign(value_2) == PLUS) {
+      result_sign = subtract_long_mantissas(
+          term_2_long_mantissa, term_1_long_mantissa, result_long_mantissa);
+    }
+    // (-a) + (-b) = - (a + b)
+    else {
+      add_long_mantissas(term_1_long_mantissa, term_2_long_mantissa,
+                         result_long_mantissa);
+      result_sign = MINUS;
+    }
   }
-  // (-a) + (b) =  b - a
-  else if (get_sign(value_1) == MINUS && get_sign(value_2) == PLUS) {
-    result_sign = subtract_long_mantissas(
-        term_2_long_mantissa, term_1_long_mantissa, result_long_mantissa);
-  }
-  // (a) + (- b) = a - b
-  else if (get_sign(value_1) == PLUS && get_sign(value_2) == MINUS) {
-    result_sign = subtract_long_mantissas(
-        term_1_long_mantissa, term_2_long_mantissa, result_long_mantissa);
-  }
-  // (-a) + (-b) = - (a + b)
-  else {
-    add_long_mantissas(term_1_long_mantissa, term_2_long_mantissa,
-                       result_long_mantissa);
-    result_sign = MINUS;
-  }
-
   uint32_t result_mantissa[3] = {0x0, 0x0, 0x0};
   bool is_overflow;
   downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa,
@@ -51,7 +53,6 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   set_scale(&result->bits[3], bigger_scale);
   set_sign(result, (Sign)result_sign);
   result_add = catch_overflow(is_overflow, result_sign);
-
   return result_add;
 }
 
@@ -65,36 +66,37 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   uint32_t minuend_normalized_long_mantissa[6] = {0};
   uint32_t subtrahend_normalized_long_mantissa[6] = {0};
   uint32_t result_long_mantissa[6] = {0};
-
   int bigger_scale = cast_decimals_to_normalized_mantissas(
       value_1, minuend_normalized_long_mantissa, value_2,
       subtrahend_normalized_long_mantissa);
   int result_sign = PLUS;
-
-  // (a) - (b) = a - b
-  if (get_sign(value_1) == PLUS && get_sign(value_2) == PLUS) {
-    result_sign = subtract_long_mantissas(minuend_normalized_long_mantissa,
-                                          subtrahend_normalized_long_mantissa,
-                                          result_long_mantissa);
-    // (-a) - (b) =  - (a+b)
-  } else if (get_sign(value_1) == MINUS && get_sign(value_2) == PLUS) {
-    add_long_mantissas(minuend_normalized_long_mantissa,
-                       subtrahend_normalized_long_mantissa,
-                       result_long_mantissa);
-    result_sign = MINUS;
+  if (get_sign(value_1) == PLUS) {
+    // // (a) - (b) = a - b
+    if (get_sign(value_2) == PLUS) {
+      result_sign = subtract_long_mantissas(minuend_normalized_long_mantissa,
+                                            subtrahend_normalized_long_mantissa,
+                                            result_long_mantissa);
+    }
     // (a) - (- b) = a + b
-  } else if (get_sign(value_1) == PLUS && get_sign(value_2) == MINUS) {
-    add_long_mantissas(minuend_normalized_long_mantissa,
-                       subtrahend_normalized_long_mantissa,
-                       result_long_mantissa);
-    result_sign = PLUS;
-    // (-a) - (-b) = b - a
+    else {
+      add_long_mantissas(minuend_normalized_long_mantissa,
+                         subtrahend_normalized_long_mantissa,
+                         result_long_mantissa);
+    }
   } else {
-    result_sign = subtract_long_mantissas(subtrahend_normalized_long_mantissa,
-                                          minuend_normalized_long_mantissa,
-                                          result_long_mantissa);
+    // (-a) - (b) =  - (a+b)
+    if (get_sign(value_2) == PLUS) {
+      add_long_mantissas(minuend_normalized_long_mantissa,
+                         subtrahend_normalized_long_mantissa,
+                         result_long_mantissa);
+      result_sign = MINUS;
+    }  // (-a) - (-b) = b - a
+    else {
+      result_sign = subtract_long_mantissas(subtrahend_normalized_long_mantissa,
+                                            minuend_normalized_long_mantissa,
+                                            result_long_mantissa);
+    }
   }
-
   uint32_t result_mantissa[3] = {0x0, 0x0, 0x0};
   bool is_overflow;
   downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa,
@@ -103,7 +105,6 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   set_scale(&result->bits[3], bigger_scale);
   set_sign(result, (Sign)result_sign);
   result_sub = catch_overflow(is_overflow, result_sign);
-
   return result_sub;
 }
 
