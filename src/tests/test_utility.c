@@ -759,6 +759,15 @@ START_TEST(shift_decimal_test) {
 }
 END_TEST
 
+START_TEST(test_mantissa_power_of_ten_null) {
+  uint32_t* result = NULL;
+  result = get_mantissa_with_power_of_ten(-5);
+  ck_assert_ptr_null(result);
+  result = get_mantissa_with_power_of_ten(70);
+  ck_assert_ptr_null(result);
+}
+END_TEST
+
 Suite* make_utility_suite() {
   Suite* utility_suite = suite_create("utility");
   TCase* tc_core;
@@ -814,6 +823,8 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, test_is_one_decimal_1);
   tcase_add_test(tc_core, test_is_one_decimal_2);
   tcase_add_test(tc_core, test_is_zero_decimal_0);
+
+  tcase_add_test(tc_core, test_mantissa_power_of_ten_null);
 
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);
