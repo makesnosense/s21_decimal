@@ -151,8 +151,8 @@ ArithmeticResult actually_multiply(s21_decimal value_1, s21_decimal value_2,
   uint32_t long_mantissa_result[6] = {0};
   uint32_t mantissa_result[3] = {0};
 
-  get_mantissa_from_decimal(mantissa_value_1, &value_1);
-  get_mantissa_from_decimal(mantissa_value_2, &value_2);
+  get_mantissa_from_decimal(mantissa_value_1, value_1);
+  get_mantissa_from_decimal(mantissa_value_2, value_2);
 
   multiply_mantissas(mantissa_value_1, mantissa_value_2, long_mantissa_result);
 
@@ -167,8 +167,8 @@ ArithmeticResult actually_multiply(s21_decimal value_1, s21_decimal value_2,
   if (scale_result > 28) {
     int digits_to_remove = (scale_result - 28) + removed_digits;
     scale_result = 28;
-    remove_digits_rounding_to_even(initital_long_result, digits_to_remove);
-    copy_mantissa(mantissa_result, initital_long_result);
+    remove_digits_rounding_to_even(initital_long_result, digits_to_remove,
+                                   mantissa_result);
   }
 
   set_scale(&result->bits[3], scale_result);
@@ -327,13 +327,4 @@ ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign) {
     }
   }
   return arithmetic_result;
-}
-
-int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-  if (1 == 0) {
-    printf("%d", value_1.bits[0]);
-    printf("%d", value_2.bits[0]);
-    printf("%d", result->bits[0]);
-  }
-  return 0;
 }
