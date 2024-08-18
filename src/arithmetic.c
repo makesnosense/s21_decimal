@@ -110,7 +110,6 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   if (input_is_correct(value_1, value_2, result) == false) {
     return INPUT_ERROR;
   }
-
   ArithmeticResult result_mul = OK;
   Sign result_sign = PLUS;
   bool is_overflow = false;
@@ -121,28 +120,6 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
     result_sign = MINUS;
   }
 
-  if (is_zero_decimal(value_1) == false && is_zero_decimal(value_2) == false) {
-    if (is_one_decimal(value_1) || is_one_decimal(value_2)) {
-      if (is_one_decimal(value_1)) {
-        copy_decimal(&value_2, result);
-      } else {
-        copy_decimal(&value_1, result);
-      }
-    } else {
-      result_mul = actually_multiply(value_1, value_2, &is_overflow,
-                                     result_sign, result);
-    }
-  }
-
-  set_sign(result, result_sign);
-
-  return result_mul;
-}
-
-ArithmeticResult actually_multiply(s21_decimal value_1, s21_decimal value_2,
-                                   bool* is_overflow, Sign result_sign,
-                                   s21_decimal* result) {
-  ArithmeticResult result_mul = OK;
   uint32_t mantissa_value_1[3] = {0};
   uint32_t mantissa_value_2[3] = {0};
   uint32_t long_mantissa_result[6] = {0};
@@ -159,7 +136,7 @@ ArithmeticResult actually_multiply(s21_decimal value_1, s21_decimal value_2,
 
   int scale_result = get_scale(value_1.bits[3]) + get_scale(value_2.bits[3]);
   int removed_digits = downsize_mantissa(long_mantissa_result, &scale_result,
-                                         mantissa_result, is_overflow);
+                                         mantissa_result, &is_overflow);
 
   if (scale_result > 28) {
     int digits_to_remove = (scale_result - 28) + removed_digits;
@@ -171,7 +148,10 @@ ArithmeticResult actually_multiply(s21_decimal value_1, s21_decimal value_2,
   set_scale(&result->bits[3], scale_result);
   write_in_mantissa_to_decimal(mantissa_result, result);
 
-  result_mul = catch_overflow(*is_overflow, result_sign);
+  result_mul = catch_overflow(is_overflow, result_sign);
+
+  set_sign(result, result_sign);
+
   return result_mul;
 }
 
