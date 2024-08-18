@@ -220,38 +220,7 @@ s21_decimal float_string_to_decimal(char* str) {
 uint32_t* s21_decimal_get_from_char(char c) {
   static uint32_t result[3] = {0, 0, 0};
 
-  switch (c) {
-    case '0':
-      result[0] = 0;
-      break;
-    case '1':
-      result[0] = 1;
-      break;
-    case '2':
-      result[0] = 2;
-      break;
-    case '3':
-      result[0] = 3;
-      break;
-    case '4':
-      result[0] = 4;
-      break;
-    case '5':
-      result[0] = 5;
-      break;
-    case '6':
-      result[0] = 6;
-      break;
-    case '7':
-      result[0] = 7;
-      break;
-    case '8':
-      result[0] = 8;
-      break;
-    case '9':
-      result[0] = 9;
-      break;
-  }
+  result[0] = c - '0';
 
   return result;
 }
