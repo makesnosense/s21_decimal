@@ -16,6 +16,23 @@
 #define BEGIN_SCALE_POSITION 16
 #define END_SCALE_POSITION 23
 
+#define MAX_SCALE 28
+
+#define DECIMAL_ZERO ((s21_decimal){0})
+
+// as per
+// https://en.wikipedia.org/wiki/Decimal128_floating-point_format#Binary_integer_significand_field
+#define DECIMAL_POSITIVE_INFINITY \
+  ((s21_decimal){{0x0, 0x0, 0x0, 0b01111000000000000000000000000000}})
+#define DECIMAL_NEGATIVE_INFINITY \
+  ((s21_decimal){{0x0, 0x0, 0x0, 0b11111000000000000000000000000000}})
+#define DECIMAL_POSITIVE_NAN \
+  ((s21_decimal){{0x0, 0x0, 0x0, 0b01111100000000000000000000000000}})
+#define DECIMAL_NEGATIVE_NAN \
+  ((s21_decimal){{0x0, 0x0, 0x0, 0b11111100000000000000000000000000}})
+
+#define SERVICE_PART_STRUCTURE_MASK 0b01111111111000001111111111111111
+
 typedef enum Sign_t {
   PLUS = 0,
   MINUS = 1,
@@ -72,6 +89,11 @@ void remove_digits_rounding_to_even(uint32_t* long_mantissa,
                                     int digits_to_remove, uint32_t* result);
 void remove_digits_rounding_half_up(uint32_t* long_mantissa,
                                     int digits_to_remove, uint32_t* result);
+
+bool decimal_service_part_structure_is_correct(s21_decimal input_decimal);
+bool decimal_scale_is_within_bounds(s21_decimal input_decimal);
+bool decimal_service_part_is_correct(s21_decimal input_decimal);
+int service_part_structure_is_correct(uint32_t service_part);
 
 uint32_t* get_mantissa_with_power_of_ten(int power);
 uint32_t* _get_mantissa_with_power_of_ten_powers_0_to_28(int power);

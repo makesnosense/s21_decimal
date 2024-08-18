@@ -584,20 +584,10 @@ START_TEST(get_scale_test) {
       0b00000000000110100000000000000000, 0b00000000000110110000000000000000,
       0b00000000000111000000000000000000};
 
-  // printf("\n%d\n", get_scale(scales[1]));
   for (int i = 0; i < 29; i++) {
     ck_assert_int_eq(get_scale(service_parts[i]), i);
+    ck_assert_int_eq(service_part_structure_is_correct(service_parts[i]), TRUE);
   }
-
-  //   s21_decimal input_decimal = {{0x123U, 0x123U, 0x123U,
-  //                              0b00000000000000101000000000000000}};
-  // int scale_before = get_scale(input_decimal.bits[3]);
-  // int scale_to_set = 6;
-
-  // set_scale(&input_decimal.bits[3], scale_to_set);
-  // int scale_after = get_scale(input_decimal.bits[3]);
-  // ck_assert_int_ne(scale_before, scale_after);
-  // ck_assert_int_eq(scale_after, scale_to_set);
 }
 END_TEST
 
@@ -853,6 +843,15 @@ START_TEST(shift_decimal_test) {
 }
 END_TEST
 
+START_TEST(test_mantissa_power_of_ten_null) {
+  uint32_t* result = NULL;
+  result = get_mantissa_with_power_of_ten(-5);
+  ck_assert_ptr_null(result);
+  result = get_mantissa_with_power_of_ten(70);
+  ck_assert_ptr_null(result);
+}
+END_TEST
+
 Suite* make_utility_suite() {
   Suite* utility_suite = suite_create("utility");
   TCase* tc_core;
@@ -914,6 +913,9 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, test_is_one_decimal_1);
   tcase_add_test(tc_core, test_is_one_decimal_2);
   tcase_add_test(tc_core, test_is_zero_decimal_0);
+
+  tcase_add_test(tc_core, test_mantissa_power_of_ten_null);
+
   // tcase_add_test(tc_core, multiply_test_2);
   // tcase_add_test(tc_core, get_power_test);
   // tcase_add_test(tc_core, print_mantissa_as_binary_test);

@@ -5,6 +5,11 @@
 #include "utility.h"
 
 int s21_is_less(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
+  }
+
   bool decimal_is_less = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
@@ -42,6 +47,10 @@ int s21_is_less(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 int s21_is_less_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
+  }
   bool decimal_is_less_or_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
@@ -79,6 +88,10 @@ int s21_is_less_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 int s21_is_greater(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
+  }
   bool decimal_is_greater = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
@@ -116,6 +129,10 @@ int s21_is_greater(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 int s21_is_greater_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
+  }
   bool decimal_is_greater_or_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
@@ -153,6 +170,10 @@ int s21_is_greater_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
+  }
   bool decimals_are_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
   uint32_t normalized_mantissa_2[6] = {0};
@@ -173,57 +194,20 @@ int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 int s21_is_not_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
-  bool decimals_are_equal = true;
-  uint32_t normalized_mantissa_1[6] = {0};
-  uint32_t normalized_mantissa_2[6] = {0};
-  if (is_zero_decimal(decimal_1) && is_zero_decimal(decimal_2)) {
-    decimals_are_equal = true;
-  } else if (get_sign(decimal_1) != get_sign(decimal_2)) {
-    decimals_are_equal = false;
-  } else {
-    cast_decimals_to_normalized_mantissas(decimal_1, normalized_mantissa_1,
-                                          decimal_2, normalized_mantissa_2);
-
-    for (int i = 5; i >= 0 && decimals_are_equal == true; i--) {
-      if (normalized_mantissa_1[i] != normalized_mantissa_2[i]) {
-        decimals_are_equal = false;
-      }
-    }
+  if (decimal_service_part_is_correct(decimal_1) == false ||
+      decimal_service_part_is_correct(decimal_2) == false) {
+    return COMPARISON_INPUT_ERROR;
   }
+  bool decimals_are_equal = s21_is_equal(decimal_1, decimal_2);
   return (ComparisonResult)!decimals_are_equal;
 }
 
 void invert_result_due_to_decimal_signs(bool both_are_negative, bool* result) {
-  if (both_are_negative && *result == true) {
-    *result = false;
-  } else if (both_are_negative && *result == false) {
-    *result = true;
-  }
-}
-
-// void invert_result_due_to_sign(int is_negative, bool* result) {
-//   if (is_negative == 2 && *result == true) {
-//     *result = false;
-//   } else if (is_negative == 2 && *result == false) {
-//     *result = true;
-//   }
-// }
-
-s21_two_decimals sort_decimals_ascending_by_scale(s21_decimal decimal_1,
-                                                  s21_decimal decimal_2) {
-  s21_two_decimals result;
-  {
-    int decimal_1_scale = get_scale(decimal_1.bits[3]);
-    int decimal_2_scale = get_scale(decimal_2.bits[3]);
-
-    if (decimal_1_scale <= decimal_2_scale) {
-      result.decimals[0] = decimal_1;
-      result.decimals[1] = decimal_2;
+  if (both_are_negative) {
+    if (*result == true) {
+      *result = false;
     } else {
-      result.decimals[0] = decimal_2;
-      result.decimals[1] = decimal_1;
+      *result = true;
     }
   }
-
-  return result;
 }

@@ -271,18 +271,18 @@ void shift_decimal_right(s21_decimal* d) {
 }
 
 void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
-                        uint32_t* result) {
-  s21_memset(result, 0, sizeof(uint32_t) * 6);
+                        uint32_t* long_mantissa_result) {
+  s21_memset(long_mantissa_result, 0, sizeof(uint32_t) * 6);
 
   for (int i = 0; i < 3; i++) {
     uint64_t carry = 0;
     for (int j = 0; j < 3; j++) {
-      uint64_t product =
-          (uint64_t)mantissa_1[i] * mantissa_2[j] + result[i + j] + carry;
-      result[i + j] = (uint32_t)product;
+      uint64_t product = (uint64_t)mantissa_1[i] * mantissa_2[j] +
+                         long_mantissa_result[i + j] + carry;
+      long_mantissa_result[i + j] = (uint32_t)product;
       carry = product >> 32;
     }
-    result[i + 3] = carry;
+    long_mantissa_result[i + 3] = carry;
   }
 }
 
@@ -567,4 +567,28 @@ uint32_t* _get_mantissa_with_power_of_ten_powers_29_to_57(int power) {
       {0x00000000, 0x4A000000, 0x864ADA83, 0xEBFDCB54, 0xC89A2571, 0x28C87CB5}};
 
   return powers_of_10_second_part[power];
+}
+
+bool decimal_service_part_structure_is_correct(s21_decimal input_decimal) {
+  uint32_t service_part = input_decimal.bits[3];
+  return service_part_structure_is_correct(service_part);
+}
+
+int service_part_structure_is_correct(uint32_t service_part) {
+  bool structure_is_correct = !(service_part & SERVICE_PART_STRUCTURE_MASK);
+  return structure_is_correct;
+}
+
+bool decimal_scale_is_within_bounds(s21_decimal input_decimal) {
+  bool scale_is_within_bounds = true;
+  uint32_t service_part = input_decimal.bits[3];
+  if (get_scale(service_part) > 28) {
+    scale_is_within_bounds = false;
+  }
+  return scale_is_within_bounds;
+}
+
+bool decimal_service_part_is_correct(s21_decimal input_decimal) {
+  return decimal_scale_is_within_bounds(input_decimal) &&
+         decimal_service_part_structure_is_correct(input_decimal);
 }

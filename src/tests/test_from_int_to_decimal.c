@@ -4,6 +4,15 @@
 #include "../utility.h"
 #include "run_tests.h"
 
+START_TEST(test_from_int_to_decimal_input_equal_NULL) {
+  int input_int = -2147483640;
+
+  ConversionResult s21_return_code = s21_from_int_to_decimal(input_int, NULL);
+
+  ck_assert_int_eq(s21_return_code, CONVERSION_ERROR);
+}
+END_TEST
+
 START_TEST(test_from_int_to_decimal_gen_0) {
   int input_int = -2147483640;
   // -2147483640
@@ -174,6 +183,8 @@ Suite* make_from_int_to_decimal_suite() {
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
+
+  tcase_add_test(tc_core, test_from_int_to_decimal_input_equal_NULL);
 
   tcase_add_test(tc_core, test_from_int_to_decimal_gen_0);
   tcase_add_test(tc_core, test_from_int_to_decimal_gen_1);

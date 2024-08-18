@@ -4,6 +4,30 @@
 #include "../utility.h"
 #include "run_tests.h"
 
+START_TEST(test_round_null) {
+  // 1.2345678910111213141516123235
+  s21_decimal input_decimal_1 = {
+      {0xCCA47C63, 0xC1EEF784, 0x27E41B32, 0b00000000000111000000000000000000}};
+
+  CalculationResult s21_return_code = s21_round(input_decimal_1, NULL);
+
+  ck_assert_int_eq(s21_return_code, CALCULATION_ERROR);
+}
+END_TEST
+
+START_TEST(test_round_fail_incorrect_decimal) {
+  // 1.2345678910111213141516123235
+  s21_decimal input_decimal_1 = {
+      {0xCCA47C63, 0xC1EEF784, 0x27E41B32, 0b00000100000111000000000000100000}};
+
+  s21_decimal s21_result_decimal;
+  CalculationResult s21_return_code =
+      s21_round(input_decimal_1, &s21_result_decimal);
+
+  ck_assert_int_eq(s21_return_code, CALCULATION_ERROR);
+}
+END_TEST
+
 START_TEST(test_round_gen_0) {
   // 1.2345678910111213141516123235
   s21_decimal input_decimal_1 = {
@@ -400,6 +424,10 @@ Suite* make_round_suite() {
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
+
+  tcase_add_test(tc_core, test_round_null);
+  tcase_add_test(tc_core, test_round_fail_incorrect_decimal);
+
   tcase_add_test(tc_core, test_round_gen_0);
   tcase_add_test(tc_core, test_round_gen_1);
   tcase_add_test(tc_core, test_round_gen_2);
