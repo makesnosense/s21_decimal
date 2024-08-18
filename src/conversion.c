@@ -32,13 +32,13 @@ int s21_from_float_to_decimal(float src, s21_decimal* dst) {
     if (signbit(src) != 0) {
       set_sign(dst, MINUS);
     }
-  } else if (isinf(src)) {
+  } else if (isinf(src) == true) {
     code = CONVERSION_ERROR;
     *dst = DECIMAL_POSITIVE_INFINITY;
     if (signbit(src) != 0) {
       set_sign(dst, MINUS);
     }
-  } else if (isnan(src)) {
+  } else if (isnan(src) == true) {
     code = CONVERSION_ERROR;
     *dst = DECIMAL_POSITIVE_NAN;
     if (signbit(src) != 0) {
