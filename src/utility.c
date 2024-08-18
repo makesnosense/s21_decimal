@@ -36,13 +36,6 @@ void reset_decimal(s21_decimal* input_decimal) {
   }
 }
 
-void copy_decimal(s21_decimal* source_decimal,
-                  s21_decimal* destination_decimal) {
-  for (int i = 0; i < 4; i++) {
-    destination_decimal->bits[i] = source_decimal->bits[i];
-  }
-}
-
 void* s21_memset(void* str, int c, int n) {
   unsigned char* pointer = str;
   while (n > 0) {
