@@ -1,6 +1,51 @@
 #include "../comparison.h"
 #include "run_tests.h"
 
+START_TEST(test_eq_first_decimal_incorrect) {
+  // 1.2345
+  s21_decimal input_decimal_1 = {
+      {0x00003039, 0x00000000, 0x00000000, 0b00100000000001000000000100000000}};
+  // 5.5
+  s21_decimal input_decimal_2 = {
+      {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
+
+  ComparisonResult s21_return_code =
+      s21_is_equal(input_decimal_1, input_decimal_2);
+
+  ck_assert_int_eq(s21_return_code, COMPARISON_INPUT_ERROR);
+}
+END_TEST
+
+START_TEST(test_eq_second_decimal_incorrect) {
+  // 1.2345
+  s21_decimal input_decimal_1 = {
+      {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
+  // 5.5
+  s21_decimal input_decimal_2 = {
+      {0x00000037, 0x00000000, 0x00000000, 0b00000001000000010000000001000000}};
+
+  ComparisonResult s21_return_code =
+      s21_is_equal(input_decimal_1, input_decimal_2);
+
+  ck_assert_int_eq(s21_return_code, COMPARISON_INPUT_ERROR);
+}
+END_TEST
+
+START_TEST(test_eq_both_decimals_incorrect) {
+  // 1.2345
+  s21_decimal input_decimal_1 = {
+      {0x00003039, 0x00000000, 0x00000000, 0b00010000000001000000000010000100}};
+  // 5.5
+  s21_decimal input_decimal_2 = {
+      {0x00000037, 0x00000000, 0x00000000, 0b00000001000000010000000001000000}};
+
+  ComparisonResult s21_return_code =
+      s21_is_equal(input_decimal_1, input_decimal_2);
+
+  ck_assert_int_eq(s21_return_code, COMPARISON_INPUT_ERROR);
+}
+END_TEST
+
 START_TEST(comparison_eq_test) {
   s21_decimal input_decimal_1 = {
       {0x123U, 0x123U, 0x123U, 0b00000000000001010000000000000000}};
@@ -7222,6 +7267,10 @@ Suite* make_is_equal_suite() {
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
+
+  tcase_add_test(tc_core, test_eq_first_decimal_incorrect);
+  tcase_add_test(tc_core, test_eq_second_decimal_incorrect);
+  tcase_add_test(tc_core, test_eq_both_decimals_incorrect);
 
   tcase_add_test(tc_core, comparison_eq_test);
 
