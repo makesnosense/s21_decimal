@@ -131,7 +131,7 @@ int s21_is_greater(s21_decimal decimal_1, s21_decimal decimal_2) {
 int s21_is_greater_or_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
   if (decimal_service_part_is_correct(decimal_1) == false ||
       decimal_service_part_is_correct(decimal_2) == false) {
-    return INPUT_ERROR;
+    return COMPARISON_INPUT_ERROR;
   }
   bool decimal_is_greater_or_equal = true;
   uint32_t normalized_mantissa_1[6] = {0};
@@ -203,9 +203,11 @@ int s21_is_not_equal(s21_decimal decimal_1, s21_decimal decimal_2) {
 }
 
 void invert_result_due_to_decimal_signs(bool both_are_negative, bool* result) {
-  if (both_are_negative && *result == true) {
-    *result = false;
-  } else if (both_are_negative && *result == false) {
-    *result = true;
+  if (both_are_negative) {
+    if (*result == true) {
+      *result = false;
+    } else {
+      *result = true;
+    }
   }
 }
