@@ -16,10 +16,10 @@ typedef enum ConversionResult {
   CONVERSION_ERROR = 1,
 } ConversionResult;
 
+bool float_is_special_value(float input_num);
+int s21_from_float_to_decimal(float src, s21_decimal* dst);
 int get_float_exponent_from_string(char* input);
-
 s21_decimal float_string_to_decimal(char* str);
-
 uint32_t* s21_decimal_get_from_char(char c);
 
 #endif  // SRC_CONVERSION_H_

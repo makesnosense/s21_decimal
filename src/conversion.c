@@ -18,15 +18,12 @@ int s21_from_int_to_decimal(int src, s21_decimal* dst) {
       dst->bits[0] = src;
     }
   }
-
   return result;
 }
 
-int s21_from_float_to_decimal(float src, s21_decimal* dst) {
+int from_float_special_values_to_decimal(float src, s21_decimal* dst) {
   ConversionResult code = OK;
-  if (dst == NULL) {
-    code = CONVERSION_ERROR;
-  } else if (src == 0.0) {
+  if (src == 0.0) {
     code = OK;
     *dst = DECIMAL_ZERO;
     if (signbit(src) != 0) {
@@ -53,12 +50,32 @@ int s21_from_float_to_decimal(float src, s21_decimal* dst) {
   } else if (fabsf(src) < MIN_FLOAT_FITTING_INTO_DECIMAL) {
     code = CONVERSION_ERROR;
     *dst = DECIMAL_ZERO;
+  }
+  return code;
+}
+
+bool float_is_special_value(float input_num) {
+  return (input_num == 0.0) || (isinf(input_num) == true) ||
+         (isnan(input_num) == true) ||
+         (fabsf(input_num) > MAX_FLOAT_FITTING_INTO_DECIMAL) ||
+         (fabsf(input_num) < MIN_FLOAT_FITTING_INTO_DECIMAL);
+}
+
+int s21_from_float_to_decimal(float src, s21_decimal* dst) {
+  ConversionResult return_code = OK;
+  if (dst == NULL) {
+    return CONVERSION_ERROR;
+  }
+  if (float_is_special_value(src)) {
+    return_code = from_float_special_values_to_decimal(src, dst);
   } else {
     *dst = DECIMAL_ZERO;
     s21_decimal result;
     result = DECIMAL_ZERO;
+
     char strinf_float[64] = {0};
     sprintf(strinf_float, "%.*E", E_NOTATION_PRECISION, fabsf(src));
+
     int exponent = get_float_exponent_from_string(strinf_float);
 
     int max_exponent_to_fit_in_decimal = MAX_SCALE - E_NOTATION_PRECISION + 1;
@@ -77,7 +94,7 @@ int s21_from_float_to_decimal(float src, s21_decimal* dst) {
     *dst = result;
   }
 
-  return code;
+  return return_code;
 }
 
 int s21_from_decimal_to_int(s21_decimal src, int* dst) {
