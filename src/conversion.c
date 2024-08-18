@@ -29,27 +29,24 @@ int from_float_special_values_to_decimal(float src, s21_decimal* dst) {
     if (signbit(src) != 0) {
       set_sign(dst, MINUS);
     }
-  } else if (isinf(src) == true) {
+  } else {
     code = CONVERSION_ERROR;
-    *dst = DECIMAL_POSITIVE_INFINITY;
-    if (signbit(src) != 0) {
-      set_sign(dst, MINUS);
+    if (fabsf(src) < MIN_FLOAT_FITTING_INTO_DECIMAL) {
+      *dst = DECIMAL_ZERO;
+    } else {
+      if (isinf(src) == true) {
+        *dst = DECIMAL_POSITIVE_INFINITY;
+      } else if (isnan(src) == true) {
+        *dst = DECIMAL_POSITIVE_NAN;
+      }
+      // fabsf(src) > MAX_FLOAT_FITTING_INTO_DECIMAL
+      else {
+        *dst = DECIMAL_POSITIVE_INFINITY;
+      }
+      if (signbit(src) != 0) {
+        set_sign(dst, MINUS);
+      }
     }
-  } else if (isnan(src) == true) {
-    code = CONVERSION_ERROR;
-    *dst = DECIMAL_POSITIVE_NAN;
-    if (signbit(src) != 0) {
-      set_sign(dst, MINUS);
-    }
-  } else if (fabsf(src) > MAX_FLOAT_FITTING_INTO_DECIMAL) {
-    code = CONVERSION_ERROR;
-    *dst = DECIMAL_POSITIVE_INFINITY;
-    if (signbit(src) != 0) {
-      set_sign(dst, MINUS);
-    }
-  } else if (fabsf(src) < MIN_FLOAT_FITTING_INTO_DECIMAL) {
-    code = CONVERSION_ERROR;
-    *dst = DECIMAL_ZERO;
   }
   return code;
 }
