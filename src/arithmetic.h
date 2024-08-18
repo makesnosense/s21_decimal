@@ -14,6 +14,9 @@ typedef enum ArithmeticResult {
   INPUT_ERROR = 4,
 } ArithmeticResult;
 
+bool input_is_correct(s21_decimal value_1, s21_decimal value_2,
+                      s21_decimal* result);
+
 ArithmeticResult actually_multiply(s21_decimal value_1, s21_decimal value_2,
                                    bool* is_overflow, Sign result_sign,
                                    s21_decimal* result);

@@ -5,8 +5,7 @@
 #include "utility.h"
 
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-  if (result == NULL || decimal_service_part_is_correct(value_1) == false ||
-      decimal_service_part_is_correct(value_2) == false) {
+  if (input_is_correct(value_1, value_2, result) == false) {
     return INPUT_ERROR;
   }
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
@@ -57,8 +56,7 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 }
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-  if (result == NULL || decimal_service_part_is_correct(value_1) == false ||
-      decimal_service_part_is_correct(value_2) == false) {
+  if (input_is_correct(value_1, value_2, result) == false) {
     return INPUT_ERROR;
   }
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
@@ -109,8 +107,7 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 }
 
 int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-  if (result == NULL || decimal_service_part_is_correct(value_1) == false ||
-      decimal_service_part_is_correct(value_2) == false) {
+  if (input_is_correct(value_1, value_2, result) == false) {
     return INPUT_ERROR;
   }
 
@@ -179,6 +176,10 @@ ArithmeticResult actually_multiply(s21_decimal value_1, s21_decimal value_2,
 }
 
 int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
+  if (input_is_correct(value_1, value_2, result) == false) {
+    return INPUT_ERROR;
+  }
+
   ArithmeticResult result_code = OK;
 
   memset(result, 0, sizeof(s21_decimal));
@@ -315,6 +316,12 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   result_code = catch_overflow(overflow, result_sign);
 
   return result_code;
+}
+
+bool input_is_correct(s21_decimal value_1, s21_decimal value_2,
+                      s21_decimal* result) {
+  return (result != NULL && decimal_service_part_is_correct(value_1) &&
+          decimal_service_part_is_correct(value_2));
 }
 
 ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign) {
