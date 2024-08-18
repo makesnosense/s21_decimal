@@ -112,14 +112,17 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
       decimal_service_part_is_correct(value_2) == false) {
     return INPUT_ERROR;
   }
+
   ArithmeticResult result_mul = OK;
   Sign result_sign = PLUS;
   bool is_overflow = false;
+
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
 
   if (get_sign(value_1) != get_sign(value_2)) {
     result_sign = MINUS;
   }
+
   if (is_zero_decimal(value_1) == false && is_zero_decimal(value_2) == false) {
     if (is_one_decimal(value_1) || is_one_decimal(value_2)) {
       if (is_one_decimal(value_1)) {
@@ -128,43 +131,50 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
         copy_decimal(&value_1, result);
       }
     } else {
-      uint32_t mantissa_value_1[3] = {0};
-      uint32_t mantissa_value_2[3] = {0};
-      uint32_t long_mantissa_result[6] = {0};
-      uint32_t mantissa_result[3] = {0};
-      get_mantissa_from_decimal(mantissa_value_1, &value_1);
-      get_mantissa_from_decimal(mantissa_value_2, &value_2);
-      multiply_mantissas(mantissa_value_1, mantissa_value_2,
-                         long_mantissa_result);
-      uint32_t initital_long_result[6] = {0};
-      copy_long_mantissa(initital_long_result, long_mantissa_result);
-      int scale_result =
-          get_scale(value_1.bits[3]) + get_scale(value_2.bits[3]);
-      int removed_digits = downsize_mantissa(
-          long_mantissa_result, &scale_result, mantissa_result, &is_overflow);
-
-      if (scale_result > 28) {
-        int digits_to_remove = (scale_result - 28) + removed_digits;
-        scale_result = 28;
-        remove_digits_rounding_to_even(initital_long_result, digits_to_remove);
-        copy_mantissa(mantissa_result, initital_long_result);
-      }
-      set_scale(&result->bits[3], scale_result);
-      write_in_mantissa_to_decimal(mantissa_result, result);
-      result_mul = catch_overflow(is_overflow, result_sign);
+      result_mul = actually_multiply(value_1, value_2, &is_overflow,
+                                     result_sign, result);
     }
   }
+
   set_sign(result, result_sign);
+
   return result_mul;
 }
 
-int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-  if (1 == 0) {
-    printf("%d", value_1.bits[0]);
-    printf("%d", value_2.bits[0]);
-    printf("%d", result->bits[0]);
+ArithmeticResult actually_multiply(s21_decimal value_1, s21_decimal value_2,
+                                   bool* is_overflow, Sign result_sign,
+                                   s21_decimal* result) {
+  ArithmeticResult result_mul = OK;
+  uint32_t mantissa_value_1[3] = {0};
+  uint32_t mantissa_value_2[3] = {0};
+  uint32_t long_mantissa_result[6] = {0};
+  uint32_t mantissa_result[3] = {0};
+
+  get_mantissa_from_decimal(mantissa_value_1, &value_1);
+  get_mantissa_from_decimal(mantissa_value_2, &value_2);
+
+  multiply_mantissas(mantissa_value_1, mantissa_value_2, long_mantissa_result);
+
+  uint32_t initital_long_result[6] = {0};
+
+  copy_long_mantissa(initital_long_result, long_mantissa_result);
+
+  int scale_result = get_scale(value_1.bits[3]) + get_scale(value_2.bits[3]);
+  int removed_digits = downsize_mantissa(long_mantissa_result, &scale_result,
+                                         mantissa_result, is_overflow);
+
+  if (scale_result > 28) {
+    int digits_to_remove = (scale_result - 28) + removed_digits;
+    scale_result = 28;
+    remove_digits_rounding_to_even(initital_long_result, digits_to_remove);
+    copy_mantissa(mantissa_result, initital_long_result);
   }
-  return 0;
+
+  set_scale(&result->bits[3], scale_result);
+  write_in_mantissa_to_decimal(mantissa_result, result);
+
+  result_mul = catch_overflow(*is_overflow, result_sign);
+  return result_mul;
 }
 
 ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign) {
@@ -177,4 +187,13 @@ ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign) {
     }
   }
   return arithmetic_result;
+}
+
+int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
+  if (1 == 0) {
+    printf("%d", value_1.bits[0]);
+    printf("%d", value_2.bits[0]);
+    printf("%d", result->bits[0]);
+  }
+  return 0;
 }
