@@ -252,15 +252,6 @@ void mantissa3_to_mantissa6(uint32_t* mantissa3, uint32_t* mantissa6) {
   mantissa6[2] = mantissa3[2];
 }
 
-void shift_decimal_right(s21_decimal* d) {
-  uint64_t carry = 0;
-  for (int i = 2; i >= 0; i--) {
-    uint64_t temp = ((uint64_t)d->bits[i] >> 1) | (carry << 31);
-    carry = d->bits[i] & 1;
-    d->bits[i] = (int)temp;
-  }
-}
-
 void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
                         uint32_t* long_mantissa_result) {
   s21_memset(long_mantissa_result, 0, sizeof(uint32_t) * 6);
