@@ -5,10 +5,8 @@
 #include "run_tests.h"
 
 START_TEST(test_from_float_to_decimal_NULL) {
-  s21_decimal s21_result_decimal = {{0x0, 0x0, 0x0, 0x0}};
   // -30.7339287
   float input_float = -30.7339287;
-  // -30.73393
 
   int s21_return_code = s21_from_float_to_decimal(input_float, NULL);
 
@@ -761,7 +759,7 @@ Suite* make_from_float_to_decimal_suite() {
   tcase_add_test(tc_core, test_from_float_to_decimal_negative_NAN);
   tcase_add_test(tc_core, test_from_float_to_decimal_ok);
 
-  // tcase_add_test(tc_core, test_from_float_to_decimal_manual_1);
+  tcase_add_test(tc_core, test_from_float_to_decimal_manual_1);
   tcase_add_test(tc_core, test_from_float_to_decimal_manual_2);
 
   tcase_add_test(tc_core, test_from_float_to_decimal_gen_0);
