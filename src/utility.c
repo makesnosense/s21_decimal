@@ -519,16 +519,11 @@ uint32_t* _get_mantissa_with_power_of_ten_powers_29_to_57(int power) {
 
 bool decimal_service_part_structure_is_correct(s21_decimal input_decimal) {
   uint32_t service_part = input_decimal.bits[3];
+  return service_part_structure_is_correct(service_part);
+}
 
-  bool structure_is_correct = true;
-  for (int i = 0; i < PART_SIZE && structure_is_correct == true; i++) {
-    int bit = get_bit(service_part, i);
-    if ((i >= 0 && i <= 15) || (i >= 24 && i <= 30)) {
-      if (bit != 0) {
-        structure_is_correct = false;
-      }
-    }
-  }
+int service_part_structure_is_correct(uint32_t service_part) {
+  bool structure_is_correct = !(service_part & SERVICE_PART_STRUCTURE_MASK);
   return structure_is_correct;
 }
 

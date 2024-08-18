@@ -584,20 +584,10 @@ START_TEST(get_scale_test) {
       0b00000000000110100000000000000000, 0b00000000000110110000000000000000,
       0b00000000000111000000000000000000};
 
-  // printf("\n%d\n", get_scale(scales[1]));
   for (int i = 0; i < 29; i++) {
     ck_assert_int_eq(get_scale(service_parts[i]), i);
+    ck_assert_int_eq(service_part_structure_is_correct(service_parts[i]), TRUE);
   }
-
-  //   s21_decimal input_decimal = {{0x123U, 0x123U, 0x123U,
-  //                              0b00000000000000101000000000000000}};
-  // int scale_before = get_scale(input_decimal.bits[3]);
-  // int scale_to_set = 6;
-
-  // set_scale(&input_decimal.bits[3], scale_to_set);
-  // int scale_after = get_scale(input_decimal.bits[3]);
-  // ck_assert_int_ne(scale_before, scale_after);
-  // ck_assert_int_eq(scale_after, scale_to_set);
 }
 END_TEST
 
