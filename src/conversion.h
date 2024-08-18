@@ -16,6 +16,10 @@ typedef enum ConversionResult {
   CONVERSION_ERROR = 1,
 } ConversionResult;
 
+void write_in_string_significand_to_decimal(char* ptr,
+                                            uint32_t* result_mantissa,
+                                            s21_decimal* result);
+
 bool float_is_special_value(float input_num);
 int from_float_special_values_to_decimal(float src, s21_decimal* dst);
 

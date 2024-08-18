@@ -164,15 +164,10 @@ int get_float_exponent_from_string(char* str) {
   return result * sign;
 }
 
-s21_decimal float_string_to_decimal(char* str) {
+void write_in_string_significand_to_decimal(char* ptr,
+                                            uint32_t* result_mantissa,
+                                            s21_decimal* result) {
   int digits_counter = FLOAT_SIGNIFICANT_DIGITS - 1;
-  s21_decimal result = {{0x0, 0x0, 0x0, 0x0}};
-  uint32_t result_mantissa[3] = {0};
-  uint32_t remainder[3] = {0};
-  char* ptr = str;
-
-  int exp = get_float_exponent_from_string(str);
-
   while (*ptr != 'E') {
     if (*ptr == '.') {
       ++ptr;
@@ -186,11 +181,22 @@ s21_decimal float_string_to_decimal(char* str) {
 
       add_mantissas(result_mantissa, tmp_mantissa, result_mantissa);
       write_in_mantissa_to_decimal(result_mantissa, &tmp);
-      copy_mantissa(result.bits, result_mantissa);
+      copy_mantissa(result->bits, result_mantissa);
       digits_counter--;
       ptr++;
     }
   }
+}
+
+s21_decimal float_string_to_decimal(char* str) {
+  s21_decimal result = {{0x0, 0x0, 0x0, 0x0}};
+  uint32_t result_mantissa[3] = {0};
+  uint32_t remainder[3] = {0};
+
+  int exp = get_float_exponent_from_string(str);
+
+  write_in_string_significand_to_decimal(str, result_mantissa, &result);
+
   exp = exp - E_NOTATION_PRECISION;
 
   if (exp != 0) {
