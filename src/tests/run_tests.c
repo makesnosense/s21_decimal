@@ -1,7 +1,5 @@
 #include "run_tests.h"
 
-#include <stdio.h>
-
 int main() {
   int total_number_run = 0;
   int total_number_failed = 0;

@@ -38,9 +38,7 @@ int from_float_special_values_to_decimal(float src, s21_decimal* dst) {
         *dst = DECIMAL_POSITIVE_INFINITY;
       } else if (isnan(src) == true) {
         *dst = DECIMAL_POSITIVE_NAN;
-      }
-      // fabsf(src) > MAX_FLOAT_FITTING_INTO_DECIMAL
-      else {
+      } else /* fabsf(src) > MAX_FLOAT_FITTING_INTO_DECIMAL */ {
         *dst = DECIMAL_POSITIVE_INFINITY;
       }
       if (signbit(src) != 0) {

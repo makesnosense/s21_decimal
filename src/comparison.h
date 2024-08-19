@@ -1,3 +1,6 @@
+#ifndef SRC_COMPARISON_H_
+#define SRC_COMPARISON_H_
+
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -12,3 +15,5 @@ typedef enum ComparisonResult {
 int s21_is_equal(s21_decimal decimal_1, s21_decimal decimal_2);
 
 void invert_result_due_to_decimal_signs(bool both_are_negative, bool* result);
+
+#endif  // SRC_COMPARISON_H_

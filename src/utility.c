@@ -182,8 +182,6 @@ int64_t _compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
   return diff;
 }
 
-// TODO: allow passing NULL pointer as remainder
-// TODO: refactor without copying (PART_SIZE * size) / BYTE_SIZE)
 int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
                       uint32_t* remainder, int size) {
   int division_by_zero = 0;
@@ -333,9 +331,8 @@ int cast_decimals_to_normalized_mantissas(s21_decimal decimal_1,
     bigger_scale = get_scale(decimal_1.bits[3]);
     mantissa3_to_mantissa6(decimal_1.bits, normalized_mantissa_1);
 
-  }
-  // get_scale(decimal_1.bits[3]) < get_scale(decimal_2.bits[3])
-  else {
+  } else {
+    // get_scale(decimal_1.bits[3]) < get_scale(decimal_2.bits[3])
     multiply_mantissas(decimal_1.bits,
                        get_mantissa_with_power_of_ten(scale_difference),
                        normalized_mantissa_1);
