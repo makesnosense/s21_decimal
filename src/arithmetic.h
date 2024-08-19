@@ -19,4 +19,16 @@ bool input_is_correct(s21_decimal value_1, s21_decimal value_2,
 
 ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign);
 
+void compose_decimal(uint32_t* mantissa, Sign sign, int scale,
+                     s21_decimal* decimal);
+
+bool multiply_division_result(uint32_t* result, uint32_t* remainder,
+                              uint32_t* divider, int multiplier_scale);
+
+int downsize_division_result(uint32_t* upscaled_mantissa, uint32_t* remainder,
+                             uint32_t* divider, uint32_t* mantissa);
+
+void round_division_result_to_even(uint32_t* result, uint32_t* remainder,
+                                   uint32_t* divider, uint32_t* rounded_result);
+
 #endif  // SRC_ARITHMETIC_H_

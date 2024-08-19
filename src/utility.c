@@ -274,7 +274,7 @@ int multiply_long_mantissas(uint32_t* factor_1, uint32_t* factor_2,
   int overflow = 0;
   uint64_t product;
   uint32_t carry;
-  memset(result, 0, (PART_SIZE * size) / BYTE_SIZE);
+  uint32_t temp_result[6] = {0};
 
   for (int i = 0; i < size; i++) {
     carry = 0;
@@ -286,8 +286,8 @@ int multiply_long_mantissas(uint32_t* factor_1, uint32_t* factor_2,
           overflow = 1;
         }
       } else {
-        product += result[i + j];
-        result[i + j] = (uint32_t)product;
+        product += temp_result[i + j];
+        temp_result[i + j] = (uint32_t)product;
       }
       carry = product >> 32;
     }
@@ -296,6 +296,7 @@ int multiply_long_mantissas(uint32_t* factor_1, uint32_t* factor_2,
       overflow = 1;
     }
   }
+  copy_long_mantissa(result, temp_result);
   // return overflow > 0;
   return overflow;
 }
@@ -377,6 +378,13 @@ uint32_t* get_max_mantissa() {
   static uint32_t max_mantissa[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
                                      0x0,        0x0,        0x0};
   return max_mantissa;
+}
+
+uint32_t* get_max_upscaled_mantissa() {
+  // max_mantissa * 10^28
+  static uint32_t max_upscaled_mantissa[6] = {
+      0xF0000000, 0xC1DAFD9E, 0xDFB031A1, 0xFFFFFFF, 0x3E250261, 0x204FCE5E};
+  return max_upscaled_mantissa;
 }
 
 int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,

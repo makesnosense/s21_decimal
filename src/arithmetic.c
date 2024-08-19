@@ -159,142 +159,49 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   if (input_is_correct(value_1, value_2, result) == false) {
     return INPUT_ERROR;
   }
-
-  ArithmeticResult result_code = OK;
-
-  memset(result, 0, sizeof(s21_decimal));
-
   if (is_zero_decimal(value_2)) {
-    result_code = DIVISION_BY_ZERO;
-    return result_code;
+    return DIVISION_BY_ZERO;
   }
+  bool overflow = false;
+  int value_1_scale = get_scale(value_1.bits[3]);
+  int value_2_scale = get_scale(value_2.bits[3]);
+  int scale_difference = value_1_scale - value_2_scale;
+  int multiplier_scale;
+  uint32_t* upscale_factor;
 
-  uint32_t* upscale_multiplier;
-
-  int result_scale = get_scale(value_1.bits[3]) - get_scale(value_2.bits[3]);
-  int temp_scale = 28;
-  int exponent;
-  bool overflow = 0;
-
-  if (result_scale <= 0) {
-    exponent = -result_scale;
-    upscale_multiplier = get_mantissa_with_power_of_ten(28);
+  if (scale_difference <= 0) {
+    multiplier_scale = -scale_difference;
+    upscale_factor = get_mantissa_with_power_of_ten(28);
   } else {
-    exponent = 0;
-    upscale_multiplier = get_mantissa_with_power_of_ten(28 - result_scale);
+    multiplier_scale = 0;
+    upscale_factor = get_mantissa_with_power_of_ten(28 - scale_difference);
   }
 
   uint32_t divident[6] = {0};
   uint32_t divider[6] = {0};
-  uint32_t result_mantissa[6] = {0};
-  uint32_t rounded_result_mantissa[6] = {0};
-  uint32_t remainder[6] = {0};
-
-  multiply_mantissas(value_1.bits, upscale_multiplier, divident);
+  multiply_mantissas(value_1.bits, upscale_factor, divident);
   copy_mantissa(divider, value_2.bits);
 
+  uint32_t result_mantissa[6] = {0};
+  uint32_t remainder[6] = {0};
   divide_long_mantissas(divident, divider, result_mantissa, remainder);
 
-  /*   debug_print_mantissa_as_hex(result_mantissa, 6);
-    puts("\n"); */
-
-  uint32_t* max_mantissa = get_max_mantissa();
-  // max_mantissa * 10^28
-  uint32_t max_upscaled_mantissa[6] = {0xF0000000, 0xC1DAFD9E, 0xDFB031A1,
-                                       0xFFFFFFF,  0x3E250261, 0x204FCE5E};
-
-  uint32_t multiplied_result[6] = {0};
-  if (exponent > 0) {
-    overflow = multiply_long_mantissas(result_mantissa,
-                                       get_mantissa_with_power_of_ten(exponent),
-                                       multiplied_result);
-    uint32_t multiplied_remainder[6] = {0};
-    uint32_t additional_digits[6] = {0};
-    multiply_long_mantissas(remainder, get_mantissa_with_power_of_ten(exponent),
-                            multiplied_remainder);
-    divide_long_mantissas(multiplied_remainder, divider, additional_digits,
-                          remainder);
-    add_long_mantissas(multiplied_result, additional_digits, result_mantissa);
-
-    if (compare_long_mantissas(result_mantissa, max_upscaled_mantissa) > 0) {
-      overflow = true;
-    };
-    // debug_print_mantissa_as_hex(result_mantissa, 6);
+  if (multiplier_scale > 0) {
+    overflow = multiply_division_result(result_mantissa, remainder, divider,
+                                        multiplier_scale);
   }
-
-  int digits = count_long_mantissa_digits(result_mantissa);
-  int digits_to_remove = digits - 29;
-  // puts("print:");
-  // debug_print_mantissa_as_hex(result_mantissa, 6);
-  // printf("\nremove: %d\n", digits_to_remove);
-  // debug_print_mantissa_as_hex(remainder, 6);
-
-  if (digits_to_remove <= 0 && !long_mantissa_is_zero(remainder)) {
-    uint32_t scaled_remainder[6] = {0};
-    multiply_long_mantissas(remainder, get_mantissa_with_power_of_ten(1),
-                            scaled_remainder);
-    // debug_print_mantissa_as_hex(scaled_remainder, 6);
-    uint32_t first_leftout_digit[6] = {0};
-    uint32_t leftout_remainder[6] = {0};
-    divide_long_mantissas(scaled_remainder, divider, first_leftout_digit,
-                          leftout_remainder);
-    uint32_t* one = get_mantissa_with_power_of_ten(0);
-    if (first_leftout_digit[0] == 5) {
-      if (!long_mantissa_is_zero(leftout_remainder)) {
-        add_long_mantissas(result_mantissa, one, rounded_result_mantissa);
-      } else {
-        if (result_mantissa[0] & 1) {
-          add_long_mantissas(result_mantissa, one, rounded_result_mantissa);
-        } else {
-          copy_long_mantissa(rounded_result_mantissa, result_mantissa);
-        }
-      }
-    } else if (first_leftout_digit[0] > 5) {
-      add_long_mantissas(result_mantissa, one, rounded_result_mantissa);
-    } else {
-      copy_long_mantissa(rounded_result_mantissa, result_mantissa);
-    }
-    // debug_print_mantissa_as_hex(rounded_result_mantissa, 6);
-  } else if (digits_to_remove > 0) {
-    temp_scale -= digits_to_remove;
-    if (long_mantissa_is_zero(remainder)) {
-      remove_digits_rounding_to_even(result_mantissa, digits_to_remove,
-                                     rounded_result_mantissa);
-    } else {
-      remove_digits_rounding_half_up(result_mantissa, digits_to_remove,
-                                     rounded_result_mantissa);
-    }
-  } else {
-    digits_to_remove = 0;
-    copy_long_mantissa(rounded_result_mantissa, result_mantissa);
-  }
-
-  if (compare_long_mantissas(rounded_result_mantissa, max_mantissa) > 0) {
-    digits_to_remove += 1;
-    temp_scale -= 1;
-    if (long_mantissa_is_zero(remainder)) {
-      remove_digits_rounding_to_even(result_mantissa, digits_to_remove,
-                                     rounded_result_mantissa);
-    } else {
-      remove_digits_rounding_half_up(result_mantissa, digits_to_remove,
-                                     rounded_result_mantissa);
-    }
-  }
-  // debug_print_mantissa_as_hex(rounded_result_mantissa, 6);
-  // printf("\nexp: %d\n", exponent);
-
-  copy_mantissa(result->bits, rounded_result_mantissa);
-
-  Sign result_sign;
-  if (get_sign(value_1) == get_sign(value_2)) {
-    result_sign = PLUS;
-  } else {
+  uint32_t downsized_result_mantissa[3] = {0};
+  int result_scale = downsize_division_result(
+      result_mantissa, remainder, divider, downsized_result_mantissa);
+  Sign result_sign = PLUS;
+  if (get_sign(value_1) != get_sign(value_2)) {
     result_sign = MINUS;
   }
-  set_sign(result, result_sign);
-  set_scale(&result->bits[3], temp_scale);
-  result_code = catch_overflow(overflow, result_sign);
-
+  ArithmeticResult result_code = catch_overflow(overflow, result_sign);
+  if (result_code == OK) {
+    compose_decimal(downsized_result_mantissa, result_sign, result_scale,
+                    result);
+  }
   return result_code;
 }
 
@@ -314,4 +221,96 @@ ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign) {
     }
   }
   return arithmetic_result;
+}
+
+void compose_decimal(uint32_t* mantissa, Sign sign, int scale,
+                     s21_decimal* decimal) {
+  memset(decimal, 0, sizeof(s21_decimal));
+  copy_mantissa(decimal->bits, mantissa);
+  set_sign(decimal, sign);
+  set_scale(&decimal->bits[3], scale);
+}
+
+bool multiply_division_result(uint32_t* result, uint32_t* remainder,
+                              uint32_t* divider, int multiplier_scale) {
+  bool overflow = false;
+  uint32_t* multiplier = get_mantissa_with_power_of_ten(multiplier_scale);
+  overflow = multiply_long_mantissas(result, multiplier, result);
+  uint32_t additional_digits[6] = {0};
+  multiply_long_mantissas(remainder, multiplier, remainder);
+  divide_long_mantissas(remainder, divider, additional_digits, remainder);
+  add_long_mantissas(result, additional_digits, result);
+
+  // max_mantissa * 10^28
+  uint32_t* max_upscaled_mantissa = get_max_upscaled_mantissa();
+  if (compare_long_mantissas(result, max_upscaled_mantissa) > 0) {
+    overflow = true;
+  };
+  return overflow;
+}
+
+int downsize_division_result(uint32_t* long_mantissa, uint32_t* remainder,
+                             uint32_t* divider, uint32_t* mantissa) {
+  int result_scale = 28;
+  uint32_t rounded_long_mantissa[6];
+  int digits = count_long_mantissa_digits(long_mantissa);
+  int digits_to_remove = digits - 29;
+  if (digits_to_remove <= 0) {
+    if (!long_mantissa_is_zero(remainder)) {
+      round_division_result_to_even(long_mantissa, remainder, divider,
+                                    rounded_long_mantissa);
+    } else {
+      copy_long_mantissa(rounded_long_mantissa, long_mantissa);
+    }
+  } else {
+    result_scale -= digits_to_remove;
+    if (long_mantissa_is_zero(remainder)) {
+      remove_digits_rounding_to_even(long_mantissa, digits_to_remove,
+                                     rounded_long_mantissa);
+    } else {
+      remove_digits_rounding_half_up(long_mantissa, digits_to_remove,
+                                     rounded_long_mantissa);
+    }
+  }
+  uint32_t* max_mantissa = get_max_mantissa();
+  if (compare_long_mantissas(rounded_long_mantissa, max_mantissa) > 0) {
+    digits_to_remove += 1;
+    result_scale -= 1;
+    if (long_mantissa_is_zero(remainder)) {
+      remove_digits_rounding_to_even(long_mantissa, digits_to_remove,
+                                     rounded_long_mantissa);
+    } else {
+      remove_digits_rounding_half_up(long_mantissa, digits_to_remove,
+                                     rounded_long_mantissa);
+    }
+  }
+  copy_mantissa(mantissa, rounded_long_mantissa);
+  return result_scale;
+}
+
+void round_division_result_to_even(uint32_t* result, uint32_t* remainder,
+                                   uint32_t* divider,
+                                   uint32_t* rounded_result) {
+  uint32_t first_fraction_digit[6] = {0};
+  uint32_t temp_remainder[6] = {0};
+  uint32_t* ten = get_mantissa_with_power_of_ten(1);
+  multiply_long_mantissas(remainder, ten, temp_remainder);
+  divide_long_mantissas(temp_remainder, divider, first_fraction_digit,
+                        temp_remainder);
+  uint32_t* one = get_mantissa_with_power_of_ten(0);
+  if (first_fraction_digit[0] == 5) {
+    if (!long_mantissa_is_zero(temp_remainder)) {
+      add_long_mantissas(result, one, rounded_result);
+    } else {
+      if (result[0] & 1) {
+        add_long_mantissas(result, one, rounded_result);
+      } else {
+        copy_long_mantissa(rounded_result, result);
+      }
+    }
+  } else if (first_fraction_digit[0] > 5) {
+    add_long_mantissas(result, one, rounded_result);
+  } else {
+    copy_long_mantissa(rounded_result, result);
+  }
 }
