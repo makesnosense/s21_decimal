@@ -10,3 +10,4 @@ run_tests
 .ipynb_checkpoints
 *.txt
 src/tests/tests_object_files
+clang-format.sh
