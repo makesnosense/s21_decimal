@@ -19,7 +19,7 @@ bool input_is_correct(s21_decimal value_1, s21_decimal value_2,
 
 ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign);
 
-void compose_decimal(uint32_t* mantissa, Sign sign, int scale,
+void compose_decimal(uint32_t* mantissa, int scale, Sign sign,
                      s21_decimal* decimal);
 
 bool multiply_division_result(uint32_t* result, uint32_t* remainder,

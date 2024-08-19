@@ -48,9 +48,7 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   bool is_overflow;
   downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa,
                     &is_overflow);
-  write_in_mantissa_to_decimal(result_mantissa, result);
-  set_scale(&result->bits[3], bigger_scale);
-  set_sign(result, (Sign)result_sign);
+  compose_decimal(result_mantissa, bigger_scale, result_sign, result);
   result_add = catch_overflow(is_overflow, result_sign);
   return result_add;
 }
@@ -99,9 +97,7 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   bool is_overflow;
   downsize_mantissa(result_long_mantissa, &bigger_scale, result_mantissa,
                     &is_overflow);
-  write_in_mantissa_to_decimal(result_mantissa, result);
-  set_scale(&result->bits[3], bigger_scale);
-  set_sign(result, (Sign)result_sign);
+  compose_decimal(result_mantissa, bigger_scale, result_sign, result);
   result_sub = catch_overflow(is_overflow, result_sign);
   return result_sub;
 }
@@ -144,14 +140,8 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
     remove_digits_rounding_to_even(initital_long_result, digits_to_remove,
                                    mantissa_result);
   }
-
-  set_scale(&result->bits[3], scale_result);
-  write_in_mantissa_to_decimal(mantissa_result, result);
-
+  compose_decimal(mantissa_result, scale_result, result_sign, result);
   result_mul = catch_overflow(is_overflow, result_sign);
-
-  set_sign(result, result_sign);
-
   return result_mul;
 }
 
@@ -199,7 +189,7 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   }
   ArithmeticResult result_code = catch_overflow(overflow, result_sign);
   if (result_code == OK) {
-    compose_decimal(downsized_result_mantissa, result_sign, result_scale,
+    compose_decimal(downsized_result_mantissa, result_scale, result_sign,
                     result);
   }
   return result_code;
@@ -223,7 +213,7 @@ ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign) {
   return arithmetic_result;
 }
 
-void compose_decimal(uint32_t* mantissa, Sign sign, int scale,
+void compose_decimal(uint32_t* mantissa, int scale, Sign sign,
                      s21_decimal* decimal) {
   memset(decimal, 0, sizeof(s21_decimal));
   copy_mantissa(decimal->bits, mantissa);
