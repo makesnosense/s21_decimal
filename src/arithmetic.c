@@ -136,12 +136,13 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 }
 
 int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-  if (input_is_correct(value_1, value_2, result) == false) {
-    return INPUT_ERROR;
-  }
   if (is_zero_decimal(value_2)) {
     return DIVISION_BY_ZERO;
   }
+  if (input_is_correct(value_1, value_2, result) == false) {
+    return INPUT_ERROR;
+  }
+
   bool overflow = false;
   int value_1_scale = get_scale(value_1.bits[3]);
   int value_2_scale = get_scale(value_2.bits[3]);
