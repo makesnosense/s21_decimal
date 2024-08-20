@@ -182,19 +182,19 @@ int64_t _compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
   return diff;
 }
 
-int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
+int _divide_mantissas(uint32_t* dividend, uint32_t* divisor, uint32_t* result,
                       uint32_t* remainder, int size) {
   int division_by_zero = 0;
   if (_mantissa_is_zero(divisor, size)) {
     division_by_zero = 1;
   } else {
-    int divident_bits = _find_highest_mantissa_bit(divident, size);
+    int dividend_bits = _find_highest_mantissa_bit(dividend, size);
     int divisor_bits = _find_highest_mantissa_bit(divisor, size);
-    // needs to be before memset to work correctly in case when divident and
+    // needs to be before memset to work correctly in case when dividend and
     // result pointers are the same
-    memcpy(remainder, divident, (PART_SIZE * size) / BYTE_SIZE);
+    memcpy(remainder, dividend, (PART_SIZE * size) / BYTE_SIZE);
     memset(result, 0, (PART_SIZE * size) / BYTE_SIZE);
-    int shift = divident_bits - divisor_bits;
+    int shift = dividend_bits - divisor_bits;
     uint32_t shifted_divisor[6] = {0, 0, 0, 0, 0, 0};
     while (shift >= 0) {
       memcpy(shifted_divisor, divisor, (PART_SIZE * size) / BYTE_SIZE);

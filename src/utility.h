@@ -107,7 +107,7 @@ void _shift_mantissa_left(uint32_t* mantissa, unsigned shift, int size);
 int _find_highest_mantissa_bit(uint32_t* mantissa, int size);
 int64_t _compare_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
                            int size);
-int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
+int _divide_mantissas(uint32_t* dividend, uint32_t* divisor, uint32_t* result,
                       uint32_t* remainder, int size);
 
 #define add_mantissas(term_1, term_2, result) \
@@ -149,9 +149,9 @@ int _divide_mantissas(uint32_t* divident, uint32_t* divisor, uint32_t* result,
 #define compare_long_mantissas(mantissa_1, mantissa_2) \
   _compare_mantissas(mantissa_1, mantissa_2, LONG_MANTISSA_PARTS)
 
-#define divide_mantissas(divident, divisor, result, remainder) \
-  _divide_mantissas(divident, divisor, result, remainder, MANTISSA_PARTS)
-#define divide_long_mantissas(divident, divisor, result, remainder) \
-  _divide_mantissas(divident, divisor, result, remainder, LONG_MANTISSA_PARTS)
+#define divide_mantissas(dividend, divisor, result, remainder) \
+  _divide_mantissas(dividend, divisor, result, remainder, MANTISSA_PARTS)
+#define divide_long_mantissas(dividend, divisor, result, remainder) \
+  _divide_mantissas(dividend, divisor, result, remainder, LONG_MANTISSA_PARTS)
 
 #endif  // SRC_HELPER_FUNCS_H_

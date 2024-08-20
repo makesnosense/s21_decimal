@@ -23,15 +23,15 @@ void compose_decimal(uint32_t* mantissa, int scale, Sign sign,
                      s21_decimal* decimal);
 
 bool multiply_division_result(uint32_t* result, uint32_t* remainder,
-                              uint32_t* divider, int multiplier_scale);
+                              uint32_t* divisor, int multiplier_scale);
 
 int downsize_division_result(uint32_t* upscaled_mantissa, uint32_t* remainder,
-                             uint32_t* divider, uint32_t* mantissa);
+                             uint32_t* divisor, uint32_t* mantissa);
 
 void round_division_result_to_even(uint32_t* result, uint32_t* remainder,
-                                   uint32_t* divider, uint32_t* rounded_result);
+                                   uint32_t* divisor, uint32_t* rounded_result);
 
 void normalize_division_result(uint32_t* result, int* scale,
-                               int divident_scale);
+                               int dividend_scale);
 
 #endif  // SRC_ARITHMETIC_H_

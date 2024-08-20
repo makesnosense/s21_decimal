@@ -158,22 +158,22 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
     upscale_factor = get_mantissa_with_power_of_ten(28 - scale_difference);
   }
 
-  uint32_t divident[6] = {0};
-  uint32_t divider[6] = {0};
-  multiply_mantissas(value_1.bits, upscale_factor, divident);
-  copy_mantissa(divider, value_2.bits);
+  uint32_t dividend[6] = {0};
+  uint32_t divisor[6] = {0};
+  multiply_mantissas(value_1.bits, upscale_factor, dividend);
+  copy_mantissa(divisor, value_2.bits);
 
   uint32_t result_mantissa[6] = {0};
   uint32_t remainder[6] = {0};
-  divide_long_mantissas(divident, divider, result_mantissa, remainder);
+  divide_long_mantissas(dividend, divisor, result_mantissa, remainder);
 
   if (multiplier_scale > 0) {
-    overflow = multiply_division_result(result_mantissa, remainder, divider,
+    overflow = multiply_division_result(result_mantissa, remainder, divisor,
                                         multiplier_scale);
   }
   uint32_t downsized_result_mantissa[3] = {0};
   int result_scale = downsize_division_result(
-      result_mantissa, remainder, divider, downsized_result_mantissa);
+      result_mantissa, remainder, divisor, downsized_result_mantissa);
   normalize_division_result(downsized_result_mantissa, &result_scale,
                             value_1_scale);
   Sign result_sign = PLUS;
@@ -215,13 +215,13 @@ void compose_decimal(uint32_t* mantissa, int scale, Sign sign,
 }
 
 bool multiply_division_result(uint32_t* result, uint32_t* remainder,
-                              uint32_t* divider, int multiplier_scale) {
+                              uint32_t* divisor, int multiplier_scale) {
   bool overflow = false;
   uint32_t* multiplier = get_mantissa_with_power_of_ten(multiplier_scale);
   overflow = multiply_long_mantissas(result, multiplier, result);
   uint32_t additional_digits[6] = {0};
   multiply_long_mantissas(remainder, multiplier, remainder);
-  divide_long_mantissas(remainder, divider, additional_digits, remainder);
+  divide_long_mantissas(remainder, divisor, additional_digits, remainder);
   add_long_mantissas(result, additional_digits, result);
 
   // max_mantissa * 10^28
@@ -233,14 +233,14 @@ bool multiply_division_result(uint32_t* result, uint32_t* remainder,
 }
 
 int downsize_division_result(uint32_t* long_mantissa, uint32_t* remainder,
-                             uint32_t* divider, uint32_t* mantissa) {
+                             uint32_t* divisor, uint32_t* mantissa) {
   int result_scale = 28;
   uint32_t rounded_long_mantissa[6];
   int digits = count_long_mantissa_digits(long_mantissa);
   int digits_to_remove = digits - 29;
   if (digits_to_remove <= 0) {
     if (!long_mantissa_is_zero(remainder)) {
-      round_division_result_to_even(long_mantissa, remainder, divider,
+      round_division_result_to_even(long_mantissa, remainder, divisor,
                                     rounded_long_mantissa);
     } else {
       copy_long_mantissa(rounded_long_mantissa, long_mantissa);
@@ -272,13 +272,13 @@ int downsize_division_result(uint32_t* long_mantissa, uint32_t* remainder,
 }
 
 void round_division_result_to_even(uint32_t* result, uint32_t* remainder,
-                                   uint32_t* divider,
+                                   uint32_t* divisor,
                                    uint32_t* rounded_result) {
   uint32_t first_fraction_digit[6] = {0};
   uint32_t temp_remainder[6] = {0};
   uint32_t* ten = get_mantissa_with_power_of_ten(1);
   multiply_long_mantissas(remainder, ten, temp_remainder);
-  divide_long_mantissas(temp_remainder, divider, first_fraction_digit,
+  divide_long_mantissas(temp_remainder, divisor, first_fraction_digit,
                         temp_remainder);
   uint32_t* one = get_mantissa_with_power_of_ten(0);
   if (first_fraction_digit[0] == 5) {
@@ -299,13 +299,13 @@ void round_division_result_to_even(uint32_t* result, uint32_t* remainder,
 }
 
 void normalize_division_result(uint32_t* result, int* scale,
-                               int divident_scale) {
+                               int dividend_scale) {
   uint32_t last_digit[3] = {0};
   uint32_t temp_result[3] = {0};
   uint32_t* ten = get_mantissa_with_power_of_ten(1);
 
   divide_mantissas(result, ten, temp_result, last_digit);
-  while (last_digit[0] == 0 && (*scale > divident_scale)) {
+  while (last_digit[0] == 0 && (*scale > dividend_scale)) {
     *scale -= 1;
     copy_mantissa(result, temp_result);
     divide_mantissas(result, ten, temp_result, last_digit);
