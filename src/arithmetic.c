@@ -174,6 +174,8 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   uint32_t downsized_result_mantissa[3] = {0};
   int result_scale = downsize_division_result(
       result_mantissa, remainder, divider, downsized_result_mantissa);
+  normalize_division_result(downsized_result_mantissa, &result_scale,
+                            value_1_scale);
   Sign result_sign = PLUS;
   if (get_sign(value_1) != get_sign(value_2)) {
     result_sign = MINUS;
@@ -293,5 +295,19 @@ void round_division_result_to_even(uint32_t* result, uint32_t* remainder,
     add_long_mantissas(result, one, rounded_result);
   } else {
     copy_long_mantissa(rounded_result, result);
+  }
+}
+
+void normalize_division_result(uint32_t* result, int* scale,
+                               int divident_scale) {
+  uint32_t last_digit[3] = {0};
+  uint32_t temp_result[3] = {0};
+  uint32_t* ten = get_mantissa_with_power_of_ten(1);
+
+  divide_mantissas(result, ten, temp_result, last_digit);
+  while (last_digit[0] == 0 && (*scale > divident_scale)) {
+    *scale -= 1;
+    copy_mantissa(result, temp_result);
+    divide_mantissas(result, ten, temp_result, last_digit);
   }
 }

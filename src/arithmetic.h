@@ -31,4 +31,7 @@ int downsize_division_result(uint32_t* upscaled_mantissa, uint32_t* remainder,
 void round_division_result_to_even(uint32_t* result, uint32_t* remainder,
                                    uint32_t* divider, uint32_t* rounded_result);
 
+void normalize_division_result(uint32_t* result, int* scale,
+                               int divident_scale);
+
 #endif  // SRC_ARITHMETIC_H_
