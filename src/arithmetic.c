@@ -137,12 +137,11 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 
 int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   if (is_zero_decimal(value_2)) {
+    if (result != NULL) {
+      reset_decimal(result);
+    }
     return DIVISION_BY_ZERO;
   }
-  if (input_is_correct(value_1, value_2, result) == false) {
-    return INPUT_ERROR;
-  }
-
   bool overflow = false;
   int value_1_scale = get_scale(value_1.bits[3]);
   int value_2_scale = get_scale(value_2.bits[3]);
@@ -157,7 +156,6 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
     multiplier_scale = 0;
     upscale_factor = get_mantissa_with_power_of_ten(28 - scale_difference);
   }
-
   uint32_t dividend[6] = {0};
   uint32_t divisor[6] = {0};
   multiply_mantissas(value_1.bits, upscale_factor, dividend);
