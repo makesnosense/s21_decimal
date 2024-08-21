@@ -148,7 +148,6 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   int scale_difference = value_1_scale - value_2_scale;
   int multiplier_scale;
   uint32_t* upscale_factor;
-
   if (scale_difference <= 0) {
     multiplier_scale = -scale_difference;
     upscale_factor = get_mantissa_with_power_of_ten(28);
@@ -160,11 +159,9 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   uint32_t divisor[6] = {0};
   multiply_mantissas(value_1.bits, upscale_factor, dividend);
   copy_mantissa(divisor, value_2.bits);
-
   uint32_t result_mantissa[6] = {0};
   uint32_t remainder[6] = {0};
   divide_long_mantissas(dividend, divisor, result_mantissa, remainder);
-
   if (multiplier_scale > 0) {
     overflow = multiply_division_result(result_mantissa, remainder, divisor,
                                         multiplier_scale);
@@ -182,6 +179,10 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   if (result_code == OK) {
     compose_decimal(downsized_result_mantissa, result_scale, result_sign,
                     result);
+  } else {
+    if (result != NULL) {
+      reset_decimal(result);
+    }
   }
   return result_code;
 }

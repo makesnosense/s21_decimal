@@ -4,6 +4,21 @@
 #include "../utility.h"
 #include "run_tests.h"
 
+START_TEST(test_div_too_big_null) {
+  // 79228162514264337593543950335
+  s21_decimal input_decimal_1 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
+  // 0.1
+  s21_decimal input_decimal_2 = {
+      {0x00000001, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
+
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, NULL);
+
+  ck_assert_int_eq(s21_return_code, TOO_BIG);
+}
+END_TEST
+
 START_TEST(test_output_format_1) {
   int true_res = 0;
   s21_decimal val1 = {{0x00000002, 0, 0, 0}};
@@ -10321,11 +10336,11 @@ Suite* make_div_suite() {
 
   tc_core = tcase_create("Core");
 
+  tcase_add_test(tc_core, test_div_too_big_null);
   tcase_add_test(tc_core, test_output_format_1);
   tcase_add_test(tc_core, test_output_format_2);
   tcase_add_test(tc_core, test_division_by_zero_null);
   tcase_add_test(tc_core, test_division_by_zero_non_null);
-
 
   //   tcase_add_test(tc_core, test_div_null);
   //   tcase_add_test(tc_core, test_div_first_decimal_incorrect);
@@ -10345,9 +10360,6 @@ Suite* make_div_suite() {
   tcase_add_test(tc_core, division_test_11);
   tcase_add_test(tc_core, division_test_12);
   tcase_add_test(tc_core, division_test_13);
-
-
-
 
   tcase_add_test(tc_core, test_div_gen_0);
   tcase_add_test(tc_core, test_div_gen_1);
