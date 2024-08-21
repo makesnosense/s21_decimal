@@ -410,6 +410,86 @@ START_TEST(division_test_13) {
 }
 END_TEST
 
+START_TEST(division_test_14) {
+  // 0
+  s21_decimal input_decimal_1 = {
+      {0x0, 0x0, 0x0, 0b00000000000000000000000000000000}};
+  // 79228162514264337593543950335
+  s21_decimal input_decimal_2 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
+  // 0
+  s21_decimal expected_result = {
+      {0x0, 0x0, 0x0, 0b00000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(division_test_15) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x0, 0x0, 0x0, 0b10000000000000000000000000000000}};
+  // 2
+  s21_decimal input_decimal_2 = {
+      {0x00000002, 0x0, 0x0, 0b00000000000000000000000000000000}};
+  // -0
+  s21_decimal expected_result = {
+      {0x0, 0x0, 0x0, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(division_test_16) {
+  // 0
+  s21_decimal input_decimal_1 = {
+      {0x0, 0x0, 0x0, 0b00000000000000000000000000000000}};
+  // -2
+  s21_decimal input_decimal_2 = {
+      {0x00000002, 0x0, 0x0, 0b10000000000000000000000000000000}};
+  // -0
+  s21_decimal expected_result = {
+      {0x0, 0x0, 0x0, 0b10000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(division_test_17) {
+  // -0
+  s21_decimal input_decimal_1 = {
+      {0x0, 0x0, 0x0, 0b10000000000000000000000000000000}};
+  // -2
+  s21_decimal input_decimal_2 = {
+      {0x00000002, 0x0, 0x0, 0b10000000000000000000000000000000}};
+  // 0
+  s21_decimal expected_result = {
+      {0x0, 0x0, 0x0, 0b00000000000000000000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
+  ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
 START_TEST(test_div_gen_0) {
   // 1.2345
   s21_decimal input_decimal_1 = {
@@ -10360,6 +10440,10 @@ Suite* make_div_suite() {
   tcase_add_test(tc_core, division_test_11);
   tcase_add_test(tc_core, division_test_12);
   tcase_add_test(tc_core, division_test_13);
+  tcase_add_test(tc_core, division_test_14);
+  tcase_add_test(tc_core, division_test_15);
+  tcase_add_test(tc_core, division_test_16);
+  tcase_add_test(tc_core, division_test_17);
 
   tcase_add_test(tc_core, test_div_gen_0);
   tcase_add_test(tc_core, test_div_gen_1);
