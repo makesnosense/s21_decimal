@@ -74,15 +74,11 @@ START_TEST(test_division_by_zero_non_null) {
 
   s21_decimal input_decimal_2 = {
       {0x0, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
-  // 0
-  s21_decimal expected_result = {
-      {0x0, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
 
   s21_decimal s21_result_decimal;
   ArithmeticResult s21_return_code =
       s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
 
-  ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
   ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
 }
 END_TEST

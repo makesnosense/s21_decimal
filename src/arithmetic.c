@@ -137,9 +137,6 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 
 int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   if (is_zero_decimal(value_2)) {
-    if (result != NULL) {
-      reset_decimal(result);
-    }
     return DIVISION_BY_ZERO;
   }
   bool overflow = false;
@@ -179,10 +176,6 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   if (result_code == OK) {
     compose_decimal(downsized_result_mantissa, result_scale, result_sign,
                     result);
-  } else {
-    if (result != NULL) {
-      reset_decimal(result);
-    }
   }
   return result_code;
 }
