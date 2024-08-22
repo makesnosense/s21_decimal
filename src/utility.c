@@ -190,20 +190,25 @@ int _divide_mantissas(uint32_t* dividend, uint32_t* divisor, uint32_t* result,
   } else {
     int dividend_bits = _find_highest_mantissa_bit(dividend, size);
     int divisor_bits = _find_highest_mantissa_bit(divisor, size);
+    uint32_t temp_remainder[6] = {0};
     // needs to be before memset to work correctly in case when dividend and
     // result pointers are the same
-    memcpy(remainder, dividend, (PART_SIZE * size) / BYTE_SIZE);
+    _copy_mantissa(temp_remainder, dividend, size);
     memset(result, 0, (PART_SIZE * size) / BYTE_SIZE);
     int shift = dividend_bits - divisor_bits;
     uint32_t shifted_divisor[6] = {0, 0, 0, 0, 0, 0};
     while (shift >= 0) {
       memcpy(shifted_divisor, divisor, (PART_SIZE * size) / BYTE_SIZE);
       _shift_mantissa_left(shifted_divisor, shift, size);
-      if (_compare_mantissas(remainder, shifted_divisor, size) >= 0) {
+      if (_compare_mantissas(temp_remainder, shifted_divisor, size) >= 0) {
         assign_mantissa_bit(result, shift, ONE);
-        _subtract_mantissas(remainder, shifted_divisor, remainder, size);
+        _subtract_mantissas(temp_remainder, shifted_divisor, temp_remainder,
+                            size);
       }
       shift--;
+    }
+    if (remainder != NULL) {
+      _copy_mantissa(remainder, temp_remainder, size);
     }
   }
   return division_by_zero;
