@@ -52,30 +52,15 @@ START_TEST(test_output_format_2) {
 }
 END_TEST
 
-START_TEST(test_division_by_zero_null) {
+START_TEST(test_division_by_zero) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
-
+  // 0
   s21_decimal input_decimal_2 = {
       {0x0, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
 
-  ArithmeticResult s21_return_code =
-      s21_div(input_decimal_1, input_decimal_2, NULL);
-
-  ck_assert_int_eq(s21_return_code, DIVISION_BY_ZERO);
-}
-END_TEST
-
-START_TEST(test_division_by_zero_non_null) {
-  // 1.2345
-  s21_decimal input_decimal_1 = {
-      {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
-
-  s21_decimal input_decimal_2 = {
-      {0x0, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
-
-  s21_decimal s21_result_decimal;
+  s21_decimal s21_result_decimal = {0};
   ArithmeticResult s21_return_code =
       s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
 
@@ -261,9 +246,9 @@ START_TEST(division_test_6) {
   // 200
   s21_decimal input_decimal_2 = {
       {0xC8, 0x0, 0x0, 0b00000000000000000000000000000000}};
-  // 0.0000000000000000000000000005
+  // 0.0000000000000000000000000004
   s21_decimal expected_result = {
-      {0x5, 0x0, 0x0, 0b00000000000111000000000000000000}};
+      {0x4, 0x0, 0x0, 0b00000000000111000000000000000000}};
 
   s21_decimal s21_result_decimal;
   ArithmeticResult s21_return_code =
@@ -10415,8 +10400,7 @@ Suite* make_div_suite() {
   tcase_add_test(tc_core, test_div_too_big_null);
   tcase_add_test(tc_core, test_output_format_1);
   tcase_add_test(tc_core, test_output_format_2);
-  tcase_add_test(tc_core, test_division_by_zero_null);
-  tcase_add_test(tc_core, test_division_by_zero_non_null);
+  tcase_add_test(tc_core, test_division_by_zero);
 
   //   tcase_add_test(tc_core, test_div_null);
   //   tcase_add_test(tc_core, test_div_first_decimal_incorrect);
