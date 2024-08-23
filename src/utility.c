@@ -190,20 +190,25 @@ int _divide_mantissas(uint32_t* dividend, uint32_t* divisor, uint32_t* result,
   } else {
     int dividend_bits = _find_highest_mantissa_bit(dividend, size);
     int divisor_bits = _find_highest_mantissa_bit(divisor, size);
+    uint32_t temp_remainder[6] = {0};
     // needs to be before memset to work correctly in case when dividend and
     // result pointers are the same
-    memcpy(remainder, dividend, (PART_SIZE * size) / BYTE_SIZE);
+    _copy_mantissa(temp_remainder, dividend, size);
     memset(result, 0, (PART_SIZE * size) / BYTE_SIZE);
     int shift = dividend_bits - divisor_bits;
     uint32_t shifted_divisor[6] = {0, 0, 0, 0, 0, 0};
     while (shift >= 0) {
       memcpy(shifted_divisor, divisor, (PART_SIZE * size) / BYTE_SIZE);
       _shift_mantissa_left(shifted_divisor, shift, size);
-      if (_compare_mantissas(remainder, shifted_divisor, size) >= 0) {
+      if (_compare_mantissas(temp_remainder, shifted_divisor, size) >= 0) {
         assign_mantissa_bit(result, shift, ONE);
-        _subtract_mantissas(remainder, shifted_divisor, remainder, size);
+        _subtract_mantissas(temp_remainder, shifted_divisor, temp_remainder,
+                            size);
       }
       shift--;
+    }
+    if (remainder != NULL) {
+      _copy_mantissa(remainder, temp_remainder, size);
     }
   }
   return division_by_zero;
@@ -378,9 +383,9 @@ uint32_t* get_max_mantissa() {
 }
 
 uint32_t* get_max_upscaled_mantissa() {
-  // max_mantissa * 10^28
+  // max_mantissa * (10^28 + 0.6)
   static uint32_t max_upscaled_mantissa[6] = {
-      0xF0000000, 0xC1DAFD9E, 0xDFB031A1, 0xFFFFFFF, 0x3E250261, 0x204FCE5E};
+      0x60000000, 0x80BDFF0C, 0xF313470D, 0xFFFFFFF, 0x3E250261, 0x204FCE5E};
   return max_upscaled_mantissa;
 }
 
@@ -436,40 +441,15 @@ void remove_digits_rounding_to_even(uint32_t* long_mantissa,
                         result, removed_digits);
 
   uint32_t first_removed_digit[6] = {0};
-  uint32_t rest_removed_digits[6] = {0};
   divide_long_mantissas(removed_digits,
                         get_mantissa_with_power_of_ten(digits_to_remove - 1),
-                        first_removed_digit, rest_removed_digits);
+                        first_removed_digit, NULL);
 
   uint32_t* one = get_mantissa_with_power_of_ten(0);
-  if (first_removed_digit[0] == 5) {
-    if (!long_mantissa_is_zero(rest_removed_digits)) {
-      add_long_mantissas(result, one, result);
-    } else {
-      if (result[0] & 1) {
-        add_long_mantissas(result, one, result);
-      }
-    }
-  } else if (first_removed_digit[0] > 5) {
+
+  if (first_removed_digit[0] > 5) {
     add_long_mantissas(result, one, result);
-  }
-}
-
-void remove_digits_rounding_half_up(uint32_t* long_mantissa,
-                                    int digits_to_remove, uint32_t* result) {
-  uint32_t removed_digits[6] = {0};
-  divide_long_mantissas(long_mantissa,
-                        get_mantissa_with_power_of_ten(digits_to_remove),
-                        result, removed_digits);
-
-  uint32_t first_removed_digit[6] = {0};
-  uint32_t rest_removed_digits[6] = {0};
-  divide_long_mantissas(removed_digits,
-                        get_mantissa_with_power_of_ten(digits_to_remove - 1),
-                        first_removed_digit, rest_removed_digits);
-
-  uint32_t* one = get_mantissa_with_power_of_ten(0);
-  if (first_removed_digit[0] >= 5) {
+  } else if ((first_removed_digit[0] == 5) && (result[0] & 1)) {
     add_long_mantissas(result, one, result);
   }
 }

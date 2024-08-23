@@ -84,8 +84,6 @@ int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,
                       bool* overflow);
 void remove_digits_rounding_to_even(uint32_t* long_mantissa,
                                     int digits_to_remove, uint32_t* result);
-void remove_digits_rounding_half_up(uint32_t* long_mantissa,
-                                    int digits_to_remove, uint32_t* result);
 
 bool decimal_service_part_structure_is_correct(s21_decimal input_decimal);
 bool decimal_scale_is_within_bounds(s21_decimal input_decimal);
