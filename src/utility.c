@@ -454,25 +454,6 @@ void remove_digits_rounding_to_even(uint32_t* long_mantissa,
   }
 }
 
-void remove_digits_rounding_half_up(uint32_t* long_mantissa,
-                                    int digits_to_remove, uint32_t* result) {
-  uint32_t removed_digits[6] = {0};
-  divide_long_mantissas(long_mantissa,
-                        get_mantissa_with_power_of_ten(digits_to_remove),
-                        result, removed_digits);
-
-  uint32_t first_removed_digit[6] = {0};
-  uint32_t rest_removed_digits[6] = {0};
-  divide_long_mantissas(removed_digits,
-                        get_mantissa_with_power_of_ten(digits_to_remove - 1),
-                        first_removed_digit, rest_removed_digits);
-
-  uint32_t* one = get_mantissa_with_power_of_ten(0);
-  if (first_removed_digit[0] >= 5) {
-    add_long_mantissas(result, one, result);
-  }
-}
-
 uint32_t* get_mantissa_with_power_of_ten(int power) {
   uint32_t* result = NULL;
   if (power >= 0 && power <= 28) {
