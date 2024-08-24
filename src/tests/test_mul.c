@@ -67,7 +67,7 @@ START_TEST(test_mul_both_decimals_incorrect) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_0) {
+START_TEST(test_mul_gen2_0) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -87,7 +87,7 @@ START_TEST(test_mul_gen_0) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_1) {
+START_TEST(test_mul_gen2_1) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -107,7 +107,7 @@ START_TEST(test_mul_gen_1) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_2) {
+START_TEST(test_mul_gen2_2) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -123,7 +123,7 @@ START_TEST(test_mul_gen_2) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_3) {
+START_TEST(test_mul_gen2_3) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -139,7 +139,7 @@ START_TEST(test_mul_gen_3) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_4) {
+START_TEST(test_mul_gen2_4) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -159,7 +159,7 @@ START_TEST(test_mul_gen_4) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_5) {
+START_TEST(test_mul_gen2_5) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -179,7 +179,7 @@ START_TEST(test_mul_gen_5) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_6) {
+START_TEST(test_mul_gen2_6) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -199,7 +199,7 @@ START_TEST(test_mul_gen_6) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_7) {
+START_TEST(test_mul_gen2_7) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -219,7 +219,7 @@ START_TEST(test_mul_gen_7) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_8) {
+START_TEST(test_mul_gen2_8) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -239,7 +239,7 @@ START_TEST(test_mul_gen_8) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_9) {
+START_TEST(test_mul_gen2_9) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -259,7 +259,7 @@ START_TEST(test_mul_gen_9) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_10) {
+START_TEST(test_mul_gen2_10) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -279,7 +279,7 @@ START_TEST(test_mul_gen_10) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_11) {
+START_TEST(test_mul_gen2_11) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -299,7 +299,7 @@ START_TEST(test_mul_gen_11) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_12) {
+START_TEST(test_mul_gen2_12) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -319,7 +319,7 @@ START_TEST(test_mul_gen_12) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_13) {
+START_TEST(test_mul_gen2_13) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -339,7 +339,7 @@ START_TEST(test_mul_gen_13) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_14) {
+START_TEST(test_mul_gen2_14) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -359,7 +359,7 @@ START_TEST(test_mul_gen_14) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_15) {
+START_TEST(test_mul_gen2_15) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -379,7 +379,7 @@ START_TEST(test_mul_gen_15) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_16) {
+START_TEST(test_mul_gen2_16) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -399,7 +399,7 @@ START_TEST(test_mul_gen_16) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_17) {
+START_TEST(test_mul_gen2_17) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -419,7 +419,7 @@ START_TEST(test_mul_gen_17) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_18) {
+START_TEST(test_mul_gen2_18) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -439,7 +439,7 @@ START_TEST(test_mul_gen_18) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_19) {
+START_TEST(test_mul_gen2_19) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -459,7 +459,7 @@ START_TEST(test_mul_gen_19) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_20) {
+START_TEST(test_mul_gen2_20) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -479,7 +479,7 @@ START_TEST(test_mul_gen_20) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_21) {
+START_TEST(test_mul_gen2_21) {
   // 1.2345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
@@ -499,7 +499,7 @@ START_TEST(test_mul_gen_21) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_22) {
+START_TEST(test_mul_gen2_22) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -519,7 +519,7 @@ START_TEST(test_mul_gen_22) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_23) {
+START_TEST(test_mul_gen2_23) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -539,7 +539,7 @@ START_TEST(test_mul_gen_23) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_24) {
+START_TEST(test_mul_gen2_24) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -555,7 +555,7 @@ START_TEST(test_mul_gen_24) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_25) {
+START_TEST(test_mul_gen2_25) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -571,7 +571,7 @@ START_TEST(test_mul_gen_25) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_26) {
+START_TEST(test_mul_gen2_26) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -591,7 +591,7 @@ START_TEST(test_mul_gen_26) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_27) {
+START_TEST(test_mul_gen2_27) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -611,7 +611,7 @@ START_TEST(test_mul_gen_27) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_28) {
+START_TEST(test_mul_gen2_28) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -631,7 +631,7 @@ START_TEST(test_mul_gen_28) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_29) {
+START_TEST(test_mul_gen2_29) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -651,7 +651,7 @@ START_TEST(test_mul_gen_29) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_30) {
+START_TEST(test_mul_gen2_30) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -671,7 +671,7 @@ START_TEST(test_mul_gen_30) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_31) {
+START_TEST(test_mul_gen2_31) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -691,7 +691,7 @@ START_TEST(test_mul_gen_31) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_32) {
+START_TEST(test_mul_gen2_32) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -711,7 +711,7 @@ START_TEST(test_mul_gen_32) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_33) {
+START_TEST(test_mul_gen2_33) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -731,7 +731,7 @@ START_TEST(test_mul_gen_33) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_34) {
+START_TEST(test_mul_gen2_34) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -751,7 +751,7 @@ START_TEST(test_mul_gen_34) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_35) {
+START_TEST(test_mul_gen2_35) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -771,7 +771,7 @@ START_TEST(test_mul_gen_35) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_36) {
+START_TEST(test_mul_gen2_36) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -791,7 +791,7 @@ START_TEST(test_mul_gen_36) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_37) {
+START_TEST(test_mul_gen2_37) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -811,7 +811,7 @@ START_TEST(test_mul_gen_37) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_38) {
+START_TEST(test_mul_gen2_38) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -831,7 +831,7 @@ START_TEST(test_mul_gen_38) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_39) {
+START_TEST(test_mul_gen2_39) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -851,7 +851,7 @@ START_TEST(test_mul_gen_39) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_40) {
+START_TEST(test_mul_gen2_40) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -871,7 +871,7 @@ START_TEST(test_mul_gen_40) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_41) {
+START_TEST(test_mul_gen2_41) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -891,7 +891,7 @@ START_TEST(test_mul_gen_41) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_42) {
+START_TEST(test_mul_gen2_42) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -911,7 +911,7 @@ START_TEST(test_mul_gen_42) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_43) {
+START_TEST(test_mul_gen2_43) {
   // 5.5
   s21_decimal input_decimal_1 = {
       {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
@@ -931,7 +931,7 @@ START_TEST(test_mul_gen_43) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_44) {
+START_TEST(test_mul_gen2_44) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -951,7 +951,7 @@ START_TEST(test_mul_gen_44) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_45) {
+START_TEST(test_mul_gen2_45) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -971,7 +971,7 @@ START_TEST(test_mul_gen_45) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_46) {
+START_TEST(test_mul_gen2_46) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -991,7 +991,7 @@ START_TEST(test_mul_gen_46) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_47) {
+START_TEST(test_mul_gen2_47) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1011,7 +1011,7 @@ START_TEST(test_mul_gen_47) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_48) {
+START_TEST(test_mul_gen2_48) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1031,7 +1031,7 @@ START_TEST(test_mul_gen_48) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_49) {
+START_TEST(test_mul_gen2_49) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1051,7 +1051,7 @@ START_TEST(test_mul_gen_49) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_50) {
+START_TEST(test_mul_gen2_50) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1071,7 +1071,7 @@ START_TEST(test_mul_gen_50) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_51) {
+START_TEST(test_mul_gen2_51) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1091,7 +1091,7 @@ START_TEST(test_mul_gen_51) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_52) {
+START_TEST(test_mul_gen2_52) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1111,7 +1111,7 @@ START_TEST(test_mul_gen_52) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_53) {
+START_TEST(test_mul_gen2_53) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1131,7 +1131,7 @@ START_TEST(test_mul_gen_53) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_54) {
+START_TEST(test_mul_gen2_54) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1151,7 +1151,7 @@ START_TEST(test_mul_gen_54) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_55) {
+START_TEST(test_mul_gen2_55) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1171,7 +1171,7 @@ START_TEST(test_mul_gen_55) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_56) {
+START_TEST(test_mul_gen2_56) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1191,7 +1191,7 @@ START_TEST(test_mul_gen_56) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_57) {
+START_TEST(test_mul_gen2_57) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1211,7 +1211,7 @@ START_TEST(test_mul_gen_57) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_58) {
+START_TEST(test_mul_gen2_58) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1231,7 +1231,7 @@ START_TEST(test_mul_gen_58) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_59) {
+START_TEST(test_mul_gen2_59) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1251,7 +1251,7 @@ START_TEST(test_mul_gen_59) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_60) {
+START_TEST(test_mul_gen2_60) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1271,7 +1271,7 @@ START_TEST(test_mul_gen_60) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_61) {
+START_TEST(test_mul_gen2_61) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1291,7 +1291,7 @@ START_TEST(test_mul_gen_61) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_62) {
+START_TEST(test_mul_gen2_62) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1311,7 +1311,7 @@ START_TEST(test_mul_gen_62) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_63) {
+START_TEST(test_mul_gen2_63) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1331,7 +1331,7 @@ START_TEST(test_mul_gen_63) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_64) {
+START_TEST(test_mul_gen2_64) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1351,7 +1351,7 @@ START_TEST(test_mul_gen_64) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_65) {
+START_TEST(test_mul_gen2_65) {
   // 0.95033
   s21_decimal input_decimal_1 = {
       {0x00017339, 0x00000000, 0x00000000, 0b00000000000001010000000000000000}};
@@ -1371,7 +1371,7 @@ START_TEST(test_mul_gen_65) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_66) {
+START_TEST(test_mul_gen2_66) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1387,7 +1387,7 @@ START_TEST(test_mul_gen_66) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_67) {
+START_TEST(test_mul_gen2_67) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1403,7 +1403,7 @@ START_TEST(test_mul_gen_67) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_68) {
+START_TEST(test_mul_gen2_68) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1423,7 +1423,7 @@ START_TEST(test_mul_gen_68) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_69) {
+START_TEST(test_mul_gen2_69) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1439,7 +1439,7 @@ START_TEST(test_mul_gen_69) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_70) {
+START_TEST(test_mul_gen2_70) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1455,7 +1455,7 @@ START_TEST(test_mul_gen_70) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_71) {
+START_TEST(test_mul_gen2_71) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1471,7 +1471,7 @@ START_TEST(test_mul_gen_71) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_72) {
+START_TEST(test_mul_gen2_72) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1487,7 +1487,7 @@ START_TEST(test_mul_gen_72) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_73) {
+START_TEST(test_mul_gen2_73) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1503,7 +1503,7 @@ START_TEST(test_mul_gen_73) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_74) {
+START_TEST(test_mul_gen2_74) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1519,7 +1519,7 @@ START_TEST(test_mul_gen_74) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_75) {
+START_TEST(test_mul_gen2_75) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1535,7 +1535,7 @@ START_TEST(test_mul_gen_75) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_76) {
+START_TEST(test_mul_gen2_76) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1551,7 +1551,7 @@ START_TEST(test_mul_gen_76) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_77) {
+START_TEST(test_mul_gen2_77) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1567,7 +1567,7 @@ START_TEST(test_mul_gen_77) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_78) {
+START_TEST(test_mul_gen2_78) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1587,7 +1587,7 @@ START_TEST(test_mul_gen_78) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_79) {
+START_TEST(test_mul_gen2_79) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1607,7 +1607,7 @@ START_TEST(test_mul_gen_79) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_80) {
+START_TEST(test_mul_gen2_80) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1627,7 +1627,7 @@ START_TEST(test_mul_gen_80) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_81) {
+START_TEST(test_mul_gen2_81) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1647,7 +1647,7 @@ START_TEST(test_mul_gen_81) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_82) {
+START_TEST(test_mul_gen2_82) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1663,7 +1663,7 @@ START_TEST(test_mul_gen_82) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_83) {
+START_TEST(test_mul_gen2_83) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1679,7 +1679,7 @@ START_TEST(test_mul_gen_83) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_84) {
+START_TEST(test_mul_gen2_84) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1699,7 +1699,7 @@ START_TEST(test_mul_gen_84) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_85) {
+START_TEST(test_mul_gen2_85) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1719,7 +1719,7 @@ START_TEST(test_mul_gen_85) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_86) {
+START_TEST(test_mul_gen2_86) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1735,7 +1735,7 @@ START_TEST(test_mul_gen_86) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_87) {
+START_TEST(test_mul_gen2_87) {
   // 79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
@@ -1751,7 +1751,7 @@ START_TEST(test_mul_gen_87) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_88) {
+START_TEST(test_mul_gen2_88) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1767,7 +1767,7 @@ START_TEST(test_mul_gen_88) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_89) {
+START_TEST(test_mul_gen2_89) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1783,7 +1783,7 @@ START_TEST(test_mul_gen_89) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_90) {
+START_TEST(test_mul_gen2_90) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1803,7 +1803,7 @@ START_TEST(test_mul_gen_90) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_91) {
+START_TEST(test_mul_gen2_91) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1819,7 +1819,7 @@ START_TEST(test_mul_gen_91) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_92) {
+START_TEST(test_mul_gen2_92) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1835,7 +1835,7 @@ START_TEST(test_mul_gen_92) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_93) {
+START_TEST(test_mul_gen2_93) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1851,7 +1851,7 @@ START_TEST(test_mul_gen_93) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_94) {
+START_TEST(test_mul_gen2_94) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1867,7 +1867,7 @@ START_TEST(test_mul_gen_94) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_95) {
+START_TEST(test_mul_gen2_95) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1883,7 +1883,7 @@ START_TEST(test_mul_gen_95) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_96) {
+START_TEST(test_mul_gen2_96) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1899,7 +1899,7 @@ START_TEST(test_mul_gen_96) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_97) {
+START_TEST(test_mul_gen2_97) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1915,7 +1915,7 @@ START_TEST(test_mul_gen_97) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_98) {
+START_TEST(test_mul_gen2_98) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1931,7 +1931,7 @@ START_TEST(test_mul_gen_98) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_99) {
+START_TEST(test_mul_gen2_99) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1947,7 +1947,7 @@ START_TEST(test_mul_gen_99) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_100) {
+START_TEST(test_mul_gen2_100) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1967,7 +1967,7 @@ START_TEST(test_mul_gen_100) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_101) {
+START_TEST(test_mul_gen2_101) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -1987,7 +1987,7 @@ START_TEST(test_mul_gen_101) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_102) {
+START_TEST(test_mul_gen2_102) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -2007,7 +2007,7 @@ START_TEST(test_mul_gen_102) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_103) {
+START_TEST(test_mul_gen2_103) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -2027,7 +2027,7 @@ START_TEST(test_mul_gen_103) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_104) {
+START_TEST(test_mul_gen2_104) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -2043,7 +2043,7 @@ START_TEST(test_mul_gen_104) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_105) {
+START_TEST(test_mul_gen2_105) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -2059,7 +2059,7 @@ START_TEST(test_mul_gen_105) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_106) {
+START_TEST(test_mul_gen2_106) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -2079,7 +2079,7 @@ START_TEST(test_mul_gen_106) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_107) {
+START_TEST(test_mul_gen2_107) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -2099,7 +2099,7 @@ START_TEST(test_mul_gen_107) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_108) {
+START_TEST(test_mul_gen2_108) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -2115,7 +2115,7 @@ START_TEST(test_mul_gen_108) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_109) {
+START_TEST(test_mul_gen2_109) {
   // -79228162514264337593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b10000000000000000000000000000000}};
@@ -2131,7 +2131,7 @@ START_TEST(test_mul_gen_109) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_110) {
+START_TEST(test_mul_gen2_110) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2151,7 +2151,7 @@ START_TEST(test_mul_gen_110) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_111) {
+START_TEST(test_mul_gen2_111) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2171,7 +2171,7 @@ START_TEST(test_mul_gen_111) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_112) {
+START_TEST(test_mul_gen2_112) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2191,7 +2191,7 @@ START_TEST(test_mul_gen_112) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_113) {
+START_TEST(test_mul_gen2_113) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2207,7 +2207,7 @@ START_TEST(test_mul_gen_113) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_114) {
+START_TEST(test_mul_gen2_114) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2223,7 +2223,7 @@ START_TEST(test_mul_gen_114) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_115) {
+START_TEST(test_mul_gen2_115) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2239,7 +2239,7 @@ START_TEST(test_mul_gen_115) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_116) {
+START_TEST(test_mul_gen2_116) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2259,7 +2259,7 @@ START_TEST(test_mul_gen_116) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_117) {
+START_TEST(test_mul_gen2_117) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2275,7 +2275,7 @@ START_TEST(test_mul_gen_117) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_118) {
+START_TEST(test_mul_gen2_118) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2291,7 +2291,7 @@ START_TEST(test_mul_gen_118) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_119) {
+START_TEST(test_mul_gen2_119) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2311,7 +2311,7 @@ START_TEST(test_mul_gen_119) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_120) {
+START_TEST(test_mul_gen2_120) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2327,7 +2327,7 @@ START_TEST(test_mul_gen_120) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_121) {
+START_TEST(test_mul_gen2_121) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2347,7 +2347,7 @@ START_TEST(test_mul_gen_121) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_122) {
+START_TEST(test_mul_gen2_122) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2367,7 +2367,7 @@ START_TEST(test_mul_gen_122) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_123) {
+START_TEST(test_mul_gen2_123) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2387,7 +2387,7 @@ START_TEST(test_mul_gen_123) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_124) {
+START_TEST(test_mul_gen2_124) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2407,7 +2407,7 @@ START_TEST(test_mul_gen_124) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_125) {
+START_TEST(test_mul_gen2_125) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2427,7 +2427,7 @@ START_TEST(test_mul_gen_125) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_126) {
+START_TEST(test_mul_gen2_126) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2447,7 +2447,7 @@ START_TEST(test_mul_gen_126) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_127) {
+START_TEST(test_mul_gen2_127) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2467,7 +2467,7 @@ START_TEST(test_mul_gen_127) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_128) {
+START_TEST(test_mul_gen2_128) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2487,7 +2487,7 @@ START_TEST(test_mul_gen_128) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_129) {
+START_TEST(test_mul_gen2_129) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2507,7 +2507,7 @@ START_TEST(test_mul_gen_129) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_130) {
+START_TEST(test_mul_gen2_130) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2527,7 +2527,7 @@ START_TEST(test_mul_gen_130) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_131) {
+START_TEST(test_mul_gen2_131) {
   // 7922816251426433.7593543950335
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2547,7 +2547,7 @@ START_TEST(test_mul_gen_131) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_132) {
+START_TEST(test_mul_gen2_132) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2567,7 +2567,7 @@ START_TEST(test_mul_gen_132) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_133) {
+START_TEST(test_mul_gen2_133) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2587,7 +2587,7 @@ START_TEST(test_mul_gen_133) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_134) {
+START_TEST(test_mul_gen2_134) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2607,7 +2607,7 @@ START_TEST(test_mul_gen_134) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_135) {
+START_TEST(test_mul_gen2_135) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2623,7 +2623,7 @@ START_TEST(test_mul_gen_135) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_136) {
+START_TEST(test_mul_gen2_136) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2639,7 +2639,7 @@ START_TEST(test_mul_gen_136) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_137) {
+START_TEST(test_mul_gen2_137) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2655,7 +2655,7 @@ START_TEST(test_mul_gen_137) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_138) {
+START_TEST(test_mul_gen2_138) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2675,7 +2675,7 @@ START_TEST(test_mul_gen_138) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_139) {
+START_TEST(test_mul_gen2_139) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2691,7 +2691,7 @@ START_TEST(test_mul_gen_139) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_140) {
+START_TEST(test_mul_gen2_140) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2707,7 +2707,7 @@ START_TEST(test_mul_gen_140) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_141) {
+START_TEST(test_mul_gen2_141) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2727,7 +2727,7 @@ START_TEST(test_mul_gen_141) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_142) {
+START_TEST(test_mul_gen2_142) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2743,7 +2743,7 @@ START_TEST(test_mul_gen_142) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_143) {
+START_TEST(test_mul_gen2_143) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2763,7 +2763,7 @@ START_TEST(test_mul_gen_143) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_144) {
+START_TEST(test_mul_gen2_144) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2783,7 +2783,7 @@ START_TEST(test_mul_gen_144) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_145) {
+START_TEST(test_mul_gen2_145) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2803,7 +2803,7 @@ START_TEST(test_mul_gen_145) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_146) {
+START_TEST(test_mul_gen2_146) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2823,7 +2823,7 @@ START_TEST(test_mul_gen_146) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_147) {
+START_TEST(test_mul_gen2_147) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2843,7 +2843,7 @@ START_TEST(test_mul_gen_147) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_148) {
+START_TEST(test_mul_gen2_148) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2863,7 +2863,7 @@ START_TEST(test_mul_gen_148) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_149) {
+START_TEST(test_mul_gen2_149) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2883,7 +2883,7 @@ START_TEST(test_mul_gen_149) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_150) {
+START_TEST(test_mul_gen2_150) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2903,7 +2903,7 @@ START_TEST(test_mul_gen_150) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_151) {
+START_TEST(test_mul_gen2_151) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2923,7 +2923,7 @@ START_TEST(test_mul_gen_151) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_152) {
+START_TEST(test_mul_gen2_152) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2943,7 +2943,7 @@ START_TEST(test_mul_gen_152) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_153) {
+START_TEST(test_mul_gen2_153) {
   // 7922816251426433.7593543950330
   s21_decimal input_decimal_1 = {
       {0xFFFFFFFA, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000011010000000000000000}};
@@ -2963,7 +2963,7 @@ START_TEST(test_mul_gen_153) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_154) {
+START_TEST(test_mul_gen2_154) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -2983,7 +2983,7 @@ START_TEST(test_mul_gen_154) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_155) {
+START_TEST(test_mul_gen2_155) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3003,7 +3003,7 @@ START_TEST(test_mul_gen_155) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_156) {
+START_TEST(test_mul_gen2_156) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3023,7 +3023,7 @@ START_TEST(test_mul_gen_156) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_157) {
+START_TEST(test_mul_gen2_157) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3039,7 +3039,7 @@ START_TEST(test_mul_gen_157) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_158) {
+START_TEST(test_mul_gen2_158) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3055,7 +3055,7 @@ START_TEST(test_mul_gen_158) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_159) {
+START_TEST(test_mul_gen2_159) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3075,7 +3075,7 @@ START_TEST(test_mul_gen_159) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_160) {
+START_TEST(test_mul_gen2_160) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3095,7 +3095,7 @@ START_TEST(test_mul_gen_160) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_161) {
+START_TEST(test_mul_gen2_161) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3115,7 +3115,7 @@ START_TEST(test_mul_gen_161) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_162) {
+START_TEST(test_mul_gen2_162) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3135,7 +3135,7 @@ START_TEST(test_mul_gen_162) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_163) {
+START_TEST(test_mul_gen2_163) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3155,7 +3155,7 @@ START_TEST(test_mul_gen_163) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_164) {
+START_TEST(test_mul_gen2_164) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3175,7 +3175,7 @@ START_TEST(test_mul_gen_164) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_165) {
+START_TEST(test_mul_gen2_165) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3195,7 +3195,7 @@ START_TEST(test_mul_gen_165) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_166) {
+START_TEST(test_mul_gen2_166) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3215,7 +3215,7 @@ START_TEST(test_mul_gen_166) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_167) {
+START_TEST(test_mul_gen2_167) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3235,7 +3235,7 @@ START_TEST(test_mul_gen_167) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_168) {
+START_TEST(test_mul_gen2_168) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3255,7 +3255,7 @@ START_TEST(test_mul_gen_168) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_169) {
+START_TEST(test_mul_gen2_169) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3275,7 +3275,7 @@ START_TEST(test_mul_gen_169) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_170) {
+START_TEST(test_mul_gen2_170) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3295,7 +3295,7 @@ START_TEST(test_mul_gen_170) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_171) {
+START_TEST(test_mul_gen2_171) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3315,7 +3315,7 @@ START_TEST(test_mul_gen_171) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_172) {
+START_TEST(test_mul_gen2_172) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3335,7 +3335,7 @@ START_TEST(test_mul_gen_172) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_173) {
+START_TEST(test_mul_gen2_173) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3355,7 +3355,7 @@ START_TEST(test_mul_gen_173) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_174) {
+START_TEST(test_mul_gen2_174) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3375,7 +3375,7 @@ START_TEST(test_mul_gen_174) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_175) {
+START_TEST(test_mul_gen2_175) {
   // 1.00000000000049
   s21_decimal input_decimal_1 = {
       {0x107A4031, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -3395,7 +3395,7 @@ START_TEST(test_mul_gen_175) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_176) {
+START_TEST(test_mul_gen2_176) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3415,7 +3415,7 @@ START_TEST(test_mul_gen_176) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_177) {
+START_TEST(test_mul_gen2_177) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3435,7 +3435,7 @@ START_TEST(test_mul_gen_177) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_178) {
+START_TEST(test_mul_gen2_178) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3455,7 +3455,7 @@ START_TEST(test_mul_gen_178) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_179) {
+START_TEST(test_mul_gen2_179) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3471,7 +3471,7 @@ START_TEST(test_mul_gen_179) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_180) {
+START_TEST(test_mul_gen2_180) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3487,7 +3487,7 @@ START_TEST(test_mul_gen_180) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_181) {
+START_TEST(test_mul_gen2_181) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3503,7 +3503,7 @@ START_TEST(test_mul_gen_181) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_182) {
+START_TEST(test_mul_gen2_182) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3519,7 +3519,7 @@ START_TEST(test_mul_gen_182) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_183) {
+START_TEST(test_mul_gen2_183) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3539,7 +3539,7 @@ START_TEST(test_mul_gen_183) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_184) {
+START_TEST(test_mul_gen2_184) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3555,7 +3555,7 @@ START_TEST(test_mul_gen_184) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_185) {
+START_TEST(test_mul_gen2_185) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3571,7 +3571,7 @@ START_TEST(test_mul_gen_185) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_186) {
+START_TEST(test_mul_gen2_186) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3587,7 +3587,7 @@ START_TEST(test_mul_gen_186) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_187) {
+START_TEST(test_mul_gen2_187) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3607,7 +3607,7 @@ START_TEST(test_mul_gen_187) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_188) {
+START_TEST(test_mul_gen2_188) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3627,7 +3627,7 @@ START_TEST(test_mul_gen_188) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_189) {
+START_TEST(test_mul_gen2_189) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3647,7 +3647,7 @@ START_TEST(test_mul_gen_189) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_190) {
+START_TEST(test_mul_gen2_190) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3667,7 +3667,7 @@ START_TEST(test_mul_gen_190) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_191) {
+START_TEST(test_mul_gen2_191) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3687,7 +3687,7 @@ START_TEST(test_mul_gen_191) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_192) {
+START_TEST(test_mul_gen2_192) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3707,7 +3707,7 @@ START_TEST(test_mul_gen_192) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_193) {
+START_TEST(test_mul_gen2_193) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3727,7 +3727,7 @@ START_TEST(test_mul_gen_193) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_194) {
+START_TEST(test_mul_gen2_194) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3747,7 +3747,7 @@ START_TEST(test_mul_gen_194) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_195) {
+START_TEST(test_mul_gen2_195) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3767,7 +3767,7 @@ START_TEST(test_mul_gen_195) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_196) {
+START_TEST(test_mul_gen2_196) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
@@ -3783,16 +3783,16 @@ START_TEST(test_mul_gen_196) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_197) {
+START_TEST(test_mul_gen2_197) {
   // 36523494581823720394585.234509
   s21_decimal input_decimal_1 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
   // 1.00000000000101
   s21_decimal input_decimal_2 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
-  // 36523494581860609124112.876467
+  // 36523494581860609124112.876466
   s21_decimal expected_result = {
-      {0x56E943B3, 0x9EEC2B07, 0x760386D0, 0b00000000000001100000000000000000}};
+      {0x56E943B2, 0x9EEC2B07, 0x760386D0, 0b00000000000001100000000000000000}};
 
   s21_decimal s21_result_decimal;
   ArithmeticResult s21_return_code =
@@ -3803,7 +3803,7 @@ START_TEST(test_mul_gen_197) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_198) {
+START_TEST(test_mul_gen2_198) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3823,7 +3823,7 @@ START_TEST(test_mul_gen_198) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_199) {
+START_TEST(test_mul_gen2_199) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3843,7 +3843,7 @@ START_TEST(test_mul_gen_199) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_200) {
+START_TEST(test_mul_gen2_200) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3863,7 +3863,7 @@ START_TEST(test_mul_gen_200) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_201) {
+START_TEST(test_mul_gen2_201) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3879,7 +3879,7 @@ START_TEST(test_mul_gen_201) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_202) {
+START_TEST(test_mul_gen2_202) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3895,7 +3895,7 @@ START_TEST(test_mul_gen_202) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_203) {
+START_TEST(test_mul_gen2_203) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3911,7 +3911,7 @@ START_TEST(test_mul_gen_203) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_204) {
+START_TEST(test_mul_gen2_204) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3927,7 +3927,7 @@ START_TEST(test_mul_gen_204) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_205) {
+START_TEST(test_mul_gen2_205) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3947,7 +3947,7 @@ START_TEST(test_mul_gen_205) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_206) {
+START_TEST(test_mul_gen2_206) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3963,7 +3963,7 @@ START_TEST(test_mul_gen_206) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_207) {
+START_TEST(test_mul_gen2_207) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3983,7 +3983,7 @@ START_TEST(test_mul_gen_207) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_208) {
+START_TEST(test_mul_gen2_208) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -3999,7 +3999,7 @@ START_TEST(test_mul_gen_208) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_209) {
+START_TEST(test_mul_gen2_209) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4019,7 +4019,7 @@ START_TEST(test_mul_gen_209) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_210) {
+START_TEST(test_mul_gen2_210) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4039,7 +4039,7 @@ START_TEST(test_mul_gen_210) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_211) {
+START_TEST(test_mul_gen2_211) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4059,7 +4059,7 @@ START_TEST(test_mul_gen_211) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_212) {
+START_TEST(test_mul_gen2_212) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4079,7 +4079,7 @@ START_TEST(test_mul_gen_212) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_213) {
+START_TEST(test_mul_gen2_213) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4099,7 +4099,7 @@ START_TEST(test_mul_gen_213) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_214) {
+START_TEST(test_mul_gen2_214) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4119,7 +4119,7 @@ START_TEST(test_mul_gen_214) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_215) {
+START_TEST(test_mul_gen2_215) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4139,7 +4139,7 @@ START_TEST(test_mul_gen_215) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_216) {
+START_TEST(test_mul_gen2_216) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4159,7 +4159,7 @@ START_TEST(test_mul_gen_216) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_217) {
+START_TEST(test_mul_gen2_217) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4179,7 +4179,7 @@ START_TEST(test_mul_gen_217) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_218) {
+START_TEST(test_mul_gen2_218) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4199,7 +4199,7 @@ START_TEST(test_mul_gen_218) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_219) {
+START_TEST(test_mul_gen2_219) {
   // -2934834509834059832.45
   s21_decimal input_decimal_1 = {
       {0x39AE160D, 0xE8E6ABBA, 0x0000000F, 0b10000000000000100000000000000000}};
@@ -4219,7 +4219,7 @@ START_TEST(test_mul_gen_219) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_220) {
+START_TEST(test_mul_gen2_220) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4239,7 +4239,7 @@ START_TEST(test_mul_gen_220) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_221) {
+START_TEST(test_mul_gen2_221) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4259,7 +4259,7 @@ START_TEST(test_mul_gen_221) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_222) {
+START_TEST(test_mul_gen2_222) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4279,7 +4279,7 @@ START_TEST(test_mul_gen_222) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_223) {
+START_TEST(test_mul_gen2_223) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4295,7 +4295,7 @@ START_TEST(test_mul_gen_223) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_224) {
+START_TEST(test_mul_gen2_224) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4311,7 +4311,7 @@ START_TEST(test_mul_gen_224) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_225) {
+START_TEST(test_mul_gen2_225) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4331,7 +4331,7 @@ START_TEST(test_mul_gen_225) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_226) {
+START_TEST(test_mul_gen2_226) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4351,7 +4351,7 @@ START_TEST(test_mul_gen_226) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_227) {
+START_TEST(test_mul_gen2_227) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4371,7 +4371,7 @@ START_TEST(test_mul_gen_227) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_228) {
+START_TEST(test_mul_gen2_228) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4387,7 +4387,7 @@ START_TEST(test_mul_gen_228) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_229) {
+START_TEST(test_mul_gen2_229) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4407,7 +4407,7 @@ START_TEST(test_mul_gen_229) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_230) {
+START_TEST(test_mul_gen2_230) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4423,7 +4423,7 @@ START_TEST(test_mul_gen_230) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_231) {
+START_TEST(test_mul_gen2_231) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4443,7 +4443,7 @@ START_TEST(test_mul_gen_231) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_232) {
+START_TEST(test_mul_gen2_232) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4463,7 +4463,7 @@ START_TEST(test_mul_gen_232) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_233) {
+START_TEST(test_mul_gen2_233) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4483,7 +4483,7 @@ START_TEST(test_mul_gen_233) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_234) {
+START_TEST(test_mul_gen2_234) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4503,7 +4503,7 @@ START_TEST(test_mul_gen_234) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_235) {
+START_TEST(test_mul_gen2_235) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4523,7 +4523,7 @@ START_TEST(test_mul_gen_235) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_236) {
+START_TEST(test_mul_gen2_236) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4543,7 +4543,7 @@ START_TEST(test_mul_gen_236) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_237) {
+START_TEST(test_mul_gen2_237) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4563,7 +4563,7 @@ START_TEST(test_mul_gen_237) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_238) {
+START_TEST(test_mul_gen2_238) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4583,7 +4583,7 @@ START_TEST(test_mul_gen_238) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_239) {
+START_TEST(test_mul_gen2_239) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4603,7 +4603,7 @@ START_TEST(test_mul_gen_239) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_240) {
+START_TEST(test_mul_gen2_240) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4623,7 +4623,7 @@ START_TEST(test_mul_gen_240) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_241) {
+START_TEST(test_mul_gen2_241) {
   // -42353455
   s21_decimal input_decimal_1 = {
       {0x0286432F, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -4643,7 +4643,7 @@ START_TEST(test_mul_gen_241) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_242) {
+START_TEST(test_mul_gen2_242) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4663,7 +4663,7 @@ START_TEST(test_mul_gen_242) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_243) {
+START_TEST(test_mul_gen2_243) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4683,7 +4683,7 @@ START_TEST(test_mul_gen_243) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_244) {
+START_TEST(test_mul_gen2_244) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4703,7 +4703,7 @@ START_TEST(test_mul_gen_244) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_245) {
+START_TEST(test_mul_gen2_245) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4719,7 +4719,7 @@ START_TEST(test_mul_gen_245) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_246) {
+START_TEST(test_mul_gen2_246) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4735,7 +4735,7 @@ START_TEST(test_mul_gen_246) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_247) {
+START_TEST(test_mul_gen2_247) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4751,7 +4751,7 @@ START_TEST(test_mul_gen_247) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_248) {
+START_TEST(test_mul_gen2_248) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4767,7 +4767,7 @@ START_TEST(test_mul_gen_248) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_249) {
+START_TEST(test_mul_gen2_249) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4787,7 +4787,7 @@ START_TEST(test_mul_gen_249) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_250) {
+START_TEST(test_mul_gen2_250) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4803,7 +4803,7 @@ START_TEST(test_mul_gen_250) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_251) {
+START_TEST(test_mul_gen2_251) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4819,7 +4819,7 @@ START_TEST(test_mul_gen_251) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_252) {
+START_TEST(test_mul_gen2_252) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4835,7 +4835,7 @@ START_TEST(test_mul_gen_252) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_253) {
+START_TEST(test_mul_gen2_253) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4855,7 +4855,7 @@ START_TEST(test_mul_gen_253) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_254) {
+START_TEST(test_mul_gen2_254) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4875,7 +4875,7 @@ START_TEST(test_mul_gen_254) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_255) {
+START_TEST(test_mul_gen2_255) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4895,7 +4895,7 @@ START_TEST(test_mul_gen_255) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_256) {
+START_TEST(test_mul_gen2_256) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4915,7 +4915,7 @@ START_TEST(test_mul_gen_256) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_257) {
+START_TEST(test_mul_gen2_257) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4935,7 +4935,7 @@ START_TEST(test_mul_gen_257) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_258) {
+START_TEST(test_mul_gen2_258) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4955,7 +4955,7 @@ START_TEST(test_mul_gen_258) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_259) {
+START_TEST(test_mul_gen2_259) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -4971,16 +4971,16 @@ START_TEST(test_mul_gen_259) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_260) {
+START_TEST(test_mul_gen2_260) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
   // 0.123456789
   s21_decimal input_decimal_2 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
-  // -1401661138421986561064878.2913
+  // -1401661138421986561064878.2912
   s21_decimal expected_result = {
-      {0xD2EB8841, 0xAECCBD87, 0x2D4A44E9, 0b10000000000001000000000000000000}};
+      {0xD2EB8840, 0xAECCBD87, 0x2D4A44E9, 0b10000000000001000000000000000000}};
 
   s21_decimal s21_result_decimal;
   ArithmeticResult s21_return_code =
@@ -4991,7 +4991,7 @@ START_TEST(test_mul_gen_260) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_261) {
+START_TEST(test_mul_gen2_261) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -5011,7 +5011,7 @@ START_TEST(test_mul_gen_261) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_262) {
+START_TEST(test_mul_gen2_262) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -5027,7 +5027,7 @@ START_TEST(test_mul_gen_262) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_263) {
+START_TEST(test_mul_gen2_263) {
   // -11353455324534534597889779
   s21_decimal input_decimal_1 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
@@ -5047,7 +5047,7 @@ START_TEST(test_mul_gen_263) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_264) {
+START_TEST(test_mul_gen2_264) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5067,7 +5067,7 @@ START_TEST(test_mul_gen_264) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_265) {
+START_TEST(test_mul_gen2_265) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5087,7 +5087,7 @@ START_TEST(test_mul_gen_265) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_266) {
+START_TEST(test_mul_gen2_266) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5107,7 +5107,7 @@ START_TEST(test_mul_gen_266) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_267) {
+START_TEST(test_mul_gen2_267) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5123,7 +5123,7 @@ START_TEST(test_mul_gen_267) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_268) {
+START_TEST(test_mul_gen2_268) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5139,7 +5139,7 @@ START_TEST(test_mul_gen_268) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_269) {
+START_TEST(test_mul_gen2_269) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5159,7 +5159,7 @@ START_TEST(test_mul_gen_269) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_270) {
+START_TEST(test_mul_gen2_270) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5179,7 +5179,7 @@ START_TEST(test_mul_gen_270) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_271) {
+START_TEST(test_mul_gen2_271) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5199,7 +5199,7 @@ START_TEST(test_mul_gen_271) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_272) {
+START_TEST(test_mul_gen2_272) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5219,7 +5219,7 @@ START_TEST(test_mul_gen_272) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_273) {
+START_TEST(test_mul_gen2_273) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5239,7 +5239,7 @@ START_TEST(test_mul_gen_273) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_274) {
+START_TEST(test_mul_gen2_274) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5259,7 +5259,7 @@ START_TEST(test_mul_gen_274) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_275) {
+START_TEST(test_mul_gen2_275) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5279,7 +5279,7 @@ START_TEST(test_mul_gen_275) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_276) {
+START_TEST(test_mul_gen2_276) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5299,7 +5299,7 @@ START_TEST(test_mul_gen_276) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_277) {
+START_TEST(test_mul_gen2_277) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5319,7 +5319,7 @@ START_TEST(test_mul_gen_277) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_278) {
+START_TEST(test_mul_gen2_278) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5339,7 +5339,7 @@ START_TEST(test_mul_gen_278) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_279) {
+START_TEST(test_mul_gen2_279) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5359,7 +5359,7 @@ START_TEST(test_mul_gen_279) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_280) {
+START_TEST(test_mul_gen2_280) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5379,7 +5379,7 @@ START_TEST(test_mul_gen_280) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_281) {
+START_TEST(test_mul_gen2_281) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5399,7 +5399,7 @@ START_TEST(test_mul_gen_281) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_282) {
+START_TEST(test_mul_gen2_282) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5419,7 +5419,7 @@ START_TEST(test_mul_gen_282) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_283) {
+START_TEST(test_mul_gen2_283) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5439,7 +5439,7 @@ START_TEST(test_mul_gen_283) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_284) {
+START_TEST(test_mul_gen2_284) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5459,7 +5459,7 @@ START_TEST(test_mul_gen_284) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_285) {
+START_TEST(test_mul_gen2_285) {
   // 4
   s21_decimal input_decimal_1 = {
       {0x00000004, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5479,7 +5479,7 @@ START_TEST(test_mul_gen_285) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_286) {
+START_TEST(test_mul_gen2_286) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5499,7 +5499,7 @@ START_TEST(test_mul_gen_286) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_287) {
+START_TEST(test_mul_gen2_287) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5519,7 +5519,7 @@ START_TEST(test_mul_gen_287) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_288) {
+START_TEST(test_mul_gen2_288) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5539,7 +5539,7 @@ START_TEST(test_mul_gen_288) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_289) {
+START_TEST(test_mul_gen2_289) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5559,7 +5559,7 @@ START_TEST(test_mul_gen_289) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_290) {
+START_TEST(test_mul_gen2_290) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5579,7 +5579,7 @@ START_TEST(test_mul_gen_290) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_291) {
+START_TEST(test_mul_gen2_291) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5599,7 +5599,7 @@ START_TEST(test_mul_gen_291) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_292) {
+START_TEST(test_mul_gen2_292) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5619,7 +5619,7 @@ START_TEST(test_mul_gen_292) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_293) {
+START_TEST(test_mul_gen2_293) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5639,7 +5639,7 @@ START_TEST(test_mul_gen_293) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_294) {
+START_TEST(test_mul_gen2_294) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5659,7 +5659,7 @@ START_TEST(test_mul_gen_294) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_295) {
+START_TEST(test_mul_gen2_295) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5679,7 +5679,7 @@ START_TEST(test_mul_gen_295) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_296) {
+START_TEST(test_mul_gen2_296) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5699,7 +5699,7 @@ START_TEST(test_mul_gen_296) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_297) {
+START_TEST(test_mul_gen2_297) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5719,7 +5719,7 @@ START_TEST(test_mul_gen_297) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_298) {
+START_TEST(test_mul_gen2_298) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5739,7 +5739,7 @@ START_TEST(test_mul_gen_298) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_299) {
+START_TEST(test_mul_gen2_299) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5759,7 +5759,7 @@ START_TEST(test_mul_gen_299) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_300) {
+START_TEST(test_mul_gen2_300) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5779,7 +5779,7 @@ START_TEST(test_mul_gen_300) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_301) {
+START_TEST(test_mul_gen2_301) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5799,7 +5799,7 @@ START_TEST(test_mul_gen_301) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_302) {
+START_TEST(test_mul_gen2_302) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5819,7 +5819,7 @@ START_TEST(test_mul_gen_302) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_303) {
+START_TEST(test_mul_gen2_303) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5839,7 +5839,7 @@ START_TEST(test_mul_gen_303) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_304) {
+START_TEST(test_mul_gen2_304) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5859,7 +5859,7 @@ START_TEST(test_mul_gen_304) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_305) {
+START_TEST(test_mul_gen2_305) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5879,7 +5879,7 @@ START_TEST(test_mul_gen_305) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_306) {
+START_TEST(test_mul_gen2_306) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5899,7 +5899,7 @@ START_TEST(test_mul_gen_306) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_307) {
+START_TEST(test_mul_gen2_307) {
   // 1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -5919,7 +5919,7 @@ START_TEST(test_mul_gen_307) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_308) {
+START_TEST(test_mul_gen2_308) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -5939,7 +5939,7 @@ START_TEST(test_mul_gen_308) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_309) {
+START_TEST(test_mul_gen2_309) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -5959,7 +5959,7 @@ START_TEST(test_mul_gen_309) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_310) {
+START_TEST(test_mul_gen2_310) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -5979,7 +5979,7 @@ START_TEST(test_mul_gen_310) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_311) {
+START_TEST(test_mul_gen2_311) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -5999,7 +5999,7 @@ START_TEST(test_mul_gen_311) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_312) {
+START_TEST(test_mul_gen2_312) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6019,7 +6019,7 @@ START_TEST(test_mul_gen_312) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_313) {
+START_TEST(test_mul_gen2_313) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6039,7 +6039,7 @@ START_TEST(test_mul_gen_313) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_314) {
+START_TEST(test_mul_gen2_314) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6059,7 +6059,7 @@ START_TEST(test_mul_gen_314) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_315) {
+START_TEST(test_mul_gen2_315) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6079,7 +6079,7 @@ START_TEST(test_mul_gen_315) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_316) {
+START_TEST(test_mul_gen2_316) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6099,7 +6099,7 @@ START_TEST(test_mul_gen_316) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_317) {
+START_TEST(test_mul_gen2_317) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6119,7 +6119,7 @@ START_TEST(test_mul_gen_317) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_318) {
+START_TEST(test_mul_gen2_318) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6139,7 +6139,7 @@ START_TEST(test_mul_gen_318) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_319) {
+START_TEST(test_mul_gen2_319) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6159,7 +6159,7 @@ START_TEST(test_mul_gen_319) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_320) {
+START_TEST(test_mul_gen2_320) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6179,7 +6179,7 @@ START_TEST(test_mul_gen_320) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_321) {
+START_TEST(test_mul_gen2_321) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6199,7 +6199,7 @@ START_TEST(test_mul_gen_321) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_322) {
+START_TEST(test_mul_gen2_322) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6219,7 +6219,7 @@ START_TEST(test_mul_gen_322) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_323) {
+START_TEST(test_mul_gen2_323) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6239,7 +6239,7 @@ START_TEST(test_mul_gen_323) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_324) {
+START_TEST(test_mul_gen2_324) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6259,7 +6259,7 @@ START_TEST(test_mul_gen_324) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_325) {
+START_TEST(test_mul_gen2_325) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6279,7 +6279,7 @@ START_TEST(test_mul_gen_325) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_326) {
+START_TEST(test_mul_gen2_326) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6299,7 +6299,7 @@ START_TEST(test_mul_gen_326) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_327) {
+START_TEST(test_mul_gen2_327) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6319,7 +6319,7 @@ START_TEST(test_mul_gen_327) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_328) {
+START_TEST(test_mul_gen2_328) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6339,7 +6339,7 @@ START_TEST(test_mul_gen_328) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_329) {
+START_TEST(test_mul_gen2_329) {
   // -1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6359,7 +6359,7 @@ START_TEST(test_mul_gen_329) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_330) {
+START_TEST(test_mul_gen2_330) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6379,7 +6379,7 @@ START_TEST(test_mul_gen_330) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_331) {
+START_TEST(test_mul_gen2_331) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6399,7 +6399,7 @@ START_TEST(test_mul_gen_331) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_332) {
+START_TEST(test_mul_gen2_332) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6419,7 +6419,7 @@ START_TEST(test_mul_gen_332) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_333) {
+START_TEST(test_mul_gen2_333) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6439,7 +6439,7 @@ START_TEST(test_mul_gen_333) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_334) {
+START_TEST(test_mul_gen2_334) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6459,7 +6459,7 @@ START_TEST(test_mul_gen_334) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_335) {
+START_TEST(test_mul_gen2_335) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6479,7 +6479,7 @@ START_TEST(test_mul_gen_335) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_336) {
+START_TEST(test_mul_gen2_336) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6499,7 +6499,7 @@ START_TEST(test_mul_gen_336) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_337) {
+START_TEST(test_mul_gen2_337) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6519,7 +6519,7 @@ START_TEST(test_mul_gen_337) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_338) {
+START_TEST(test_mul_gen2_338) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6539,7 +6539,7 @@ START_TEST(test_mul_gen_338) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_339) {
+START_TEST(test_mul_gen2_339) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6559,7 +6559,7 @@ START_TEST(test_mul_gen_339) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_340) {
+START_TEST(test_mul_gen2_340) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6579,7 +6579,7 @@ START_TEST(test_mul_gen_340) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_341) {
+START_TEST(test_mul_gen2_341) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6599,7 +6599,7 @@ START_TEST(test_mul_gen_341) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_342) {
+START_TEST(test_mul_gen2_342) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6619,7 +6619,7 @@ START_TEST(test_mul_gen_342) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_343) {
+START_TEST(test_mul_gen2_343) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6639,7 +6639,7 @@ START_TEST(test_mul_gen_343) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_344) {
+START_TEST(test_mul_gen2_344) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6659,7 +6659,7 @@ START_TEST(test_mul_gen_344) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_345) {
+START_TEST(test_mul_gen2_345) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6679,7 +6679,7 @@ START_TEST(test_mul_gen_345) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_346) {
+START_TEST(test_mul_gen2_346) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6699,7 +6699,7 @@ START_TEST(test_mul_gen_346) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_347) {
+START_TEST(test_mul_gen2_347) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6719,7 +6719,7 @@ START_TEST(test_mul_gen_347) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_348) {
+START_TEST(test_mul_gen2_348) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6739,7 +6739,7 @@ START_TEST(test_mul_gen_348) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_349) {
+START_TEST(test_mul_gen2_349) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6759,7 +6759,7 @@ START_TEST(test_mul_gen_349) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_350) {
+START_TEST(test_mul_gen2_350) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6779,7 +6779,7 @@ START_TEST(test_mul_gen_350) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_351) {
+START_TEST(test_mul_gen2_351) {
   // 0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -6799,7 +6799,7 @@ START_TEST(test_mul_gen_351) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_352) {
+START_TEST(test_mul_gen2_352) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6819,7 +6819,7 @@ START_TEST(test_mul_gen_352) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_353) {
+START_TEST(test_mul_gen2_353) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6839,7 +6839,7 @@ START_TEST(test_mul_gen_353) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_354) {
+START_TEST(test_mul_gen2_354) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6859,7 +6859,7 @@ START_TEST(test_mul_gen_354) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_355) {
+START_TEST(test_mul_gen2_355) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6879,7 +6879,7 @@ START_TEST(test_mul_gen_355) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_356) {
+START_TEST(test_mul_gen2_356) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6899,7 +6899,7 @@ START_TEST(test_mul_gen_356) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_357) {
+START_TEST(test_mul_gen2_357) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6919,7 +6919,7 @@ START_TEST(test_mul_gen_357) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_358) {
+START_TEST(test_mul_gen2_358) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6939,7 +6939,7 @@ START_TEST(test_mul_gen_358) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_359) {
+START_TEST(test_mul_gen2_359) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6959,7 +6959,7 @@ START_TEST(test_mul_gen_359) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_360) {
+START_TEST(test_mul_gen2_360) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6979,7 +6979,7 @@ START_TEST(test_mul_gen_360) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_361) {
+START_TEST(test_mul_gen2_361) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -6999,7 +6999,7 @@ START_TEST(test_mul_gen_361) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_362) {
+START_TEST(test_mul_gen2_362) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7019,7 +7019,7 @@ START_TEST(test_mul_gen_362) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_363) {
+START_TEST(test_mul_gen2_363) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7039,7 +7039,7 @@ START_TEST(test_mul_gen_363) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_364) {
+START_TEST(test_mul_gen2_364) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7059,7 +7059,7 @@ START_TEST(test_mul_gen_364) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_365) {
+START_TEST(test_mul_gen2_365) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7079,7 +7079,7 @@ START_TEST(test_mul_gen_365) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_366) {
+START_TEST(test_mul_gen2_366) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7099,7 +7099,7 @@ START_TEST(test_mul_gen_366) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_367) {
+START_TEST(test_mul_gen2_367) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7119,7 +7119,7 @@ START_TEST(test_mul_gen_367) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_368) {
+START_TEST(test_mul_gen2_368) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7139,7 +7139,7 @@ START_TEST(test_mul_gen_368) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_369) {
+START_TEST(test_mul_gen2_369) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7159,7 +7159,7 @@ START_TEST(test_mul_gen_369) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_370) {
+START_TEST(test_mul_gen2_370) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7179,7 +7179,7 @@ START_TEST(test_mul_gen_370) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_371) {
+START_TEST(test_mul_gen2_371) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7199,7 +7199,7 @@ START_TEST(test_mul_gen_371) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_372) {
+START_TEST(test_mul_gen2_372) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7219,7 +7219,7 @@ START_TEST(test_mul_gen_372) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_373) {
+START_TEST(test_mul_gen2_373) {
   // -0
   s21_decimal input_decimal_1 = {
       {0x00000000, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -7239,7 +7239,7 @@ START_TEST(test_mul_gen_373) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_374) {
+START_TEST(test_mul_gen2_374) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7259,7 +7259,7 @@ START_TEST(test_mul_gen_374) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_375) {
+START_TEST(test_mul_gen2_375) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7279,7 +7279,7 @@ START_TEST(test_mul_gen_375) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_376) {
+START_TEST(test_mul_gen2_376) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7299,7 +7299,7 @@ START_TEST(test_mul_gen_376) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_377) {
+START_TEST(test_mul_gen2_377) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7315,7 +7315,7 @@ START_TEST(test_mul_gen_377) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_378) {
+START_TEST(test_mul_gen2_378) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7331,7 +7331,7 @@ START_TEST(test_mul_gen_378) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_379) {
+START_TEST(test_mul_gen2_379) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7351,7 +7351,7 @@ START_TEST(test_mul_gen_379) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_380) {
+START_TEST(test_mul_gen2_380) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7371,7 +7371,7 @@ START_TEST(test_mul_gen_380) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_381) {
+START_TEST(test_mul_gen2_381) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7391,7 +7391,7 @@ START_TEST(test_mul_gen_381) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_382) {
+START_TEST(test_mul_gen2_382) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7411,7 +7411,7 @@ START_TEST(test_mul_gen_382) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_383) {
+START_TEST(test_mul_gen2_383) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7431,7 +7431,7 @@ START_TEST(test_mul_gen_383) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_384) {
+START_TEST(test_mul_gen2_384) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7451,7 +7451,7 @@ START_TEST(test_mul_gen_384) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_385) {
+START_TEST(test_mul_gen2_385) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7471,7 +7471,7 @@ START_TEST(test_mul_gen_385) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_386) {
+START_TEST(test_mul_gen2_386) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7491,7 +7491,7 @@ START_TEST(test_mul_gen_386) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_387) {
+START_TEST(test_mul_gen2_387) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7511,7 +7511,7 @@ START_TEST(test_mul_gen_387) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_388) {
+START_TEST(test_mul_gen2_388) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7531,7 +7531,7 @@ START_TEST(test_mul_gen_388) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_389) {
+START_TEST(test_mul_gen2_389) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7551,7 +7551,7 @@ START_TEST(test_mul_gen_389) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_390) {
+START_TEST(test_mul_gen2_390) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7571,7 +7571,7 @@ START_TEST(test_mul_gen_390) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_391) {
+START_TEST(test_mul_gen2_391) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7591,7 +7591,7 @@ START_TEST(test_mul_gen_391) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_392) {
+START_TEST(test_mul_gen2_392) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7611,7 +7611,7 @@ START_TEST(test_mul_gen_392) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_393) {
+START_TEST(test_mul_gen2_393) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7631,7 +7631,7 @@ START_TEST(test_mul_gen_393) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_394) {
+START_TEST(test_mul_gen2_394) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7651,7 +7651,7 @@ START_TEST(test_mul_gen_394) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_395) {
+START_TEST(test_mul_gen2_395) {
   // 333
   s21_decimal input_decimal_1 = {
       {0x0000014D, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7671,7 +7671,7 @@ START_TEST(test_mul_gen_395) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_396) {
+START_TEST(test_mul_gen2_396) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7691,7 +7691,7 @@ START_TEST(test_mul_gen_396) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_397) {
+START_TEST(test_mul_gen2_397) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7711,7 +7711,7 @@ START_TEST(test_mul_gen_397) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_398) {
+START_TEST(test_mul_gen2_398) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7731,7 +7731,7 @@ START_TEST(test_mul_gen_398) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_399) {
+START_TEST(test_mul_gen2_399) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7747,7 +7747,7 @@ START_TEST(test_mul_gen_399) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_400) {
+START_TEST(test_mul_gen2_400) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7763,7 +7763,7 @@ START_TEST(test_mul_gen_400) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_401) {
+START_TEST(test_mul_gen2_401) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7783,7 +7783,7 @@ START_TEST(test_mul_gen_401) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_402) {
+START_TEST(test_mul_gen2_402) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7803,7 +7803,7 @@ START_TEST(test_mul_gen_402) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_403) {
+START_TEST(test_mul_gen2_403) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7823,7 +7823,7 @@ START_TEST(test_mul_gen_403) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_404) {
+START_TEST(test_mul_gen2_404) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7843,7 +7843,7 @@ START_TEST(test_mul_gen_404) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_405) {
+START_TEST(test_mul_gen2_405) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7863,7 +7863,7 @@ START_TEST(test_mul_gen_405) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_406) {
+START_TEST(test_mul_gen2_406) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7883,7 +7883,7 @@ START_TEST(test_mul_gen_406) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_407) {
+START_TEST(test_mul_gen2_407) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7899,7 +7899,7 @@ START_TEST(test_mul_gen_407) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_408) {
+START_TEST(test_mul_gen2_408) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7919,7 +7919,7 @@ START_TEST(test_mul_gen_408) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_409) {
+START_TEST(test_mul_gen2_409) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7939,7 +7939,7 @@ START_TEST(test_mul_gen_409) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_410) {
+START_TEST(test_mul_gen2_410) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7959,7 +7959,7 @@ START_TEST(test_mul_gen_410) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_411) {
+START_TEST(test_mul_gen2_411) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7979,7 +7979,7 @@ START_TEST(test_mul_gen_411) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_412) {
+START_TEST(test_mul_gen2_412) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -7999,7 +7999,7 @@ START_TEST(test_mul_gen_412) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_413) {
+START_TEST(test_mul_gen2_413) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -8019,7 +8019,7 @@ START_TEST(test_mul_gen_413) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_414) {
+START_TEST(test_mul_gen2_414) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -8039,7 +8039,7 @@ START_TEST(test_mul_gen_414) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_415) {
+START_TEST(test_mul_gen2_415) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -8059,7 +8059,7 @@ START_TEST(test_mul_gen_415) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_416) {
+START_TEST(test_mul_gen2_416) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -8079,7 +8079,7 @@ START_TEST(test_mul_gen_416) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_417) {
+START_TEST(test_mul_gen2_417) {
   // 12345
   s21_decimal input_decimal_1 = {
       {0x00003039, 0x00000000, 0x00000000, 0b00000000000000000000000000000000}};
@@ -8099,7 +8099,7 @@ START_TEST(test_mul_gen_417) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_418) {
+START_TEST(test_mul_gen2_418) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8119,7 +8119,7 @@ START_TEST(test_mul_gen_418) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_419) {
+START_TEST(test_mul_gen2_419) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8139,7 +8139,7 @@ START_TEST(test_mul_gen_419) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_420) {
+START_TEST(test_mul_gen2_420) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8159,7 +8159,7 @@ START_TEST(test_mul_gen_420) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_421) {
+START_TEST(test_mul_gen2_421) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8179,7 +8179,7 @@ START_TEST(test_mul_gen_421) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_422) {
+START_TEST(test_mul_gen2_422) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8199,7 +8199,7 @@ START_TEST(test_mul_gen_422) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_423) {
+START_TEST(test_mul_gen2_423) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8219,7 +8219,7 @@ START_TEST(test_mul_gen_423) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_424) {
+START_TEST(test_mul_gen2_424) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8239,7 +8239,7 @@ START_TEST(test_mul_gen_424) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_425) {
+START_TEST(test_mul_gen2_425) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8259,7 +8259,7 @@ START_TEST(test_mul_gen_425) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_426) {
+START_TEST(test_mul_gen2_426) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8279,7 +8279,7 @@ START_TEST(test_mul_gen_426) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_427) {
+START_TEST(test_mul_gen2_427) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8299,7 +8299,7 @@ START_TEST(test_mul_gen_427) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_428) {
+START_TEST(test_mul_gen2_428) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8319,16 +8319,16 @@ START_TEST(test_mul_gen_428) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_429) {
+START_TEST(test_mul_gen2_429) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
   // -11353455324534534597889779
   s21_decimal input_decimal_2 = {
       {0xFC69CEF3, 0x0BE11FCC, 0x00096430, 0b10000000000000000000000000000000}};
-  // -1401661138421986561064878.2913
+  // -1401661138421986561064878.2912
   s21_decimal expected_result = {
-      {0xD2EB8841, 0xAECCBD87, 0x2D4A44E9, 0b10000000000001000000000000000000}};
+      {0xD2EB8840, 0xAECCBD87, 0x2D4A44E9, 0b10000000000001000000000000000000}};
 
   s21_decimal s21_result_decimal;
   ArithmeticResult s21_return_code =
@@ -8339,7 +8339,7 @@ START_TEST(test_mul_gen_429) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_430) {
+START_TEST(test_mul_gen2_430) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8359,7 +8359,7 @@ START_TEST(test_mul_gen_430) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_431) {
+START_TEST(test_mul_gen2_431) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8379,7 +8379,7 @@ START_TEST(test_mul_gen_431) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_432) {
+START_TEST(test_mul_gen2_432) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8399,7 +8399,7 @@ START_TEST(test_mul_gen_432) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_433) {
+START_TEST(test_mul_gen2_433) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8419,7 +8419,7 @@ START_TEST(test_mul_gen_433) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_434) {
+START_TEST(test_mul_gen2_434) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8439,7 +8439,7 @@ START_TEST(test_mul_gen_434) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_435) {
+START_TEST(test_mul_gen2_435) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8459,7 +8459,7 @@ START_TEST(test_mul_gen_435) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_436) {
+START_TEST(test_mul_gen2_436) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8479,7 +8479,7 @@ START_TEST(test_mul_gen_436) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_437) {
+START_TEST(test_mul_gen2_437) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8499,7 +8499,7 @@ START_TEST(test_mul_gen_437) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_438) {
+START_TEST(test_mul_gen2_438) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8519,7 +8519,7 @@ START_TEST(test_mul_gen_438) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_439) {
+START_TEST(test_mul_gen2_439) {
   // 0.123456789
   s21_decimal input_decimal_1 = {
       {0x075BCD15, 0x00000000, 0x00000000, 0b00000000000010010000000000000000}};
@@ -8539,7 +8539,7 @@ START_TEST(test_mul_gen_439) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_440) {
+START_TEST(test_mul_gen2_440) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8559,7 +8559,7 @@ START_TEST(test_mul_gen_440) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_441) {
+START_TEST(test_mul_gen2_441) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8579,7 +8579,7 @@ START_TEST(test_mul_gen_441) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_442) {
+START_TEST(test_mul_gen2_442) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8599,7 +8599,7 @@ START_TEST(test_mul_gen_442) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_443) {
+START_TEST(test_mul_gen2_443) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8619,7 +8619,7 @@ START_TEST(test_mul_gen_443) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_444) {
+START_TEST(test_mul_gen2_444) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8639,7 +8639,7 @@ START_TEST(test_mul_gen_444) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_445) {
+START_TEST(test_mul_gen2_445) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8659,7 +8659,7 @@ START_TEST(test_mul_gen_445) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_446) {
+START_TEST(test_mul_gen2_446) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8679,7 +8679,7 @@ START_TEST(test_mul_gen_446) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_447) {
+START_TEST(test_mul_gen2_447) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8699,7 +8699,7 @@ START_TEST(test_mul_gen_447) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_448) {
+START_TEST(test_mul_gen2_448) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8719,7 +8719,7 @@ START_TEST(test_mul_gen_448) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_449) {
+START_TEST(test_mul_gen2_449) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8739,7 +8739,7 @@ START_TEST(test_mul_gen_449) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_450) {
+START_TEST(test_mul_gen2_450) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8759,7 +8759,7 @@ START_TEST(test_mul_gen_450) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_451) {
+START_TEST(test_mul_gen2_451) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8779,7 +8779,7 @@ START_TEST(test_mul_gen_451) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_452) {
+START_TEST(test_mul_gen2_452) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8799,7 +8799,7 @@ START_TEST(test_mul_gen_452) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_453) {
+START_TEST(test_mul_gen2_453) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8819,7 +8819,7 @@ START_TEST(test_mul_gen_453) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_454) {
+START_TEST(test_mul_gen2_454) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8839,7 +8839,7 @@ START_TEST(test_mul_gen_454) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_455) {
+START_TEST(test_mul_gen2_455) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8859,7 +8859,7 @@ START_TEST(test_mul_gen_455) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_456) {
+START_TEST(test_mul_gen2_456) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8879,7 +8879,7 @@ START_TEST(test_mul_gen_456) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_457) {
+START_TEST(test_mul_gen2_457) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8899,7 +8899,7 @@ START_TEST(test_mul_gen_457) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_458) {
+START_TEST(test_mul_gen2_458) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8919,7 +8919,7 @@ START_TEST(test_mul_gen_458) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_459) {
+START_TEST(test_mul_gen2_459) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8939,7 +8939,7 @@ START_TEST(test_mul_gen_459) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_460) {
+START_TEST(test_mul_gen2_460) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8959,7 +8959,7 @@ START_TEST(test_mul_gen_460) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_461) {
+START_TEST(test_mul_gen2_461) {
   // -0.1
   s21_decimal input_decimal_1 = {
       {0x00000001, 0x00000000, 0x00000000, 0b10000000000000010000000000000000}};
@@ -8979,7 +8979,7 @@ START_TEST(test_mul_gen_461) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_462) {
+START_TEST(test_mul_gen2_462) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -8999,7 +8999,7 @@ START_TEST(test_mul_gen_462) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_463) {
+START_TEST(test_mul_gen2_463) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9019,7 +9019,7 @@ START_TEST(test_mul_gen_463) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_464) {
+START_TEST(test_mul_gen2_464) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9039,7 +9039,7 @@ START_TEST(test_mul_gen_464) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_465) {
+START_TEST(test_mul_gen2_465) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9055,7 +9055,7 @@ START_TEST(test_mul_gen_465) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_466) {
+START_TEST(test_mul_gen2_466) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9071,7 +9071,7 @@ START_TEST(test_mul_gen_466) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_467) {
+START_TEST(test_mul_gen2_467) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9091,7 +9091,7 @@ START_TEST(test_mul_gen_467) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_468) {
+START_TEST(test_mul_gen2_468) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9111,7 +9111,7 @@ START_TEST(test_mul_gen_468) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_469) {
+START_TEST(test_mul_gen2_469) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9131,7 +9131,7 @@ START_TEST(test_mul_gen_469) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_470) {
+START_TEST(test_mul_gen2_470) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9147,7 +9147,7 @@ START_TEST(test_mul_gen_470) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_471) {
+START_TEST(test_mul_gen2_471) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9167,7 +9167,7 @@ START_TEST(test_mul_gen_471) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_472) {
+START_TEST(test_mul_gen2_472) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9187,7 +9187,7 @@ START_TEST(test_mul_gen_472) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_473) {
+START_TEST(test_mul_gen2_473) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9203,7 +9203,7 @@ START_TEST(test_mul_gen_473) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_474) {
+START_TEST(test_mul_gen2_474) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9223,7 +9223,7 @@ START_TEST(test_mul_gen_474) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_475) {
+START_TEST(test_mul_gen2_475) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9243,7 +9243,7 @@ START_TEST(test_mul_gen_475) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_476) {
+START_TEST(test_mul_gen2_476) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9263,7 +9263,7 @@ START_TEST(test_mul_gen_476) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_477) {
+START_TEST(test_mul_gen2_477) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9283,7 +9283,7 @@ START_TEST(test_mul_gen_477) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_478) {
+START_TEST(test_mul_gen2_478) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9303,7 +9303,7 @@ START_TEST(test_mul_gen_478) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_479) {
+START_TEST(test_mul_gen2_479) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9323,7 +9323,7 @@ START_TEST(test_mul_gen_479) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_480) {
+START_TEST(test_mul_gen2_480) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9343,7 +9343,7 @@ START_TEST(test_mul_gen_480) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_481) {
+START_TEST(test_mul_gen2_481) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9363,7 +9363,7 @@ START_TEST(test_mul_gen_481) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_482) {
+START_TEST(test_mul_gen2_482) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9383,7 +9383,7 @@ START_TEST(test_mul_gen_482) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_483) {
+START_TEST(test_mul_gen2_483) {
   // -300000000
   s21_decimal input_decimal_1 = {
       {0x11E1A300, 0x00000000, 0x00000000, 0b10000000000000000000000000000000}};
@@ -9403,7 +9403,7 @@ START_TEST(test_mul_gen_483) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_484) {
+START_TEST(test_mul_gen2_484) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9423,7 +9423,7 @@ START_TEST(test_mul_gen_484) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_485) {
+START_TEST(test_mul_gen2_485) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9443,7 +9443,7 @@ START_TEST(test_mul_gen_485) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_486) {
+START_TEST(test_mul_gen2_486) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9463,7 +9463,7 @@ START_TEST(test_mul_gen_486) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_487) {
+START_TEST(test_mul_gen2_487) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9479,7 +9479,7 @@ START_TEST(test_mul_gen_487) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_488) {
+START_TEST(test_mul_gen2_488) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9495,7 +9495,7 @@ START_TEST(test_mul_gen_488) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_489) {
+START_TEST(test_mul_gen2_489) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9515,7 +9515,7 @@ START_TEST(test_mul_gen_489) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_490) {
+START_TEST(test_mul_gen2_490) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9535,7 +9535,7 @@ START_TEST(test_mul_gen_490) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_491) {
+START_TEST(test_mul_gen2_491) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9555,16 +9555,16 @@ START_TEST(test_mul_gen_491) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_492) {
+START_TEST(test_mul_gen2_492) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
   // 36523494581823720394585.234509
   s21_decimal input_decimal_2 = {
       {0xB3335C4D, 0x9E691CEC, 0x760386D0, 0b00000000000001100000000000000000}};
-  // 36523494581860609124112.876467
+  // 36523494581860609124112.876466
   s21_decimal expected_result = {
-      {0x56E943B3, 0x9EEC2B07, 0x760386D0, 0b00000000000001100000000000000000}};
+      {0x56E943B2, 0x9EEC2B07, 0x760386D0, 0b00000000000001100000000000000000}};
 
   s21_decimal s21_result_decimal;
   ArithmeticResult s21_return_code =
@@ -9575,7 +9575,7 @@ START_TEST(test_mul_gen_492) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_493) {
+START_TEST(test_mul_gen2_493) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9595,7 +9595,7 @@ START_TEST(test_mul_gen_493) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_494) {
+START_TEST(test_mul_gen2_494) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9615,7 +9615,7 @@ START_TEST(test_mul_gen_494) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_495) {
+START_TEST(test_mul_gen2_495) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9635,7 +9635,7 @@ START_TEST(test_mul_gen_495) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_496) {
+START_TEST(test_mul_gen2_496) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9655,7 +9655,7 @@ START_TEST(test_mul_gen_496) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_497) {
+START_TEST(test_mul_gen2_497) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9675,7 +9675,7 @@ START_TEST(test_mul_gen_497) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_498) {
+START_TEST(test_mul_gen2_498) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9695,7 +9695,7 @@ START_TEST(test_mul_gen_498) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_499) {
+START_TEST(test_mul_gen2_499) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9715,7 +9715,7 @@ START_TEST(test_mul_gen_499) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_500) {
+START_TEST(test_mul_gen2_500) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9735,7 +9735,7 @@ START_TEST(test_mul_gen_500) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_501) {
+START_TEST(test_mul_gen2_501) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9755,7 +9755,7 @@ START_TEST(test_mul_gen_501) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_502) {
+START_TEST(test_mul_gen2_502) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9775,7 +9775,7 @@ START_TEST(test_mul_gen_502) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_503) {
+START_TEST(test_mul_gen2_503) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9795,7 +9795,7 @@ START_TEST(test_mul_gen_503) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_504) {
+START_TEST(test_mul_gen2_504) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9815,7 +9815,7 @@ START_TEST(test_mul_gen_504) {
 }
 END_TEST
 
-START_TEST(test_mul_gen_505) {
+START_TEST(test_mul_gen2_505) {
   // 1.00000000000101
   s21_decimal input_decimal_1 = {
       {0x107A4065, 0x00005AF3, 0x00000000, 0b00000000000011100000000000000000}};
@@ -9986,513 +9986,514 @@ Suite* make_mul_suite() {
   tcase_add_test(tc_core, test_mul_second_decimal_incorrect);
   tcase_add_test(tc_core, test_mul_both_decimals_incorrect);
 
-  tcase_add_test(tc_core, test_mul_gen_0);
-  tcase_add_test(tc_core, test_mul_gen_1);
-  tcase_add_test(tc_core, test_mul_gen_2);
-  tcase_add_test(tc_core, test_mul_gen_3);
-  tcase_add_test(tc_core, test_mul_gen_4);
-  tcase_add_test(tc_core, test_mul_gen_5);
-  tcase_add_test(tc_core, test_mul_gen_6);
-  tcase_add_test(tc_core, test_mul_gen_7);
-  tcase_add_test(tc_core, test_mul_gen_8);
-  tcase_add_test(tc_core, test_mul_gen_9);
-  tcase_add_test(tc_core, test_mul_gen_10);
-  tcase_add_test(tc_core, test_mul_gen_11);
-  tcase_add_test(tc_core, test_mul_gen_12);
-  tcase_add_test(tc_core, test_mul_gen_13);
-  tcase_add_test(tc_core, test_mul_gen_14);
-  tcase_add_test(tc_core, test_mul_gen_15);
-  tcase_add_test(tc_core, test_mul_gen_16);
-  tcase_add_test(tc_core, test_mul_gen_17);
-  tcase_add_test(tc_core, test_mul_gen_18);
-  tcase_add_test(tc_core, test_mul_gen_19);
-  tcase_add_test(tc_core, test_mul_gen_20);
-  tcase_add_test(tc_core, test_mul_gen_21);
-  tcase_add_test(tc_core, test_mul_gen_22);
-  tcase_add_test(tc_core, test_mul_gen_23);
-  tcase_add_test(tc_core, test_mul_gen_24);
-  tcase_add_test(tc_core, test_mul_gen_25);
-  tcase_add_test(tc_core, test_mul_gen_26);
-  tcase_add_test(tc_core, test_mul_gen_27);
-  tcase_add_test(tc_core, test_mul_gen_28);
-  tcase_add_test(tc_core, test_mul_gen_29);
-  tcase_add_test(tc_core, test_mul_gen_30);
-  tcase_add_test(tc_core, test_mul_gen_31);
-  tcase_add_test(tc_core, test_mul_gen_32);
-  tcase_add_test(tc_core, test_mul_gen_33);
-  tcase_add_test(tc_core, test_mul_gen_34);
-  tcase_add_test(tc_core, test_mul_gen_35);
-  tcase_add_test(tc_core, test_mul_gen_36);
-  tcase_add_test(tc_core, test_mul_gen_37);
-  tcase_add_test(tc_core, test_mul_gen_38);
-  tcase_add_test(tc_core, test_mul_gen_39);
-  tcase_add_test(tc_core, test_mul_gen_40);
-  tcase_add_test(tc_core, test_mul_gen_41);
-  tcase_add_test(tc_core, test_mul_gen_42);
-  tcase_add_test(tc_core, test_mul_gen_43);
-  tcase_add_test(tc_core, test_mul_gen_44);
-  tcase_add_test(tc_core, test_mul_gen_45);
-  tcase_add_test(tc_core, test_mul_gen_46);
-  tcase_add_test(tc_core, test_mul_gen_47);
-  tcase_add_test(tc_core, test_mul_gen_48);
-  tcase_add_test(tc_core, test_mul_gen_49);
-  tcase_add_test(tc_core, test_mul_gen_50);
-  tcase_add_test(tc_core, test_mul_gen_51);
-  tcase_add_test(tc_core, test_mul_gen_52);
-  tcase_add_test(tc_core, test_mul_gen_53);
-  tcase_add_test(tc_core, test_mul_gen_54);
-  tcase_add_test(tc_core, test_mul_gen_55);
-  tcase_add_test(tc_core, test_mul_gen_56);
-  tcase_add_test(tc_core, test_mul_gen_57);
-  tcase_add_test(tc_core, test_mul_gen_58);
-  tcase_add_test(tc_core, test_mul_gen_59);
-  tcase_add_test(tc_core, test_mul_gen_60);
-  tcase_add_test(tc_core, test_mul_gen_61);
-  tcase_add_test(tc_core, test_mul_gen_62);
-  tcase_add_test(tc_core, test_mul_gen_63);
-  tcase_add_test(tc_core, test_mul_gen_64);
-  tcase_add_test(tc_core, test_mul_gen_65);
-  tcase_add_test(tc_core, test_mul_gen_66);
-  tcase_add_test(tc_core, test_mul_gen_67);
-  tcase_add_test(tc_core, test_mul_gen_68);
-  tcase_add_test(tc_core, test_mul_gen_69);
-  tcase_add_test(tc_core, test_mul_gen_70);
-  tcase_add_test(tc_core, test_mul_gen_71);
-  tcase_add_test(tc_core, test_mul_gen_72);
-  tcase_add_test(tc_core, test_mul_gen_73);
-  tcase_add_test(tc_core, test_mul_gen_74);
-  tcase_add_test(tc_core, test_mul_gen_75);
-  tcase_add_test(tc_core, test_mul_gen_76);
-  tcase_add_test(tc_core, test_mul_gen_77);
-  tcase_add_test(tc_core, test_mul_gen_78);
-  tcase_add_test(tc_core, test_mul_gen_79);
-  tcase_add_test(tc_core, test_mul_gen_80);
-  tcase_add_test(tc_core, test_mul_gen_81);
-  tcase_add_test(tc_core, test_mul_gen_82);
-  tcase_add_test(tc_core, test_mul_gen_83);
-  tcase_add_test(tc_core, test_mul_gen_84);
-  tcase_add_test(tc_core, test_mul_gen_85);
-  tcase_add_test(tc_core, test_mul_gen_86);
-  tcase_add_test(tc_core, test_mul_gen_87);
-  tcase_add_test(tc_core, test_mul_gen_88);
-  tcase_add_test(tc_core, test_mul_gen_89);
-  tcase_add_test(tc_core, test_mul_gen_90);
-  tcase_add_test(tc_core, test_mul_gen_91);
-  tcase_add_test(tc_core, test_mul_gen_92);
-  tcase_add_test(tc_core, test_mul_gen_93);
-  tcase_add_test(tc_core, test_mul_gen_94);
-  tcase_add_test(tc_core, test_mul_gen_95);
-  tcase_add_test(tc_core, test_mul_gen_96);
-  tcase_add_test(tc_core, test_mul_gen_97);
-  tcase_add_test(tc_core, test_mul_gen_98);
-  tcase_add_test(tc_core, test_mul_gen_99);
-  tcase_add_test(tc_core, test_mul_gen_100);
-  tcase_add_test(tc_core, test_mul_gen_101);
-  tcase_add_test(tc_core, test_mul_gen_102);
-  tcase_add_test(tc_core, test_mul_gen_103);
-  tcase_add_test(tc_core, test_mul_gen_104);
-  tcase_add_test(tc_core, test_mul_gen_105);
-  tcase_add_test(tc_core, test_mul_gen_106);
-  tcase_add_test(tc_core, test_mul_gen_107);
-  tcase_add_test(tc_core, test_mul_gen_108);
-  tcase_add_test(tc_core, test_mul_gen_109);
-  tcase_add_test(tc_core, test_mul_gen_110);
-  tcase_add_test(tc_core, test_mul_gen_111);
-  tcase_add_test(tc_core, test_mul_gen_112);
-  tcase_add_test(tc_core, test_mul_gen_113);
-  tcase_add_test(tc_core, test_mul_gen_114);
-  tcase_add_test(tc_core, test_mul_gen_115);
-  tcase_add_test(tc_core, test_mul_gen_116);
-  tcase_add_test(tc_core, test_mul_gen_117);
-  tcase_add_test(tc_core, test_mul_gen_118);
-  tcase_add_test(tc_core, test_mul_gen_119);
-  tcase_add_test(tc_core, test_mul_gen_120);
-  tcase_add_test(tc_core, test_mul_gen_121);
-  tcase_add_test(tc_core, test_mul_gen_122);
-  tcase_add_test(tc_core, test_mul_gen_123);
-  tcase_add_test(tc_core, test_mul_gen_124);
-  tcase_add_test(tc_core, test_mul_gen_125);
-  tcase_add_test(tc_core, test_mul_gen_126);
-  tcase_add_test(tc_core, test_mul_gen_127);
-  tcase_add_test(tc_core, test_mul_gen_128);
-  tcase_add_test(tc_core, test_mul_gen_129);
-  tcase_add_test(tc_core, test_mul_gen_130);
-  tcase_add_test(tc_core, test_mul_gen_131);
-  tcase_add_test(tc_core, test_mul_gen_132);
-  tcase_add_test(tc_core, test_mul_gen_133);
-  tcase_add_test(tc_core, test_mul_gen_134);
-  tcase_add_test(tc_core, test_mul_gen_135);
-  tcase_add_test(tc_core, test_mul_gen_136);
-  tcase_add_test(tc_core, test_mul_gen_137);
-  tcase_add_test(tc_core, test_mul_gen_138);
-  tcase_add_test(tc_core, test_mul_gen_139);
-  tcase_add_test(tc_core, test_mul_gen_140);
-  tcase_add_test(tc_core, test_mul_gen_141);
-  tcase_add_test(tc_core, test_mul_gen_142);
-  tcase_add_test(tc_core, test_mul_gen_143);
-  tcase_add_test(tc_core, test_mul_gen_144);
-  tcase_add_test(tc_core, test_mul_gen_145);
-  tcase_add_test(tc_core, test_mul_gen_146);
-  tcase_add_test(tc_core, test_mul_gen_147);
-  tcase_add_test(tc_core, test_mul_gen_148);
-  tcase_add_test(tc_core, test_mul_gen_149);
-  tcase_add_test(tc_core, test_mul_gen_150);
-  tcase_add_test(tc_core, test_mul_gen_151);
-  tcase_add_test(tc_core, test_mul_gen_152);
-  tcase_add_test(tc_core, test_mul_gen_153);
-  tcase_add_test(tc_core, test_mul_gen_154);
-  tcase_add_test(tc_core, test_mul_gen_155);
-  tcase_add_test(tc_core, test_mul_gen_156);
-  tcase_add_test(tc_core, test_mul_gen_157);
-  tcase_add_test(tc_core, test_mul_gen_158);
-  tcase_add_test(tc_core, test_mul_gen_159);
-  tcase_add_test(tc_core, test_mul_gen_160);
-  tcase_add_test(tc_core, test_mul_gen_161);
-  tcase_add_test(tc_core, test_mul_gen_162);
-  tcase_add_test(tc_core, test_mul_gen_163);
-  tcase_add_test(tc_core, test_mul_gen_164);
-  tcase_add_test(tc_core, test_mul_gen_165);
-  tcase_add_test(tc_core, test_mul_gen_166);
-  tcase_add_test(tc_core, test_mul_gen_167);
-  tcase_add_test(tc_core, test_mul_gen_168);
-  tcase_add_test(tc_core, test_mul_gen_169);
-  tcase_add_test(tc_core, test_mul_gen_170);
-  tcase_add_test(tc_core, test_mul_gen_171);
-  tcase_add_test(tc_core, test_mul_gen_172);
-  tcase_add_test(tc_core, test_mul_gen_173);
-  tcase_add_test(tc_core, test_mul_gen_174);
-  tcase_add_test(tc_core, test_mul_gen_175);
-  tcase_add_test(tc_core, test_mul_gen_176);
-  tcase_add_test(tc_core, test_mul_gen_177);
-  tcase_add_test(tc_core, test_mul_gen_178);
-  tcase_add_test(tc_core, test_mul_gen_179);
-  tcase_add_test(tc_core, test_mul_gen_180);
-  tcase_add_test(tc_core, test_mul_gen_181);
-  tcase_add_test(tc_core, test_mul_gen_182);
-  tcase_add_test(tc_core, test_mul_gen_183);
-  tcase_add_test(tc_core, test_mul_gen_184);
-  tcase_add_test(tc_core, test_mul_gen_185);
-  tcase_add_test(tc_core, test_mul_gen_186);
-  tcase_add_test(tc_core, test_mul_gen_187);
-  tcase_add_test(tc_core, test_mul_gen_188);
-  tcase_add_test(tc_core, test_mul_gen_189);
-  tcase_add_test(tc_core, test_mul_gen_190);
-  tcase_add_test(tc_core, test_mul_gen_191);
-  tcase_add_test(tc_core, test_mul_gen_192);
-  tcase_add_test(tc_core, test_mul_gen_193);
-  tcase_add_test(tc_core, test_mul_gen_194);
-  tcase_add_test(tc_core, test_mul_gen_195);
-  tcase_add_test(tc_core, test_mul_gen_196);
-  tcase_add_test(tc_core, test_mul_gen_197);
-  tcase_add_test(tc_core, test_mul_gen_198);
-  tcase_add_test(tc_core, test_mul_gen_199);
-  tcase_add_test(tc_core, test_mul_gen_200);
-  tcase_add_test(tc_core, test_mul_gen_201);
-  tcase_add_test(tc_core, test_mul_gen_202);
-  tcase_add_test(tc_core, test_mul_gen_203);
-  tcase_add_test(tc_core, test_mul_gen_204);
-  tcase_add_test(tc_core, test_mul_gen_205);
-  tcase_add_test(tc_core, test_mul_gen_206);
-  tcase_add_test(tc_core, test_mul_gen_207);
-  tcase_add_test(tc_core, test_mul_gen_208);
-  tcase_add_test(tc_core, test_mul_gen_209);
-  tcase_add_test(tc_core, test_mul_gen_210);
-  tcase_add_test(tc_core, test_mul_gen_211);
-  tcase_add_test(tc_core, test_mul_gen_212);
-  tcase_add_test(tc_core, test_mul_gen_213);
-  tcase_add_test(tc_core, test_mul_gen_214);
-  tcase_add_test(tc_core, test_mul_gen_215);
-  tcase_add_test(tc_core, test_mul_gen_216);
-  tcase_add_test(tc_core, test_mul_gen_217);
-  tcase_add_test(tc_core, test_mul_gen_218);
-  tcase_add_test(tc_core, test_mul_gen_219);
-  tcase_add_test(tc_core, test_mul_gen_220);
-  tcase_add_test(tc_core, test_mul_gen_221);
-  tcase_add_test(tc_core, test_mul_gen_222);
-  tcase_add_test(tc_core, test_mul_gen_223);
-  tcase_add_test(tc_core, test_mul_gen_224);
-  tcase_add_test(tc_core, test_mul_gen_225);
-  tcase_add_test(tc_core, test_mul_gen_226);
-  tcase_add_test(tc_core, test_mul_gen_227);
-  tcase_add_test(tc_core, test_mul_gen_228);
-  tcase_add_test(tc_core, test_mul_gen_229);
-  tcase_add_test(tc_core, test_mul_gen_230);
-  tcase_add_test(tc_core, test_mul_gen_231);
-  tcase_add_test(tc_core, test_mul_gen_232);
-  tcase_add_test(tc_core, test_mul_gen_233);
-  tcase_add_test(tc_core, test_mul_gen_234);
-  tcase_add_test(tc_core, test_mul_gen_235);
-  tcase_add_test(tc_core, test_mul_gen_236);
-  tcase_add_test(tc_core, test_mul_gen_237);
-  tcase_add_test(tc_core, test_mul_gen_238);
-  tcase_add_test(tc_core, test_mul_gen_239);
-  tcase_add_test(tc_core, test_mul_gen_240);
-  tcase_add_test(tc_core, test_mul_gen_241);
-  tcase_add_test(tc_core, test_mul_gen_242);
-  tcase_add_test(tc_core, test_mul_gen_243);
-  tcase_add_test(tc_core, test_mul_gen_244);
-  tcase_add_test(tc_core, test_mul_gen_245);
-  tcase_add_test(tc_core, test_mul_gen_246);
-  tcase_add_test(tc_core, test_mul_gen_247);
-  tcase_add_test(tc_core, test_mul_gen_248);
-  tcase_add_test(tc_core, test_mul_gen_249);
-  tcase_add_test(tc_core, test_mul_gen_250);
-  tcase_add_test(tc_core, test_mul_gen_251);
-  tcase_add_test(tc_core, test_mul_gen_252);
-  tcase_add_test(tc_core, test_mul_gen_253);
-  tcase_add_test(tc_core, test_mul_gen_254);
-  tcase_add_test(tc_core, test_mul_gen_255);
-  tcase_add_test(tc_core, test_mul_gen_256);
-  tcase_add_test(tc_core, test_mul_gen_257);
-  tcase_add_test(tc_core, test_mul_gen_258);
-  tcase_add_test(tc_core, test_mul_gen_259);
-  tcase_add_test(tc_core, test_mul_gen_260);
-  tcase_add_test(tc_core, test_mul_gen_261);
-  tcase_add_test(tc_core, test_mul_gen_262);
-  tcase_add_test(tc_core, test_mul_gen_263);
-  tcase_add_test(tc_core, test_mul_gen_264);
-  tcase_add_test(tc_core, test_mul_gen_265);
-  tcase_add_test(tc_core, test_mul_gen_266);
-  tcase_add_test(tc_core, test_mul_gen_267);
-  tcase_add_test(tc_core, test_mul_gen_268);
-  tcase_add_test(tc_core, test_mul_gen_269);
-  tcase_add_test(tc_core, test_mul_gen_270);
-  tcase_add_test(tc_core, test_mul_gen_271);
-  tcase_add_test(tc_core, test_mul_gen_272);
-  tcase_add_test(tc_core, test_mul_gen_273);
-  tcase_add_test(tc_core, test_mul_gen_274);
-  tcase_add_test(tc_core, test_mul_gen_275);
-  tcase_add_test(tc_core, test_mul_gen_276);
-  tcase_add_test(tc_core, test_mul_gen_277);
-  tcase_add_test(tc_core, test_mul_gen_278);
-  tcase_add_test(tc_core, test_mul_gen_279);
-  tcase_add_test(tc_core, test_mul_gen_280);
-  tcase_add_test(tc_core, test_mul_gen_281);
-  tcase_add_test(tc_core, test_mul_gen_282);
-  tcase_add_test(tc_core, test_mul_gen_283);
-  tcase_add_test(tc_core, test_mul_gen_284);
-  tcase_add_test(tc_core, test_mul_gen_285);
-  tcase_add_test(tc_core, test_mul_gen_286);
-  tcase_add_test(tc_core, test_mul_gen_287);
-  tcase_add_test(tc_core, test_mul_gen_288);
-  tcase_add_test(tc_core, test_mul_gen_289);
-  tcase_add_test(tc_core, test_mul_gen_290);
-  tcase_add_test(tc_core, test_mul_gen_291);
-  tcase_add_test(tc_core, test_mul_gen_292);
-  tcase_add_test(tc_core, test_mul_gen_293);
-  tcase_add_test(tc_core, test_mul_gen_294);
-  tcase_add_test(tc_core, test_mul_gen_295);
-  tcase_add_test(tc_core, test_mul_gen_296);
-  tcase_add_test(tc_core, test_mul_gen_297);
-  tcase_add_test(tc_core, test_mul_gen_298);
-  tcase_add_test(tc_core, test_mul_gen_299);
-  tcase_add_test(tc_core, test_mul_gen_300);
-  tcase_add_test(tc_core, test_mul_gen_301);
-  tcase_add_test(tc_core, test_mul_gen_302);
-  tcase_add_test(tc_core, test_mul_gen_303);
-  tcase_add_test(tc_core, test_mul_gen_304);
-  tcase_add_test(tc_core, test_mul_gen_305);
-  tcase_add_test(tc_core, test_mul_gen_306);
-  tcase_add_test(tc_core, test_mul_gen_307);
-  tcase_add_test(tc_core, test_mul_gen_308);
-  tcase_add_test(tc_core, test_mul_gen_309);
-  tcase_add_test(tc_core, test_mul_gen_310);
-  tcase_add_test(tc_core, test_mul_gen_311);
-  tcase_add_test(tc_core, test_mul_gen_312);
-  tcase_add_test(tc_core, test_mul_gen_313);
-  tcase_add_test(tc_core, test_mul_gen_314);
-  tcase_add_test(tc_core, test_mul_gen_315);
-  tcase_add_test(tc_core, test_mul_gen_316);
-  tcase_add_test(tc_core, test_mul_gen_317);
-  tcase_add_test(tc_core, test_mul_gen_318);
-  tcase_add_test(tc_core, test_mul_gen_319);
-  tcase_add_test(tc_core, test_mul_gen_320);
-  tcase_add_test(tc_core, test_mul_gen_321);
-  tcase_add_test(tc_core, test_mul_gen_322);
-  tcase_add_test(tc_core, test_mul_gen_323);
-  tcase_add_test(tc_core, test_mul_gen_324);
-  tcase_add_test(tc_core, test_mul_gen_325);
-  tcase_add_test(tc_core, test_mul_gen_326);
-  tcase_add_test(tc_core, test_mul_gen_327);
-  tcase_add_test(tc_core, test_mul_gen_328);
-  tcase_add_test(tc_core, test_mul_gen_329);
-  tcase_add_test(tc_core, test_mul_gen_330);
-  tcase_add_test(tc_core, test_mul_gen_331);
-  tcase_add_test(tc_core, test_mul_gen_332);
-  tcase_add_test(tc_core, test_mul_gen_333);
-  tcase_add_test(tc_core, test_mul_gen_334);
-  tcase_add_test(tc_core, test_mul_gen_335);
-  tcase_add_test(tc_core, test_mul_gen_336);
-  tcase_add_test(tc_core, test_mul_gen_337);
-  tcase_add_test(tc_core, test_mul_gen_338);
-  tcase_add_test(tc_core, test_mul_gen_339);
-  tcase_add_test(tc_core, test_mul_gen_340);
-  tcase_add_test(tc_core, test_mul_gen_341);
-  tcase_add_test(tc_core, test_mul_gen_342);
-  tcase_add_test(tc_core, test_mul_gen_343);
-  tcase_add_test(tc_core, test_mul_gen_344);
-  tcase_add_test(tc_core, test_mul_gen_345);
-  tcase_add_test(tc_core, test_mul_gen_346);
-  tcase_add_test(tc_core, test_mul_gen_347);
-  tcase_add_test(tc_core, test_mul_gen_348);
-  tcase_add_test(tc_core, test_mul_gen_349);
-  tcase_add_test(tc_core, test_mul_gen_350);
-  tcase_add_test(tc_core, test_mul_gen_351);
-  tcase_add_test(tc_core, test_mul_gen_352);
-  tcase_add_test(tc_core, test_mul_gen_353);
-  tcase_add_test(tc_core, test_mul_gen_354);
-  tcase_add_test(tc_core, test_mul_gen_355);
-  tcase_add_test(tc_core, test_mul_gen_356);
-  tcase_add_test(tc_core, test_mul_gen_357);
-  tcase_add_test(tc_core, test_mul_gen_358);
-  tcase_add_test(tc_core, test_mul_gen_359);
-  tcase_add_test(tc_core, test_mul_gen_360);
-  tcase_add_test(tc_core, test_mul_gen_361);
-  tcase_add_test(tc_core, test_mul_gen_362);
-  tcase_add_test(tc_core, test_mul_gen_363);
-  tcase_add_test(tc_core, test_mul_gen_364);
-  tcase_add_test(tc_core, test_mul_gen_365);
-  tcase_add_test(tc_core, test_mul_gen_366);
-  tcase_add_test(tc_core, test_mul_gen_367);
-  tcase_add_test(tc_core, test_mul_gen_368);
-  tcase_add_test(tc_core, test_mul_gen_369);
-  tcase_add_test(tc_core, test_mul_gen_370);
-  tcase_add_test(tc_core, test_mul_gen_371);
-  tcase_add_test(tc_core, test_mul_gen_372);
-  tcase_add_test(tc_core, test_mul_gen_373);
-  tcase_add_test(tc_core, test_mul_gen_374);
-  tcase_add_test(tc_core, test_mul_gen_375);
-  tcase_add_test(tc_core, test_mul_gen_376);
-  tcase_add_test(tc_core, test_mul_gen_377);
-  tcase_add_test(tc_core, test_mul_gen_378);
-  tcase_add_test(tc_core, test_mul_gen_379);
-  tcase_add_test(tc_core, test_mul_gen_380);
-  tcase_add_test(tc_core, test_mul_gen_381);
-  tcase_add_test(tc_core, test_mul_gen_382);
-  tcase_add_test(tc_core, test_mul_gen_383);
-  tcase_add_test(tc_core, test_mul_gen_384);
-  tcase_add_test(tc_core, test_mul_gen_385);
-  tcase_add_test(tc_core, test_mul_gen_386);
-  tcase_add_test(tc_core, test_mul_gen_387);
-  tcase_add_test(tc_core, test_mul_gen_388);
-  tcase_add_test(tc_core, test_mul_gen_389);
-  tcase_add_test(tc_core, test_mul_gen_390);
-  tcase_add_test(tc_core, test_mul_gen_391);
-  tcase_add_test(tc_core, test_mul_gen_392);
-  tcase_add_test(tc_core, test_mul_gen_393);
-  tcase_add_test(tc_core, test_mul_gen_394);
-  tcase_add_test(tc_core, test_mul_gen_395);
-  tcase_add_test(tc_core, test_mul_gen_396);
-  tcase_add_test(tc_core, test_mul_gen_397);
-  tcase_add_test(tc_core, test_mul_gen_398);
-  tcase_add_test(tc_core, test_mul_gen_399);
-  tcase_add_test(tc_core, test_mul_gen_400);
-  tcase_add_test(tc_core, test_mul_gen_401);
-  tcase_add_test(tc_core, test_mul_gen_402);
-  tcase_add_test(tc_core, test_mul_gen_403);
-  tcase_add_test(tc_core, test_mul_gen_404);
-  tcase_add_test(tc_core, test_mul_gen_405);
-  tcase_add_test(tc_core, test_mul_gen_406);
-  tcase_add_test(tc_core, test_mul_gen_407);
-  tcase_add_test(tc_core, test_mul_gen_408);
-  tcase_add_test(tc_core, test_mul_gen_409);
-  tcase_add_test(tc_core, test_mul_gen_410);
-  tcase_add_test(tc_core, test_mul_gen_411);
-  tcase_add_test(tc_core, test_mul_gen_412);
-  tcase_add_test(tc_core, test_mul_gen_413);
-  tcase_add_test(tc_core, test_mul_gen_414);
-  tcase_add_test(tc_core, test_mul_gen_415);
-  tcase_add_test(tc_core, test_mul_gen_416);
-  tcase_add_test(tc_core, test_mul_gen_417);
-  tcase_add_test(tc_core, test_mul_gen_418);
-  tcase_add_test(tc_core, test_mul_gen_419);
-  tcase_add_test(tc_core, test_mul_gen_420);
-  tcase_add_test(tc_core, test_mul_gen_421);
-  tcase_add_test(tc_core, test_mul_gen_422);
-  tcase_add_test(tc_core, test_mul_gen_423);
-  tcase_add_test(tc_core, test_mul_gen_424);
-  tcase_add_test(tc_core, test_mul_gen_425);
-  tcase_add_test(tc_core, test_mul_gen_426);
-  tcase_add_test(tc_core, test_mul_gen_427);
-  tcase_add_test(tc_core, test_mul_gen_428);
-  tcase_add_test(tc_core, test_mul_gen_429);
-  tcase_add_test(tc_core, test_mul_gen_430);
-  tcase_add_test(tc_core, test_mul_gen_431);
-  tcase_add_test(tc_core, test_mul_gen_432);
-  tcase_add_test(tc_core, test_mul_gen_433);
-  tcase_add_test(tc_core, test_mul_gen_434);
-  tcase_add_test(tc_core, test_mul_gen_435);
-  tcase_add_test(tc_core, test_mul_gen_436);
-  tcase_add_test(tc_core, test_mul_gen_437);
-  tcase_add_test(tc_core, test_mul_gen_438);
-  tcase_add_test(tc_core, test_mul_gen_439);
-  tcase_add_test(tc_core, test_mul_gen_440);
-  tcase_add_test(tc_core, test_mul_gen_441);
-  tcase_add_test(tc_core, test_mul_gen_442);
-  tcase_add_test(tc_core, test_mul_gen_443);
-  tcase_add_test(tc_core, test_mul_gen_444);
-  tcase_add_test(tc_core, test_mul_gen_445);
-  tcase_add_test(tc_core, test_mul_gen_446);
-  tcase_add_test(tc_core, test_mul_gen_447);
-  tcase_add_test(tc_core, test_mul_gen_448);
-  tcase_add_test(tc_core, test_mul_gen_449);
-  tcase_add_test(tc_core, test_mul_gen_450);
-  tcase_add_test(tc_core, test_mul_gen_451);
-  tcase_add_test(tc_core, test_mul_gen_452);
-  tcase_add_test(tc_core, test_mul_gen_453);
-  tcase_add_test(tc_core, test_mul_gen_454);
-  tcase_add_test(tc_core, test_mul_gen_455);
-  tcase_add_test(tc_core, test_mul_gen_456);
-  tcase_add_test(tc_core, test_mul_gen_457);
-  tcase_add_test(tc_core, test_mul_gen_458);
-  tcase_add_test(tc_core, test_mul_gen_459);
-  tcase_add_test(tc_core, test_mul_gen_460);
-  tcase_add_test(tc_core, test_mul_gen_461);
-  tcase_add_test(tc_core, test_mul_gen_462);
-  tcase_add_test(tc_core, test_mul_gen_463);
-  tcase_add_test(tc_core, test_mul_gen_464);
-  tcase_add_test(tc_core, test_mul_gen_465);
-  tcase_add_test(tc_core, test_mul_gen_466);
-  tcase_add_test(tc_core, test_mul_gen_467);
-  tcase_add_test(tc_core, test_mul_gen_468);
-  tcase_add_test(tc_core, test_mul_gen_469);
-  tcase_add_test(tc_core, test_mul_gen_470);
-  tcase_add_test(tc_core, test_mul_gen_471);
-  tcase_add_test(tc_core, test_mul_gen_472);
-  tcase_add_test(tc_core, test_mul_gen_473);
-  tcase_add_test(tc_core, test_mul_gen_474);
-  tcase_add_test(tc_core, test_mul_gen_475);
-  tcase_add_test(tc_core, test_mul_gen_476);
-  tcase_add_test(tc_core, test_mul_gen_477);
-  tcase_add_test(tc_core, test_mul_gen_478);
-  tcase_add_test(tc_core, test_mul_gen_479);
-  tcase_add_test(tc_core, test_mul_gen_480);
-  tcase_add_test(tc_core, test_mul_gen_481);
-  tcase_add_test(tc_core, test_mul_gen_482);
-  tcase_add_test(tc_core, test_mul_gen_483);
-  tcase_add_test(tc_core, test_mul_gen_484);
-  tcase_add_test(tc_core, test_mul_gen_485);
-  tcase_add_test(tc_core, test_mul_gen_486);
-  tcase_add_test(tc_core, test_mul_gen_487);
-  tcase_add_test(tc_core, test_mul_gen_488);
-  tcase_add_test(tc_core, test_mul_gen_489);
-  tcase_add_test(tc_core, test_mul_gen_490);
-  tcase_add_test(tc_core, test_mul_gen_491);
-  tcase_add_test(tc_core, test_mul_gen_492);
-  tcase_add_test(tc_core, test_mul_gen_493);
-  tcase_add_test(tc_core, test_mul_gen_494);
-  tcase_add_test(tc_core, test_mul_gen_495);
-  tcase_add_test(tc_core, test_mul_gen_496);
-  tcase_add_test(tc_core, test_mul_gen_497);
-  tcase_add_test(tc_core, test_mul_gen_498);
-  tcase_add_test(tc_core, test_mul_gen_499);
-  tcase_add_test(tc_core, test_mul_gen_500);
-  tcase_add_test(tc_core, test_mul_gen_501);
-  tcase_add_test(tc_core, test_mul_gen_502);
-  tcase_add_test(tc_core, test_mul_gen_503);
-  tcase_add_test(tc_core, test_mul_gen_504);
-  tcase_add_test(tc_core, test_mul_gen_505);
-  tcase_add_test(tc_core, epsilon_test_1);
+  tcase_add_test(tc_core, test_mul_gen2_0);
+  tcase_add_test(tc_core, test_mul_gen2_1);
+  tcase_add_test(tc_core, test_mul_gen2_2);
+  tcase_add_test(tc_core, test_mul_gen2_3);
+  tcase_add_test(tc_core, test_mul_gen2_4);
+  tcase_add_test(tc_core, test_mul_gen2_5);
+  tcase_add_test(tc_core, test_mul_gen2_6);
+  tcase_add_test(tc_core, test_mul_gen2_7);
+  tcase_add_test(tc_core, test_mul_gen2_8);
+  tcase_add_test(tc_core, test_mul_gen2_9);
+  tcase_add_test(tc_core, test_mul_gen2_10);
+  tcase_add_test(tc_core, test_mul_gen2_11);
+  tcase_add_test(tc_core, test_mul_gen2_12);
+  tcase_add_test(tc_core, test_mul_gen2_13);
+  tcase_add_test(tc_core, test_mul_gen2_14);
+  tcase_add_test(tc_core, test_mul_gen2_15);
+  tcase_add_test(tc_core, test_mul_gen2_16);
+  tcase_add_test(tc_core, test_mul_gen2_17);
+  tcase_add_test(tc_core, test_mul_gen2_18);
+  tcase_add_test(tc_core, test_mul_gen2_19);
+  tcase_add_test(tc_core, test_mul_gen2_20);
+  tcase_add_test(tc_core, test_mul_gen2_21);
+  tcase_add_test(tc_core, test_mul_gen2_22);
+  tcase_add_test(tc_core, test_mul_gen2_23);
+  tcase_add_test(tc_core, test_mul_gen2_24);
+  tcase_add_test(tc_core, test_mul_gen2_25);
+  tcase_add_test(tc_core, test_mul_gen2_26);
+  tcase_add_test(tc_core, test_mul_gen2_27);
+  tcase_add_test(tc_core, test_mul_gen2_28);
+  tcase_add_test(tc_core, test_mul_gen2_29);
+  tcase_add_test(tc_core, test_mul_gen2_30);
+  tcase_add_test(tc_core, test_mul_gen2_31);
+  tcase_add_test(tc_core, test_mul_gen2_32);
+  tcase_add_test(tc_core, test_mul_gen2_33);
+  tcase_add_test(tc_core, test_mul_gen2_34);
+  tcase_add_test(tc_core, test_mul_gen2_35);
+  tcase_add_test(tc_core, test_mul_gen2_36);
+  tcase_add_test(tc_core, test_mul_gen2_37);
+  tcase_add_test(tc_core, test_mul_gen2_38);
+  tcase_add_test(tc_core, test_mul_gen2_39);
+  tcase_add_test(tc_core, test_mul_gen2_40);
+  tcase_add_test(tc_core, test_mul_gen2_41);
+  tcase_add_test(tc_core, test_mul_gen2_42);
+  tcase_add_test(tc_core, test_mul_gen2_43);
+  tcase_add_test(tc_core, test_mul_gen2_44);
+  tcase_add_test(tc_core, test_mul_gen2_45);
+  tcase_add_test(tc_core, test_mul_gen2_46);
+  tcase_add_test(tc_core, test_mul_gen2_47);
+  tcase_add_test(tc_core, test_mul_gen2_48);
+  tcase_add_test(tc_core, test_mul_gen2_49);
+  tcase_add_test(tc_core, test_mul_gen2_50);
+  tcase_add_test(tc_core, test_mul_gen2_51);
+  tcase_add_test(tc_core, test_mul_gen2_52);
+  tcase_add_test(tc_core, test_mul_gen2_53);
+  tcase_add_test(tc_core, test_mul_gen2_54);
+  tcase_add_test(tc_core, test_mul_gen2_55);
+  tcase_add_test(tc_core, test_mul_gen2_56);
+  tcase_add_test(tc_core, test_mul_gen2_57);
+  tcase_add_test(tc_core, test_mul_gen2_58);
+  tcase_add_test(tc_core, test_mul_gen2_59);
+  tcase_add_test(tc_core, test_mul_gen2_60);
+  tcase_add_test(tc_core, test_mul_gen2_61);
+  tcase_add_test(tc_core, test_mul_gen2_62);
+  tcase_add_test(tc_core, test_mul_gen2_63);
+  tcase_add_test(tc_core, test_mul_gen2_64);
+  tcase_add_test(tc_core, test_mul_gen2_65);
+  tcase_add_test(tc_core, test_mul_gen2_66);
+  tcase_add_test(tc_core, test_mul_gen2_67);
+  tcase_add_test(tc_core, test_mul_gen2_68);
+  tcase_add_test(tc_core, test_mul_gen2_69);
+  tcase_add_test(tc_core, test_mul_gen2_70);
+  tcase_add_test(tc_core, test_mul_gen2_71);
+  tcase_add_test(tc_core, test_mul_gen2_72);
+  tcase_add_test(tc_core, test_mul_gen2_73);
+  tcase_add_test(tc_core, test_mul_gen2_74);
+  tcase_add_test(tc_core, test_mul_gen2_75);
+  tcase_add_test(tc_core, test_mul_gen2_76);
+  tcase_add_test(tc_core, test_mul_gen2_77);
+  tcase_add_test(tc_core, test_mul_gen2_78);
+  tcase_add_test(tc_core, test_mul_gen2_79);
+  tcase_add_test(tc_core, test_mul_gen2_80);
+  tcase_add_test(tc_core, test_mul_gen2_81);
+  tcase_add_test(tc_core, test_mul_gen2_82);
+  tcase_add_test(tc_core, test_mul_gen2_83);
+  tcase_add_test(tc_core, test_mul_gen2_84);
+  tcase_add_test(tc_core, test_mul_gen2_85);
+  tcase_add_test(tc_core, test_mul_gen2_86);
+  tcase_add_test(tc_core, test_mul_gen2_87);
+  tcase_add_test(tc_core, test_mul_gen2_88);
+  tcase_add_test(tc_core, test_mul_gen2_89);
+  tcase_add_test(tc_core, test_mul_gen2_90);
+  tcase_add_test(tc_core, test_mul_gen2_91);
+  tcase_add_test(tc_core, test_mul_gen2_92);
+  tcase_add_test(tc_core, test_mul_gen2_93);
+  tcase_add_test(tc_core, test_mul_gen2_94);
+  tcase_add_test(tc_core, test_mul_gen2_95);
+  tcase_add_test(tc_core, test_mul_gen2_96);
+  tcase_add_test(tc_core, test_mul_gen2_97);
+  tcase_add_test(tc_core, test_mul_gen2_98);
+  tcase_add_test(tc_core, test_mul_gen2_99);
+  tcase_add_test(tc_core, test_mul_gen2_100);
+  tcase_add_test(tc_core, test_mul_gen2_101);
+  tcase_add_test(tc_core, test_mul_gen2_102);
+  tcase_add_test(tc_core, test_mul_gen2_103);
+  tcase_add_test(tc_core, test_mul_gen2_104);
+  tcase_add_test(tc_core, test_mul_gen2_105);
+  tcase_add_test(tc_core, test_mul_gen2_106);
+  tcase_add_test(tc_core, test_mul_gen2_107);
+  tcase_add_test(tc_core, test_mul_gen2_108);
+  tcase_add_test(tc_core, test_mul_gen2_109);
+  tcase_add_test(tc_core, test_mul_gen2_110);
+  tcase_add_test(tc_core, test_mul_gen2_111);
+  tcase_add_test(tc_core, test_mul_gen2_112);
+  tcase_add_test(tc_core, test_mul_gen2_113);
+  tcase_add_test(tc_core, test_mul_gen2_114);
+  tcase_add_test(tc_core, test_mul_gen2_115);
+  tcase_add_test(tc_core, test_mul_gen2_116);
+  tcase_add_test(tc_core, test_mul_gen2_117);
+  tcase_add_test(tc_core, test_mul_gen2_118);
+  tcase_add_test(tc_core, test_mul_gen2_119);
+  tcase_add_test(tc_core, test_mul_gen2_120);
+  tcase_add_test(tc_core, test_mul_gen2_121);
+  tcase_add_test(tc_core, test_mul_gen2_122);
+  tcase_add_test(tc_core, test_mul_gen2_123);
+  tcase_add_test(tc_core, test_mul_gen2_124);
+  tcase_add_test(tc_core, test_mul_gen2_125);
+  tcase_add_test(tc_core, test_mul_gen2_126);
+  tcase_add_test(tc_core, test_mul_gen2_127);
+  tcase_add_test(tc_core, test_mul_gen2_128);
+  tcase_add_test(tc_core, test_mul_gen2_129);
+  tcase_add_test(tc_core, test_mul_gen2_130);
+  tcase_add_test(tc_core, test_mul_gen2_131);
+  tcase_add_test(tc_core, test_mul_gen2_132);
+  tcase_add_test(tc_core, test_mul_gen2_133);
+  tcase_add_test(tc_core, test_mul_gen2_134);
+  tcase_add_test(tc_core, test_mul_gen2_135);
+  tcase_add_test(tc_core, test_mul_gen2_136);
+  tcase_add_test(tc_core, test_mul_gen2_137);
+  tcase_add_test(tc_core, test_mul_gen2_138);
+  tcase_add_test(tc_core, test_mul_gen2_139);
+  tcase_add_test(tc_core, test_mul_gen2_140);
+  tcase_add_test(tc_core, test_mul_gen2_141);
+  tcase_add_test(tc_core, test_mul_gen2_142);
+  tcase_add_test(tc_core, test_mul_gen2_143);
+  tcase_add_test(tc_core, test_mul_gen2_144);
+  tcase_add_test(tc_core, test_mul_gen2_145);
+  tcase_add_test(tc_core, test_mul_gen2_146);
+  tcase_add_test(tc_core, test_mul_gen2_147);
+  tcase_add_test(tc_core, test_mul_gen2_148);
+  tcase_add_test(tc_core, test_mul_gen2_149);
+  tcase_add_test(tc_core, test_mul_gen2_150);
+  tcase_add_test(tc_core, test_mul_gen2_151);
+  tcase_add_test(tc_core, test_mul_gen2_152);
+  tcase_add_test(tc_core, test_mul_gen2_153);
+  tcase_add_test(tc_core, test_mul_gen2_154);
+  tcase_add_test(tc_core, test_mul_gen2_155);
+  tcase_add_test(tc_core, test_mul_gen2_156);
+  tcase_add_test(tc_core, test_mul_gen2_157);
+  tcase_add_test(tc_core, test_mul_gen2_158);
+  tcase_add_test(tc_core, test_mul_gen2_159);
+  tcase_add_test(tc_core, test_mul_gen2_160);
+  tcase_add_test(tc_core, test_mul_gen2_161);
+  tcase_add_test(tc_core, test_mul_gen2_162);
+  tcase_add_test(tc_core, test_mul_gen2_163);
+  tcase_add_test(tc_core, test_mul_gen2_164);
+  tcase_add_test(tc_core, test_mul_gen2_165);
+  tcase_add_test(tc_core, test_mul_gen2_166);
+  tcase_add_test(tc_core, test_mul_gen2_167);
+  tcase_add_test(tc_core, test_mul_gen2_168);
+  tcase_add_test(tc_core, test_mul_gen2_169);
+  tcase_add_test(tc_core, test_mul_gen2_170);
+  tcase_add_test(tc_core, test_mul_gen2_171);
+  tcase_add_test(tc_core, test_mul_gen2_172);
+  tcase_add_test(tc_core, test_mul_gen2_173);
+  tcase_add_test(tc_core, test_mul_gen2_174);
+  tcase_add_test(tc_core, test_mul_gen2_175);
+  tcase_add_test(tc_core, test_mul_gen2_176);
+  tcase_add_test(tc_core, test_mul_gen2_177);
+  tcase_add_test(tc_core, test_mul_gen2_178);
+  tcase_add_test(tc_core, test_mul_gen2_179);
+  tcase_add_test(tc_core, test_mul_gen2_180);
+  tcase_add_test(tc_core, test_mul_gen2_181);
+  tcase_add_test(tc_core, test_mul_gen2_182);
+  tcase_add_test(tc_core, test_mul_gen2_183);
+  tcase_add_test(tc_core, test_mul_gen2_184);
+  tcase_add_test(tc_core, test_mul_gen2_185);
+  tcase_add_test(tc_core, test_mul_gen2_186);
+  tcase_add_test(tc_core, test_mul_gen2_187);
+  tcase_add_test(tc_core, test_mul_gen2_188);
+  tcase_add_test(tc_core, test_mul_gen2_189);
+  tcase_add_test(tc_core, test_mul_gen2_190);
+  tcase_add_test(tc_core, test_mul_gen2_191);
+  tcase_add_test(tc_core, test_mul_gen2_192);
+  tcase_add_test(tc_core, test_mul_gen2_193);
+  tcase_add_test(tc_core, test_mul_gen2_194);
+  tcase_add_test(tc_core, test_mul_gen2_195);
+  tcase_add_test(tc_core, test_mul_gen2_196);
+  tcase_add_test(tc_core, test_mul_gen2_197);
+  tcase_add_test(tc_core, test_mul_gen2_198);
+  tcase_add_test(tc_core, test_mul_gen2_199);
+  tcase_add_test(tc_core, test_mul_gen2_200);
+  tcase_add_test(tc_core, test_mul_gen2_201);
+  tcase_add_test(tc_core, test_mul_gen2_202);
+  tcase_add_test(tc_core, test_mul_gen2_203);
+  tcase_add_test(tc_core, test_mul_gen2_204);
+  tcase_add_test(tc_core, test_mul_gen2_205);
+  tcase_add_test(tc_core, test_mul_gen2_206);
+  tcase_add_test(tc_core, test_mul_gen2_207);
+  tcase_add_test(tc_core, test_mul_gen2_208);
+  tcase_add_test(tc_core, test_mul_gen2_209);
+  tcase_add_test(tc_core, test_mul_gen2_210);
+  tcase_add_test(tc_core, test_mul_gen2_211);
+  tcase_add_test(tc_core, test_mul_gen2_212);
+  tcase_add_test(tc_core, test_mul_gen2_213);
+  tcase_add_test(tc_core, test_mul_gen2_214);
+  tcase_add_test(tc_core, test_mul_gen2_215);
+  tcase_add_test(tc_core, test_mul_gen2_216);
+  tcase_add_test(tc_core, test_mul_gen2_217);
+  tcase_add_test(tc_core, test_mul_gen2_218);
+  tcase_add_test(tc_core, test_mul_gen2_219);
+  tcase_add_test(tc_core, test_mul_gen2_220);
+  tcase_add_test(tc_core, test_mul_gen2_221);
+  tcase_add_test(tc_core, test_mul_gen2_222);
+  tcase_add_test(tc_core, test_mul_gen2_223);
+  tcase_add_test(tc_core, test_mul_gen2_224);
+  tcase_add_test(tc_core, test_mul_gen2_225);
+  tcase_add_test(tc_core, test_mul_gen2_226);
+  tcase_add_test(tc_core, test_mul_gen2_227);
+  tcase_add_test(tc_core, test_mul_gen2_228);
+  tcase_add_test(tc_core, test_mul_gen2_229);
+  tcase_add_test(tc_core, test_mul_gen2_230);
+  tcase_add_test(tc_core, test_mul_gen2_231);
+  tcase_add_test(tc_core, test_mul_gen2_232);
+  tcase_add_test(tc_core, test_mul_gen2_233);
+  tcase_add_test(tc_core, test_mul_gen2_234);
+  tcase_add_test(tc_core, test_mul_gen2_235);
+  tcase_add_test(tc_core, test_mul_gen2_236);
+  tcase_add_test(tc_core, test_mul_gen2_237);
+  tcase_add_test(tc_core, test_mul_gen2_238);
+  tcase_add_test(tc_core, test_mul_gen2_239);
+  tcase_add_test(tc_core, test_mul_gen2_240);
+  tcase_add_test(tc_core, test_mul_gen2_241);
+  tcase_add_test(tc_core, test_mul_gen2_242);
+  tcase_add_test(tc_core, test_mul_gen2_243);
+  tcase_add_test(tc_core, test_mul_gen2_244);
+  tcase_add_test(tc_core, test_mul_gen2_245);
+  tcase_add_test(tc_core, test_mul_gen2_246);
+  tcase_add_test(tc_core, test_mul_gen2_247);
+  tcase_add_test(tc_core, test_mul_gen2_248);
+  tcase_add_test(tc_core, test_mul_gen2_249);
+  tcase_add_test(tc_core, test_mul_gen2_250);
+  tcase_add_test(tc_core, test_mul_gen2_251);
+  tcase_add_test(tc_core, test_mul_gen2_252);
+  tcase_add_test(tc_core, test_mul_gen2_253);
+  tcase_add_test(tc_core, test_mul_gen2_254);
+  tcase_add_test(tc_core, test_mul_gen2_255);
+  tcase_add_test(tc_core, test_mul_gen2_256);
+  tcase_add_test(tc_core, test_mul_gen2_257);
+  tcase_add_test(tc_core, test_mul_gen2_258);
+  tcase_add_test(tc_core, test_mul_gen2_259);
+  tcase_add_test(tc_core, test_mul_gen2_260);
+  tcase_add_test(tc_core, test_mul_gen2_261);
+  tcase_add_test(tc_core, test_mul_gen2_262);
+  tcase_add_test(tc_core, test_mul_gen2_263);
+  tcase_add_test(tc_core, test_mul_gen2_264);
+  tcase_add_test(tc_core, test_mul_gen2_265);
+  tcase_add_test(tc_core, test_mul_gen2_266);
+  tcase_add_test(tc_core, test_mul_gen2_267);
+  tcase_add_test(tc_core, test_mul_gen2_268);
+  tcase_add_test(tc_core, test_mul_gen2_269);
+  tcase_add_test(tc_core, test_mul_gen2_270);
+  tcase_add_test(tc_core, test_mul_gen2_271);
+  tcase_add_test(tc_core, test_mul_gen2_272);
+  tcase_add_test(tc_core, test_mul_gen2_273);
+  tcase_add_test(tc_core, test_mul_gen2_274);
+  tcase_add_test(tc_core, test_mul_gen2_275);
+  tcase_add_test(tc_core, test_mul_gen2_276);
+  tcase_add_test(tc_core, test_mul_gen2_277);
+  tcase_add_test(tc_core, test_mul_gen2_278);
+  tcase_add_test(tc_core, test_mul_gen2_279);
+  tcase_add_test(tc_core, test_mul_gen2_280);
+  tcase_add_test(tc_core, test_mul_gen2_281);
+  tcase_add_test(tc_core, test_mul_gen2_282);
+  tcase_add_test(tc_core, test_mul_gen2_283);
+  tcase_add_test(tc_core, test_mul_gen2_284);
+  tcase_add_test(tc_core, test_mul_gen2_285);
+  tcase_add_test(tc_core, test_mul_gen2_286);
+  tcase_add_test(tc_core, test_mul_gen2_287);
+  tcase_add_test(tc_core, test_mul_gen2_288);
+  tcase_add_test(tc_core, test_mul_gen2_289);
+  tcase_add_test(tc_core, test_mul_gen2_290);
+  tcase_add_test(tc_core, test_mul_gen2_291);
+  tcase_add_test(tc_core, test_mul_gen2_292);
+  tcase_add_test(tc_core, test_mul_gen2_293);
+  tcase_add_test(tc_core, test_mul_gen2_294);
+  tcase_add_test(tc_core, test_mul_gen2_295);
+  tcase_add_test(tc_core, test_mul_gen2_296);
+  tcase_add_test(tc_core, test_mul_gen2_297);
+  tcase_add_test(tc_core, test_mul_gen2_298);
+  tcase_add_test(tc_core, test_mul_gen2_299);
+  tcase_add_test(tc_core, test_mul_gen2_300);
+  tcase_add_test(tc_core, test_mul_gen2_301);
+  tcase_add_test(tc_core, test_mul_gen2_302);
+  tcase_add_test(tc_core, test_mul_gen2_303);
+  tcase_add_test(tc_core, test_mul_gen2_304);
+  tcase_add_test(tc_core, test_mul_gen2_305);
+  tcase_add_test(tc_core, test_mul_gen2_306);
+  tcase_add_test(tc_core, test_mul_gen2_307);
+  tcase_add_test(tc_core, test_mul_gen2_308);
+  tcase_add_test(tc_core, test_mul_gen2_309);
+  tcase_add_test(tc_core, test_mul_gen2_310);
+  tcase_add_test(tc_core, test_mul_gen2_311);
+  tcase_add_test(tc_core, test_mul_gen2_312);
+  tcase_add_test(tc_core, test_mul_gen2_313);
+  tcase_add_test(tc_core, test_mul_gen2_314);
+  tcase_add_test(tc_core, test_mul_gen2_315);
+  tcase_add_test(tc_core, test_mul_gen2_316);
+  tcase_add_test(tc_core, test_mul_gen2_317);
+  tcase_add_test(tc_core, test_mul_gen2_318);
+  tcase_add_test(tc_core, test_mul_gen2_319);
+  tcase_add_test(tc_core, test_mul_gen2_320);
+  tcase_add_test(tc_core, test_mul_gen2_321);
+  tcase_add_test(tc_core, test_mul_gen2_322);
+  tcase_add_test(tc_core, test_mul_gen2_323);
+  tcase_add_test(tc_core, test_mul_gen2_324);
+  tcase_add_test(tc_core, test_mul_gen2_325);
+  tcase_add_test(tc_core, test_mul_gen2_326);
+  tcase_add_test(tc_core, test_mul_gen2_327);
+  tcase_add_test(tc_core, test_mul_gen2_328);
+  tcase_add_test(tc_core, test_mul_gen2_329);
+  tcase_add_test(tc_core, test_mul_gen2_330);
+  tcase_add_test(tc_core, test_mul_gen2_331);
+  tcase_add_test(tc_core, test_mul_gen2_332);
+  tcase_add_test(tc_core, test_mul_gen2_333);
+  tcase_add_test(tc_core, test_mul_gen2_334);
+  tcase_add_test(tc_core, test_mul_gen2_335);
+  tcase_add_test(tc_core, test_mul_gen2_336);
+  tcase_add_test(tc_core, test_mul_gen2_337);
+  tcase_add_test(tc_core, test_mul_gen2_338);
+  tcase_add_test(tc_core, test_mul_gen2_339);
+  tcase_add_test(tc_core, test_mul_gen2_340);
+  tcase_add_test(tc_core, test_mul_gen2_341);
+  tcase_add_test(tc_core, test_mul_gen2_342);
+  tcase_add_test(tc_core, test_mul_gen2_343);
+  tcase_add_test(tc_core, test_mul_gen2_344);
+  tcase_add_test(tc_core, test_mul_gen2_345);
+  tcase_add_test(tc_core, test_mul_gen2_346);
+  tcase_add_test(tc_core, test_mul_gen2_347);
+  tcase_add_test(tc_core, test_mul_gen2_348);
+  tcase_add_test(tc_core, test_mul_gen2_349);
+  tcase_add_test(tc_core, test_mul_gen2_350);
+  tcase_add_test(tc_core, test_mul_gen2_351);
+  tcase_add_test(tc_core, test_mul_gen2_352);
+  tcase_add_test(tc_core, test_mul_gen2_353);
+  tcase_add_test(tc_core, test_mul_gen2_354);
+  tcase_add_test(tc_core, test_mul_gen2_355);
+  tcase_add_test(tc_core, test_mul_gen2_356);
+  tcase_add_test(tc_core, test_mul_gen2_357);
+  tcase_add_test(tc_core, test_mul_gen2_358);
+  tcase_add_test(tc_core, test_mul_gen2_359);
+  tcase_add_test(tc_core, test_mul_gen2_360);
+  tcase_add_test(tc_core, test_mul_gen2_361);
+  tcase_add_test(tc_core, test_mul_gen2_362);
+  tcase_add_test(tc_core, test_mul_gen2_363);
+  tcase_add_test(tc_core, test_mul_gen2_364);
+  tcase_add_test(tc_core, test_mul_gen2_365);
+  tcase_add_test(tc_core, test_mul_gen2_366);
+  tcase_add_test(tc_core, test_mul_gen2_367);
+  tcase_add_test(tc_core, test_mul_gen2_368);
+  tcase_add_test(tc_core, test_mul_gen2_369);
+  tcase_add_test(tc_core, test_mul_gen2_370);
+  tcase_add_test(tc_core, test_mul_gen2_371);
+  tcase_add_test(tc_core, test_mul_gen2_372);
+  tcase_add_test(tc_core, test_mul_gen2_373);
+  tcase_add_test(tc_core, test_mul_gen2_374);
+  tcase_add_test(tc_core, test_mul_gen2_375);
+  tcase_add_test(tc_core, test_mul_gen2_376);
+  tcase_add_test(tc_core, test_mul_gen2_377);
+  tcase_add_test(tc_core, test_mul_gen2_378);
+  tcase_add_test(tc_core, test_mul_gen2_379);
+  tcase_add_test(tc_core, test_mul_gen2_380);
+  tcase_add_test(tc_core, test_mul_gen2_381);
+  tcase_add_test(tc_core, test_mul_gen2_382);
+  tcase_add_test(tc_core, test_mul_gen2_383);
+  tcase_add_test(tc_core, test_mul_gen2_384);
+  tcase_add_test(tc_core, test_mul_gen2_385);
+  tcase_add_test(tc_core, test_mul_gen2_386);
+  tcase_add_test(tc_core, test_mul_gen2_387);
+  tcase_add_test(tc_core, test_mul_gen2_388);
+  tcase_add_test(tc_core, test_mul_gen2_389);
+  tcase_add_test(tc_core, test_mul_gen2_390);
+  tcase_add_test(tc_core, test_mul_gen2_391);
+  tcase_add_test(tc_core, test_mul_gen2_392);
+  tcase_add_test(tc_core, test_mul_gen2_393);
+  tcase_add_test(tc_core, test_mul_gen2_394);
+  tcase_add_test(tc_core, test_mul_gen2_395);
+  tcase_add_test(tc_core, test_mul_gen2_396);
+  tcase_add_test(tc_core, test_mul_gen2_397);
+  tcase_add_test(tc_core, test_mul_gen2_398);
+  tcase_add_test(tc_core, test_mul_gen2_399);
+  tcase_add_test(tc_core, test_mul_gen2_400);
+  tcase_add_test(tc_core, test_mul_gen2_401);
+  tcase_add_test(tc_core, test_mul_gen2_402);
+  tcase_add_test(tc_core, test_mul_gen2_403);
+  tcase_add_test(tc_core, test_mul_gen2_404);
+  tcase_add_test(tc_core, test_mul_gen2_405);
+  tcase_add_test(tc_core, test_mul_gen2_406);
+  tcase_add_test(tc_core, test_mul_gen2_407);
+  tcase_add_test(tc_core, test_mul_gen2_408);
+  tcase_add_test(tc_core, test_mul_gen2_409);
+  tcase_add_test(tc_core, test_mul_gen2_410);
+  tcase_add_test(tc_core, test_mul_gen2_411);
+  tcase_add_test(tc_core, test_mul_gen2_412);
+  tcase_add_test(tc_core, test_mul_gen2_413);
+  tcase_add_test(tc_core, test_mul_gen2_414);
+  tcase_add_test(tc_core, test_mul_gen2_415);
+  tcase_add_test(tc_core, test_mul_gen2_416);
+  tcase_add_test(tc_core, test_mul_gen2_417);
+  tcase_add_test(tc_core, test_mul_gen2_418);
+  tcase_add_test(tc_core, test_mul_gen2_419);
+  tcase_add_test(tc_core, test_mul_gen2_420);
+  tcase_add_test(tc_core, test_mul_gen2_421);
+  tcase_add_test(tc_core, test_mul_gen2_422);
+  tcase_add_test(tc_core, test_mul_gen2_423);
+  tcase_add_test(tc_core, test_mul_gen2_424);
+  tcase_add_test(tc_core, test_mul_gen2_425);
+  tcase_add_test(tc_core, test_mul_gen2_426);
+  tcase_add_test(tc_core, test_mul_gen2_427);
+  tcase_add_test(tc_core, test_mul_gen2_428);
+  tcase_add_test(tc_core, test_mul_gen2_429);
+  tcase_add_test(tc_core, test_mul_gen2_430);
+  tcase_add_test(tc_core, test_mul_gen2_431);
+  tcase_add_test(tc_core, test_mul_gen2_432);
+  tcase_add_test(tc_core, test_mul_gen2_433);
+  tcase_add_test(tc_core, test_mul_gen2_434);
+  tcase_add_test(tc_core, test_mul_gen2_435);
+  tcase_add_test(tc_core, test_mul_gen2_436);
+  tcase_add_test(tc_core, test_mul_gen2_437);
+  tcase_add_test(tc_core, test_mul_gen2_438);
+  tcase_add_test(tc_core, test_mul_gen2_439);
+  tcase_add_test(tc_core, test_mul_gen2_440);
+  tcase_add_test(tc_core, test_mul_gen2_441);
+  tcase_add_test(tc_core, test_mul_gen2_442);
+  tcase_add_test(tc_core, test_mul_gen2_443);
+  tcase_add_test(tc_core, test_mul_gen2_444);
+  tcase_add_test(tc_core, test_mul_gen2_445);
+  tcase_add_test(tc_core, test_mul_gen2_446);
+  tcase_add_test(tc_core, test_mul_gen2_447);
+  tcase_add_test(tc_core, test_mul_gen2_448);
+  tcase_add_test(tc_core, test_mul_gen2_449);
+  tcase_add_test(tc_core, test_mul_gen2_450);
+  tcase_add_test(tc_core, test_mul_gen2_451);
+  tcase_add_test(tc_core, test_mul_gen2_452);
+  tcase_add_test(tc_core, test_mul_gen2_453);
+  tcase_add_test(tc_core, test_mul_gen2_454);
+  tcase_add_test(tc_core, test_mul_gen2_455);
+  tcase_add_test(tc_core, test_mul_gen2_456);
+  tcase_add_test(tc_core, test_mul_gen2_457);
+  tcase_add_test(tc_core, test_mul_gen2_458);
+  tcase_add_test(tc_core, test_mul_gen2_459);
+  tcase_add_test(tc_core, test_mul_gen2_460);
+  tcase_add_test(tc_core, test_mul_gen2_461);
+  tcase_add_test(tc_core, test_mul_gen2_462);
+  tcase_add_test(tc_core, test_mul_gen2_463);
+  tcase_add_test(tc_core, test_mul_gen2_464);
+  tcase_add_test(tc_core, test_mul_gen2_465);
+  tcase_add_test(tc_core, test_mul_gen2_466);
+  tcase_add_test(tc_core, test_mul_gen2_467);
+  tcase_add_test(tc_core, test_mul_gen2_468);
+  tcase_add_test(tc_core, test_mul_gen2_469);
+  tcase_add_test(tc_core, test_mul_gen2_470);
+  tcase_add_test(tc_core, test_mul_gen2_471);
+  tcase_add_test(tc_core, test_mul_gen2_472);
+  tcase_add_test(tc_core, test_mul_gen2_473);
+  tcase_add_test(tc_core, test_mul_gen2_474);
+  tcase_add_test(tc_core, test_mul_gen2_475);
+  tcase_add_test(tc_core, test_mul_gen2_476);
+  tcase_add_test(tc_core, test_mul_gen2_477);
+  tcase_add_test(tc_core, test_mul_gen2_478);
+  tcase_add_test(tc_core, test_mul_gen2_479);
+  tcase_add_test(tc_core, test_mul_gen2_480);
+  tcase_add_test(tc_core, test_mul_gen2_481);
+  tcase_add_test(tc_core, test_mul_gen2_482);
+  tcase_add_test(tc_core, test_mul_gen2_483);
+  tcase_add_test(tc_core, test_mul_gen2_484);
+  tcase_add_test(tc_core, test_mul_gen2_485);
+  tcase_add_test(tc_core, test_mul_gen2_486);
+  tcase_add_test(tc_core, test_mul_gen2_487);
+  tcase_add_test(tc_core, test_mul_gen2_488);
+  tcase_add_test(tc_core, test_mul_gen2_489);
+  tcase_add_test(tc_core, test_mul_gen2_490);
+  tcase_add_test(tc_core, test_mul_gen2_491);
+  tcase_add_test(tc_core, test_mul_gen2_492);
+  tcase_add_test(tc_core, test_mul_gen2_493);
+  tcase_add_test(tc_core, test_mul_gen2_494);
+  tcase_add_test(tc_core, test_mul_gen2_495);
+  tcase_add_test(tc_core, test_mul_gen2_496);
+  tcase_add_test(tc_core, test_mul_gen2_497);
+  tcase_add_test(tc_core, test_mul_gen2_498);
+  tcase_add_test(tc_core, test_mul_gen2_499);
+  tcase_add_test(tc_core, test_mul_gen2_500);
+  tcase_add_test(tc_core, test_mul_gen2_501);
+  tcase_add_test(tc_core, test_mul_gen2_502);
+  tcase_add_test(tc_core, test_mul_gen2_503);
+  tcase_add_test(tc_core, test_mul_gen2_504);
+  tcase_add_test(tc_core, test_mul_gen2_505);
+
+    tcase_add_test(tc_core, epsilon_test_1);
   tcase_add_test(tc_core, epsilon_test_2);
   tcase_add_test(tc_core, epsilon_test_3);
   tcase_add_test(tc_core, epsilon_test_4);
