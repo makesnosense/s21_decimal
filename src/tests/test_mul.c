@@ -10493,7 +10493,7 @@ Suite* make_mul_suite() {
   tcase_add_test(tc_core, test_mul_gen2_504);
   tcase_add_test(tc_core, test_mul_gen2_505);
 
-    tcase_add_test(tc_core, epsilon_test_1);
+  tcase_add_test(tc_core, epsilon_test_1);
   tcase_add_test(tc_core, epsilon_test_2);
   tcase_add_test(tc_core, epsilon_test_3);
   tcase_add_test(tc_core, epsilon_test_4);
