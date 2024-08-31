@@ -668,9 +668,8 @@ START_TEST(long_mantissas_multiplication_test_1) {
   uint32_t expected[6] = {0x00000001, 0, 0, 0xFFFFFFFE, 0xFFFFFFFF, 0xFFFFFFFF};
   uint32_t result[6] = {0};
 
-  int overflow = multiply_long_mantissas(num_1, num_2, result);
+  multiply_long_mantissas(num_1, num_2, result);
   ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
-  ck_assert_int_eq(overflow, 0);
 }
 END_TEST
 
@@ -684,62 +683,9 @@ START_TEST(long_mantissas_multiplication_test_2) {
                           0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
   uint32_t result[6] = {0};
 
-  int overflow = multiply_long_mantissas(num_1, num_2, result);
+  multiply_long_mantissas(num_1, num_2, result);
 
   ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
-  ck_assert_int_eq(overflow, 0);
-}
-END_TEST
-
-START_TEST(long_mantissas_multiplication_overflow_test_1) {
-  // 62771017353866807638357894233
-  uint32_t num_1[6] = {0x96EE459, 0x359A3B3E, 0xCAD2F7F5, 0x0, 0x0, 0x0};
-  // 100000000000000000000000000000
-  uint32_t num_2[6] = {0xA0000000, 0x6D7217CA, 0x431E0FAE, 0x1, 0x0, 0x0};
-  // 92333583897644555535965487104
-  uint32_t expected[6] = {0xA0000000, 0xC28B7BF1, 0x2A588CEC, 0x1, 0x0, 0x0};
-  uint32_t result[6] = {0};
-
-  int overflow = multiply_long_mantissas(num_1, num_2, result);
-
-  ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
-  ck_assert_int_eq(overflow, 1);
-}
-END_TEST
-
-START_TEST(long_mantissas_multiplication_overflow_test_2) {
-  // 6277101735386680763835789423207666416102355444464034512895
-  uint32_t num_1[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-                       0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
-  // 378598437598
-  uint32_t num_2[6] = {0x2639B2DE, 0x58, 0x0, 0x0, 0x0, 0x0};
-  // 6277101735386680763835789423207666416102355444085436075298
-  uint32_t expected[6] = {0xD9C64D22, 0xFFFFFFA7, 0xFFFFFFFF,
-                          0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
-  uint32_t result[6] = {0};
-
-  int overflow = multiply_long_mantissas(num_1, num_2, result);
-
-  ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
-  ck_assert_int_eq(overflow, 1);
-}
-END_TEST
-
-START_TEST(long_mantissas_multiplication_overflow_test_3) {
-  // 10
-  uint32_t num_1[6] = {0xA, 0x0, 0x0, 0x0, 0x0, 0x0};
-  // 6277101735386680763835789423207666416102355444464034512895
-  uint32_t num_2[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-                       0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
-  // 6277101735386680763835789423207666416102355444464034512886
-  uint32_t expected[6] = {0xFFFFFFF6, 0xFFFFFFFF, 0xFFFFFFFF,
-                          0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
-  uint32_t result[6] = {0};
-
-  int overflow = multiply_long_mantissas(num_1, num_2, result);
-
-  ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
-  ck_assert_int_eq(overflow, 1);
 }
 END_TEST
 
@@ -778,63 +724,6 @@ START_TEST(test_is_zero_decimal_0) {
   ck_assert_int_eq(s21_result, TRUE);
 }
 END_TEST
-
-// START_TEST(multiply_test_2) {
-//   // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
-//   //                              0b00000000000000101000000000000000};
-//   uint32_t num_1[3] = {0xF485787A, 0x7F29ABCA, 0x1AD};
-//   uint32_t num_2[3] = {0xD83C94FB, 0x1, 0x0};
-//   uint32_t res[6] = {0};
-//   // debug_print_decimal_as_binary(input_decimal);
-
-//   multiply_mantissas(num_1, num_2, res);
-
-//   debug_print_mantissa_as_binary(res, 6);
-
-//   // ck_assert_int_ne(scale_before, scale_after);
-//   // ck_assert_int_eq(scale_after, scale_to_set);
-// }
-// END_TEST
-
-// START_TEST(print_mantissa_as_binary_test) {
-//   // s21_decimal input_decimal = {0x123U, 0x123U, 0x123U,
-//   //                              0b00000000000000101000000000000000};
-//   uint32_t num_1[3] = {0x0, 0x0, 0x1869F};
-//   debug_print_mantissa_as_binary(num_1, 3);
-//   // debug_print_decimal_as_binary(input_decimal);
-
-//   // ck_assert_int_ne(scale_before, scale_after);
-//   // ck_assert_int_eq(scale_after, scale_to_set);
-// }
-// END_TEST
-
-// START_TEST(convert_arr_to_decimal) {
-//   // 4573498578943759
-//   uint32_t term_1[3] = {0b10011110001011011011111100001111,
-//                         0b10000001111111001001000001000010,
-//                         0b01010010001001001010101010100101};
-
-//   s21_decimal input_decimal1 = {0b10011110001011011011111100001111,
-//                                 0b10000001111111001001000001000010,
-//                                 0b01010010001001001010101010100101, 0x0U};
-//   s21_decimal input_decimal2 = {0x0U, 0x0U, 0x0U, 0x0U};
-
-//   write_in_mantissa_to_decimal(term_1, &input_decimal2);
-
-//   debug_print_decimal_as_binary(input_decimal1);
-//   putchar('\n');
-//   debug_print_decimal_as_binary(input_decimal2);
-// }
-// END_TEST
-
-// START_TEST(get_power_test) {
-//   // print_mantissa_as_binary(get_power_of_ten(25), 3);
-//   uint32_t* term_1 = get_mantissa_with_power_of_ten(28);
-//   debug_print_mantissa_as_binary(term_1, 3);
-
-//   putchar('\n');
-// }
-// END_TEST
 
 START_TEST(test_mantissa_power_of_ten_null) {
   uint32_t* result = NULL;
@@ -887,9 +776,6 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, multiply_test_2);
   tcase_add_test(tc_core, long_mantissas_multiplication_test_1);
   tcase_add_test(tc_core, long_mantissas_multiplication_test_2);
-  tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_1);
-  tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_2);
-  tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_3);
 
   tcase_add_test(tc_core, test_long_mantissas_addition_1);
   tcase_add_test(tc_core, test_long_mantissas_addition_2);
@@ -909,11 +795,6 @@ Suite* make_utility_suite() {
 
   tcase_add_test(tc_core, test_mantissa_power_of_ten_null);
 
-  // tcase_add_test(tc_core, multiply_test_2);
-  // tcase_add_test(tc_core, get_power_test);
-  // tcase_add_test(tc_core, print_mantissa_as_binary_test);
-  // tcase_add_test(tc_core, convert_arr_to_decimal);
-  // tcase_add_test(tc_core, comparison_eq_test);
   suite_add_tcase(utility_suite, tc_core);
   return utility_suite;
 }

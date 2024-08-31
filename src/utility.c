@@ -271,10 +271,9 @@ void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
   }
 }
 
-int multiply_long_mantissas(uint32_t* factor_1, uint32_t* factor_2,
-                            uint32_t* result) {
+void multiply_long_mantissas(uint32_t* factor_1, uint32_t* factor_2,
+                             uint32_t* result) {
   int size = 6;
-  int overflow = 0;
   uint64_t product;
   uint32_t carry;
   uint32_t temp_result[6] = {0};
@@ -283,25 +282,14 @@ int multiply_long_mantissas(uint32_t* factor_1, uint32_t* factor_2,
     carry = 0;
     for (int j = 0; j < size; j++) {
       product = (uint64_t)factor_1[i] * factor_2[j] + carry;
-      if ((i + j) >= size) {
-        // overflow += product > 0;
-        if (product > 0) {
-          overflow = 1;
-        }
-      } else {
+      if ((i + j) < size) {
         product += temp_result[i + j];
         temp_result[i + j] = (uint32_t)product;
       }
       carry = product >> 32;
     }
-    // overflow += carry > 0;
-    if (i == 0 && carry > 0) {
-      overflow = 1;
-    }
   }
   copy_long_mantissa(result, temp_result);
-  // return overflow > 0;
-  return overflow;
 }
 
 int get_scale_difference_from_decimals(s21_decimal decimal_1,
@@ -380,13 +368,6 @@ uint32_t* get_max_mantissa() {
   static uint32_t max_mantissa[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
                                      0x0,        0x0,        0x0};
   return max_mantissa;
-}
-
-uint32_t* get_max_upscaled_mantissa() {
-  // max_mantissa * (10^28 + 0.6)
-  static uint32_t max_upscaled_mantissa[6] = {
-      0x60000000, 0x80BDFF0C, 0xF313470D, 0xFFFFFFF, 0x3E250261, 0x204FCE5E};
-  return max_upscaled_mantissa;
 }
 
 int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,

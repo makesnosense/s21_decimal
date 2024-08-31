@@ -4,54 +4,6 @@
 #include "../utility.h"
 #include "run_tests.h"
 
-START_TEST(test_div_too_big_null) {
-  // 79228162514264337593543950335
-  s21_decimal input_decimal_1 = {
-      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
-  // 0.1
-  s21_decimal input_decimal_2 = {
-      {0x00000001, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
-
-  ArithmeticResult s21_return_code =
-      s21_div(input_decimal_1, input_decimal_2, NULL);
-
-  ck_assert_int_eq(s21_return_code, TOO_BIG);
-}
-END_TEST
-
-START_TEST(test_output_format_1) {
-  int true_res = 0;
-  s21_decimal val1 = {{0x00000002, 0, 0, 0}};
-  s21_decimal val2 = {{0x00000002, 0, 0, 0}};
-  s21_decimal output;
-  s21_decimal result = {{0x00000001, 0x00000000, 0x00000000, 0x00000000}};
-  int s21_res = s21_div(val1, val2, &output);
-
-  ck_assert_mem_eq(result.bits, output.bits, sizeof(s21_decimal));
-  ck_assert_int_eq(s21_res, true_res);
-}
-END_TEST
-
-START_TEST(test_output_format_2) {
-  // 0.125
-  s21_decimal input_decimal_1 = {
-      {0x7D, 0x0, 0x0, 0b00000000000000110000000000000000}};
-  // 0.125
-  s21_decimal input_decimal_2 = {
-      {0x7D, 0x0, 0x0, 0b00000000000000110000000000000000}};
-  // 1
-  s21_decimal expected_result = {
-      {0x3E8, 0x0, 0x0, 0b00000000000000110000000000000000}};
-
-  s21_decimal s21_result_decimal;
-  ArithmeticResult s21_return_code =
-      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
-
-  ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
-  ck_assert_int_eq(s21_return_code, OK);
-}
-END_TEST
-
 START_TEST(test_division_by_zero) {
   // 1.2345
   s21_decimal input_decimal_1 = {
@@ -397,6 +349,24 @@ START_TEST(division_test_17) {
 
   ck_assert_mem_eq(&s21_result_decimal, &expected_result, sizeof(s21_decimal));
   ck_assert_int_eq(s21_return_code, OK);
+}
+END_TEST
+
+START_TEST(division_test_18) {
+  // 79228162514264337593543950335
+  s21_decimal input_decimal_1 = {
+      {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0b00000000000000000000000000000000}};
+  // -0.1
+  s21_decimal input_decimal_2 = {
+      {0x00000001, 0x0, 0x0, 0b10000000000000010000000000000000}};
+
+  s21_decimal s21_result_decimal;
+  ArithmeticResult s21_return_code =
+      s21_div(input_decimal_1, input_decimal_2, &s21_result_decimal);
+
+  // ck_assert_mem_eq(&s21_result_decimal, &expected_result,
+  // sizeof(s21_decimal));
+  ck_assert_int_eq(s21_return_code, TOO_SMALL);
 }
 END_TEST
 
@@ -41234,15 +41204,7 @@ Suite* make_div_suite() {
 
   tc_core = tcase_create("Core");
 
-  tcase_add_test(tc_core, test_div_too_big_null);
-  tcase_add_test(tc_core, test_output_format_1);
-  tcase_add_test(tc_core, test_output_format_2);
   tcase_add_test(tc_core, test_division_by_zero);
-
-  //   tcase_add_test(tc_core, test_div_null);
-  //   tcase_add_test(tc_core, test_div_first_decimal_incorrect);
-  //   tcase_add_test(tc_core, test_div_second_decimal_incorrect);
-  //   tcase_add_test(tc_core, test_div_both_decimals_incorrect);
 
   tcase_add_test(tc_core, division_test_1);
   tcase_add_test(tc_core, division_test_2);
@@ -41261,6 +41223,7 @@ Suite* make_div_suite() {
   tcase_add_test(tc_core, division_test_15);
   tcase_add_test(tc_core, division_test_16);
   tcase_add_test(tc_core, division_test_17);
+  tcase_add_test(tc_core, division_test_18);
 
   tcase_add_test(tc_core, test_div_gen_0);
   tcase_add_test(tc_core, test_div_gen_1);

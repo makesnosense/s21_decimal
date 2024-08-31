@@ -58,12 +58,11 @@ void set_scale(uint32_t* service_part, int scale);
 void* s21_memset(void* str, int c, int n);
 
 uint32_t* get_max_mantissa();
-uint32_t* get_max_upscaled_mantissa();
 
 void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
                         uint32_t* result);
-int multiply_long_mantissas(uint32_t* factor_1, uint32_t* factor_2,
-                            uint32_t* result);
+void multiply_long_mantissas(uint32_t* factor_1, uint32_t* factor_2,
+                             uint32_t* result);
 void write_in_mantissa_to_decimal(uint32_t* mantissa,
                                   s21_decimal* destination_decimal);
 void get_mantissa_from_decimal(uint32_t* mantissa, s21_decimal source_decimal);

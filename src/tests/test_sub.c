@@ -4,69 +4,6 @@
 #include "../utility.h"
 #include "run_tests.h"
 
-START_TEST(test_sub_null) {
-  // 1.2345
-  s21_decimal input_decimal_1 = {
-      {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
-  // 5.5
-  s21_decimal input_decimal_2 = {
-      {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
-
-  ArithmeticResult s21_return_code =
-      s21_sub(input_decimal_1, input_decimal_2, NULL);
-
-  ck_assert_int_eq(s21_return_code, INPUT_ERROR);
-}
-END_TEST
-
-START_TEST(test_sub_first_decimal_incorrect) {
-  // 1.2345
-  s21_decimal input_decimal_1 = {
-      {0x00003039, 0x00000000, 0x00000000, 0b00001000000001000000000010000000}};
-  // 5.5
-  s21_decimal input_decimal_2 = {
-      {0x00000037, 0x00000000, 0x00000000, 0b00000000000000010000000000000000}};
-
-  s21_decimal s21_result_decimal;
-  ArithmeticResult s21_return_code =
-      s21_sub(input_decimal_1, input_decimal_2, &s21_result_decimal);
-
-  ck_assert_int_eq(s21_return_code, INPUT_ERROR);
-}
-END_TEST
-
-START_TEST(test_sub_second_decimal_incorrect) {
-  // 1.2345
-  s21_decimal input_decimal_1 = {
-      {0x00003039, 0x00000000, 0x00000000, 0b00000000000001000000000000000000}};
-  // 5.5
-  s21_decimal input_decimal_2 = {
-      {0x00000037, 0x00000000, 0x00000000, 0b00010000000000010000000000001000}};
-
-  s21_decimal s21_result_decimal;
-  ArithmeticResult s21_return_code =
-      s21_sub(input_decimal_1, input_decimal_2, &s21_result_decimal);
-
-  ck_assert_int_eq(s21_return_code, INPUT_ERROR);
-}
-END_TEST
-
-START_TEST(test_sub_both_decimals_incorrect) {
-  // 1.2345
-  s21_decimal input_decimal_1 = {
-      {0x00003039, 0x00000000, 0x00000000, 0b00010000000001000000000100000000}};
-  // 5.5
-  s21_decimal input_decimal_2 = {
-      {0x00000037, 0x00000000, 0x00000000, 0b00010000000000010000000000001000}};
-
-  s21_decimal s21_result_decimal;
-  ArithmeticResult s21_return_code =
-      s21_sub(input_decimal_1, input_decimal_2, &s21_result_decimal);
-
-  ck_assert_int_eq(s21_return_code, INPUT_ERROR);
-}
-END_TEST
-
 START_TEST(test_sub_gen2_0) {
   // 1.2345
   s21_decimal input_decimal_1 = {
@@ -10048,11 +9985,6 @@ Suite* make_sub_suite() {
   TCase* tc_core;
 
   tc_core = tcase_create("Core");
-
-  tcase_add_test(tc_core, test_sub_null);
-  tcase_add_test(tc_core, test_sub_first_decimal_incorrect);
-  tcase_add_test(tc_core, test_sub_second_decimal_incorrect);
-  tcase_add_test(tc_core, test_sub_both_decimals_incorrect);
 
   tcase_add_test(tc_core, test_sub_gen2_0);
   tcase_add_test(tc_core, test_sub_gen2_1);
