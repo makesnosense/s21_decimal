@@ -5,9 +5,6 @@
 #include "utility.h"
 
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-  if (input_is_correct(value_1, value_2, result) == false) {
-    return INPUT_ERROR;
-  }
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
   ArithmeticResult result_add = OK;
 
@@ -49,9 +46,6 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 }
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-  if (input_is_correct(value_1, value_2, result) == false) {
-    return INPUT_ERROR;
-  }
   s21_memset(result->bits, 0, sizeof(uint32_t) * 4);
   ArithmeticResult result_sub = OK;
   uint32_t minuend_normalized_long_mantissa[6] = {0};
@@ -93,9 +87,6 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
 }
 
 int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
-  if (input_is_correct(value_1, value_2, result) == false) {
-    return INPUT_ERROR;
-  }
   ArithmeticResult result_mul = OK;
   Sign result_sign = PLUS;
   bool is_overflow = false;
@@ -241,12 +232,6 @@ int s21_div_original(s21_decimal value_1, s21_decimal value_2,
                     result);
   }
   return result_code;
-}
-
-bool input_is_correct(s21_decimal value_1, s21_decimal value_2,
-                      s21_decimal* result) {
-  return (result != NULL && decimal_service_part_is_correct(value_1) &&
-          decimal_service_part_is_correct(value_2));
 }
 
 ArithmeticResult catch_overflow(bool is_overflow, Sign result_sign) {
