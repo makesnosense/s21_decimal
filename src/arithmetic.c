@@ -139,6 +139,69 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
   if (is_zero_decimal(value_2)) {
     return DIVISION_BY_ZERO;
   }
+  // int value_2_scale = get_scale(value_2.bits[3]);
+  uint32_t temp_result[6] = {0};
+  uint32_t remainder[6] = {0};
+  uint32_t divisor[6] = {0};
+  copy_mantissa(divisor, value_2.bits);
+  divide_mantissas(value_1.bits, value_2.bits, temp_result, remainder);
+  int result_scale = get_scale(value_1.bits[3]) - get_scale(value_2.bits[3]);
+  uint32_t* ten = get_mantissa_with_power_of_ten(1);
+  uint32_t fractal_digit[6] = {0};
+  debug_print_mantissa_as_hex(temp_result, 6);
+  bool overflow = false;
+  while (result_scale < 30 && !long_mantissa_is_zero(remainder)) {
+    multiply_long_mantissas(remainder, ten, remainder);
+    divide_long_mantissas(remainder, divisor, fractal_digit, remainder);
+    multiply_long_mantissas(temp_result, ten, temp_result);
+    add_long_mantissas(temp_result, fractal_digit, temp_result);
+    result_scale += 1;
+    /* if (result_scale == 0 &&
+            compare_long_mantissas(temp_result, get_max_mantissa()) > 0) {
+          overflow = true;
+          return TOO_BIG;
+        } */
+    printf("scale: %d\n", result_scale);
+    debug_print_mantissa_as_hex(temp_result, 6);
+  }
+  uint32_t downsized_result[3] = {0};
+  int removed_digits = downsize_mantissa(temp_result, &result_scale,
+                                         downsized_result, &overflow);
+  if (result_scale > 28) {
+    int digits_to_remove = (result_scale - 28) + removed_digits;
+    result_scale = 28;
+    remove_digits_rounding_to_even(temp_result, digits_to_remove,
+                                   downsized_result);
+  }
+  if (result_scale < 0) {
+    int multiplier_scale = -result_scale;
+    result_scale = 0;
+    uint32_t* multiplier = get_mantissa_with_power_of_ten(multiplier_scale);
+    uint32_t scaled_result[6];
+    multiply_mantissas(downsized_result, multiplier, scaled_result);
+    debug_print_mantissa_as_hex(scaled_result, 6);
+    if (compare_long_mantissas(scaled_result, get_max_mantissa()) > 0) {
+      overflow = true;
+    } else {
+      copy_mantissa(downsized_result, scaled_result);
+    }
+  }
+  Sign result_sign = PLUS;
+  if (get_sign(value_1) != get_sign(value_2)) {
+    result_sign = MINUS;
+  }
+  ArithmeticResult result_code = catch_overflow(overflow, result_sign);
+  if (result_code == OK) {
+    compose_decimal(downsized_result, result_scale, result_sign, result);
+  }
+  return result_code;
+}
+
+int s21_div_original(s21_decimal value_1, s21_decimal value_2,
+                     s21_decimal* result) {
+  if (is_zero_decimal(value_2)) {
+    return DIVISION_BY_ZERO;
+  }
   bool overflow = false;
   int value_1_scale = get_scale(value_1.bits[3]);
   int value_2_scale = get_scale(value_2.bits[3]);

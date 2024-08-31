@@ -743,6 +743,38 @@ START_TEST(long_mantissas_multiplication_overflow_test_3) {
 }
 END_TEST
 
+START_TEST(long_mantissas_multiplication_overflow_test_4) {
+  // 392318858461667547739736838950479151006397215279002157056
+  uint32_t num_1[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x10000000};
+  // 16
+  uint32_t num_2[6] = {0x10, 0x0, 0x0, 0x0, 0x0, 0x0};
+
+  uint32_t result[6] = {0};
+
+  int overflow = multiply_long_mantissas(num_1, num_2, result);
+
+  ck_assert_int_eq(overflow, 1);
+}
+END_TEST
+
+START_TEST(long_mantissas_multiplication_overflow_test_5) {
+  // 418473449025778717589052628213844427740157029630935634193
+  uint32_t num_1[6] = {0x11111111, 0x11111111, 0x11111111,
+                       0x11111111, 0x11111111, 0x11111111};
+  // 15
+  uint32_t num_2[6] = {0xF, 0x0, 0x0, 0x0, 0x0, 0x0};
+  // 6277101735386680763835789423207666416102355444464034512895
+  uint32_t expected[6] = {0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
+                          0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF};
+  uint32_t result[6] = {0};
+
+  int overflow = multiply_long_mantissas(num_1, num_2, result);
+
+  ck_assert_mem_eq(expected, result, sizeof(uint32_t) * 6);
+  ck_assert_int_eq(overflow, 0);
+}
+END_TEST
+
 START_TEST(test_is_one_decimal_0) {
   s21_decimal input_decimal = {
       {0x1, 0x0, 0x0, 0b00000000000000000000000000000000}};
@@ -890,6 +922,8 @@ Suite* make_utility_suite() {
   tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_1);
   tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_2);
   tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_3);
+  tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_4);
+  tcase_add_test(tc_core, long_mantissas_multiplication_overflow_test_5);
 
   tcase_add_test(tc_core, test_long_mantissas_addition_1);
   tcase_add_test(tc_core, test_long_mantissas_addition_2);
