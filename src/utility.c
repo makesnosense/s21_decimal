@@ -382,13 +382,6 @@ uint32_t* get_max_mantissa() {
   return max_mantissa;
 }
 
-uint32_t* get_max_upscaled_mantissa() {
-  // max_mantissa * (10^28 + 0.6)
-  static uint32_t max_upscaled_mantissa[6] = {
-      0x60000000, 0x80BDFF0C, 0xF313470D, 0xFFFFFFF, 0x3E250261, 0x204FCE5E};
-  return max_upscaled_mantissa;
-}
-
 int downsize_mantissa(uint32_t* long_mantissa, int* scale, uint32_t* mantissa,
                       bool* overflow) {
   *overflow = false;

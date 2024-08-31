@@ -58,7 +58,6 @@ void set_scale(uint32_t* service_part, int scale);
 void* s21_memset(void* str, int c, int n);
 
 uint32_t* get_max_mantissa();
-uint32_t* get_max_upscaled_mantissa();
 
 void multiply_mantissas(uint32_t* mantissa_1, uint32_t* mantissa_2,
                         uint32_t* result);
