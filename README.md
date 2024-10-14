@@ -47,6 +47,12 @@ To generate a code coverage report (requires [GCOVR](https://github.com/gcovr/gc
 make gcov_report
 ```
 
+## Test Generator
+The project includes a test generator (s21_decimal/tests_generator/decimal.ipynb) implemented as a Jupyter Notebook. To use it:
+- Open decimal.ipynb in Jupyter Notebook or JupyterLab
+- Run the cells to generate test cases 
+- Copy the generated test cases from tests_body.txt and addition.txt into your test files
+
 ## API Reference
 
 ### Arithmetic
